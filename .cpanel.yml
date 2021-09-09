@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/herbal/dev.herbalapothecaryuk.com/
+    - /bin/cp -R * $DEPLOYPATH
