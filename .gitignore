@@ -4,4 +4,5 @@
 !/wp-content/themes
 /wp-content/themes/*
 !/wp-content/themes/herbalapothecary
-!.gitignore
+!.gitignore 
+!.cpanel.yml
