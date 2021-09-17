@@ -111,7 +111,7 @@ option {
     gap: 2rem;
 }
 
-.c-navigation__menu ul {
+.nav-menu {
     display: flex;
     gap: 1rem;
 }
