@@ -141,6 +141,9 @@ add_action( 'widgets_init', 'herbalapothecary_widgets_init' );
  */
 function herbalapothecary_scripts() {
 	wp_enqueue_style( 'herbalapothecary-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'herbalapothecary-base', get_template_directory_uri() . "/css/base.css",  [], _S_VERSION);
+	wp_enqueue_style( 'herbalapothecary-layout', get_template_directory_uri() . "/css/layout.css",  [], _S_VERSION);
+	wp_enqueue_style( 'herbalapothecary-components', get_template_directory_uri() . "/css/components.css",  [], _S_VERSION);
 	wp_style_add_data( 'herbalapothecary-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'herbalapothecary-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );

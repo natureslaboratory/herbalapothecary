@@ -1,0 +1,29 @@
+body {
+    min-height: 100vh;
+    font-family: 'Work Sans',Arial,sans-serif;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#content {
+    flex-grow: 2;
+}
+
+.l-restrict {
+    margin: 0 auto;
+    max-width: 1680px;
+    width: 100%;
+}
+
+.l-block {
+    padding: 4rem 1rem;
+}
+
+.l-block--no-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+}

@@ -1,19 +1,8 @@
-<?php
-/**
- * The header for our theme
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package herbalapothecary
- */
+<!DOCTYPE html>
+<html lang="en">
 
-?>
-<!doctype html>
-<html <?php language_attributes(); ?>>
-<head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+<head <?php language_attributes(); ?>>
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
@@ -21,39 +10,76 @@
 </head>
 
 <body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'herbalapothecary' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
+	<?php wp_body_open(); ?>
+	<div id="page">
+		<header class="c-header">
+			<div class="c-header__inner l-restrict">
+				<a href="/"><img class="c-header__logo" src="<?= get_bloginfo("template_url") ?>/images/logo.webp"></a>
+				<form class="c-search">
+					<select class="c-search__dropdown">
+						<option>All</option>
+						<option>Option 1</option>
+						<option>Option 2</option>
+					</select>
+					<input class="c-search__box" type="text" placeholder="I'm shopping for...">
+					<button type="submit" class="c-button">Search</button>
+				</form>
+				<div class="c-header__buttons">
+					<div class="c-header__contact">
+						<div class="c-header__contact-phone-placeholder"></div>
+						<div class="c-header__contact-details">
+							<p>Hotline</p>
+							<a href="/">01947 602346</a>
+						</div>
+					</div>
+					<div class="c-header__basket"></div>
+					<div class="c-header__account">
+						<div class="c-header__icon"></div>
+						<div class="c-header__login">
+							<a>Log In</a>
+							<a>Register</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav id="site-navigation" class="main-navigation c-navigation l-block l-block--no-padding">
+				<div class="l-restrict c-navigation__inner">
+					<div>
+						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'herbalapothecary'); ?></button>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-1',
+								'menu_id' => 'primary-menu',
+								'menu_class' => 'c-navigation__menu'
+							)
+						);
+						?>
+					</div>
+					<form class="c-search c-search--navigation">
+						<input class="c-search__box" type="text" placeholder="I'm shopping for...">
+						<button type="submit" class="c-button">Search</button>
+					</form>
+				</div>
+			</nav>
+			<?php 
+			if (is_front_page() || is_home()) :
 				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+					<div class="c-banner l-block l-block--no-padding">
+						<div class="l-restrict">
+							<h3>We Ship Internationally from UK</h3>
+						</div>
+					</div>
 				<?php
 			else :
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+					<div class="c-breadcrumbs l-block l-block--no-padding">
+						<div class="l-restrict">
+							<p>Breadcrumbs</p>
+						</div>
+					</div>
 				<?php
-			endif;
-			$herbalapothecary_description = get_bloginfo( 'description', 'display' );
-			if ( $herbalapothecary_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $herbalapothecary_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'herbalapothecary' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
+				endif;
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</header>
+		<div id="content">

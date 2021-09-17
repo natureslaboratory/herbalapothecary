@@ -700,10 +700,10 @@ textarea {
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
+	display: flex;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 992px) {
 
 	.menu-toggle {
 		display: none;
