@@ -62,7 +62,7 @@
 			</p>
 		</div>
 	</div> <!-- End .c-footer__top -->
-	<div class="c-footer__bottom">
+	<div class="c-footer__bottom l-restrict">
 		<div class="c-footer__bottom-column c-footer__questions">
 			<h5>Questions?</h5>
 			<div class="c-footer__link-list">
