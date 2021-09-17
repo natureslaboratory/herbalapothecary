@@ -777,4 +777,11 @@ option {
     padding: 1rem;
 }
 
+@media screen and (max-width: 775px) {
+    .c-shop__grid {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
 
