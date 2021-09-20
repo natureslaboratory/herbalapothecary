@@ -430,6 +430,7 @@ option {
 .c-product__image-wrapper {
     position: relative;
     overflow: hidden;
+    aspect-ratio: 1 / 1;
 }
 
 .c-product__image-overlay {
