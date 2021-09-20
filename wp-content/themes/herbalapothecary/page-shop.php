@@ -145,66 +145,31 @@ get_header();
 
     ?>
     <div class="c-shop l-restrict">
-        <div class="c-categories">
-            <?php foreach ($dummyCategories as $cat) { ?>
-                <div class="c-category">
-                    <a class="c-category__image-wrapper" href="<?= $cat["link"] ?>"><img src="<?= $cat["image"] ?>" alt="<?= $cat["title"] ?>"></a>
-                    <a href="<?= $cat["link"] ?>">
-                        <h3><?= $cat["title"] ?></h3>
-                    </a>
-                </div>
-            <?php } ?>
-        </div>
-        <div>
-            <?php
-            $args = array(
-                'post_type' => 'taxonomy-product-cat',
-                'order' => 'desc',
-                'posts_per_page' => 5
-            );
+        <?php
 
-            $popular_products = new WP_Query($args);
+        $orderby = 'name';
+        $order = 'asc';
+        $hide_empty = false;
+        $cat_args = array(
+            'orderby'    => $orderby,
+            'order'      => $order,
+            'hide_empty' => $hide_empty,
+        );
 
-            if ($popular_products->have_posts()) :
-                while ($popular_products->have_posts()) : $popular_products->the_post();
-                    the_title();
-                    the_post();
-                    echo '<br/>';
-                endwhile;
-            endif;
+        $product_categories = get_terms('product_cat', $cat_args);
 
-            wp_reset_postdata();
-            ?>
-            <?php
-
-            $orderby = 'name';
-            $order = 'asc';
-            $hide_empty = false;
-            $cat_args = array(
-                'orderby'    => $orderby,
-                'order'      => $order,
-                'hide_empty' => $hide_empty,
-            );
-
-            $product_categories = get_terms('product_cat', $cat_args);
-
-            if (!empty($product_categories)) {
-                echo '<ul>';
-                foreach ($product_categories as $key => $category) {
-                    echo '<li>';
-                    echo '<a href="' . get_term_link($category) . '" >';
-                    echo $category->name;
-                    echo '</a>';
-                    echo '</li>';
-                }
-                echo '</ul>
- 
- 
-';
-            }
-
-            ?>
-        </div>
+        if (!empty($product_categories)) { ?>
+            <div class="c-categories">
+                <?php foreach ($product_categories as $category) { ?>
+                    <div class="c-category">
+                        <a class="c-category__image-wrapper" href="<?= get_term_link($category) ?>"><?php woocommerce_subcategory_thumbnail($category) ?></a>
+                        <a href="<?= get_term_link($category) ?>">
+                            <h3><?= $category->name ?></h3>
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php } ?>
         <div class="c-shop__grid">
             <div class="c-shop__sidebar">
                 <div class="c-shop__sidebar-element c-shop__sidebar-categories">
