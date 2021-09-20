@@ -127,7 +127,8 @@ get_header();
     ];
 
     function printItems($items)
-    { foreach ($items as $item) { ?>
+    {
+        foreach ($items as $item) { ?>
             <div class="c-product">
                 <div class="c-product__inner">
                     <div class="c-product__image-wrapper">
@@ -139,7 +140,7 @@ get_header();
                 </div>
                 <a tabindex="0" href="/" class="c-button">Select Options</a>
             </div>
-        <?php }  
+    <?php }
     }
 
     ?>
@@ -153,6 +154,56 @@ get_header();
                     </a>
                 </div>
             <?php } ?>
+        </div>
+        <div>
+            <?php
+            $args = array(
+                'post_type' => 'taxonomy-product-cat',
+                'order' => 'desc',
+                'posts_per_page' => 5
+            );
+
+            $popular_products = new WP_Query($args);
+
+            if ($popular_products->have_posts()) :
+                while ($popular_products->have_posts()) : $popular_products->the_post();
+                    the_title();
+                    the_post();
+                    echo '<br/>';
+                endwhile;
+            endif;
+
+            wp_reset_postdata();
+            ?>
+            <?php
+
+            $orderby = 'name';
+            $order = 'asc';
+            $hide_empty = false;
+            $cat_args = array(
+                'orderby'    => $orderby,
+                'order'      => $order,
+                'hide_empty' => $hide_empty,
+            );
+
+            $product_categories = get_terms('product_cat', $cat_args);
+
+            if (!empty($product_categories)) {
+                echo '<ul>';
+                foreach ($product_categories as $key => $category) {
+                    echo '<li>';
+                    echo '<a href="' . get_term_link($category) . '" >';
+                    echo $category->name;
+                    echo '</a>';
+                    echo '</li>';
+                }
+                echo '</ul>
+ 
+ 
+';
+            }
+
+            ?>
         </div>
         <div class="c-shop__grid">
             <div class="c-shop__sidebar">

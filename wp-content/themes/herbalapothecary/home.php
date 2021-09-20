@@ -145,26 +145,40 @@ get_header();
             </div>
         </div> <!-- End .c-products -->
 
-                <?php 
-        $args = array(
-        'post_type' 	=> array( 'product' ),
-        'meta_key'  	=> 'total_sales',
-        'orderby'   	=> 'meta_value_num',
-        'order' 		=> 'desc',
-        'posts_per_page'		=> 5
-        );
+        <div class="c-products">
+            <div class="c-products__header">
+                <h3>Browse Popular Products</h3>
+                <div class="c-products__categories">
+                    <a>Western Herbs</a>
+                    <a>Chinese Herbs</a>
+                    <a>Ayurvedic Herbs</a>
+                    <a>Propolis</a>
+                    <a>View All</a>
+                </div>
+            </div>
+            <div class="c-products__grid">
+            <?php 
+            $args = array(
+            'post_type' 	=> array( 'product' ),
+            'meta_key'  	=> 'total_sales',
+            'orderby'   	=> 'meta_value_num',
+            'order' 		=> 'desc',
+            'posts_per_page'		=> 5
+            );
 
-        $popular_products = new WP_Query( $args );
+            $popular_products = new WP_Query( $args );
 
-        if ( $popular_products->have_posts() ) :
-        while ( $popular_products->have_posts() ) : $popular_products->the_post();
-            the_title();
-            echo '<br/>';
-        endwhile;
-        endif;
+            if ( $popular_products->have_posts() ) :
+                while ( $popular_products->have_posts() ) : 
+                    $popular_products->the_post();
+                    get_template_part('template-parts/product-thumbnail');
+                endwhile;
+            endif;
 
-        wp_reset_postdata();
-        ?>
+            wp_reset_postdata();
+            ?>
+            </div>
+        </div>
         <div class="c-brands">
             <h3 class="c-brands__title">Shop By Brand</h3>
             <div class="c-brands__grid">
