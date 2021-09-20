@@ -161,7 +161,7 @@ get_header();
         if (!empty($product_categories)) { ?>
             <div class="c-categories">
                 <?php foreach ($product_categories as $category) { ?>
-                    <?php if ($category->name == "Uncategorized") { continue; } ?>
+                    <?php if ($category->name == "Uncategorized" || $category->name == "Uncategorised") { continue; } ?>
                     <div class="c-category">
                         <a class="c-category__image-wrapper" href="<?= get_term_link($category) ?>"><?php woocommerce_subcategory_thumbnail($category) ?></a>
                         <a href="<?= get_term_link($category) ?>">
