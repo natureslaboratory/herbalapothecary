@@ -193,9 +193,10 @@ get_header();
                     ]
                     ?>
                     <ul>
-                        <?php foreach ($categories as $cat) { ?>
+                        <?php foreach ($product_categories as $cat) { ?>
+                            <?php if ($cat->name == "Uncategorized" || $cat->name == "Uncategorised") { continue; } ?>
                             <li>
-                                <a href="/"><?= $cat ?></a>
+                                <a href="<?= get_term_link($cat) ?>"><?= $cat->name ?></a>
                             </li>
                         <?php } ?>
                     </ul>
