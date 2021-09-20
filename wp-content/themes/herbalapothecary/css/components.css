@@ -422,6 +422,9 @@ option {
 
 .c-product__image {
     border: 1px solid rgb(238, 238, 238);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 .c-product__image-wrapper {

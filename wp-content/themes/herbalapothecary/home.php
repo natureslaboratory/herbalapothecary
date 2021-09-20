@@ -158,18 +158,18 @@ get_header();
             </div>
             <div class="c-products__grid">
             <?php 
-            $args = array(
-            'post_type' 	=> array( 'product' ),
-            'meta_key'  	=> 'total_sales',
-            'orderby'   	=> 'meta_value_num',
-            'order' 		=> 'desc',
-            'posts_per_page'		=> 5
-            );
+            $args = [
+                'post_type' => ["product"],
+                'meta_key' => 'total_sales',
+                'orderby' => 'meta_value_num',
+                'order' => 'desc',
+                'posts_per_page' => 10
+            ];
 
-            $popular_products = new WP_Query( $args );
+            $popular_products = new WP_Query($args);
 
-            if ( $popular_products->have_posts() ) :
-                while ( $popular_products->have_posts() ) : 
+            if ($popular_products->have_posts()) :
+                while ($popular_products->have_posts()) : 
                     $popular_products->the_post();
                     get_template_part('template-parts/product-thumbnail');
                 endwhile;
