@@ -63,7 +63,7 @@
 				</div>
 			</nav>
 			<?php 
-			if (is_front_page() || is_home()) :
+			if (is_front_page()) :
 				?>
 					<div class="c-banner l-block l-block--no-padding">
 						<div class="l-restrict">
