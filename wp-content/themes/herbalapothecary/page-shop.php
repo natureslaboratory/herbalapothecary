@@ -157,6 +157,7 @@ get_header();
         );
 
         $product_categories = get_terms('product_cat', $cat_args);
+        print_r($product_tags);
 
         if (!empty($product_categories)) { ?>
             <div class="c-categories">
@@ -175,23 +176,6 @@ get_header();
             <div class="c-shop__sidebar">
                 <div class="c-shop__sidebar-element c-shop__sidebar-categories">
                     <h4>CATEGORIES</h4>
-                    <?php
-                    $categories = [
-                        "Western Herbs",
-                        "Chinese Herbs",
-                        "Ayurvedic Herbs",
-                        "BeeVital Apiceuticals",
-                        "Sweet Cecily's Skincare",
-                        "Packaging",
-                        "Capsules",
-                        "Detox",
-                        "Gums & Waxes",
-                        "Carrier Oils & Waters",
-                        "Creams & Base Products",
-                        "Products A-Z",
-                        "Sale"
-                    ]
-                    ?>
                     <ul>
                         <?php foreach ($product_categories as $cat) { ?>
                             <?php if ($cat->name == "Uncategorized" || $cat->name == "Uncategorised") { continue; } ?>
@@ -225,25 +209,18 @@ get_header();
                         </div>
                         <div class="c-shop__sidebar-element-section">
                             <h4>PRODUCT TAGS</h4>
-                            <?php
-                            $productTags = [
-                                "capsule",
-                                "cut herb",
-                                "fluid extract",
-                                "honey",
-                                "Organic Tincture",
-                                "packaging",
-                                "powder",
-                                "propolis",
-                                "skincare",
-                                "tincture",
-                                "whole herb"
-                            ]
+                            <?php 
+                                
+                                $product_tags = get_terms("product_tag", [
+                                    "orderby" => "name",
+                                    "order" => "asc",
+                                    "hide_empty" => false
+                                ]);
                             ?>
                             <ul>
-                                <?php foreach ($productTags as $tag) { ?>
+                                <?php foreach ($product_tags as $tag) { ?>
                                     <li>
-                                        <a href="/"><?= $tag ?></a>
+                                        <a href="<?= get_term_link($tag) ?>"><?= $tag->name ?></a>
                                     </li>
                                 <?php } ?>
                             </ul>

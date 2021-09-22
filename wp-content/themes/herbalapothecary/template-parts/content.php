@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template part for displaying posts
  *
@@ -9,21 +10,33 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+<article id="post-<?php the_ID(); ?>" <?php post_class("c-post"); ?>>
+	<header class="entry-header c-post__header">
 		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
+		if (is_singular()) :
+			the_title('<h1 class="entry-title">', '</h1>');
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title('<h2 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h2>');
 		endif;
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php
-				herbalapothecary_posted_on();
-				herbalapothecary_posted_by();
+		if ('post' === get_post_type()) :
+		?>
+			<div class="entry-meta c-post__details">
+				<strong><?php the_date() ?></strong> by
+				<a href="<?php $authorID = get_the_author_meta("ID");
+							echo get_author_posts_url($authorID); ?>"><?php the_author() ?></a> in
+				<?php $categories = get_the_category();
+				if ($categories) {
+					for ($i = 0; $i < count($categories); $i++) {
+						$cat = $categories[$i];
+
+						echo "<a href=" . get_term_link($cat) . ">" . $cat->name . "</a>";
+
+						if (!($i == count($categories) - 1)) {
+							echo ", ";
+						}
+					}
+				}
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
@@ -31,26 +44,26 @@
 
 	<?php herbalapothecary_post_thumbnail(); ?>
 
-	<div class="entry-content">
+	<div class="entry-content c-post__content">
 		<?php
 		the_content(
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'herbalapothecary' ),
+					__('Continue reading<span class="screen-reader-text"> "%s"</span>', 'herbalapothecary'),
 					array(
 						'span' => array(
 							'class' => array(),
 						),
 					)
 				),
-				wp_kses_post( get_the_title() )
+				wp_kses_post(get_the_title())
 			)
 		);
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'herbalapothecary' ),
+				'before' => '<div class="page-links">' . esc_html__('Pages:', 'herbalapothecary'),
 				'after'  => '</div>',
 			)
 		);

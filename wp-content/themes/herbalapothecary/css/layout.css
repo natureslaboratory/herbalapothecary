@@ -19,6 +19,10 @@ body {
     width: 100%;
 }
 
+.l-restrict--narrow {
+    max-width: 900px;
+}
+
 .l-block {
     padding: 4rem 1rem;
 }

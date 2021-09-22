@@ -789,3 +789,173 @@ option {
 }
 
 
+article p {
+    max-width: 100ch;
+}
+
+article :is(h1, h2, h3, h4, h5, h6) {
+    max-width: 55ch;
+}
+
+.c-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 0;
+    gap: 4rem;
+}
+
+.c-news__title {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.c-news__title h1 {
+    font-size: 3rem;
+    color: black;
+}
+
+.c-news__categories {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.c-news__categories a {
+    text-decoration: none;
+    color: grey;
+}
+
+.c-news__categories a.active {
+    color: black;
+}
+
+.c-news-link {
+    display: grid;
+    grid-template-columns: 13fr 7fr;
+    width: 1170px;
+    background-color: var(--lighter-grey);
+}
+
+.c-news-link__image {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.c-news-link__details {
+    padding: 3.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.c-news-link a {
+    text-decoration: none;
+}
+
+.c-news-link__title {
+    color: black;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+
+.c-news-link__categories a {
+    color: black;
+}
+
+.c-news-link__categories {
+    margin: 0;
+}
+
+.c-news-link__info {
+    margin: 0;
+    margin-top: auto;
+    color: grey;
+}
+
+.c-news-link__info a {
+    color: black;
+}
+
+.c-post {
+
+}
+
+.c-post__header {
+    text-align: center;
+    padding: 4rem 0 ;
+}
+
+.c-post__header h1 {
+    margin-top: 0;
+    font-size: 3.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.c-post__details a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+}
+
+.c-post__content img {
+    max-width: 600px;
+}
+
+.c-post__tags {
+    text-align: center;
+}
+
+.c-post__tags a {
+    color: grey;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 4rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid var(--light-grey);
+}
+
+.nav-links a {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    text-decoration: none;
+}
+
+.nav-links a[rel*="next"] {
+    text-align: right;
+}
+
+.c-post__nav-direction, .c-post__nav-text {
+    margin: 0;
+}
+
+.c-post__nav-direction {
+    font-size: 1.5rem;
+    color: grey;
+    margin-bottom: 0.5rem;
+}
+
+.c-post__nav-text {
+    font-weight: 600;
+}
+
+.c-author {
+    background-color: var(--light-grey);
+    padding: 3rem;
+    min-height: 200px;
+    margin: 3rem 0;
+    display: flex;
+    gap: 3rem;
+}
+
+.c-author h4 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
