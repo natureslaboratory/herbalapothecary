@@ -819,6 +819,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .c-news__categories a {
@@ -833,7 +834,8 @@ article :is(h1, h2, h3, h4, h5, h6) {
 .c-news-link {
     display: grid;
     grid-template-columns: 13fr 7fr;
-    width: 1170px;
+    width: 100%;
+    max-width: 1170px;
     background-color: var(--lighter-grey);
 }
 
@@ -875,6 +877,31 @@ article :is(h1, h2, h3, h4, h5, h6) {
 
 .c-news-link__info a {
     color: black;
+}
+
+
+@media screen and (max-width: 950px) {
+    .c-news-link {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .c-news-link {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .c-news-link__details {
+        padding: 2rem;
+    }
+
+    .c-news-link__title {
+        color: black;
+        margin-bottom: -0.5rem;
+        font-size: 1.2rem;
+    }
 }
 
 .c-post {
