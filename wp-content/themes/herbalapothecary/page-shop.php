@@ -293,7 +293,7 @@ get_header();
                             'meta_key' => $metakey,
                             'orderby' => $orderby,
                             'order' => $order,
-                            'posts_per_page' => -1
+                            'posts_per_page' => 20
                         ];
 
                         $popular_products = new WP_Query($args);
