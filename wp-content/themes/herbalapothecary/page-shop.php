@@ -276,7 +276,7 @@ get_header();
                                     $metakey = "_price";
                                     $orderby = "meta_value_num";
                                     break;
-                                case "price_desc":
+                                case "price-desc":
                                     $metakey = "_price";
                                     $orderby = "meta_value_num";
                                     $order = "desc";
