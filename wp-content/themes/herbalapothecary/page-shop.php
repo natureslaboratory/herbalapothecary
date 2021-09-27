@@ -157,7 +157,6 @@ get_header();
         );
 
         $product_categories = get_terms('product_cat', $cat_args);
-        print_r($product_tags);
 
         if (!empty($product_categories)) { ?>
             <div class="c-categories">
@@ -245,12 +244,14 @@ get_header();
                     <div class="c-products__banner">
                         <p><strong>457</strong> Products found</p>
                         <div class="c-products__filter">
-                            <select name="sort" id="sort">
-                                <option value="common">Sort by Common Name</option>
-                                <option value="latin">Sort by Latin Name</option>
-                                <option value="price">Sort by price: low to high</option>
-                                <option value="price-desc">Sort by price: high to low</option>
-                            </select>
+                            <ul id="sort" class="c-product-filter">
+                                <?php $url = explode("?", $_SERVER["REQUEST_URI"])[0]; ?>
+                                <?php echo woocommerce_catalog_ordering() ?>
+                                <li><a href="<?= $url ?>">Sort by Common Name</a></li>
+                                <li><a href="<?= $url ?>?orderby=latin">Sort by Latin Name</a></li>
+                                <li><a href="<?= $url ?>?orderby=price">Sort by price: low to high</a></li>
+                                <li><a href="<?= $url ?>?orderby=price-desc">Sort by price: high to low</a></li>
+                            </ul>
                             <p>View</p>
                             <div class="c-products__filter-placeholder"></div>
                             <div class="c-products__filter-placeholder"></div>

@@ -136,6 +136,30 @@ function herbalapothecary_widgets_init() {
 }
 add_action( 'widgets_init', 'herbalapothecary_widgets_init' );
 
+
+function herbalapothecary_add_custom_sorting_options( $options ){
+
+	// Add some options
+	// $options['common'] = 'Sort by Common Name';
+	// $options['latin'] = 'Sort by Latin Name';
+
+	// Remove some default options
+	// unset($options['popularity']);
+	// unset($options['rating']);
+	// unset($options['date']);
+
+	$options = [
+		'common'	=> 'Sort by Common Name',
+		'latin'		=> 'Sort by Latin Name',
+		'price'		=> 'Sort by price: low to high',
+		'price-desc'		=> 'Sort by price: high to low'
+	];
+
+	return $options;
+
+}
+add_filter( 'woocommerce_catalog_orderby', 'herbalapothecary_add_custom_sorting_options' );
+
 /**
  * Enqueue scripts and styles.
  */
