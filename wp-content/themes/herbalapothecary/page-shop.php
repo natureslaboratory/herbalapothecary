@@ -249,7 +249,12 @@ get_header();
                         <p><strong>457</strong> Products found</p>
                         <div class="c-products__filter">
                             <ul id="sort" class="c-product-filter">
-                                <?php $url = explode("?", $_SERVER["REQUEST_URI"])[0]; ?>
+                                <?php 
+                                    $url = explode("?", $_SERVER["REQUEST_URI"])[0]; 
+                                    if (strpos($url, "/page/")) {
+                                        $url = explode("/page/", $url)[0];
+                                    }
+                                ?>
                                 <?php echo woocommerce_catalog_ordering() ?>
                                 <li><a href="<?= $url ?>">Sort by Common Name</a></li>
                                 <li><a href="<?= $url ?>?orderby=latin_name">Sort by Latin Name</a></li>
@@ -261,44 +266,49 @@ get_header();
                             <div class="c-products__filter-placeholder"></div>
                         </div>
                     </div>
+                    <?php
+                    $metakey = "common_name";
+                    $orderby = "meta_value";
+                    $order = "asc";
+
+                    if (array_key_exists("orderby", $_GET)) {
+                        switch ($_GET["orderby"]) {
+                            case "latin_name":
+                                $metakey = "latin_name";
+                                break;
+                            case "price":
+                                $metakey = "_price";
+                                $orderby = "meta_value_num";
+                                break;
+                            case "price-desc":
+                                $metakey = "_price";
+                                $orderby = "meta_value_num";
+                                $order = "desc";
+                                break;
+                            default:
+                                $metakey = "common_name";
+                                $orderby = "meta_value";
+                        }
+                    }
+
+
+                    $args = [
+                        'post_type' => ["product"],
+                        'meta_key' => $metakey,
+                        'orderby' => $orderby,
+                        'order' => $order,
+                        'posts_per_page' => 12,
+                        'paged' => get_query_var("paged")
+                    ];
+
+                    $popular_products = new WP_Query($args);
+
+                    // print_r($popular_products->posts);
+
+                    ?>
+
                     <div class="c-products__grid">
                         <?php
-                        $metakey = "common_name";
-                        $orderby = "meta_value";
-                        $order = "asc";
-
-                        if (array_key_exists("orderby", $_GET)) {
-                            switch($_GET["orderby"]) {
-                                case "latin_name":
-                                    $metakey = "latin_name";
-                                    break;
-                                case "price":
-                                    $metakey = "_price";
-                                    $orderby = "meta_value_num";
-                                    break;
-                                case "price-desc":
-                                    $metakey = "_price";
-                                    $orderby = "meta_value_num";
-                                    $order = "desc";
-                                    break;
-                                default:
-                                    $metakey = "common_name";
-                                    $orderby = "meta_value";
-                            }
-                        }
-
-
-                        $args = [
-                            'post_type' => ["product"],
-                            'meta_key' => $metakey,
-                            'orderby' => $orderby,
-                            'order' => $order,
-                            'posts_per_page' => 20
-                        ];
-
-                        $popular_products = new WP_Query($args);
-
-                        
                         if ($popular_products->have_posts()) :
                             while ($popular_products->have_posts()) :
                                 $popular_products->the_post();
@@ -308,10 +318,31 @@ get_header();
                                 get_template_part('template-parts/product-thumbnail');
                             endwhile;
                         endif;
-
-                        wp_reset_postdata();
                         ?>
                     </div>
+
+                    <div class="c-pagination">
+                        <?php
+                        echo paginate_links(array(
+                            'base'         => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+                            'total'        => $popular_products->max_num_pages,
+                            'format'       => '?page=%#%',
+                            'show_all'     => false,
+                            'type'         => 'plain',
+                            'end_size'     => 2,
+                            'mid_size'     => 1,
+                            'prev_next'    => true,
+                            'prev_text'    => sprintf('<i></i> %1$s', __('<', 'text-domain')),
+                            'next_text'    => sprintf('%1$s <i></i>', __('>', 'text-domain')),
+                            'add_args'     => false,
+                            'add_fragment' => '',
+                        ));
+                        ?>
+                    </div>
+
+                    <?php
+                    wp_reset_postdata();
+                    ?>
                 </div>
             </div>
         </div>
