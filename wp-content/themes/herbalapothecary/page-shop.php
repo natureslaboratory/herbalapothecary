@@ -161,7 +161,9 @@ get_header();
         if (!empty($product_categories)) { ?>
             <div class="c-categories">
                 <?php foreach ($product_categories as $category) { ?>
-                    <?php if ($category->name == "Uncategorized" || $category->name == "Uncategorised") { continue; } ?>
+                    <?php if ($category->name == "Uncategorized" || $category->name == "Uncategorised") {
+                        continue;
+                    } ?>
                     <div class="c-category">
                         <a class="c-category__image-wrapper" href="<?= get_term_link($category) ?>"><?php woocommerce_subcategory_thumbnail($category) ?></a>
                         <a href="<?= get_term_link($category) ?>">
@@ -177,7 +179,9 @@ get_header();
                     <h4>CATEGORIES</h4>
                     <ul>
                         <?php foreach ($product_categories as $cat) { ?>
-                            <?php if ($cat->name == "Uncategorized" || $cat->name == "Uncategorised") { continue; } ?>
+                            <?php if ($cat->name == "Uncategorized" || $cat->name == "Uncategorised") {
+                                continue;
+                            } ?>
                             <li>
                                 <a href="<?= get_term_link($cat) ?>"><?= $cat->name ?></a>
                             </li>
@@ -208,13 +212,13 @@ get_header();
                         </div>
                         <div class="c-shop__sidebar-element-section">
                             <h4>PRODUCT TAGS</h4>
-                            <?php 
-                                
-                                $product_tags = get_terms("product_tag", [
-                                    "orderby" => "name",
-                                    "order" => "asc",
-                                    "hide_empty" => false
-                                ]);
+                            <?php
+
+                            $product_tags = get_terms("product_tag", [
+                                "orderby" => "name",
+                                "order" => "asc",
+                                "hide_empty" => false
+                            ]);
                             ?>
                             <ul>
                                 <?php foreach ($product_tags as $tag) { ?>
@@ -248,7 +252,7 @@ get_header();
                                 <?php $url = explode("?", $_SERVER["REQUEST_URI"])[0]; ?>
                                 <?php echo woocommerce_catalog_ordering() ?>
                                 <li><a href="<?= $url ?>">Sort by Common Name</a></li>
-                                <li><a href="<?= $url ?>?orderby=latin">Sort by Latin Name</a></li>
+                                <li><a href="<?= $url ?>?orderby=latin_name">Sort by Latin Name</a></li>
                                 <li><a href="<?= $url ?>?orderby=price">Sort by price: low to high</a></li>
                                 <li><a href="<?= $url ?>?orderby=price-desc">Sort by price: high to low</a></li>
                             </ul>
@@ -258,7 +262,55 @@ get_header();
                         </div>
                     </div>
                     <div class="c-products__grid">
-                        <?php printItems($dummyAllItems) ?>
+                        <?php
+                        $metakey = "common_name";
+                        $orderby = "meta_value";
+                        $order = "asc";
+
+                        if (array_key_exists("orderby", $_GET)) {
+                            switch($_GET["orderby"]) {
+                                case "latin_name":
+                                    $metakey = "latin_name";
+                                    break;
+                                case "price":
+                                    $metakey = "_price";
+                                    $orderby = "meta_value_num";
+                                    break;
+                                case "price_desc":
+                                    $metakey = "_price";
+                                    $orderby = "meta_value_num";
+                                    $order = "desc";
+                                    break;
+                                default:
+                                    $metakey = "common_name";
+                                    $orderby = "meta_value";
+                            }
+                        }
+
+
+                        $args = [
+                            'post_type' => ["product"],
+                            'meta_key' => $metakey,
+                            'orderby' => $orderby,
+                            'order' => $order,
+                            'posts_per_page' => -1
+                        ];
+
+                        $popular_products = new WP_Query($args);
+
+                        
+                        if ($popular_products->have_posts()) :
+                            while ($popular_products->have_posts()) :
+                                $popular_products->the_post();
+                                // the_field("common_name");
+                                $common_name = get_field("user_level");
+                                // print_r($fields);
+                                get_template_part('template-parts/product-thumbnail');
+                            endwhile;
+                        endif;
+
+                        wp_reset_postdata();
+                        ?>
                     </div>
                 </div>
             </div>
