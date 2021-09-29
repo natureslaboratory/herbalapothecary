@@ -12,7 +12,7 @@ img.c-header__logo {
     grid-area: logo;
 }
 
-.c-button {
+.c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
     background-color: var(--green);
     color: white;
     border: none;
@@ -373,21 +373,33 @@ option {
     font-size: 0.9rem;
 }
 
-.c-products__grid {
+.c-products__grid, .woocommerce ul.products  {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
-    gap: 2rem;
     padding-top: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+    row-gap: 2rem;
 }
 
-.c-product {
+.c-product, .woocommerce ul.products li.product {
+    width: auto;
+    float: unset;
     position: relative;
     padding: 1rem;
     border: 1px solid rgba(255, 255, 255, 0);
+    margin: 0;
     margin-bottom: -4rem;
     display: flex;
     flex-direction: column;
+}
+
+
+.woocommerce ul.products li.product {
+    justify-content: space-between;
+}
+
+.woocommerce .products ul::after, .woocommerce .products ul::before, .woocommerce ul.products::after, .woocommerce ul.products::before {
+    display: none;
 }
 
 /* .c-product__inner {
@@ -401,30 +413,53 @@ option {
     flex-grow: 2;
 }
 
-.c-product:is(:hover, :focus, :focus-within) {
+:is(.c-product, .woocommerce ul.products li.product):is(:hover, :focus, :focus-within) {
     border: 1px solid rgb(173, 173, 173);
     background-color: white;
     z-index: 50;
 }
 
-.c-product .c-button {
+.c-product .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
     opacity: 0;
     font-size: 0.8rem;
     width: 100%;
     text-align: center;
     color: white;
     text-decoration: none;
+    background-color: var(--green);
 }
 
-.c-product:is(:hover, :focus, :focus-within) .c-button {
+.woocommerce a.button {
+    padding: 0.8rem;
+    border-radius: 0;
+    margin-top: auto;
+}
+
+:is(.c-product, .product):is(:hover, :focus, :focus-within) :is(.c-button, .woocommerce a.button) {
     opacity: 1;
 }
 
-.c-product__image {
+@media screen and (max-width: 768px) {
+    .woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product {
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .c-product .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+        opacity: 1;
+    }
+
+}
+
+.c-product__image, .woocommerce ul.products li.product a img {
     border: 1px solid rgb(238, 238, 238);
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+.woocommerce ul.products li.product a img {
+    height: auto;
 }
 
 .c-product__image-wrapper {
@@ -450,9 +485,10 @@ option {
     opacity: 1;
 }
 
-.c-product__name {
+.c-product__name, .woocommerce ul.products li.product .woocommerce-loop-product__title {
     /* opacity: 0.8; */
     font-size: 0.9rem;
+    font-weight: 400;
     margin: 0;
     color: var(--green);
 }
@@ -638,6 +674,7 @@ option {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
+    margin: 2rem 0;
 }
 
 .c-category {
@@ -668,9 +705,10 @@ option {
 }
 
 .c-category img {
-    height: 100%;
+    width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    margin-bottom: 0.3rem;
 }
 
 .c-shop__grid {
@@ -678,6 +716,10 @@ option {
     display: grid;
     grid-template-columns: 1fr 7fr;
     gap: 2rem;
+}
+
+.c-shop__grid--category {
+    margin-top: 1.3rem;
 }
 
 .c-products--shop {
@@ -704,6 +746,14 @@ option {
 }
 
 .c-products__banner p {
+    margin: 0;
+}
+
+.woocommerce-notices-wrapper {
+    display: none;
+}
+
+.woocommerce :is(.woocommerce-result-count, .woocommerce-ordering) {
     margin: 0;
 }
 
@@ -1006,3 +1056,36 @@ article :is(h1, h2, h3, h4, h5, h6) {
     margin-left: 1rem;
 }
 
+.c-pagination {
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.c-pagination * {
+    background: #f0f0f0;
+    padding: 0.3rem 0.5rem;
+    min-width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.c-pagination > *:not(a, .dots) {
+    background-color: var(--green);
+    color: white;
+}
+
+.c-pagination a:visited {
+    color: black;
+}
+
+.c-pagination :is(.next, .prev) {
+    white-space: nowrap;
+    text-align: center;
+}

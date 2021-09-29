@@ -104,7 +104,7 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
+<script src="https://kit.fontawesome.com/5bcd9efe81.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
