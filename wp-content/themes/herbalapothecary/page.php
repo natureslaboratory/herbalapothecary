@@ -30,7 +30,9 @@ if ($isProductCat) {
 				get_template_part("template-parts/product-categories", "categories");
 			}
 			echo "<div class='c-shop__grid c-shop__grid--category'>";
-			get_template_part("template-parts/shop-sidebar", "sidebar");
+			
+			get_sidebar();
+			// get_template_part("template-parts/shop-sidebar", "sidebar");
 			echo "<div class='c-shop__main'>";
 		}
 		while ( have_posts() ) :

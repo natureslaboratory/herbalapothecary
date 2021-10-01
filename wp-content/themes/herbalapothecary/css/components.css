@@ -51,7 +51,6 @@ input.c-search__box {
     align-items: center;
 }
 
-
 .c-header__contact-details p {
     margin: 0;
 }
@@ -81,7 +80,7 @@ input.c-search__box {
 }
 
 .c-header__basket, .c-header__icon, .c-header__contact-phone-placeholder {
-    width:40px;
+    width: 40px;
     aspect-ratio: 1 / 1;
     background-color: rgb(206, 206, 206);
     display: flex;
@@ -159,30 +158,24 @@ option {
     padding: 1rem 0;
 }
 
-
 @media screen and (max-width: 992px) {
     .c-search {
         display: none;
     }
-
     .c-search--navigation {
         display: flex;
         width: min(100%, 500px);
     }
-
     .c-search--navigation * {
         border-radius: 0;
     }
-
     .c-search--navigation input {
         border-left: 1px solid #ccc;
         width: 100%;
     }
-
     .c-navigation__menu ul {
         display: none;
     }
-    
     .c-navigation.toggled ul {
         display: flex;
         flex-direction: column;
@@ -191,11 +184,9 @@ option {
         padding: 0.5rem;
         position: absolute;
     }
-
     .c-navigation {
         border-top: none;
     }
-
     .c-navigation__inner {
         justify-content: center;
     }
@@ -205,12 +196,10 @@ option {
     .c-header__contact {
         display: none;
     }
-
     .c-header__login {
         display: none;
     }
 }
-
 
 /* Main */
 
@@ -346,9 +335,7 @@ option {
     background-color: black;
 }
 
-.c-products {
-
-}
+.c-products {}
 
 .c-products__header {
     display: flex;
@@ -373,7 +360,7 @@ option {
     font-size: 0.9rem;
 }
 
-.c-products__grid, .woocommerce ul.products  {
+.c-products__grid, .woocommerce ul.products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
     padding-top: 1rem;
@@ -392,7 +379,6 @@ option {
     display: flex;
     flex-direction: column;
 }
-
 
 .woocommerce ul.products li.product {
     justify-content: space-between;
@@ -444,11 +430,9 @@ option {
         width: auto;
         margin-bottom: 0;
     }
-
     .c-product .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
         opacity: 1;
     }
-
 }
 
 .c-product__image, .woocommerce ul.products li.product a img {
@@ -557,12 +541,12 @@ option {
     border-top: 1px solid rgb(235, 235, 235);
 }
 
-.c-footer > *:not(:last-child) {
+.c-footer>*:not(:last-child) {
     padding: 1.5rem 0;
     border-bottom: 1px solid rgb(235, 235, 235);
 }
 
-.c-footer > *:last-child {
+.c-footer>*:last-child {
     padding-top: 1.5rem;
 }
 
@@ -611,8 +595,6 @@ option {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
     }
-
-
 }
 
 @media screen and (max-width: 800px) {
@@ -620,29 +602,23 @@ option {
         flex-direction: column;
         row-gap: 0.5rem;
     }
-    
     .c-product {
         padding: 0;
         margin-bottom: 0;
     }
-
     .c-product__price {
         margin-bottom: 0.5rem;
     }
-
     .c-product .c-button {
         opacity: 1;
         pointer-events: all;
     }
-
     .c-product:hover {
         border: 1px solid rgba(255, 255, 255, 0);
     }
-
-    .c-product:hover .c-product__image-overlay  {
+    .c-product:hover .c-product__image-overlay {
         opacity: 0;
     }
-
 }
 
 @media screen and (max-width: 750px) {
@@ -656,12 +632,10 @@ option {
     .c-newsletter {
         flex-direction: column;
     }
-
     .c-products__grid {
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
     }
 }
-
 
 /* Shop */
 
@@ -723,7 +697,8 @@ option {
 }
 
 .c-products--shop {
-    margin-bottom: 4rem;;
+    margin-bottom: 4rem;
+    ;
 }
 
 .c-products--shop h2 {
@@ -773,8 +748,6 @@ option {
     background-color: rgb(185, 185, 185);
 }
 
-
-
 /* Shop Sidebar */
 
 .c-shop__sidebar {
@@ -786,12 +759,15 @@ option {
 .c-shop__sidebar-element {
     background-color: var(--lighter-grey);
     padding: 1rem;
+    margin: 0;
 }
 
-.c-shop__sidebar-element h4 {
+.c-shop__sidebar-element h2 {
+    font-size: 1.1rem;
     margin: 0;
     margin-bottom: 1rem;
     font-weight: 400;
+    text-transform: uppercase;
 }
 
 .c-shop__sidebar-element ul {
@@ -831,13 +807,17 @@ option {
     padding: 1rem;
 }
 
+.tagcloud {
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 775px) {
     .c-shop__grid {
         display: flex;
         flex-direction: column-reverse;
     }
 }
-
 
 article p {
     max-width: 100ch;
@@ -929,7 +909,6 @@ article :is(h1, h2, h3, h4, h5, h6) {
     color: black;
 }
 
-
 @media screen and (max-width: 950px) {
     .c-news-link {
         grid-template-columns: 1fr 1fr;
@@ -946,7 +925,6 @@ article :is(h1, h2, h3, h4, h5, h6) {
     .c-news-link__details {
         padding: 2rem;
     }
-
     .c-news-link__title {
         color: black;
         margin-bottom: -0.5rem;
@@ -954,13 +932,11 @@ article :is(h1, h2, h3, h4, h5, h6) {
     }
 }
 
-.c-post {
-
-}
+.c-post {}
 
 .c-post__header {
     text-align: center;
-    padding: 4rem 0 ;
+    padding: 4rem 0;
 }
 
 .c-post__header h1 {
@@ -1076,7 +1052,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
     color: black;
 }
 
-.c-pagination > *:not(a, .dots) {
+.c-pagination>*:not(a, .dots) {
     background-color: var(--green);
     color: white;
 }
