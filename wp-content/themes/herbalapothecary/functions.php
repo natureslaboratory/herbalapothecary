@@ -143,16 +143,52 @@ function herbalapothecary_widgets_init()
 add_action('widgets_init', 'herbalapothecary_widgets_init');
 
 add_filter('woocommerce_product_tag_cloud_widget_args', 'woo_tag_cloud_filter');
-function woo_tag_cloud_filter($args) {
-    $args = array(
-        'smallest' => 14, 
-        'largest' => 14, 
-        'format' => 'list', 
-        'taxonomy' => 'product_tag', 
-        'unit' => 'px', 
-        );
-    return $args;
+function woo_tag_cloud_filter($args)
+{
+	$args = array(
+		'smallest' => 14,
+		'largest' => 14,
+		'format' => 'list',
+		'taxonomy' => 'product_tag',
+		'unit' => 'px',
+	);
+	return $args;
 }
+
+function woocommerce_remove_breadcrumb()
+{
+	remove_action(
+		'woocommerce_before_main_content',
+		'woocommerce_breadcrumb',
+		20
+	);
+}
+add_action(
+	'woocommerce_before_main_content',
+	'woocommerce_remove_breadcrumb'
+);
+
+function woocommerce_custom_breadcrumb()
+{
+	woocommerce_breadcrumb();
+}
+
+add_action('woo_custom_breadcrumb', 'woocommerce_custom_breadcrumb');
+
+
+
+function custom_woocommerce_breadcrumbs()
+{
+	return [
+		"delimiter" => ' > ',
+		"wrap_before" => "<div class='c-breadcrumbs l-block'><div class='l-restrict c-breadcrumbs__inner'>",
+		"wrap_after" => "</div></div>",
+		'before'      => '',
+		'after'       => '',
+		'home'        => _x('Home', 'breadcrumb', 'woocommerce'),
+	];
+}
+add_filter("woocommerce_breadcrumb_defaults", "custom_woocommerce_breadcrumbs");
 
 
 

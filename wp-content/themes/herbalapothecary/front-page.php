@@ -9,7 +9,7 @@
 
 get_header();
 ?>
-<main id="primary" class="site-main">
+<main id="primary" class="site-main site-main--home">
     <div class="c-home">
         <div class="c-carousel__placeholder"></div>
         <div class="c-promises">
