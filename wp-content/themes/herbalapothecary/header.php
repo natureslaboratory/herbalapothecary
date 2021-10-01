@@ -71,14 +71,6 @@
 						</div>
 					</div>
 				<?php
-			else :
-				?>
-					<div class="c-breadcrumbs l-block l-block--no-padding">
-						<div class="l-restrict">
-							<?php get_template_part("template-parts/breadcrumbs", "bread") ?>
-						</div>
-					</div>
-				<?php
 				endif;
 			?>
 		</header>
