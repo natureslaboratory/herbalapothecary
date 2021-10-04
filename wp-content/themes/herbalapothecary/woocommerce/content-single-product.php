@@ -61,30 +61,22 @@ if (post_password_required()) {
 		?>
 	</div>
 	<div class="c-product-full__sidebar">
-		<div class="c-product-full__sidebar-section">
-			<i class="fas fa-globe"></i>
-			<p>
-				We aim to dispatch products within 1 working day.
-			</p>
-		</div>
-		<div class="c-product-full__sidebar-section">
-			<i class="fas fa-mobile-alt"></i>
-			<p>
-				Call us now for more info about our products on +44 (0)1947 602346
-			</p>
-		</div>
-		<div class="c-product-full__sidebar-section">
-			<i class="fas fa-pallet"></i>
-			<p>
-				Return unopened items within 14 days for a refund.
-			</p>
-		</div>
-		<div class="c-product-full__sidebar-section">
-			<i class="far fa-star"></i>
-			<p>
-				Review this product and let others know what you think.
-			</p>
-		</div>
+		<i class="fas fa-globe"></i>
+		<p>
+			We aim to dispatch products within 1 working day.
+		</p>
+		<i class="fas fa-mobile-alt"></i>
+		<p>
+			Call us now for more info about our products on +44 (0)1947 602346
+		</p>
+		<i class="fas fa-pallet"></i>
+		<p>
+			Return unopened items within 14 days for a refund.
+		</p>
+		<i class="far fa-star"></i>
+		<p>
+			Review this product and let others know what you think.
+		</p>
 	</div>
 
 	<?php

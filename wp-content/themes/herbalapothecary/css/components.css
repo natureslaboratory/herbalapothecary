@@ -1193,10 +1193,13 @@ article :is(h1, h2, h3, h4, h5, h6) {
 .c-product-full__sidebar {
     background-color: var(--light-grey);
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 1rem;
     grid-area: sidebar;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .c-product-full__sidebar-section {
@@ -1208,14 +1211,15 @@ article :is(h1, h2, h3, h4, h5, h6) {
     justify-self: start;
 }
 
-.c-product-full__sidebar-section p {
+.c-product-full__sidebar p {
     margin: 0;
     line-height: 1.2rem;
 }
 
-.c-product-full__sidebar-section i {
+.c-product-full__sidebar i {
     font-size: 1.3rem;
     justify-self: center;
+    margin-right: 2rem;
 }
 
 .woocommerce div.product form.cart {
@@ -1304,4 +1308,14 @@ article :is(h1, h2, h3, h4, h5, h6) {
 
 .woocommerce #content div.product .woocommerce-tabs, .woocommerce div.product .woocommerce-tabs, .woocommerce-page #content div.product .woocommerce-tabs, .woocommerce-page div.product .woocommerce-tabs {
     grid-area: desc;
+}
+
+/* Account */
+
+.woocommerce-account #content, .woocommerce-account .site-main {
+    background-color: var(--light-grey);
+}
+
+.woocommerce-account .entry-title {
+    text-align: center;
 }

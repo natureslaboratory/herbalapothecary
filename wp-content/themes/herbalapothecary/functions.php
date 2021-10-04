@@ -220,6 +220,7 @@ function herbalapothecary_add_custom_sorting_options($options)
 }
 add_filter('woocommerce_catalog_orderby', 'herbalapothecary_add_custom_sorting_options');
 
+
 /**
  * Enqueue scripts and styles.
  */
