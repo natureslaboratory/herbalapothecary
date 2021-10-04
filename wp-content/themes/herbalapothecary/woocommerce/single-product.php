@@ -58,7 +58,7 @@ do_action('woocommerce_before_main_content');
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-do_action('woocommerce_sidebar');
+// do_action('woocommerce_sidebar');
 ?>
 
 <?php
