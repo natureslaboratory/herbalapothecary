@@ -1147,6 +1147,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
     gap: 2rem;
     margin-top: 2rem;
     align-items: start;
+    margin-bottom: 5rem;
 }
 
 .c-product-full__sidebar {
@@ -1228,6 +1229,11 @@ article :is(h1, h2, h3, h4, h5, h6) {
     border: none;
     border-radius: 0;
     background-color: transparent;
+    font-size: 1.25rem;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li:not(.active) a {
+    color: #005C7A;
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs::before {

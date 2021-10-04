@@ -175,6 +175,8 @@ function woocommerce_custom_breadcrumb()
 
 add_action('woo_custom_breadcrumb', 'woocommerce_custom_breadcrumb');
 
+add_filter( 'woocommerce_product_description_heading', '__return_null' );
+
 
 
 function custom_woocommerce_breadcrumbs()
