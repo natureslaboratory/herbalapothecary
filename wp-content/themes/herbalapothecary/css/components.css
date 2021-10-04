@@ -1176,8 +1176,16 @@ article :is(h1, h2, h3, h4, h5, h6) {
     justify-self: center;
 }
 
+.woocommerce div.product form.cart {
+    padding-bottom: 2rem;
+    margin-bottom: 1em;
+}
+
 .woocommerce div.product form.cart .button {
-    opacity: 1;
+    opacity: 1;    
+    white-space: nowrap;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
 }
 
 .woocommerce div.product .product_title {
@@ -1185,4 +1193,48 @@ article :is(h1, h2, h3, h4, h5, h6) {
     font-weight: 400;
     border-bottom: 1px solid rgb(230, 230, 230);
     padding-bottom: 0.7rem;
+}
+
+.woocommerce div.product form.cart {
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.woocommerce div.product p.stock {
+    margin: 0;
+}
+
+.product_meta {
+    flex-direction: column;
+    display: flex;
+}
+
+.product_meta a {
+    text-decoration: none;
+    color: #005C7A;
+}
+
+.woocommerce div.product p.price, .woocommerce div.product span.price {
+    color: black;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.woocommerce div.product form.cart .group_table td.woocommerce-grouped-product-list-item__label a {
+    color: black;
+    text-decoration: none;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs::before {
+    border: none;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs {
+    border-bottom: 1px solid rgb(230, 230, 230);
+    padding-bottom: 0.3rem;
 }
