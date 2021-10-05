@@ -43,7 +43,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 		<label for="username"><?php esc_html_e('Username or email address', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
 		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo (!empty($_POST['username'])) ? esc_attr(wp_unslash($_POST['username'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
-																																																																?>
+																																																													?>
 	</p>
 	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 		<label for="password"><?php esc_html_e('Password', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
@@ -68,84 +68,77 @@ do_action('woocommerce_before_customer_login_form'); ?>
 </form>
 
 <?php if ($isRegEnabled) : ?>
+	<form method="post" class="woocommerce-form woocommerce-form-register register hide" <?php do_action('woocommerce_register_form_tag'); ?>>
 
-	</div>
+		<?php do_action('woocommerce_register_form_start'); ?>
 
-	<div class="u-column2 col-2">
-
-		<form method="post" class="woocommerce-form woocommerce-form-register register hide" <?php do_action('woocommerce_register_form_tag'); ?>>
-
-			<?php do_action('woocommerce_register_form_start'); ?>
-
-			<?php if ('no' === get_option('woocommerce_registration_generate_username')) : ?>
-
-				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-					<label for="reg_username"><?php esc_html_e('Username', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
-					<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo (!empty($_POST['username'])) ? esc_attr(wp_unslash($_POST['username'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
-																																																																				?>
-				</p>
-
-			<?php endif; ?>
+		<?php if ('no' === get_option('woocommerce_registration_generate_username')) : ?>
 
 			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-				<label for="reg_email"><?php esc_html_e('Email address', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
-				<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo (!empty($_POST['email'])) ? esc_attr(wp_unslash($_POST['email'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
-																																																															?>
+				<label for="reg_username"><?php esc_html_e('Username', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
+				<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="reg_username" autocomplete="username" value="<?php echo (!empty($_POST['username'])) ? esc_attr(wp_unslash($_POST['username'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
+																																																																?>
 			</p>
 
-			<?php if ('no' === get_option('woocommerce_registration_generate_password')) : ?>
+		<?php endif; ?>
 
-				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-					<label for="reg_password"><?php esc_html_e('Password', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
-					<input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
-				</p>
+		<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+			<label for="reg_email"><?php esc_html_e('Email address', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
+			<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo (!empty($_POST['email'])) ? esc_attr(wp_unslash($_POST['email'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
+																																																												?>
+		</p>
 
-			<?php else : ?>
+		<?php if ('no' === get_option('woocommerce_registration_generate_password')) : ?>
 
-				<p><?php esc_html_e('A password will be sent to your email address.', 'woocommerce'); ?></p>
-
-			<?php endif; ?>
-
-			<?php do_action('woocommerce_register_form'); ?>
-
-			<p class="woocommerce-form-row form-row">
-				<?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
-				<button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="<?php esc_attr_e('Register', 'woocommerce'); ?>"><?php esc_html_e('Register', 'woocommerce'); ?></button>
+			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+				<label for="reg_password"><?php esc_html_e('Password', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
+				<input type="password" class="woocommerce-Input woocommerce-Input--text input-text" name="password" id="reg_password" autocomplete="new-password" />
 			</p>
 
-			<?php do_action('woocommerce_register_form_end'); ?>
+		<?php else : ?>
 
-		</form>
-	<?php endif; ?>
+			<p><?php esc_html_e('A password will be sent to your email address.', 'woocommerce'); ?></p>
 
-	<script>
-		let loginForm = document.getElementsByClassName("woocommerce-form-login")[0];
-		let loginFormTitle = document.getElementsByClassName("c-login__title")[0];
-		let registerForm = document.getElementsByClassName("woocommerce-form-register")[0];
-		let registerFormTitle = document.getElementsByClassName("c-register__title")[0];
+		<?php endif; ?>
 
-		function showLogin() {
-			console.log("show login")
-			registerForm.classList.add("hide");
-			registerFormTitle.classList.remove("selected");
-			if (loginForm.classList.contains("hide")) {
-				loginForm.classList.remove("hide");
-				loginFormTitle.classList.add("selected");
-			}
+		<?php do_action('woocommerce_register_form'); ?>
+
+		<p class="woocommerce-form-row form-row">
+			<?php wp_nonce_field('woocommerce-register', 'woocommerce-register-nonce'); ?>
+			<button type="submit" class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit" name="register" value="<?php esc_attr_e('Register', 'woocommerce'); ?>"><?php esc_html_e('Register', 'woocommerce'); ?></button>
+		</p>
+
+		<?php do_action('woocommerce_register_form_end'); ?>
+
+	</form>
+<?php endif; ?>
+
+<script>
+	let loginForm = document.getElementsByClassName("woocommerce-form-login")[0];
+	let loginFormTitle = document.getElementsByClassName("c-login__title")[0];
+	let registerForm = document.getElementsByClassName("woocommerce-form-register")[0];
+	let registerFormTitle = document.getElementsByClassName("c-register__title")[0];
+
+	function showLogin() {
+		registerForm.classList.add("hide");
+		registerFormTitle.classList.remove("selected");
+		if (loginForm.classList.contains("hide")) {
+			loginForm.classList.remove("hide");
+			loginFormTitle.classList.add("selected");
 		}
+	}
 
-		function showRegister() {
-			console.log("show register")
-			loginForm.classList.add("hide");
-			loginFormTitle.classList.remove("selected");
-			if (registerForm.classList.contains("hide")) {
-				registerForm.classList.remove("hide");
-				registerFormTitle.classList.add("selected");
-			}
+	function showRegister() {
+		loginForm.classList.add("hide");
+		loginFormTitle.classList.remove("selected");
+		if (registerForm.classList.contains("hide")) {
+			registerForm.classList.remove("hide");
+			registerFormTitle.classList.add("selected");
 		}
+	}
 
-		loginFormTitle.addEventListener("click", showLogin);
-		registerFormTitle.addEventListener("click", showRegister);
-	</script>
+	loginFormTitle.addEventListener("click", showLogin);
+	registerFormTitle.addEventListener("click", showRegister);
+</script>
 
-	<?php do_action('woocommerce_after_customer_login_form'); ?>
+<?php do_action('woocommerce_after_customer_login_form'); ?>
