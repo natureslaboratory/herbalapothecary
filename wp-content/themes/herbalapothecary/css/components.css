@@ -39,6 +39,7 @@ input.c-search__box {
     border-left: none;
     border-right: none;
     padding: 0.3rem 1rem;
+    flex-grow: 2;
 }
 
 .c-search .c-button {
@@ -72,11 +73,12 @@ input.c-search__box {
     flex-direction: column;
 }
 
-.c-header__login a {
+.c-header__account :is(a, p) {
     text-decoration: none;
     color: black;
     font-weight: bold;
     line-height: 1.2rem;
+    margin: 0;
 }
 
 .c-header__basket, .c-header__icon, .c-header__contact-phone-placeholder {
@@ -141,12 +143,16 @@ option {
     display: flex;
     grid-area: buttons;
     justify-self: end;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
 }
 
 .c-navigation .page_item {
-    font-size: 0.9rem;
+    /* font-size: 0.9rem; */
+}
+
+.c-header i {
+    font-size: 1.65rem;
 }
 
 @media screen and (max-width: 992px) {
@@ -1318,4 +1324,41 @@ article :is(h1, h2, h3, h4, h5, h6) {
 
 .woocommerce-account .entry-title {
     text-align: center;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.c-login__title {
+    /* margin: 0 auto; */
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.woocommerce form.checkout_coupon, .woocommerce form.login, .woocommerce form.register, .woocommerce-form-register {
+    margin: 0 auto;
+    width: min(100%, 300px);
+}
+
+.woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
+    padding: 0.5rem;
+}
+
+.woocommerce-form.hide {
+    display: none;
+}
+
+.c-login__titles {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.c-login__titles h2 {
+    cursor: pointer;
+    color: grey;
+}
+
+.c-login__titles h2.selected {
+    cursor: pointer;
+    color: black;
 }

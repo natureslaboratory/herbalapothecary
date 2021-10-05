@@ -5,7 +5,7 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	<script src="https://kit.fontawesome.com/5bcd9efe81.js" crossorigin="anonymous"></script>
 	<?php wp_head(); ?>
 </head>
 
@@ -26,19 +26,23 @@
 				</form>
 				<div class="c-header__buttons">
 					<div class="c-header__contact">
-						<div class="c-header__contact-phone-placeholder"></div>
+						<i class="fas fa-phone-alt"></i>
 						<div class="c-header__contact-details">
 							<p>Hotline</p>
 							<a href="/">01947 602346</a>
 						</div>
 					</div>
-					<div class="c-header__basket"></div>
+					<i class="fas fa-shopping-bag"></i>
 					<div class="c-header__account">
-						<div class="c-header__icon"></div>
-						<div class="c-header__login">
-							<a>Log In</a>
-							<a>Register</a>
-						</div>
+						<a href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
+							<i class="far fa-user"></i>
+						</a>
+						<a href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
+							<div class="c-header__login">
+								<p>Log In</p>
+								<p>Register</p>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -62,16 +66,16 @@
 					</form>
 				</div>
 			</nav>
-			<?php 
+			<?php
 			if (is_front_page()) :
-				?>
-					<div class="c-banner l-block l-block--no-padding">
-						<div class="l-restrict">
-							<h3>We Ship Internationally from UK</h3>
-						</div>
+			?>
+				<div class="c-banner l-block l-block--no-padding">
+					<div class="l-restrict">
+						<h3>We Ship Internationally from UK</h3>
 					</div>
-				<?php
-				endif;
+				</div>
+			<?php
+			endif;
 			?>
 		</header>
 		<div id="content">
