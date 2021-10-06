@@ -193,7 +193,7 @@ input.c-search__box {
     padding: 0.8rem;
 }
 
-:is(.c-header__account-menu, .c-menu) > * {
+:is(.c-header__account-menu, .c-menu)>* {
     padding: 0 1.3rem;
 }
 
@@ -321,7 +321,7 @@ option {
     position: relative;
 }
 
-.c-header__buttons > *:not(:first-child) {
+.c-header__buttons>*:not(:first-child) {
     padding-left: 2rem;
 }
 
@@ -1584,10 +1584,106 @@ article :is(h1, h2, h3, h4, h5, h6) {
     background-color: white;
 }
 
-.woocommerce-account .woocommerce-Button.button {
+.woocommerce-account .woocommerce-Button.button, .woocommerce div.product form.cart .button {
     opacity: 1;
     width: auto;
     font-weight: 600;
     padding-left: 1rem;
     padding-right: 1rem;
+}
+
+/* Variations Table */
+
+.variations {
+    display: flex;
+    margin-top: -1rem;
+}
+
+.variations tr {
+    display: flex;
+    flex-direction: column;
+}
+
+.variations td {
+    display: block;
+}
+
+.woocommerce div.product form.cart div.quantity {
+    float: unset;
+    margin: 0;
+}
+
+.c-quantity> * , .woocommerce .quantity .qty {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+}
+
+.c-quantity {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 100px;
+    /* margin-bottom: 1rem; */
+}
+
+.c-quantity > *, .c-quantity > *:is(:hover, :focus) {
+    padding: 0.2rem 0.4rem;
+    background-color: white;
+    border-top: 1px solid rgb(165, 165, 165);
+    border-bottom: 1px solid rgb(165, 165, 165);
+    transition: 150ms;
+}
+
+.c-quantity > *:first-child {
+    border-left: 1px solid rgb(165, 165, 165);
+    transition: 150ms;
+}
+
+.c-quantity > *:last-child {
+    border-right: 1px solid rgb(165, 165, 165);
+    transition: 150ms;
+}
+
+.c-quantity:hover > * {
+    border-top: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.c-quantity:hover > *:first-child {
+    border-left: 1px solid rgb(0, 0, 0);
+}
+
+.c-quantity:hover > *:last-child {
+    border-right: 1px solid rgb(0, 0, 0);
+}
+
+.c-quantity :is(.plus, .minus) {
+    font-size: 1rem;
+    line-height: normal;
+    color: rgb(92, 92, 92);
+    cursor: pointer;
+}
+
+.c-quantity:hover :is(.plus, .minus, input[type="number"]) {
+    color: black;
+}
+
+
+.c-quantity input[type=number]::-webkit-inner-spin-button, .c-quantity input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+    margin: 0;
+}
+
+/* input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+} */
+
+.woocommerce div.product form.cart {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
 }
