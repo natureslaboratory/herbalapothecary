@@ -1608,6 +1608,14 @@ article :is(h1, h2, h3, h4, h5, h6) {
     display: block;
 }
 
+.variations td select {
+    padding: 0.5rem;
+}
+
+.variations td label::after {
+    content: ":";
+}
+
 .woocommerce div.product form.cart div.quantity {
     float: unset;
     margin: 0;
