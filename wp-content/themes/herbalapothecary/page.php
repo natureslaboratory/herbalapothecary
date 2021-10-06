@@ -21,6 +21,7 @@ if ($isProductCat) {
 	$splitUrl = explode("/product-category/", $_SERVER["REQUEST_URI"]);
 	$productCategory = explode("/", $splitUrl[count($splitUrl)-1])[0];
 }
+
 ?>
 	<main id="primary" class="site-main site-main--shop">
 		<div class="l-restrict">

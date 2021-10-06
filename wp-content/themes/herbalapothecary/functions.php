@@ -53,6 +53,7 @@ if (!function_exists('herbalapothecary_setup')) :
 		register_nav_menus(
 			array(
 				'menu-1' => esc_html__('Primary', 'herbalapothecary'),
+				'account-dropdown' => esc_html__('Account Menu', 'herbalapothecary')
 			)
 		);
 
@@ -292,3 +293,6 @@ function price()
 }
 
 add_action("woocommerce_after_shop_loop_item_title", "price", 11);
+
+
+

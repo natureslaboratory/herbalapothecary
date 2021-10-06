@@ -66,6 +66,106 @@ input.c-search__box {
     display: flex;
     gap: 1rem;
     align-items: center;
+    position: relative;
+}
+
+.c-header__account-menu-wrapper {
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    border-top: 3rem solid transparent;
+    z-index: 1000;
+    transition: 150ms;
+    transform: translateY(1.2%);
+}
+
+.c-header__account-menu {
+    width: 230px;
+    background-color: white;
+    border: 1px solid rgb(209, 209, 209);
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding-top: 1rem;
+}
+
+.c-header__account-link:hover + .c-header__account-menu-wrapper, .c-header__account-menu-wrapper:hover {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0%);
+}
+
+
+.c-header__account-menu-wrapper.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.c-header__account-menu-wrapper::before {
+    content: "";
+    position: absolute;
+    right: 8px;
+    width: 13px;
+    height: 13px;
+    -webkit-transform: rotate( 45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate( 45deg);
+    border-left: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+    background-color: #fff;
+    z-index: -1;
+    padding: 0;
+    /* margin: 19px -7px 0 0; */
+    opacity: 0;
+    transition: top 0.3s;
+    z-index: 9999;
+    opacity: 1;
+    top: -6px;
+}
+
+.c-header__account-menu>* {
+    padding: 0 1.3rem;
+}
+
+.c-header__account-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    margin-bottom: 0.3rem;
+}
+
+.c-header__account .c-header__account-menu a {
+    display: block;
+    font-weight: 400;
+    color: rgb(90, 90, 90)
+}
+
+.c-header__account-menu li {
+    padding: 0.35rem 0;
+    display: flex;
+}
+
+.c-header__account-menu a {
+    border-bottom: 1px solid white;
+    transition: 150ms;
+}
+
+.c-header__account-menu a:hover {
+    border-bottom: 1px solid rgb(0, 0, 0);
+    color: black;
+}
+
+.c-header__account-menu h4 {
+    margin: 0;
+}
+
+.c-header__account-menu-logout {
+    border-top: 1px solid rgb(209, 209, 209);
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    display: flex;
 }
 
 .c-header__login {
@@ -1058,10 +1158,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
     font-size: 1.6rem;
 }
 
-.woocommerce-breadcrumb {
-
-}
-
+.woocommerce-breadcrumb {}
 
 .c-pagination {
     display: flex;
@@ -1151,15 +1248,13 @@ article :is(h1, h2, h3, h4, h5, h6) {
     grid-area: options;
 }
 
-.woocommerce div.product {
-}
+.woocommerce div.product {}
 
 .c-product-full {
     display: grid;
     grid-template-columns: 4fr 5fr 2.1fr;
     grid-template-rows: auto auto;
-    grid-template-areas: "image options sidebar"
-                         "desc desc desc";
+    grid-template-areas: "image options sidebar" "desc desc desc";
     column-gap: 2rem;
     row-gap: 5rem;
     margin-top: 2rem;
@@ -1171,8 +1266,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
     .c-product-full {
         grid-template-columns: 4fr 5fr 4fr;
         grid-template-rows: auto auto;
-        grid-template-areas: "image options options"
-                            "desc desc sidebar";
+        grid-template-areas: "image options options" "desc desc sidebar";
     }
 }
 
@@ -1180,10 +1274,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
     .c-product-full {
         grid-template-columns: 2fr 3fr;
         grid-template-rows: auto auto auto;
-        grid-template-areas: "image options"
-                            "desc desc"
-                            "sidebar sidebar";
-                            
+        grid-template-areas: "image options" "desc desc" "sidebar sidebar";
     }
 }
 
@@ -1194,7 +1285,6 @@ article :is(h1, h2, h3, h4, h5, h6) {
         gap: 2rem;
     }
 }
-
 
 .c-product-full__sidebar {
     background-color: var(--light-grey);
@@ -1234,7 +1324,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .woocommerce div.product form.cart .button {
-    opacity: 1;    
+    opacity: 1;
     white-space: nowrap;
     padding: 1rem 1.2rem;
     font-size: 1rem;
@@ -1275,7 +1365,6 @@ article :is(h1, h2, h3, h4, h5, h6) {
     color: black;
     text-decoration: none;
 }
-
 
 .woocommerce div.product .woocommerce-tabs ul.tabs {
     display: flex;
@@ -1361,4 +1450,66 @@ article :is(h1, h2, h3, h4, h5, h6) {
 .c-login__titles h2.selected {
     cursor: pointer;
     color: black;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+    float: unset;
+    width: auto;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+    float: unset;
+    width: auto;
+}
+
+.c-account {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.c-account__navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.c-account__navigation ul li {}
+
+.c-account__navigation a {
+    text-decoration: none;
+    color: black;
+    padding: 0.7rem 1rem;
+    background-color: #f6f6f6;
+    border: 1px solid #d1d1d1;
+    display: block;
+}
+
+.c-account__navigation li:not(:last-child) a {
+    border-bottom: none;
+}
+
+.c-account__navigation li.is-active a {
+    background-color: var(--green);
+    color: white;
+    border: 1px solid var(--green);
+    z-index: 10;
+}
+
+.c-account__navigation li.is-active+li a {
+    margin-top: -1px;
+}
+
+.woocommerce-account :is(.site-main, #content) {
+    background-color: white;
+}
+
+.woocommerce-account .woocommerce-Button.button {
+    opacity: 1;
+    width: auto;
+    font-weight: 600;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
