@@ -620,7 +620,7 @@ option {
     z-index: 50;
 }
 
-.c-product .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link {
+.c-product .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, .woocommerce div.product form.cart .button {
     opacity: 0;
     font-size: 0.8rem;
     width: 100%;
@@ -631,7 +631,7 @@ option {
     border-radius: 0;
 }
 
-.woocommerce button.button[type*="submit"] {
+.woocommerce button.button[type*="submit"], .woocommerce div.product form.cart .button {
     opacity: 1;
 }
 
