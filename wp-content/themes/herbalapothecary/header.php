@@ -32,8 +32,44 @@
 							<a href="/">01947 602346</a>
 						</div>
 					</div>
-					<i class="fas fa-shopping-bag"></i>
-					<div class="c-header__account">
+					<div class="c-header__cart c-menu__trigger">
+						<a href="<?= wc_get_cart_url() ?>">
+							<i class="fas fa-shopping-bag"></i>
+						</a>
+						<div class="c-header__cart-menu-wrapper c-menu__wrapper">
+							<div class="c-header__cart-menu c-menu">
+								<ul class="c-header__cart-list">
+									<?php 
+										global $woocommerce;
+										$items = $woocommerce->cart->get_cart();
+
+										foreach ($items as $itemKey => $item) {
+											$_product = wc_get_product($item["data"]->get_id()); 
+											$quantity = $item["quantity"];
+											?>
+											<li>
+												<?= $_product->get_image() ?>
+												<div class="c-header__cart-product-details">
+													<a class="c-header__cart-product-name" href="<?= $_product->get_permalink() ?>"><?= $_product->get_title() ?></a>
+													<p><?= $quantity ?> &#215; <?= wc_price($_product->get_price()) ?></p>
+												</div>
+												<a class="c-header__cart-product-delete" href="<?= wc_get_cart_remove_url($itemKey) ?>"><i class="fas fa-times"></i></a>
+											</li>
+										<?php } ?>
+
+								</ul>
+								<div class="c-header__cart-price">
+									<h4>Subtotal:</h4>
+									<p><?= wc_price($woocommerce->cart->cart_contents_total) ?></p>
+								</div>
+								<div class="c-header__cart-buttons">
+									<a href="<?= wc_get_cart_url() ?>"><button class="c-button">View Basket</button></a>
+									<a href="<?= wc_get_checkout_url() ?>"><button class="c-button">Checkout</button></a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="c-header__account c-menu__trigger">
 						<a class="c-header__account-link" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
 							<i class="far fa-user"></i>
 						</a>
@@ -45,21 +81,21 @@
 								</div>
 							</a>
 						<?php } else { ?>
-							<div class="c-header__account-menu-wrapper">
-								<div class="c-header__account-menu">
+							<div class="c-header__account-menu-wrapper c-menu__wrapper">
+								<div class="c-header__account-menu c-menu">
 									<?php
 									global $current_user;
 									wp_get_current_user();
 									?>
 									<h4>Hello, <?= $current_user->user_login ?>! </h4>
 									<?php
-										wp_nav_menu(
-											array(
-												'menu' => 'account-dropdown',
-												'menu_id' => 'account-menu',
-												'menu_class' => 'c-header__account-menu-list'
-											)
-										);
+									wp_nav_menu(
+										array(
+											'menu' => 'account-dropdown',
+											'menu_id' => 'account-menu',
+											'menu_class' => 'c-header__account-menu-list'
+										)
+									);
 									?>
 									<div class="c-header__account-menu-logout">
 										<a href="<?= wp_logout_url() ?>">Logout</a>
