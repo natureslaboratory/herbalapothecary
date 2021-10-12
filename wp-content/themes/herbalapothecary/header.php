@@ -15,15 +15,7 @@
 		<header class="c-header">
 			<div class="c-header__inner l-restrict">
 				<a href="/"><img class="c-header__logo" src="<?= get_bloginfo("template_url") ?>/images/logo.webp"></a>
-				<form class="c-search">
-					<select class="c-search__dropdown">
-						<option>All</option>
-						<option>Option 1</option>
-						<option>Option 2</option>
-					</select>
-					<input class="c-search__box" type="text" placeholder="I'm shopping for...">
-					<button type="submit" class="c-button">Search</button>
-				</form>
+				<?php echo get_template_part("template-parts/header-search", "search", ["cat" => true]) ?>
 				<div class="c-header__buttons">
 					<div class="c-header__contact">
 						<i class="fas fa-phone-alt"></i>
@@ -119,11 +111,9 @@
 							)
 						);
 						?>
+						<div class="c-navigation__overlay"></div>
 					</div>
-					<form class="c-search c-search--navigation">
-						<input class="c-search__box" type="text" placeholder="I'm shopping for...">
-						<button type="submit" class="c-button">Search</button>
-					</form>
+					<?php echo get_template_part("template-parts/header-search", "search") ?>
 				</div>
 			</nav>
 			<?php
