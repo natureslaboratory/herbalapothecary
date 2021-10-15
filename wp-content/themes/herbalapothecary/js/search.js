@@ -1,5 +1,4 @@
 const search = Array.from(document.getElementsByClassName("c-search"));
-console.log(search);
 
 search.forEach(s => {
     const submit = s.getElementsByClassName("search-submit")[0];
@@ -15,7 +14,6 @@ search.forEach(s => {
 
     submit.addEventListener("click", (e) => {
         e.preventDefault();
-        console.log("hello");
         let categoryText = category && category.value ? "&product_cat=" + category.value : "";
         let query = `?s=${text.value}&post_type=product${categoryText}`;
         window.location.href = window.location.protocol + "//" + window.location.host + "/" + query;
@@ -29,11 +27,12 @@ const menu = nav.getElementsByClassName("c-navigation__menu")[0];
 const overlay = nav.getElementsByClassName("c-navigation__overlay")[0];
 
 button.addEventListener("click", () => {
-    console.log("click")
     if (menu.classList.contains("show")) {
         nav.classList.remove("show");
+        nav.tabIndex = -1;
     } else {
         nav.classList.add("show");
+        nav.tabIndex = 1;
     }
 })
 

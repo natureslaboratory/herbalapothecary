@@ -293,17 +293,7 @@ option {
 }
 
 ul.c-navigation__menu {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-    transition: 150ms;
-    height: 100vh;
-    background-color: white;
-    z-index: 10000;
+    gap: 1.2rem;
 }
 
 .c-navigation__overlay {
@@ -328,8 +318,6 @@ ul.c-navigation__menu {
     opacity: 1;
     pointer-events: all;
 }
-
-
 
 .c-navigation__menu a {
     color: black;
@@ -406,6 +394,40 @@ ul.c-navigation__menu {
     .c-navigation__inner {
         justify-content: center;
     }
+
+    ul.c-navigation__menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+        transition: 150ms;
+        height: 100vh;
+        background-color: white;
+        z-index: 10000;
+        /* padding-top: 4rem; */
+        gap: 0;
+        width: min(100%, 300px);
+    }
+
+    ul.c-navigation__menu::before {
+        content: "Main Menu";
+        background-color: var(--green);
+        color: white;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    } 
+
+    ul.c-navigation__menu > *, ul.c-navigation__menu::before {
+        padding: 0.8rem 1.4rem;
+    }
+
+    ul.c-navigation__menu > * {
+        border-bottom: 1px solid rgb(224, 224, 224);
+    }
+
+
 }
 
 @media screen and (max-width: 750px) {
@@ -760,7 +782,7 @@ ul.c-navigation__menu {
 
 .c-intro__columns-left {
     flex-shrink: 2;
-    min-width: 300px;
+    width: min(100%, 300px);
 }
 
 .c-intro__columns-right {
@@ -1744,4 +1766,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .woocommerce-variation-price {
     margin-bottom: 2rem;
+}
+
+iframe {
+    width: 100%;
+    height: 400px;
 }
