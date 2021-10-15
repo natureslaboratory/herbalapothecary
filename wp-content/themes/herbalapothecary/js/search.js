@@ -11,6 +11,7 @@ search.forEach(s => {
             text.value = value;
         }
     }
+    
 
     submit.addEventListener("click", (e) => {
         e.preventDefault();

@@ -479,6 +479,7 @@ ul.c-navigation__menu {
     padding: 0 1rem;
     gap: 1rem;
     display: flex;
+    align-items: center;
 }
 
 .c-promises__promise:nth-child(2) {
@@ -505,6 +506,10 @@ ul.c-navigation__menu {
 .c-promises__logo--placeholder {
     width: 50px;
     background-color: rgb(189, 189, 189);
+}
+
+.c-promises__promise i {
+    font-size: 2rem;
 }
 
 .c-specials {

@@ -14,28 +14,28 @@ get_header();
         <div class="c-carousel__placeholder"></div>
         <div class="c-promises">
             <div class="c-promises__promise">
-                <div class="c-promises__logo--placeholder"></div>
+                <i class="fas fa-capsules"></i>
                 <div>
                     <h4>Reliable</h4>
                     <p>Products You Can Trust</p>
                 </div>
             </div>
             <div class="c-promises__promise">
-                <div class="c-promises__logo--placeholder"></div>
+                <i class="fas fa-truck"></i>
                 <div>
                     <h4>Home Delivery</h4>
                     <p>Straight To Your Door</p>
                 </div>
             </div>
             <div class="c-promises__promise">
-                <div class="c-promises__logo--placeholder"></div>
+                <i class="far fa-credit-card"></i>
                 <div>
                     <h4>Secure Payment</h4>
                     <p>100% Secure via Card or PayPal</p>
                 </div>
             </div>
             <div class="c-promises__promise">
-                <div class="c-promises__logo--placeholder"></div>
+                <i class="far fa-comments"></i>
                 <div>
                     <h4>Support</h4>
                     <p>Get In Touch With Our Team</p>
@@ -66,11 +66,30 @@ get_header();
             <div class="c-products__header">
                 <h3>Browse Popular Products</h3>
                 <div class="c-products__categories">
-                    <a>Western Herbs</a>
+                    <?php 
+                        $orderby = 'count';
+                        $order = 'desc';
+                        $hide_empty = false;
+                        $cat_args = array(
+                            'orderby'    => $orderby,
+                            'order'      => $order,
+                            'hide_empty' => $hide_empty,
+                            'number' => 4
+                        );
+
+                        $cats = get_terms('product_cat', $cat_args);
+
+                        foreach ($cats as $key => $cat) { ?>
+                            <a href="<?= $cat->slug ?>"><?= $cat->name ?></a>
+                        <?php }
+                    
+                    
+                    ?>
+                    <!-- <a>Western Herbs</a>
                     <a>Chinese Herbs</a>
                     <a>Ayurvedic Herbs</a>
-                    <a>Propolis</a>
-                    <a>View All</a>
+                    <a>Propolis</a> -->
+                    <a href="/shop">View All</a>
                 </div>
             </div>
             <div class="c-products__grid">
@@ -80,7 +99,7 @@ get_header();
                 'meta_key' => 'total_sales',
                 'orderby' => 'meta_value_num',
                 'order' => 'desc',
-                'posts_per_page' => 10
+                'posts_per_page' => 12
             ];
 
             $popular_products = new WP_Query($args);
