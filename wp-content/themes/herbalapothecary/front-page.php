@@ -80,7 +80,7 @@ get_header();
                         $cats = get_terms('product_cat', $cat_args);
 
                         foreach ($cats as $key => $cat) { ?>
-                            <a href="<?= $cat->slug ?>"><?= $cat->name ?></a>
+                            <a href="/product-category/<?= $cat->slug ?>"><?= $cat->name ?></a>
                         <?php }
                     
                     
