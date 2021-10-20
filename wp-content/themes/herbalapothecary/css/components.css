@@ -1880,3 +1880,7 @@ iframe {
     display: none;
 }
 
+.coupon__wrapper {
+    display: flex;
+    gap: 1rem;
+}
