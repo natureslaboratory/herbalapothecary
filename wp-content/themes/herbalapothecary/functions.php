@@ -397,5 +397,5 @@ function add_to_cart()
 	}
 }
 
-remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
-add_action('woocommerce_single_product_summary', 'add_to_cart', 30);
+// remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+// add_action('woocommerce_single_product_summary', 'add_to_cart', 30);
