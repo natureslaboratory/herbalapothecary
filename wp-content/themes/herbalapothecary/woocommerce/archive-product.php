@@ -46,7 +46,10 @@ do_action('woocommerce_before_main_content');
 <div class="l-restrict">
 	<?php
 	if (woocommerce_product_loop()) {
-		get_template_part("template-parts/product-categories", "categories");
+		
+		if (!strpos($_SERVER["REQUEST_URI"], "product-category")) {
+			get_template_part("template-parts/product-categories", "categories");
+		}
 
 		echo "<div class='c-shop__grid c-shop__grid--category'>";
 
