@@ -47,7 +47,7 @@ do_action('woocommerce_before_main_content');
 	<?php
 	if (woocommerce_product_loop()) {
 		
-		if (!strpos($_SERVER["REQUEST_URI"], "product-category")) {
+		if (is_shop()) {
 			get_template_part("template-parts/product-categories", "categories");
 		}
 
