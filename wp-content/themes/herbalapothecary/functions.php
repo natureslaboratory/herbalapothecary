@@ -389,7 +389,7 @@ function add_to_cart()
 			$has_access = true;
 	}
 
-	if (!$has_access) {
+	if (!$has_access || !strpos($product->get_sku(), "C")) {
 		echo '<p><b>This product is restricted and can only be purchased by qualified/registered practitioners. Please log in to make a purchase.</b></p>';
 		return;
 	} else {
