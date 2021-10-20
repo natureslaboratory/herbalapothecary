@@ -1777,3 +1777,106 @@ iframe {
     width: 100%;
     height: 400px;
 }
+
+/* Cart */
+
+.entry-content {
+    /* margin-top: 20rem; */
+}
+
+.woocommerce table.cart td.actions .coupon, .woocommerce-page #content table.cart td.actions .coupon, .woocommerce-page table.cart td.actions .coupon {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 1rem;
+    /* margin-top: 2rem; */
+    float: unset;
+}
+
+.woocommerce table.cart td.actions .input-text, .woocommerce-page #content table.cart td.actions .input-text, .woocommerce-page table.cart td.actions .input-text {
+    width: 100%;
+}
+
+.woocommerce .cart .button, .woocommerce button.button:disabled, .woocommerce button.button:disabled[disabled] {
+    max-width: 180px;
+    float: unset;
+    padding: 0.9rem 1rem;
+}
+
+:is(.woocommerce button.button:disabled, .woocommerce button.button:disabled[disabled]):hover {
+    background-color: var(--green);
+}
+
+.c-cart, .c-cart *:not(span) {
+    display: block;
+    text-align: left;
+}
+
+.c-cart thead {
+    background-color: var(--light-grey);
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
+
+.c-cart, .c-cart tbody {
+    display: flex;
+    flex-direction: column;
+    /* gap: 1rem; */
+}
+
+.c-cart thead tr, .c-cart tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr 0.4fr;
+    gap: 1rem;
+}
+
+.c-cart tr > * {
+    padding: 0.5rem;
+    /* border: 1px solid black; */
+}
+
+.c-cart tbody tr {
+    border-bottom: 1px solid rgb(214, 214, 214);
+    padding: 1.7rem 0;
+}
+
+
+
+.c-cart tr > *:first-child {
+    padding: 0;
+}
+
+.c-cart .c-cart__buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.c-cart__buttons > :is(a.button, button.button) {
+    width: auto;
+    opacity: 1;
+    max-width: 130px;
+    width: 100%;
+    float: unset;
+    padding: 0.9rem 1rem;
+}
+
+.cart_totals .shipping-calculator-forms {
+    display: none;
+}
+
+.c-cart-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.woocommerce .cart-collaterals .cart_totals, .woocommerce-page .cart-collaterals .cart_totals {
+    float: unset;
+    width: auto;
+}
+
+.shipping-calculator :is(ul, .woocommerce-shipping-destination) {
+    display: none;
+}
+

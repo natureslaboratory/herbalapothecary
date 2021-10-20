@@ -23,6 +23,10 @@ body {
     max-width: 900px;
 }
 
+.l-restrict--medium {
+    max-width: 1150px;
+}
+
 .l-block {
     padding: 4rem 1rem;
 }

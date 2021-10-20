@@ -18,7 +18,7 @@ get_header();
 	<?php do_action("woo_custom_breadcrumb"); ?>
 	<main id="primary" class="site-main site-main--shop">
 		
-		<div class="l-restrict l-restrict--narrow">
+		<div class="l-restrict l-restrict--medium">
 			<?php
 			while ( have_posts() ) :
 				the_post();
