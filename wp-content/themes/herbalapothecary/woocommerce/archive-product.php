@@ -45,9 +45,8 @@ do_action('woocommerce_before_main_content');
 
 <div class="l-restrict">
 	<?php
-	if (woocommerce_product_loop()) {
-		
-		if (is_shop()) {
+
+		if (is_shop() && !is_search()) {
 			get_template_part("template-parts/product-categories", "categories");
 		}
 
@@ -61,35 +60,31 @@ do_action('woocommerce_before_main_content');
 			?> <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1> <?php
 		};
 
-		do_action('woocommerce_archive_description');
-		do_action('woocommerce_before_shop_loop');
-
-		woocommerce_product_loop_start();
-
-		if (wc_get_loop_prop('total')) {
-			while (have_posts()) {
-				the_post();
-
-				/**
-				 * Hook: woocommerce_shop_loop.
-				 */
-				do_action('woocommerce_shop_loop');
-
-				wc_get_template_part('content', 'product');
-			}
-		}
-
-		
-		if ($isProductCat || $isShop) {
-			echo "</div></div>";
-		}
-	} else {
-		
-		do_action('woocommerce_no_products_found');
-	}
+		if (woocommerce_product_loop()) {
+			do_action('woocommerce_archive_description');
+			do_action('woocommerce_before_shop_loop');
+			woocommerce_product_loop_start();
 	
-	woocommerce_product_loop_end();
-	do_action('woocommerce_after_shop_loop');
+			if (wc_get_loop_prop('total')) {
+				while (have_posts()) {
+					the_post();
+	
+					/**
+					 * Hook: woocommerce_shop_loop.
+					 */
+					do_action('woocommerce_shop_loop');
+	
+					wc_get_template_part('content', 'product');
+				}
+			}
+
+			woocommerce_product_loop_end();
+			do_action('woocommerce_after_shop_loop');
+		} else {
+			do_action('woocommerce_no_products_found');
+		}
+
+	
 	?>
 </div>
 
@@ -107,6 +102,6 @@ do_action('woocommerce_after_main_content');
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-do_action('woocommerce_sidebar');
+// do_action('woocommerce_sidebar');
 
 get_footer('shop');
