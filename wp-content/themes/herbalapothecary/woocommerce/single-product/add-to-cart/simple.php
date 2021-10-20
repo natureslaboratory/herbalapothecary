@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Simple product add to cart
  *
@@ -15,11 +16,11 @@
  * @version 3.4.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 global $product;
 
-if ( ! $product->is_purchasable() ) {
+if (!$product->is_purchasable()) {
 	return;
 }
 
@@ -29,25 +30,25 @@ $account_level = get_field('user_account_level', 'user_' . get_current_user_id()
 $account_level = empty($account_level) ? 'NOT LOGGED IN' : $account_level;
 
 // If the user has a high account level we should include lower levels for them
-switch($account_level) {
+switch ($account_level) {
 	case 'Level-3':
-		$account_level = [ 'Level-3', 'Level-2', 'Level-1', 'NOT LOGGED IN' ];
+		$account_level = ['Level-3', 'Level-2', 'Level-1', 'NOT LOGGED IN'];
 		break;
 	case 'Level-2':
-		$account_level = [ 'Level-2', 'Level-1', 'NOT LOGGED IN' ];
+		$account_level = ['Level-2', 'Level-1', 'NOT LOGGED IN'];
 		break;
 	case 'Level-1':
-		$account_level = [ 'Level-1', 'NOT LOGGED IN' ];
+		$account_level = ['Level-1', 'NOT LOGGED IN'];
 		break;
 	case 'NOT LOGGED IN':
-		$account_level = [ 'NOT LOGGED IN' ];
+		$account_level = ['NOT LOGGED IN'];
 		break;
 }
 
 // Go through each level for this user and check if it's in the product
 $has_access = false;
-foreach($account_level as $a) {
-	if(in_array($a, $page_level))
+foreach ($account_level as $a) {
+	if (in_array($a, $page_level))
 		$has_access = true;
 }
 
@@ -56,34 +57,34 @@ if (!$has_access) {
 	return;
 }
 
-echo wc_get_stock_html( $product ); // WPCS: XSS ok.
+echo wc_get_stock_html($product); // WPCS: XSS ok.
 
-if ( $product->is_in_stock() ) : ?>
+if ($product->is_in_stock() && $has_access) : ?>
 
-	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+	<?php do_action('woocommerce_before_add_to_cart_form'); ?>
 
-	<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
-		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
+	<form class="cart" action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>" method="post" enctype='multipart/form-data'>
+		<?php do_action('woocommerce_before_add_to_cart_button'); ?>
 
 		<?php
-		do_action( 'woocommerce_before_add_to_cart_quantity' );
+		do_action('woocommerce_before_add_to_cart_quantity');
 
 		woocommerce_quantity_input(
 			array(
-				'min_value'   => apply_filters( 'woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product ),
-				'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product ),
-				'input_value' => isset( $_POST['quantity'] ) ? wc_stock_amount( wp_unslash( $_POST['quantity'] ) ) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
+				'min_value'   => apply_filters('woocommerce_quantity_input_min', $product->get_min_purchase_quantity(), $product),
+				'max_value'   => apply_filters('woocommerce_quantity_input_max', $product->get_max_purchase_quantity(), $product),
+				'input_value' => isset($_POST['quantity']) ? wc_stock_amount(wp_unslash($_POST['quantity'])) : $product->get_min_purchase_quantity(), // WPCS: CSRF ok, input var ok.
 			)
 		);
 
-		do_action( 'woocommerce_after_add_to_cart_quantity' );
+		do_action('woocommerce_after_add_to_cart_quantity');
 		?>
 
-		<button type="submit" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+		<button type="submit" name="add-to-cart" value="<?php echo esc_attr($product->get_id()); ?>" class="single_add_to_cart_button button alt"><?php echo esc_html($product->single_add_to_cart_text()); ?></button>
 
-		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+		<?php do_action('woocommerce_after_add_to_cart_button'); ?>
 	</form>
 
-	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
+	<?php do_action('woocommerce_after_add_to_cart_form'); ?>
 
 <?php endif; ?>
