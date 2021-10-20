@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 global $product;
 
 // Ensure visibility.
-if ( empty( $product ) || ! $product->is_visible() || !(strpos($product->get_sku(), "C") && !strpos($product->get_sku(), "VC")) ) {
+if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
