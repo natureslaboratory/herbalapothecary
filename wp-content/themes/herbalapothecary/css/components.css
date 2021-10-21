@@ -2141,7 +2141,7 @@ iframe {
 
 .woocommerce form .woocommerce-grouped-product-list-item {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-template-areas: "name button" "price button";
     /* border-left: 2px solid var(--green);
     padding-left: 1rem; */
@@ -2155,12 +2155,12 @@ iframe {
 .woocommerce form .woocommerce-grouped-product-list-item>*:nth-child(1) {
     grid-area: button;
     justify-self: flex-end;
-    align-self: center;
+    /* align-self: center; */
 }
 
 .woocommerce div.product form.cart .group_table td.woocommerce-grouped-product-list-item__label {
     grid-area: name;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: bold;
     padding: 0;
     margin-bottom: 0.5rem;
