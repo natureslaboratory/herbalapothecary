@@ -1,5 +1,18 @@
 * {
     --green: rgb(104, 126, 93);
+    --dark-green: rgb(75, 87, 69);
     --light-grey: #EEEEEE;
     --lighter-grey: #F5F5F5;
+}
+
+a {
+    color: var(--green);
+}
+
+a:visited {
+    color: var(--green);
+}
+
+a:hover, a:visited:hover {
+    color: var(--dark-green);
 }

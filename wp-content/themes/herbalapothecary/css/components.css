@@ -636,7 +636,7 @@ ul.c-navigation__menu {
 }
 
 .c-products__categories * {
-    color: rgba(0, 0, 0, 0.726);
+    /* color: rgba(0, 0, 0, 0.726); */
     font-size: 0.9rem;
 }
 
