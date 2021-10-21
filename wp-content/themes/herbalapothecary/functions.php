@@ -355,8 +355,12 @@ function ts_quantity_plus_minus()
 function custom_search( $query )
 {
   // Don't do this filtering on the tag pages
-  if ($_REQUEST['product_tag'] !== NULL || strstr($_SERVER['REQUEST_URI'], '/product-tag/') || strstr($_SERVER['REQUEST_URI'], '/calculator/')) {
+  if ((array_key_exists("product_tag", $_REQUEST) && $_REQUEST['product_tag'] !== NULL) || strstr($_SERVER['REQUEST_URI'], '/product-tag/') || strstr($_SERVER['REQUEST_URI'], '/calculator/')) {
     return $query;
+  }
+
+  if (strpos($_SERVER["REQUEST_URI"], "category/")) {
+	  return $query;
   }
 
   if (!is_admin()) { // Don't apply it to admin users
