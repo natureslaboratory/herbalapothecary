@@ -383,7 +383,7 @@ function ha_enctype_custom_registration_forms() {
 }
 add_action( 'woocommerce_register_form_tag', 'ha_enctype_custom_registration_forms' );
 
-function ha_add_register_form_field(){
+function ha_add_register_form_field_top() {
 	?>
 	<style>
 		.width-100 {
@@ -420,19 +420,50 @@ function ha_add_register_form_field(){
 		),
 		( isset($_POST['details']) ? $_POST['details'] : '' )
 	);
+}
 
+function ha_add_register_form_field_bottom(){
 	?>
-	<p class="form-row validate-required" id="qualifications" data-priority="">
+	<div class="form-row validate-required c-register__bottom" id="qualifications" data-priority="">
 		<label for="qualifications" class="">
 			<h3>Qualifications</h3>
-			<p>Some of our products are only available to professional practitioners. If you wish to be approved as a practitioner please upload a scanned copy of you qualifications. We will then review your application and contact you via email to let you know. You will still be able to make purchases of some items in the mean time. Once approved by our sales team you will be able to purchase a wider set of products. If you are not a practitioner you will still be able to purchase most of our products and you may skip this step.</p>
+			<p>
+				Some of our products are only available to professional practitioners. If you wish to be approved as a 
+				practitioner please upload a scanned copy of you qualifications. We will then review your application 
+				and contact you via email to let you know. You will still be able to make purchases of some items in 
+				the mean time. Once approved by our sales team you will be able to purchase a wider set of products. 
+				If you are not a practitioner you will still be able to purchase most of our products and you may 
+				skip this step.
+			</p>
 		</label>
 		<span class="woocommerce-input-wrapper"><input type='file' name='qualifications' accept='image/*,.pdf,.doc,.docx'></span>
-	</p>
+</div>
 	<?php
 
 }
-add_action( 'woocommerce_register_form', 'ha_add_register_form_field' );
+add_action( 'woocommerce_register_form', 'ha_add_register_form_field_top', 20 );
+add_action( 'woocommerce_register_form', 'ha_add_register_form_field_bottom', 30 );
+
+function ha_register_top() {
+	?>
+		<div class="c-register__left">
+	<?php
+}
+
+function ha_register_middle() {
+	?>
+		</div>
+		<div class="c-register__right">
+	<?php
+}
+
+function ha_register_bottom() {
+	echo "</div>";
+}
+
+add_action("woocommerce_register_form_start", "ha_register_top");
+add_action("woocommerce_register_form", "ha_register_middle", 25);
+add_action("woocommerce_register_form", "ha_register_bottom", 35);
 
 
 
@@ -466,3 +497,5 @@ function ha_save_register_fields( $customer_id ){
 	}
 }
 add_action( 'woocommerce_created_customer', 'ha_save_register_fields' );
+
+

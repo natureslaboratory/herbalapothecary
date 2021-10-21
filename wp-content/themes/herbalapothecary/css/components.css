@@ -1698,6 +1698,54 @@ article :is(h1, h2, h3, h4, h5, h6) {
     width: min(100%, 300px);
 }
 
+.woocommerce-form-register.register.c-register {
+    width: min(100%, 700px);
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.woocommerce-form-register.register.c-register:not(.hide) {
+    display: grid;
+}
+
+@media screen and (max-width: 660px) {
+    .woocommerce-form-register.register.c-register {
+        width: min(100%, 400px);
+        flex-direction: column;
+    }
+
+    .woocommerce-form-register.register.c-register:not(.hide) {
+        display: flex;
+    }
+
+    .c-register__right + * {
+        grid-column: 1 / 2;
+    }
+}
+
+.c-register .c-register__submit {
+    column-span: all;
+}
+
+.c-register__bottom p {
+    line-height: 1.7rem;
+}
+
+.c-register textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.c-register__right + * {
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: end;
+}
+
+.c-register__right + * button.button {
+    padding: 0.8rem 1rem;
+}
+
 .woocommerce form .form-row input.input-text, .woocommerce form .form-row textarea {
     padding: 0.5rem;
 }
