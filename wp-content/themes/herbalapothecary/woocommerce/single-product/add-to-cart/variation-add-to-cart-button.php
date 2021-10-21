@@ -97,7 +97,7 @@ if (!$has_access) {
 ?>
 <?php
 	$variations = $product->get_available_variations();
-	print_r($variations);
+	// print_r($variations);
 	try {
 		//code...
 		$variations_stock = wpse_306996_get_variations_stock_quantity($product->get_id());
