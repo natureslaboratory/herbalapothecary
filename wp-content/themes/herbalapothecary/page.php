@@ -26,7 +26,7 @@ if ($isProductCat) {
 	<?php do_action("woo_custom_breadcrumb"); ?>
 	<main id="primary" class="site-main site-main--shop">
 		
-		<div class="l-restrict <?php if (strpos($_SERVER["REQUEST_URI"], "cart")) { echo "l-restrict--narrow"; } ?>">
+		<div class="l-restrict <?php if (strpos($_SERVER["REQUEST_URI"], "cart")) { echo "l-restrict--narrow"; } ?> l-restrict--narrow">
 			<?php
 			while ( have_posts() ) :
 				the_post();
