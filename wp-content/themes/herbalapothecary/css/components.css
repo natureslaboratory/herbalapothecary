@@ -1035,6 +1035,13 @@ ul.c-navigation__menu {
     }
 }
 
+@media screen and (max-width: 500px) {
+    .c-categories {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 .c-category {
     /* display: flex; */
     /* width: 100%; */
