@@ -463,9 +463,48 @@ ul.c-navigation__menu {
     flex-direction: column;
 }
 
-.c-carousel__placeholder {
-    height: 370px;
+.c-carousel {
+    min-height: 370px;
     background-color: rgb(184, 184, 184);
+    background-image: url('/wp-content/uploads/2021/10/AdobeStock_279842474-scaled.jpeg.webp');
+    background-size: cover;
+    position: relative;
+    display: flex;
+}
+
+.c-carousel__overlay {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.603);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-carousel__content {
+    max-width: 700px;
+    width: min(100%, 700px);
+    padding-bottom: 3rem;
+}
+
+.c-carousel__small-heading {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.c-carousel__heading {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.c-carousel__description {
+    font-size: 1.2rem;
+}
+
+.c-carousel .c-button {
+    padding: 0.8rem 1rem;
 }
 
 .c-promises {

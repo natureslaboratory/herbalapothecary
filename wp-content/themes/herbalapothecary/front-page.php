@@ -11,7 +11,18 @@ get_header();
 ?>
 <main id="primary" class="site-main site-main--home">
     <div class="c-home">
-        <div class="c-carousel__placeholder"></div>
+        <div class="c-carousel">
+            <div class="c-carousel__overlay">
+                <div class="c-carousel__content">
+                    <p class="c-carousel__small-heading">UK Supplier of Herbal Products</p>
+                    <h2 class="c-carousel__heading">Herbal Apothecary</h2>
+                    <p class="c-carousel__description">
+                        We supply one of the largest ranges of herbal products in the UK
+                    </p>
+                    <a href="/about-us/"><button class="c-button">Find Out More</button></a>
+                </div>
+            </div>
+        </div>
         <div class="c-promises">
             <div class="c-promises__promise">
                 <i class="fas fa-capsules"></i>
