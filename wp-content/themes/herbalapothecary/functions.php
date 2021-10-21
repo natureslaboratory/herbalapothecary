@@ -377,3 +377,92 @@ function custom_search( $query )
   }
 }
 add_action( 'pre_get_posts', 'custom_search' );
+
+function ha_enctype_custom_registration_forms() {
+	echo 'enctype="multipart/form-data"';
+}
+add_action( 'woocommerce_register_form_tag', 'ha_enctype_custom_registration_forms' );
+
+function ha_add_register_form_field(){
+	?>
+	<style>
+		.width-100 {
+			width: 100%;
+		}
+	</style>
+	<?php
+	woocommerce_form_field(
+		'customer_type',
+		array(
+			'type'        => 'select',
+			'required'    => true, // just adds an "*"
+			'label'       => 'Please choose your customer type',
+			'input_class'				=> [ 'width-100' ],
+			'options'			=> [ 'Regular' => 'Regular',
+												 'Qualified Medical Herbalist / Pharmacist' => 'Qualified Medical Herbalist / Pharmacist',
+													'Herbal Medicine Student' => 'Herbal Medicine Student',
+													'CAM practitioner - Homeopath' => 'CAM practitioner - Homeopath',
+													'CAM practitioner - Colon Hydrotherapist' => 'CAM practitioner - Colon Hydrotherapist',
+													'CAM practitioner - Iridologist' => 'CAM practitioner - Iridologist',
+													'CAM practitioner - TCM (Traditional Chinese Medicine) Practitioner' => 'CAM practitioner - TCM (Traditional Chinese Medicine) Practitioner',
+													'Manufacturer (please provide details below)' => 'Manufacturer (please provide details below)',
+													'Other (please provide details below)' => 'Other (please provide details below)' ],
+		),
+		( isset($_POST['customer_type']) ? $_POST['customer_type'] : '' )
+	);
+
+	woocommerce_form_field(
+		'details',
+		array(
+			'type'        => 'textarea',
+			'required'    => true, // just adds an "*"
+			'label'       => 'Details',
+		),
+		( isset($_POST['details']) ? $_POST['details'] : '' )
+	);
+
+	?>
+	<p class="form-row validate-required" id="qualifications" data-priority="">
+		<label for="qualifications" class="">
+			<h3>Qualifications</h3>
+			<p>Some of our products are only available to professional practitioners. If you wish to be approved as a practitioner please upload a scanned copy of you qualifications. We will then review your application and contact you via email to let you know. You will still be able to make purchases of some items in the mean time. Once approved by our sales team you will be able to purchase a wider set of products. If you are not a practitioner you will still be able to purchase most of our products and you may skip this step.</p>
+		</label>
+		<span class="woocommerce-input-wrapper"><input type='file' name='qualifications' accept='image/*,.pdf,.doc,.docx'></span>
+	</p>
+	<?php
+
+}
+add_action( 'woocommerce_register_form', 'ha_add_register_form_field' );
+
+
+
+function ha_save_register_fields( $customer_id ){
+	if ( isset( $_POST['customer_type'] ) ) {
+		update_field('customer_type', wc_clean( $_POST['customer_type'] ), 'user_' . $customer_id );
+	}
+
+	if ( isset( $_POST['details'] ) ) {
+		update_field('details', wc_clean( $_POST['details'] ), 'user_' . $customer_id );
+	}
+
+	//Upload the file
+	require_once(ABSPATH.'wp-admin/includes/file.php');
+	$uploadedfile = $_FILES['qualifications'];
+	$movefile = wp_handle_upload($uploadedfile, array('test_form' => false));
+
+	// Add to the media library
+	if ($movefile) {
+	$wp_upload_dir = wp_upload_dir();
+	$attachment = array(
+	'guid' => $wp_upload_dir['url'].'/'.basename($movefile['file']),
+	'post_mime_type' => $movefile['type'],
+	'post_title' => preg_replace('/\.[^.]+$/', '', basename($movefile['file'])),
+	'post_content' => '',
+	'post_status' => 'inherit'
+	);
+	$attach_id = wp_insert_attachment($attachment, $movefile['file']);
+
+	update_field('qualifications', $attach_id, 'user_' . $customer_id);
+	}
+}
+add_action( 'woocommerce_created_customer', 'ha_save_register_fields' );
