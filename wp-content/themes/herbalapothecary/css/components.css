@@ -2163,7 +2163,6 @@ iframe {
     font-size: 1.4rem;
     font-weight: bold;
     padding: 0;
-    margin-bottom: 0.5rem;
 }
 
 .woocommerce form .woocommerce-grouped-product-list-item>*:nth-child(3) {
@@ -2172,4 +2171,10 @@ iframe {
 
 .woocommerce div.product form.cart .group_table td:first-child {
     width: auto;
+}
+
+.woocommerce div.product form.cart .group_table {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
