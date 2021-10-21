@@ -1043,7 +1043,7 @@ ul.c-navigation__menu {
     /* transition: 150ms; */
     border: 1px solid rgb(202, 202, 202);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
 }
 
 .c-category:hover {
