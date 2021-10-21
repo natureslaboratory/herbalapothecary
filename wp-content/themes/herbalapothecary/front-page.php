@@ -177,18 +177,18 @@ get_header();
                     <h2>Evidence</h2>
                     <p>
                         Reuniting Science and Nature through rigorous targeted research. 
-                        <a href="/">Find out more</a>.
+                        <a href="/evidence">Find out more</a>.
                     </p>
                     <h2>Sustainability</h2>
                     <p>
                         Creating ecologically sustainable products and processes. 
-                        <a href="/">Find out more</a>.
+                        <a href="/sustainability">Find out more</a>.
                     </p>
                     <h2>Access</h2>
                     <p>
                         Creating connections between practitioners and consumers, through 
                         products and services.
-                        <a href="/">Find out more</a>.
+                        <a href="/access">Find out more</a>.
                     </p>
                 </div>
                 <div class="c-intro__columns-right">
