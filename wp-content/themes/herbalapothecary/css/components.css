@@ -1924,6 +1924,10 @@ article :is(h1, h2, h3, h4, h5, h6) {
     margin: 0;
 }
 
+.c-quantity input[type=number] {
+    -moz-appearance: textfield;
+}
+
 /* input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
