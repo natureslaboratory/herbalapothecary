@@ -360,7 +360,7 @@ function custom_search( $query )
   }
 
 
-  if (is_shop() || is_category()) {
+  if (is_shop() || is_product_category()) {
 	  if (!is_admin()) { // Don't apply it to admin users
 		if ($query->is_search() || $query->is_archive()) {
 		  $meta_query[] = [
