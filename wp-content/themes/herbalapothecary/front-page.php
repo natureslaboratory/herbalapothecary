@@ -133,12 +133,12 @@ get_header();
                     $brands = [
                         [
                             "name" => "BeeVital",
-                            "link" => "/",
+                            "link" => "https://dev.herbalapothecaryuk.com/product-category/beevital-apiceuticals/",
                             "logo" => "/wp-content/uploads/2021/09/BeeVital.jpg"
                         ],
                         [
                             "name" => "Sweet Cecily's",
-                            "link" => "/",
+                            "link" => "https://dev.herbalapothecaryuk.com/product-category/sweet-cecilys-skincare/",
                             "logo" => "/wp-content/uploads/2021/09/sweet_cecilys.jpg"
                         ]
                     ]
