@@ -14,7 +14,7 @@ $product_categories = get_terms('product_cat', $cat_args);
 if (!empty($product_categories)) { ?>
     <div class="c-categories">
         <?php foreach ($product_categories as $category) { ?>
-            <?php if ($category->name == "Uncategorized" || $category->name == "Uncategorised") {
+            <?php if ($category->name == "Uncategorized" || $category->name == "Uncategorised" || $category->name == "Products A-Z" || $category->name == "Sale") {
                 continue;
             } ?>
             <div class="c-category">
