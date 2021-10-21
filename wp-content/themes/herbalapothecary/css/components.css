@@ -1318,6 +1318,10 @@ article :is(h1, h2, h3, h4, h5, h6) {
     margin-bottom: 1rem;
 }
 
+.c-post__header a {
+    text-decoration: none;
+}
+
 .c-post__details a {
     text-decoration: none;
     color: inherit;

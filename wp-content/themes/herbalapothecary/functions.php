@@ -359,20 +359,21 @@ function custom_search( $query )
     return $query;
   }
 
-  if (strpos($_SERVER["REQUEST_URI"], "category/")) {
-	  return $query;
-  }
 
-  if (!is_admin()) { // Don't apply it to admin users
-    if ($query->is_search() || $query->is_archive()) {
-      $meta_query[] = [
-        'key' => '_sku',
-        'value' => 'C$',
-        'compare' => 'RLIKE'
-      ];
-      $query->set('meta_query', $meta_query);
-      return $query;
-    }
+  if (is_shop() || is_category()) {
+	  if (!is_admin()) { // Don't apply it to admin users
+		if ($query->is_search() || $query->is_archive()) {
+		  $meta_query[] = [
+			'key' => '_sku',
+			'value' => 'C$',
+			'compare' => 'RLIKE'
+		  ];
+		  $query->set('meta_query', $meta_query);
+		  return $query;
+		}
+	  }
+  } else {
+	  return $query;
   }
 }
 add_action( 'pre_get_posts', 'custom_search' );
