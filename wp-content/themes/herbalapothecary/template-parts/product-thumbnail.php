@@ -19,7 +19,7 @@
                     <div class="c-product__image-overlay">Overlay</div>
                 </div>
                 <p class="c-product__name"><?php the_title() ?></p>
-                <p class="c-product__price"><?= "£" . $product->get_price() ?></p>
+                <p class="c-product__price"><?= wc_price($product->get_price()) ?></p>
             </div>
             <a href="<?= $product->get_permalink() ?>" class="c-button">Select Options</a>
         </div>
