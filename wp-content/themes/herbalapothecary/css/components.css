@@ -2067,3 +2067,9 @@ iframe {
 .woocommerce div.product .woocommerce-tabs ul.tabs li::after {
     display: none;
 }
+
+.wp-block-image img {
+    max-width: 100%;
+    width: auto;
+    max-height: 500px;
+}
