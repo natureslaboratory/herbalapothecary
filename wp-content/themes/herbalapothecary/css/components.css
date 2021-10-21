@@ -1216,6 +1216,11 @@ ul.c-navigation__menu {
 .tagcloud {
     display: flex;
     flex-direction: column;
+    text-transform: capitalize;
+}
+
+.woocommerce-products-header__title {
+    text-transform: capitalize;
 }
 
 @media screen and (max-width: 775px) {

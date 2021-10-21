@@ -101,40 +101,40 @@ if (!$has_access) {
 	try {
 		//code...
 		$variations_stock = wpse_306996_get_variations_stock_quantity($product->get_id());
+		$i = 0;
+		$qArray = array();
+		foreach($variations_stock as $qty){
+			if($variations[$i]['attributes']['attribute_pa_size']<>''){
+				$string = $variations[$i]['attributes']['attribute_pa_size'];
+			}else{
+				$string = $variations[$i]['attributes']['attribute_size'];
+			}
+			$type = substr($string, -2);
+			preg_match_all('!\d+!', $string, $matches);
+			$size = $matches[0][0];
+			$qArray[$size] = $qty;
+			$i++;
+		}
+		if($type<>'ml'){
+			krsort($qArray);
+			$i = 0;
+			foreach($qArray as $size => $qty){
+				if($qty>0){
+					$desc = $qty;
+				}
+				if($qty==0 AND $desc>0){
+					$qArray[$size] = $desc;
+				}
+				$i++;
+			}
+		}else{
+			ksort($qArray);
+		}
 	} catch (\Throwable $th) {
 		//throw $th;
 		echo $th->getMessage();
 	}
 	//print_r($variations_stock);
-	$i = 0;
-	$qArray = array();
-	foreach($variations_stock as $qty){
-		if($variations[$i]['attributes']['attribute_pa_size']<>''){
-			$string = $variations[$i]['attributes']['attribute_pa_size'];
-		}else{
-			$string = $variations[$i]['attributes']['attribute_size'];
-		}
-		$type = substr($string, -2);
-		preg_match_all('!\d+!', $string, $matches);
-		$size = $matches[0][0];
-		$qArray[$size] = $qty;
-		$i++;
-	}
-	if($type<>'ml'){
-		krsort($qArray);
-		$i = 0;
-		foreach($qArray as $size => $qty){
-			if($qty>0){
-				$desc = $qty;
-			}
-			if($qty==0 AND $desc>0){
-				$qArray[$size] = $desc;
-			}
-			$i++;
-		}
-	}else{
-		ksort($qArray);
-	}
 	// print_r($qArray);
 ?>
 
