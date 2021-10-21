@@ -2002,3 +2002,11 @@ iframe {
     display: flex;
     gap: 1rem;
 }
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li::before {
+    display: none;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li::after {
+    display: none;
+}
