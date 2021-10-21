@@ -2143,6 +2143,7 @@ iframe {
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-areas: "name button" "price button";
+    column-gap: 1rem;
     /* border-left: 2px solid var(--green);
     padding-left: 1rem; */
 }
@@ -2160,7 +2161,7 @@ iframe {
 
 .woocommerce div.product form.cart .group_table td.woocommerce-grouped-product-list-item__label {
     grid-area: name;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
     padding: 0;
 }
