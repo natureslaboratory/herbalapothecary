@@ -2174,8 +2174,12 @@ iframe {
     width: auto;
 }
 
-.woocommerce div.product form.cart .group_table {
+.woocommerce div.product form.cart .group_table tbody {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+.woocommerce div.product form.cart:not(.variations_form, .grouped-form) {
+    display: block;
 }
