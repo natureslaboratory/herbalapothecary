@@ -135,7 +135,7 @@ if (!$has_access) {
 	}else{
 		ksort($qArray);
 	}
-	print_r($qArray);
+	// print_r($qArray);
 ?>
 
 <script type="text/javascript">
