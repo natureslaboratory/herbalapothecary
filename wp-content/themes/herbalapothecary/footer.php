@@ -29,71 +29,71 @@
 				systems and organic certification.
 			</p>
 			<div class="c-footer__accreditations-logos">
-				<img src="/wp-content/uploads/2021/09/living-wage.png" alt="Living Wage">
+				<a href="https://www.livingwage.org.uk/"><img src="/wp-content/uploads/2021/09/living-wage.png" alt="Living Wage"></a>
 				<img src="/wp-content/uploads/2021/09/cqs.png" alt="CQS">
 				<img src="/wp-content/uploads/2021/09/euorg.png" alt="euorg">
 			</div>
 		</div>
-		<div class="c-footer__info">
+		<div class="c-footer__info c-footer__column">
 			<h5>Company Info</h5>
-			<p>
+			<a href="tel:+441947602346">
 				+44 (0)1947 602346
-			</p>
-			<p>
+			</a>
+			<a href="mailto:sales@herbalapothecary.com">
 				sales@herbalapothecary.com
-			</p>
+			</a>
 			<p>
 				Unit 3b, Enterprise Way, North Yorkshire, YO22 4NH, United Kingdom
 			</p>
 		</div>
-		<div class="c-footer__social">
+		<div class="c-footer__social c-footer__column">
 			<h5>Social</h5>
 			<p>
 				Find us on the following social channels
 			</p>
-			<p>
-				Twitter
-			</p>
-			<p>
-				Facebook
-			</p>
-			<p>
-				Youtube
-			</p>
+			<a href="https://twitter.com/herbalapoth?lang=en" class="c-footer__social-link">
+				<i class="fab fa-twitter"></i><span>Twitter</span>
+			</a>
+			<a href="https://www.facebook.com/herbalapothecaryuk/" class="c-footer__social-link">
+				<i class="fab fa-facebook-f"></i><span>Facebook</span>
+			</a>
+			<a href="https://www.youtube.com/channel/UCAm5dGGrJEPctkyFP7LclDA" class="c-footer__social-link">
+				<i class="fab fa-youtube"></i><span>Youtube</span>
+			</a>
 		</div>
 	</div> <!-- End .c-footer__top -->
 	<div class="c-footer__bottom l-restrict">
 		<div class="c-footer__bottom-column c-footer__questions">
 			<h5>Questions?</h5>
 			<div class="c-footer__link-list">
-				<a href="/">Customer Service</a>
+				<a href="/customer-service">Customer Service</a>
 			</div>
 		</div>
 		<div class="c-footer__bottom-column c-footer__shipping">
 			<h5>Shipping</h5>
 			<div class="c-footer__link-list">
-				<a href="/">Delivery</a>
-				<a href="/">Returns</a>
-				<a href="/">Ordering</a>
+				<a href="/customer-service#answer1">Delivery</a>
+				<a href="/customer-service#answer3">Returns</a>
+				<a href="/customer-service#answer4">Ordering</a>
 			</div>
 		</div>
 		<div class="c-footer__bottom-column c-footer__about">
 			<h5>About Us</h5>
 			<div class="c-footer__link-list">
-				<a href="/">About Us</a>
-				<a href="/">Blog</a>
-				<a href="/">Natural Skincare</a>
-				<a href="/">Propolis</a>
-				<a href="/">Futurehealth Store</a>
-				<a href="/">IPRG</a>
+				<a href="/about-us">About Us</a>
+				<a href="<?= get_post_type_archive_link('post'); ?>">Blog</a>
+				<a href="https://sweetcecilys.com/">Natural Skincare</a>
+				<a href="https://beevitalpropolis.com/">Propolis</a>
+				<a href="https://futurehealthstore.com/">Futurehealth Store</a>
+				<a href="https://iprg.info/">IPRG</a>
 			</div>
 		</div>
 		<div class="c-footer__bottom-column c-footer__legal">
 			<h5>Legal</h5>
 
 			<div class="c-footer__link-list">
-				<a href="/">Terms & Conditions</a>
-				<a href="/">Privacy Policy</a>
+				<a href="/terms-and-conditions">Terms & Conditions</a>
+				<a href="/privacy-policy">Privacy Policy</a>
 			</div>
 		</div>
 	</div> <!-- End .c-footer__bottom -->
