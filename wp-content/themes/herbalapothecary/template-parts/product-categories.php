@@ -19,7 +19,7 @@ if (!empty($product_categories)) { ?>
             } ?>
             <div class="c-category">
                 <a class="c-category__image-wrapper" href="<?= get_term_link($category) ?>"><?php woocommerce_subcategory_thumbnail($category) ?></a>
-                <a href="<?= get_term_link($category) ?>">
+                <a class="c-category__title" href="<?= get_term_link($category) ?>">
                     <h3><?= $category->name ?></h3>
                 </a>
             </div>
