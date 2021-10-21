@@ -46,7 +46,7 @@ do_action('woocommerce_before_cart'); ?>
 					$product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
 			?>
 					<tr class="<?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
-						<td>
+						<td class="c-cart__product-thumbnail">
 							<div>
 								<?php
 								$thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
@@ -60,7 +60,7 @@ do_action('woocommerce_before_cart'); ?>
 							</div>
 						</td>
 
-						<td data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>">
+						<td data-title="<?php esc_attr_e('Product', 'woocommerce'); ?>" class="c-cart__product-title">
 							<div>
 								<?php
 								if (!$product_permalink) {
@@ -82,13 +82,13 @@ do_action('woocommerce_before_cart'); ?>
 							</div>
 						</td>
 
-						<td data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>">
+						<td data-title="<?php esc_attr_e('Price', 'woocommerce'); ?>" class="c-cart__product-price">
 							<?php
 							echo apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key); // PHPCS: XSS ok.
 							?>
 						</td>
 
-						<td data-title="<?php esc_attr_e('Quantity', 'woocommerce'); ?>">
+						<td data-title="<?php esc_attr_e('Quantity', 'woocommerce'); ?>" class="c-cart__product-quantity">
 							<?php
 							if ($_product->is_sold_individually()) {
 								$product_quantity = sprintf('1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key);
@@ -110,12 +110,12 @@ do_action('woocommerce_before_cart'); ?>
 							?>
 						</td>
 
-						<td data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>">
+						<td data-title="<?php esc_attr_e('Subtotal', 'woocommerce'); ?>" class="c-cart__product-total">
 							<?php
 							echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); // PHPCS: XSS ok.
 							?>
 						</td>
-						<td>
+						<td class="c-cart__product-delete">
 							<?php
 							echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 								'woocommerce_cart_item_remove_link',
