@@ -68,10 +68,10 @@ get_header();
             </a>
         </div>
         <div class="c-socials">
-            <div class="c-socials__facebook"></div>
-            <div class="c-socials__twitter"></div>
-            <div class="c-socials__youtube"></div>
-            <div class="c-socials__instagram"></div>
+            <a target="_blank" href="https://www.facebook.com/herbalapothecaryuk/"><i class="fab fa-facebook-square"></i></a>
+            <a target="_blank" href="https://twitter.com/herbalapoth?lang=en"><i class="fab fa-twitter-square"></i></a>
+            <a target="_blank" href="https://www.youtube.com/channel/UCAm5dGGrJEPctkyFP7LclDA"><i class="fab fa-youtube-square"></i></a>
+            <a target="_blank" href="https://www.instagram.com/herbalapothecaryuk/"><i class="fab fa-instagram-square"></i></a>
         </div>
         <div class="c-products">
             <div class="c-products__header">

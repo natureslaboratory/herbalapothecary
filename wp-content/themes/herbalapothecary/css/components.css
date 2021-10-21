@@ -595,26 +595,24 @@ ul.c-navigation__menu {
     gap: 0.5rem;
 }
 
-.c-socials * {
-    width: 40px;
-    aspect-ratio: 1 / 1;
-    border-radius: 5px;
+.c-socials i {
+    font-size: 2.5rem;
 }
 
-.c-socials__facebook {
-    background-color: #3b5998;
+.fa-facebook-square {
+    color: #3b5998;
 }
 
-.c-socials__twitter {
-    background-color: #1DA1F2;
+.fa-twitter-square {
+    color: #1DA1F2;
 }
 
-.c-socials__youtube {
-    background-color: #FF0000;
+.fa-youtube-square {
+    color: #FF0000;
 }
 
-.c-socials__instagram {
-    background-color: black;
+.fa-instagram-square {
+    color: black;
 }
 
 .c-products {}
