@@ -352,31 +352,31 @@ function ts_quantity_plus_minus()
 }
 
 
-function custom_search($query)
-{
-	// Don't do this filtering on the tag pages
-	if ((array_key_exists("product_tag", $_REQUEST) && $_REQUEST['product_tag'] !== NULL) || strstr($_SERVER['REQUEST_URI'], '/product-tag/') || strstr($_SERVER['REQUEST_URI'], '/calculator/')) {
-		return $query;
-	}
+// function custom_search($query)
+// {
+// 	// Don't do this filtering on the tag pages
+// 	if ((array_key_exists("product_tag", $_REQUEST) && $_REQUEST['product_tag'] !== NULL) || strstr($_SERVER['REQUEST_URI'], '/product-tag/') || strstr($_SERVER['REQUEST_URI'], '/calculator/')) {
+// 		return $query;
+// 	}
 
 
-	if (is_shop() || is_product_category()) {
-		if (!is_admin()) { // Don't apply it to admin users
-			if ($query->is_search() || $query->is_archive()) {
-				$meta_query[] = [
-					'key' => '_sku',
-					'value' => 'C$',
-					'compare' => 'RLIKE'
-				];
-				$query->set('meta_query', $meta_query);
-				return $query;
-			}
-		}
-	} else {
-		return $query;
-	}
-}
-add_action('pre_get_posts', 'custom_search');
+// 	if (is_shop() || is_product_category()) {
+// 		if (!is_admin()) { // Don't apply it to admin users
+// 			if ($query->is_search() || $query->is_archive()) {
+// 				$meta_query[] = [
+// 					'key' => '_sku',
+// 					'value' => 'C$',
+// 					'compare' => 'RLIKE'
+// 				];
+// 				$query->set('meta_query', $meta_query);
+// 				return $query;
+// 			}
+// 		}
+// 	} else {
+// 		return $query;
+// 	}
+// }
+// add_action('pre_get_posts', 'custom_search');
 
 function ha_enctype_custom_registration_forms()
 {
