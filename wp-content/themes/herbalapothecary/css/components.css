@@ -2198,8 +2198,8 @@ iframe {
 }
 
 .c-coa h2 {
-    text-align: center;
     margin-bottom: 0;
+    width: 100%;
 }
 
 .c-coa p {
@@ -2207,8 +2207,8 @@ iframe {
     margin-top: 1rem;
 }
 
-.c-coa p:last-child() {
-    margin-bottom: 2rem;
+.c-coa .row {
+    margin-top: 2rem;
 }
 
 .c-coa .row [class*="col"] {
