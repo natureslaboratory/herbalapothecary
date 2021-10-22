@@ -5,6 +5,7 @@
     display: grid;
     grid-template-areas: "logo search buttons";
     align-items: center;
+    gap: 1rem;
 }
 
 img.c-header__logo {
