@@ -441,7 +441,7 @@ ul.c-navigation__menu {
 }
 
 .site-main--home {
-    padding-bottom: 0;
+    padding-bottom: 4rem;
     background-color: var(--light-grey);
 }
 
