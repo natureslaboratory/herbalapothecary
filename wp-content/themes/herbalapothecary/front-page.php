@@ -77,24 +77,24 @@ get_header();
             <div class="c-products__header">
                 <h3>Browse Popular Products</h3>
                 <div class="c-products__categories">
-                    <?php 
-                        $orderby = 'count';
-                        $order = 'desc';
-                        $hide_empty = false;
-                        $cat_args = array(
-                            'orderby'    => $orderby,
-                            'order'      => $order,
-                            'hide_empty' => $hide_empty,
-                            'number' => 4
-                        );
+                    <?php
+                    $orderby = 'count';
+                    $order = 'desc';
+                    $hide_empty = false;
+                    $cat_args = array(
+                        'orderby'    => $orderby,
+                        'order'      => $order,
+                        'hide_empty' => $hide_empty,
+                        'number' => 4
+                    );
 
-                        $cats = get_terms('product_cat', $cat_args);
+                    $cats = get_terms('product_cat', $cat_args);
 
-                        foreach ($cats as $key => $cat) { ?>
-                            <a href="/product-category/<?= $cat->slug ?>"><?= $cat->name ?></a>
-                        <?php }
-                    
-                    
+                    foreach ($cats as $key => $cat) { ?>
+                        <a href="/product-category/<?= $cat->slug ?>"><?= $cat->name ?></a>
+                    <?php }
+
+
                     ?>
                     <!-- <a>Western Herbs</a>
                     <a>Chinese Herbs</a>
@@ -104,44 +104,44 @@ get_header();
                 </div>
             </div>
             <div class="c-products__grid">
-            <?php 
-            $args = [
-                'post_type' => ["product"],
-                'meta_key' => 'total_sales',
-                'orderby' => 'meta_value_num',
-                'order' => 'desc',
-                'posts_per_page' => 12
-            ];
+                <?php
+                $args = [
+                    'post_type' => ["product"],
+                    'meta_key' => 'total_sales',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'desc',
+                    'posts_per_page' => 12
+                ];
 
-            $popular_products = new WP_Query($args);
+                $popular_products = new WP_Query($args);
 
-            if ($popular_products->have_posts()) :
-                while ($popular_products->have_posts()) : 
-                    $popular_products->the_post();
-                    get_template_part('template-parts/product-thumbnail');
-                endwhile;
-            endif;
+                if ($popular_products->have_posts()) :
+                    while ($popular_products->have_posts()) :
+                        $popular_products->the_post();
+                        get_template_part('template-parts/product-thumbnail');
+                    endwhile;
+                endif;
 
-            wp_reset_postdata();
-            ?>
+                wp_reset_postdata();
+                ?>
             </div>
         </div>
         <div class="c-brands">
             <h3 class="c-brands__title">Shop By Brand</h3>
             <div class="c-brands__grid">
-                <?php 
-                    $brands = [
-                        [
-                            "name" => "BeeVital",
-                            "link" => "/product-category/beevital-apiceuticals/",
-                            "logo" => "/wp-content/uploads/2021/09/BeeVital.jpg"
-                        ],
-                        [
-                            "name" => "Sweet Cecily's",
-                            "link" => "/product-category/sweet-cecilys-skincare/",
-                            "logo" => "/wp-content/uploads/2021/09/sweet_cecilys.jpg"
-                        ]
+                <?php
+                $brands = [
+                    [
+                        "name" => "BeeVital",
+                        "link" => "/product-category/beevital-apiceuticals/",
+                        "logo" => "/wp-content/uploads/2021/09/BeeVital.jpg"
+                    ],
+                    [
+                        "name" => "Sweet Cecily's",
+                        "link" => "/product-category/sweet-cecilys-skincare/",
+                        "logo" => "/wp-content/uploads/2021/09/sweet_cecilys.jpg"
                     ]
+                ]
                 ?>
                 <?php foreach ($brands as $brand) { ?>
                     <div class="c-brand">
@@ -156,37 +156,37 @@ get_header();
             <h2>Herbal Apothecary Ethos</h2>
             <p>Herbal Apothecary has always maintained a strong emphasis on our three core values.</p>
             <p>
-                Firstly, we want our products must be supported by strong scientific evidence. 
-                To that end, we have strong links with external research bodies. 
-                We also have a growing in-house research team. They are responsible for testing 
+                Firstly, we want our products must be supported by strong scientific evidence.
+                To that end, we have strong links with external research bodies.
+                We also have a growing in-house research team. They are responsible for testing
                 as well as formulating new products.
             </p>
             <p>
-                Secondly, our business is sustainable. This is not just about environmental 
-                sustainability. We know how important it is to develop strong and sustainable 
-                relationships. Sustainability is also impacts our financial decisions. These three 
+                Secondly, our business is sustainable. This is not just about environmental
+                sustainability. We know how important it is to develop strong and sustainable
+                relationships. Sustainability is also impacts our financial decisions. These three
                 combined ensure the long-term sustainability of our company.
             </p>
             <p>
-                Thirdly, Herbal Apothecary is committed to ensurring access to herbal practitioners 
-                and products. We produce products which allow practitioners to deliver the services 
+                Thirdly, Herbal Apothecary is committed to ensurring access to herbal practitioners
+                and products. We produce products which allow practitioners to deliver the services
                 their patients need. We want to ensure herbal medicine is available to all.
             </p>
             <div class="c-intro__columns">
                 <div class="c-intro__columns-left">
                     <h2>Evidence</h2>
                     <p>
-                        Reuniting Science and Nature through rigorous targeted research. 
+                        Reuniting Science and Nature through rigorous targeted research.
                         <a href="/evidence">Find out more</a>.
                     </p>
                     <h2>Sustainability</h2>
                     <p>
-                        Creating ecologically sustainable products and processes. 
+                        Creating ecologically sustainable products and processes.
                         <a href="/sustainability">Find out more</a>.
                     </p>
                     <h2>Access</h2>
                     <p>
-                        Creating connections between practitioners and consumers, through 
+                        Creating connections between practitioners and consumers, through
                         products and services.
                         <a href="/access">Find out more</a>.
                     </p>
@@ -194,11 +194,11 @@ get_header();
                 <div class="c-intro__columns-right">
                     <h2>Contract Manufacturing of Herbal Products</h2>
                     <p>
-                        We offer the <strong>complete manufacture of natural products</strong>. Methods 
+                        We offer the <strong>complete manufacture of natural products</strong>. Methods
                         developed for our own specialist products are now available to you.
                     </p>
                     <p>
-                        With custom manufacturing we can develop <strong>high quality products</strong> that meet your 
+                        With custom manufacturing we can develop <strong>high quality products</strong> that meet your
                         unique specifications.
                     </p>
                     <p>
@@ -211,10 +211,16 @@ get_header();
             <div>
                 <h2>Sign up to our Newsletter</h2>
                 <p>for the latest product and research news from Herbal Apothecary</p>
-                <form class="c-newsletter__signup">
+                <!-- <form class="c-newsletter__signup">
                     <label for="email">Enter your email</label>
                     <input type="email" id="email">
                     <button type="submit" class="c-button">Subscribe</button>
+                </form> -->
+                <form class="c-newsletter__signup" action="https://buttondown.email/api/emails/embed-subscribe/herbalapothecary" method="post" target="popupwindow" onsubmit="window.open('https:\//buttondown.email/herbalapothecary', 'popupwindow')" class="embeddable-buttondown-form">
+                    <label for="bd-email" style="font-weight:700">Enter your email</label>
+                    <input type="email" name="email" id="bd-email" />
+                    <input type="hidden" value="1" name="embed" />
+                    <input type="submit" value="Subscribe" class="c-button" />
                 </form>
             </div>
             <img src="/wp-content/uploads/2021/09/ha_logo_no_text_-_resized.jpg.webp" alt="Herbal Apothecary">
