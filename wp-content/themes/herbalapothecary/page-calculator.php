@@ -11,67 +11,62 @@
 get_header(); ?>
 
 <?php
-// $args = array(
-// 	'post_type'      => 'product',
-// 	'posts_per_page' => 2000,
-// 	'product_tag' => 'tincture',
-// 	'orderby' => 'title',
-// 	'order' => 'asc'
-// );
+$args = array(
+	'post_type'      => 'product',
+	'posts_per_page' => 2000,
+	'product_tag' => 'tincture',
+	'orderby' => 'title',
+	'order' => 'asc'
+);
 
-// $tinctures = new WP_Query($args);
+$tinctures = new WP_Query($args);
 
-// wp_reset_query();
+$args = array(
+	'post_type'      => 'product',
+	'posts_per_page' => 2000,
+	'product_tag' => 'fluid extract',
+	'orderby' => 'title',
+	'order' => 'asc'
+);
 
-// $args = array(
-// 	'post_type'      => 'product',
-// 	'posts_per_page' => 2000,
-// 	'product_tag' => 'fluid extract',
-// 	'orderby' => 'title',
-// 	'order' => 'asc'
-// );
+$extracts = new WP_Query($args);
 
-// $extracts = new WP_Query($args);
 
-// wp_reset_query();
+$args = array(
+	'post_type'      => 'product',
+	'posts_per_page' => 2000,
+	'product_tag' => 'powder',
+	'orderby' => 'title',
+	'order' => 'asc'
+);
 
-// $args = array(
-// 	'post_type'      => 'product',
-// 	'posts_per_page' => 2000,
-// 	'product_tag' => 'powder',
-// 	'orderby' => 'title',
-// 	'order' => 'asc'
-// );
+$powders = new WP_Query($args);
 
-// $powders = new WP_Query($args);
+$args = array(
+	'post_type'      => 'product',
+	'posts_per_page' => 2000,
+	'product_tag' => 'cut-herb',
+	'orderby' => 'title',
+	'order' => 'asc'
+);
 
-// wp_reset_query();
+$herbs = new WP_Query($args);
 
-// $args = array(
-// 	'post_type'      => 'product',
-// 	'posts_per_page' => 2000,
-// 	'product_tag' => 'cut-herb',
-// 	'orderby' => 'title',
-// 	'order' => 'asc'
-// );
-
-// $herbs = new WP_Query($args);
-
-$newHerbs = wc_get_products([
+// $newHerbs = wc_get_products([
 	
-]);
+// ]);
 
-function print_array($array) {
-	echo "<pre>" . htmlentities(print_r($array, true)) . "</pre>";
-}
+// function print_array($array) {
+// 	echo "<pre>" . htmlentities(print_r($array, true)) . "</pre>";
+// }
 
-print_array($newHerbs);
+// print_array($newHerbs);
 
-for ($i=0; $i < count($newHerbs); $i++) { 
-	$herb = $newHerbs[$i]->get_data();
-	echo $herb["name"];
-	// echo $herb["data"];
-}
+// for ($i=0; $i < count($newHerbs); $i++) { 
+// 	$herb = $newHerbs[$i]->get_data();
+// 	echo $herb["name"];
+// 	// echo $herb["data"];
+// }
 
 wp_reset_query();
 
@@ -140,12 +135,6 @@ $_pf = new WC_Product_Factory();
 								}
 							}
 						endwhile;
-						foreach ($newHerbs as $herb) {
-							$herbData = $herb->get_data();
-							if ($herb->is_type("variable")) {
-								$variations = $herb->get_available_variations();
-							}
-						}
 						?>
 					</select>
 				</div>
