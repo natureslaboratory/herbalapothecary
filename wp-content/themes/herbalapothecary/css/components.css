@@ -2163,7 +2163,14 @@ iframe {
 
 .woocommerce form .woocommerce-grouped-product-list-item>*:nth-child(3) {
     grid-area: price;
+    /* display: none; */
 }
+
+.woocommerce form .woocommerce-grouped-product-list-item>*:nth-child(3) > *:not(p) {
+    display: none;
+}
+
+
 
 .woocommerce div.product form.cart .group_table td:first-child {
     width: auto;

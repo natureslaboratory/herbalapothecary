@@ -547,3 +547,9 @@ if (!wp_next_scheduled("ha_cron_hook")) {
 
 // echo '<pre>'; print_r( _get_cron_array() ); echo '</pre>';
 
+
+function ha_edit_price_display($price) {
+	return "<div class='c-price'>" . $price . "</div>";
+}
+
+add_filter('woocommerce_get_price_html', "ha_edit_price_display");
