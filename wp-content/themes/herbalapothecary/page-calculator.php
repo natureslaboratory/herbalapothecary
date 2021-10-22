@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Calculator
  *
@@ -10,45 +11,67 @@
 get_header(); ?>
 
 <?php
-$args = array(
-    'post_type'      => 'product',
-    'posts_per_page' => 2000,
-    'product_tag' => 'tincture',
-    'orderby' => 'title',
-    'order' => 'asc'
-);
+// $args = array(
+// 	'post_type'      => 'product',
+// 	'posts_per_page' => 2000,
+// 	'product_tag' => 'tincture',
+// 	'orderby' => 'title',
+// 	'order' => 'asc'
+// );
 
-$tinctures = new WP_Query( $args );
+// $tinctures = new WP_Query($args);
 
-$args = array(
-    'post_type'      => 'product',
-    'posts_per_page' => 2000,
-    'product_tag' => 'fluid extract',
-    'orderby' => 'title',
-    'order' => 'asc'
-);
+// wp_reset_query();
 
-$extracts = new WP_Query( $args );
+// $args = array(
+// 	'post_type'      => 'product',
+// 	'posts_per_page' => 2000,
+// 	'product_tag' => 'fluid extract',
+// 	'orderby' => 'title',
+// 	'order' => 'asc'
+// );
 
-$args = array(
-    'post_type'      => 'product',
-    'posts_per_page' => 2000,
-    'product_tag' => 'powder',
-    'orderby' => 'title',
-    'order' => 'asc'
-);
+// $extracts = new WP_Query($args);
 
-$powders = new WP_Query( $args );
+// wp_reset_query();
 
-$args = array(
-    'post_type'      => 'product',
-    'posts_per_page' => 2000,
-    'product_tag' => 'cut-herb',
-    'orderby' => 'title',
-    'order' => 'asc'
-);
+// $args = array(
+// 	'post_type'      => 'product',
+// 	'posts_per_page' => 2000,
+// 	'product_tag' => 'powder',
+// 	'orderby' => 'title',
+// 	'order' => 'asc'
+// );
 
-$herbs = new WP_Query( $args );
+// $powders = new WP_Query($args);
+
+// wp_reset_query();
+
+// $args = array(
+// 	'post_type'      => 'product',
+// 	'posts_per_page' => 2000,
+// 	'product_tag' => 'cut-herb',
+// 	'orderby' => 'title',
+// 	'order' => 'asc'
+// );
+
+// $herbs = new WP_Query($args);
+
+$newHerbs = wc_get_products([
+	
+]);
+
+function print_array($array) {
+	echo "<pre>" . htmlentities(print_r($array, true)) . "</pre>";
+}
+
+print_array($newHerbs);
+
+for ($i=0; $i < count($newHerbs); $i++) { 
+	$herb = $newHerbs[$i]->get_data();
+	echo $herb["name"];
+	// echo $herb["data"];
+}
 
 wp_reset_query();
 
@@ -58,866 +81,930 @@ $_pf = new WC_Product_Factory();
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<form id="calculator">
-	<p>Use our handy product calculator to get an instant quote for your own formulation. Choose from our extensive range of tinctures, extracts, powders or cut herbs to create your own herbal liquid, capsule, powder or cut herb blend. It's easy!</p>
-	<h2>Select a Product Type</h2>
-	<ul class="grid type">
-		<li><label><img src="/assets/bottle.jpg" alt="Liquid" /><input type="radio" name="type" value="liquid" checked> Liquid <small>Min. Total Quantity 15L</small></label></li>
-		<li><label><img src="/assets/capsule.jpg" alt="Capsule" /><input type="radio" name="type" value="capsule"> Capsule <small>Min. Total Quantity 5,000 Capsules</small></label></li>
-		<li><label><img src="/assets/powder.jpg" alt="Powder" /><input type="radio" name="type" value="powder"> Powder <small>Min. Total Quantity 15KG</small></label></li>
-		<li><label><img src="/assets/cut.jpg" alt="Cut" /><input type="radio" name="type" value="cut"> Cut <small>Min. Total Quantity 15KG</small></label></li>
-	</ul>	
-	
-	<h2>Create Your Formulation</h2>
-	<p>Use the table below to build your formulation. Add as many ingredients as you like. Use the % column to determine the proportion of each ingredient within the formulation. The <strong>Total</strong> must equal 100 in order to proceed with your quote.
-	<div class="ingredients liquid show">
-		<div class="i-row heading">
-			<div>Liquid</div>
-			<div>% of Formulation</div>
-			<div>Add/Remove</div>
-		</div>
-		<div class="i-row" id="template-liquid">
-			<div>
-				<label>Liquid</label>
-				<select name="liquid">
-					<?php
-					while ( $tinctures->have_posts() ) : $tinctures->the_post();
-						global $product;
-						if ( $product->is_type( 'variable' ) ) {
-							$variable = 'Variable';
-							$variations = $product->get_available_variations();
-							$v = false;
-							foreach($variations as $variation){
-								if(($variation['attributes']['attribute_pa_size']=='1000-ml' OR $variation['attributes']['attribute_pa_size']=='1000ml') AND $v==false){
-									echo '<option data-price="'.$variation['display_price'].'">'.get_the_title().'</option>';
-									$v = true;
+<main class="site-main site-main--shop">
+	<div class="c-calculator__heading">
+		<h2>Herbal Product Calculator</h2>
+		<p>
+			Use our handy product calculator to get an instant quote for your own formulation.
+			Choose from our extensive range of tinctures, extracts, powders or cut herbs to
+			create your own herbal liquid, capsule, powder or cut herb blend. It's easy!
+		</p>
+	</div>
+	<form id="calculator" style="padding: 0;">
+		<h2>Select a Product Type</h2>
+		<ul class="grid type">
+			<li><label><img src="/assets/bottle.jpg" alt="Liquid" /><input type="radio" name="type" value="liquid" checked> Liquid <small>Min. Total Quantity 15L</small></label></li>
+			<li><label><img src="/assets/capsule.jpg" alt="Capsule" /><input type="radio" name="type" value="capsule"> Capsule <small>Min. Total Quantity 5,000 Capsules</small></label></li>
+			<li><label><img src="/assets/powder.jpg" alt="Powder" /><input type="radio" name="type" value="powder"> Powder <small>Min. Total Quantity 15KG</small></label></li>
+			<li><label><img src="/assets/cut.jpg" alt="Cut" /><input type="radio" name="type" value="cut"> Cut <small>Min. Total Quantity 15KG</small></label></li>
+		</ul>
+
+		<h2>Create Your Formulation</h2>
+		<p>Use the table below to build your formulation. Add as many ingredients as you like. Use the % column to determine the proportion of each ingredient within the formulation. The <strong>Total</strong> must equal 100 in order to proceed with your quote.
+		<div class="ingredients liquid show">
+			<div class="i-row heading">
+				<div>Liquid</div>
+				<div>% of Formulation</div>
+				<div>Add/Remove</div>
+			</div>
+			<div class="i-row" id="template-liquid">
+				<div>
+					<label>Liquid</label>
+					<select name="liquid">
+						<?php
+						while ($tinctures->have_posts()) : $tinctures->the_post();
+							global $product;
+							if ($product->is_type('variable')) {
+								$variable = 'Variable';
+								$variations = $product->get_available_variations();
+								$v = false;
+								foreach ($variations as $variation) {
+									if (($variation['attributes']['attribute_pa_size'] == '1000-ml' or $variation['attributes']['attribute_pa_size'] == '1000ml') and $v == false) {
+										echo '<option data-price="' . $variation['display_price'] . '">' . get_the_title() . '</option>';
+										$v = true;
+									}
 								}
 							}
-						}
-					endwhile;
-					while ( $extracts->have_posts() ) : $extracts->the_post();
-					    global $product;
-						if ( $product->is_type( 'variable' ) ) {
-							$variable = 'Variable';
-							$variations = $product->get_available_variations();
-							$v = false;
-							foreach($variations as $variation){
-								if(($variation['attributes']['attribute_pa_size']=='1000-ml' OR $variation['attributes']['attribute_pa_size']=='1000ml') AND $v==false){
-									echo '<option data-price="'.$variation['display_price'].'">'.get_the_title().'</option>';
-									$v = true;
+						endwhile;
+						while ($extracts->have_posts()) : $extracts->the_post();
+							global $product;
+							if ($product->is_type('variable')) {
+								$variable = 'Variable';
+								$variations = $product->get_available_variations();
+								$v = false;
+								foreach ($variations as $variation) {
+									if (($variation['attributes']['attribute_pa_size'] == '1000-ml' or $variation['attributes']['attribute_pa_size'] == '1000ml') and $v == false) {
+										echo '<option data-price="' . $variation['display_price'] . '">' . get_the_title() . '</option>';
+										$v = true;
+									}
 								}
 							}
-						}
-					endwhile;
-					?>
-				</select>
-			</div>
-			<div>
-				<label>% of Formulation</label>
-				<input type="number" min="1" max="100" value="100" />
-			</div>
-			<div>
-				<button class="remove-liquid" onClick="return false;">Remove</button>
-			</div>
-		</div>
-		<div id="body-liquid">
-		</div>
-		<div class="i-row footer" id="footer-liquid">
-			<div><strong>Total</strong></div>
-			<div id="total-liquid-td"><strong><span id="total-liquid">100</span></strong></div>
-			<div class="i-add"><button id="add-liquid" onClick="return false;">Add Liquid</button></div>
-		</div>
-	</div>
-	
-	
-	<div class="ingredients powder">
-		<div class="i-row heading">
-			<div>Powder</div>
-			<div>% of Formulation</div>
-			<div>Add/Remove</div>
-		</div>
-		<div class="i-row" id="template-powder">
-			<div>
-				<select name="powders">
-					<?php
-					while ( $powders->have_posts() ) : $powders->the_post();
-					    global $product;
-						if ( $product->is_type( 'variable' ) ) {
-							$variable = 'Variable';
-							$variations = $product->get_available_variations();
-							$v = false;
-							foreach($variations as $variation){
-								if(($variation['attributes']['attribute_pa_size']=='1000-gm' OR $variation['attributes']['attribute_pa_size']=='1000gm' OR $variation['attributes']['attribute_pa_size']=='1000-g') AND $v==false){
-									echo '<option data-price="'.$variation['display_price'].'">'.get_the_title().'</option>';
-									$v = true;
-								}
+						endwhile;
+						foreach ($newHerbs as $herb) {
+							$herbData = $herb->get_data();
+							if ($herb->is_type("variable")) {
+								$variations = $herb->get_available_variations();
 							}
 						}
-					endwhile;
-					?>
-				</select>
+						?>
+					</select>
+				</div>
+				<div>
+					<label>% of Formulation</label>
+					<input type="number" min="1" max="100" value="100" />
+				</div>
+				<div>
+					<button class="remove-liquid" onClick="return false;">Remove</button>
+				</div>
 			</div>
-			<div>
-				<input type="number" min="1" max="100" value="100" />
+			<div id="body-liquid">
 			</div>
-			<div>
-				<button class="remove-powder" onClick="return false;">Remove</button>
+			<div class="i-row footer" id="footer-liquid">
+				<div><strong>Total</strong></div>
+				<div id="total-liquid-td"><strong><span id="total-liquid">100</span></strong></div>
+				<div class="i-add"><button id="add-liquid" onClick="return false;">Add Liquid</button></div>
 			</div>
 		</div>
-		<div id="body-powder">
-		</div>
-		<div class="i-row footer" id="footer-powder">
-			<div><strong style="text-align: right;width:100%;display:block;">Total</strong></div>
-			<div id="total-powder-td"><strong><span id="total-powder">100</span></strong></div>
-			<div class="i-add"><button id="add-powder" onClick="return false;">Add Powder</button></div>
-		</div>
-	</div>
-	
-	<div class="ingredients cut">
-		<div class="i-row heading">
-			<div>Powder</div>
-			<div>% of Formulation</div>
-			<div>Add/Remove</div>
-		</div>
-		<div class="i-row" id="template-cut">
-			<div>
-				<select name="herbs">
-					<?php
-					while ( $herbs->have_posts() ) : $herbs->the_post();
-					    global $product;
-						if ( $product->is_type( 'variable' ) ) {
-							$variable = 'Variable';
-							$variations = $product->get_available_variations();
-							$v = false;
-							foreach($variations as $variation){
-								if(($variation['attributes']['attribute_pa_size']=='1000-gm' OR $variation['attributes']['attribute_pa_size']=='1000gm' OR $variation['attributes']['attribute_pa_size']=='1000-g') AND $v==false){
-									echo '<option data-price="'.$variation['display_price'].'">'.get_the_title().'</option>';
-									$v = true;
+
+
+		<div class="ingredients powder">
+			<div class="i-row heading">
+				<div>Powder</div>
+				<div>% of Formulation</div>
+				<div>Add/Remove</div>
+			</div>
+			<div class="i-row" id="template-powder">
+				<div>
+					<select name="powders">
+						<?php
+						while ($powders->have_posts()) : $powders->the_post();
+							global $product;
+							if ($product->is_type('variable')) {
+								$variable = 'Variable';
+								$variations = $product->get_available_variations();
+								$v = false;
+								foreach ($variations as $variation) {
+									if (($variation['attributes']['attribute_pa_size'] == '1000-gm' or $variation['attributes']['attribute_pa_size'] == '1000gm' or $variation['attributes']['attribute_pa_size'] == '1000-g') and $v == false) {
+										echo '<option data-price="' . $variation['display_price'] . '">' . get_the_title() . '</option>';
+										$v = true;
+									}
 								}
 							}
-						}
-					endwhile;
-					?>
-				</select>
+						endwhile;
+						?>
+					</select>
+				</div>
+				<div>
+					<input type="number" min="1" max="100" value="100" />
+				</div>
+				<div>
+					<button class="remove-powder" onClick="return false;">Remove</button>
+				</div>
 			</div>
-			<div>
-				<input type="number" min="1" max="100" value="100" />
+			<div id="body-powder">
 			</div>
-			<div>
-				<button class="remove-cut" onClick="return false;">Remove</button>
-			</div>
-		</div>
-		<div id="body-cut">
-		</div>
-		<div class="i-row footer" id="footer-cut">
-			<div><strong style="text-align: right;width:100%;display:block;">Total</strong></div>
-			<div id="total-cut-td"><strong><span id="total-cut">100</span></strong></div>
-			<div class="i-add"><button id="add-cut" onClick="return false;">Add Herb</button></div>
-		</div>
-	</div>
-	
-	<div class="proceed">
-		<h2>Choose from our Packaging Options</h2>
-		<div class="packaging liquid show">
-			<ul class="grid type">
-				<li><label><img src="/assets/jerry.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="25 Litre Keg" data-minimum="1" data-unit-size="25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="4.8" checked> 25 Litre Keg</label></li>
-				<li><label><img src="/assets/jerry.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="5 Litre Keg" data-minimum="3" data-unit-size="5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.62" checked> 5 Litre Keg</label></li>
-				<li><label><img src="/assets/bottle.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="1000ml PET Bottle with Tamper Evident Cap" data-minimum="15" data-unit-size="1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.4"> 1000ml PET Bottle <small>with Tamper Evident Cap</small></label></li>
-				<li><label><img src="/assets/bottle.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="500ml PET Bottle with Tamper Evident Cap" data-minimum="30" data-unit-size="0.5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.3"> 500ml PET Bottle <small>with Tamper Evident Cap</small></label></li>
-				<li><label><img src="/assets/bottle.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="250ml PET Bottle with Tamper Evident Cap" data-minimum="60" data-unit-size="0.25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.19"> 250ml PET Bottle <small>with Tamper Evident Cap</small></label></li>
-				<li><label><img src="/assets/dropper.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="100ml Dropper Bottle with Cap & Insert" data-minimum="150" data-unit-size="0.1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.25"> 100ml Dropper Bottle <small>with Cap & Insert</small></label></li>
-				<li><label><img src="/assets/dropper.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="50ml Dropper Bottle with Cap & Insert" data-minimum="300" data-unit-size="0.05" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.19"> 50ml Dropper Bottle <small>with Cap & Insert</small></label></li>
-				<li><label><img src="/assets/dropper.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="30ml Dropper Bottle with Cap & Insert" data-minimum="500" data-unit-size="0.03" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.19"> 30ml Dropper Bottle <small>with Cap & Insert</small></label></li>
-				<li><label><img src="/assets/pipette.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="100ml Dropper Bottle with Pipette" data-minimum="150" data-unit-size="0.1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.43"> 100ml Dropper Bottle <small>with Pipette</small></label></li>
-				<li><label><img src="/assets/pipette.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="50ml Dropper Bottle with Pipette" data-minimum="300" data-unit-size="0.05" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.36"> 50ml Dropper Bottle <small>with Pipette</small></label></li>
-				<li><label><img src="/assets/pipette.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="30ml Dropper Bottle with Pipette" data-minimum="500" data-unit-size="0.03" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.35"> 30ml Dropper Bottle <small>with Pipette</small></label></li>
-		</div>
-		<div class="packaging capsule">
-			<ul class="grid type">
-				<li><label><img src="/assets/capsules.jpg" alt="Packaging" /><input type="radio" name="packaging-capsule" value="1000 Capsule Bags" data-minimum="5" data-unit-size="0.45" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="4.89" checked> Bulk Packs <small>(1000 capsules/bag)</small></label></li>
-				<li><label><img src="/assets/pot.jpg" alt="Packaging" /><input type="radio" name="packaging-capsule" value="100 Capsule Pots" data-minimum="50" data-unit-size="0.045" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.814"> 100 Capsule Pots <small>with Tamper Evident Lid</small></label></li>
-			</ul>
-		</div>
-		<div class="packaging powder">
-			<ul class="grid type">
-				<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-powder" value="1kg Foil Bags" data-minimum="15" data-unit-size="1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48" checked> 1kg Foil Bags</label></li>
-				<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-powder" value="500g Foil Bags" data-minimum="30" data-unit-size="0.5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 500g Foil Bags</label></li>
-				<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-powder" value="250g Foil Bags" data-minimum="60" data-unit-size="0.25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 250g Foil Bags</label></li>
-			</ul>
-		</div>
-		<div class="packaging cut">
-			<ul class="grid type">
-				<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-cut" value="1kg Foil Bags" data-minimum="15" data-unit-size="1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48" checked> 1kg Foil Bags</label></li>
-				<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-cut" value="500g Foil Bags" data-minimum="30" data-unit-size="0.5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 500g Foil Bags</label></li>
-				<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-cut" value="250g Foil Bags" data-minimum="60" data-unit-size="0.25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 250g Foil Bags</label></li>
-			</ul>
-		</div>
-		
-		<h2>Select a Labelling Option</h2>
-		<label><input type="radio" name="label" value="None" data-label-fee="0" checked> None</label>
-		<label><input type="radio" name="label" value="I Will Supply Labels for Application" data-label-fee="0.2"> I Will Supply Labels for Application</label>
-		<br />
-		
-		<h2>Enter Your Order Quantity</h2>
-		<p>Enter your required number of units below - minimum order quantities apply.</p>
-		<input type="number" id="units" min="1" value="1" />
-		<p>Units: <em><span id="unitsText" /></em></p>
-		
-		<h2>Here's Your Price</h2>
-		<p>Based on your formulation and the minimum order quantity the total cost for your order would be:</p>
-		<h3>&pound;<span id="price">0.00</span> <small>(&pound;<span id="unitPrice"></span>/unit)</small></h3>
-		
-		<h2>Now Request a Call Back</h2>
-		<p>Let's talk! Enter your name, email address and phone number below and we'll give you a call back to discuss your quote in more detail.</p>
-		
-		<div class="callback">
-			<div>
-				<label>Name</label>
-				<input type="text" name="Name" id="name" /><br />
-			</div>
-			<div>
-				<label>Email Address</label>
-				<input type="text" name="Email" id="email" /><br />
-			</div>
-			<div>
-				<label>Phone</label>
-				<input type="text" name="Phone" id="phone" /><br />
-			</div>
-			<div>
-				<label>Ready?</label>
-				<button class="btn btn-primary" id="request">Submit Details</button>
+			<div class="i-row footer" id="footer-powder">
+				<div><strong style="text-align: right;width:100%;display:block;">Total</strong></div>
+				<div id="total-powder-td"><strong><span id="total-powder">100</span></strong></div>
+				<div class="i-add"><button id="add-powder" onClick="return false;">Add Powder</button></div>
 			</div>
 		</div>
-		
-		<h2>Want to Chat?</h2>
-		<div class="call-tom">
-			<img src="/assets/tom.jpg" alt="Tom Cull">
-			<div>
-				<h3>Call Tom on 01947 602346</h3>
-				<p>Tom handles manufacturing enquires at Herbal Apothecary. He'd be glad to discuss your requirements and help you create the best possible product for your business.</p>
+
+		<div class="ingredients cut">
+			<div class="i-row heading">
+				<div>Powder</div>
+				<div>% of Formulation</div>
+				<div>Add/Remove</div>
+			</div>
+			<div class="i-row" id="template-cut">
+				<div>
+					<select name="herbs">
+						<?php
+						while ($herbs->have_posts()) : $herbs->the_post();
+							global $product;
+							if ($product->is_type('variable')) {
+								$variable = 'Variable';
+								$variations = $product->get_available_variations();
+								$v = false;
+								foreach ($variations as $variation) {
+									if (($variation['attributes']['attribute_pa_size'] == '1000-gm' or $variation['attributes']['attribute_pa_size'] == '1000gm' or $variation['attributes']['attribute_pa_size'] == '1000-g') and $v == false) {
+										echo '<option data-price="' . $variation['display_price'] . '">' . get_the_title() . '</option>';
+										$v = true;
+									}
+								}
+							}
+						endwhile;
+						?>
+					</select>
+				</div>
+				<div>
+					<input type="number" min="1" max="100" value="100" />
+				</div>
+				<div>
+					<button class="remove-cut" onClick="return false;">Remove</button>
+				</div>
+			</div>
+			<div id="body-cut">
+			</div>
+			<div class="i-row footer" id="footer-cut">
+				<div><strong style="text-align: right;width:100%;display:block;">Total</strong></div>
+				<div id="total-cut-td"><strong><span id="total-cut">100</span></strong></div>
+				<div class="i-add"><button id="add-cut" onClick="return false;">Add Herb</button></div>
 			</div>
 		</div>
-		
-		<h3>The Small Print</h3>
-		<p><small>The products offered by the calculator are not exhaustive. If you can't find what you need, please give us a call. Although we have worked hard to provide accurate pricing based on the product and 
-			packaging options available, the prices quotes are not binding and may be subject to change once you've submitted your details to us for confirmation. The prices shown are based on a single order - if you're 
-			able to commit to larger quantities over time we may well be able to offer you a discount on the advertised rate - please call for details.</small></p>
-	</div>
-	<div class="sticky"><h3>Total: &pound;<span id="sticky-price">0.00</span> <small>(&pound;<span id="sticky-unitPrice"></span>/unit)</small></h3></div>
-</form>
+
+		<div class="proceed">
+			<h2>Choose from our Packaging Options</h2>
+			<div class="packaging liquid show">
+				<ul class="grid type">
+					<li><label><img src="/assets/jerry.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="25 Litre Keg" data-minimum="1" data-unit-size="25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="4.8" checked> 25 Litre Keg</label></li>
+					<li><label><img src="/assets/jerry.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="5 Litre Keg" data-minimum="3" data-unit-size="5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.62" checked> 5 Litre Keg</label></li>
+					<li><label><img src="/assets/bottle.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="1000ml PET Bottle with Tamper Evident Cap" data-minimum="15" data-unit-size="1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.4"> 1000ml PET Bottle <small>with Tamper Evident Cap</small></label></li>
+					<li><label><img src="/assets/bottle.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="500ml PET Bottle with Tamper Evident Cap" data-minimum="30" data-unit-size="0.5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.3"> 500ml PET Bottle <small>with Tamper Evident Cap</small></label></li>
+					<li><label><img src="/assets/bottle.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="250ml PET Bottle with Tamper Evident Cap" data-minimum="60" data-unit-size="0.25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.19"> 250ml PET Bottle <small>with Tamper Evident Cap</small></label></li>
+					<li><label><img src="/assets/dropper.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="100ml Dropper Bottle with Cap & Insert" data-minimum="150" data-unit-size="0.1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.25"> 100ml Dropper Bottle <small>with Cap & Insert</small></label></li>
+					<li><label><img src="/assets/dropper.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="50ml Dropper Bottle with Cap & Insert" data-minimum="300" data-unit-size="0.05" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.19"> 50ml Dropper Bottle <small>with Cap & Insert</small></label></li>
+					<li><label><img src="/assets/dropper.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="30ml Dropper Bottle with Cap & Insert" data-minimum="500" data-unit-size="0.03" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.19"> 30ml Dropper Bottle <small>with Cap & Insert</small></label></li>
+					<li><label><img src="/assets/pipette.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="100ml Dropper Bottle with Pipette" data-minimum="150" data-unit-size="0.1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.43"> 100ml Dropper Bottle <small>with Pipette</small></label></li>
+					<li><label><img src="/assets/pipette.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="50ml Dropper Bottle with Pipette" data-minimum="300" data-unit-size="0.05" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.36"> 50ml Dropper Bottle <small>with Pipette</small></label></li>
+					<li><label><img src="/assets/pipette.jpg" alt="Packaging" /><input type="radio" name="packaging-liquid" value="30ml Dropper Bottle with Pipette" data-minimum="500" data-unit-size="0.03" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.35"> 30ml Dropper Bottle <small>with Pipette</small></label></li>
+			</div>
+			<div class="packaging capsule">
+				<ul class="grid type">
+					<li><label><img src="/assets/capsules.jpg" alt="Packaging" /><input type="radio" name="packaging-capsule" value="1000 Capsule Bags" data-minimum="5" data-unit-size="0.45" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="4.89" checked> Bulk Packs <small>(1000 capsules/bag)</small></label></li>
+					<li><label><img src="/assets/pot.jpg" alt="Packaging" /><input type="radio" name="packaging-capsule" value="100 Capsule Pots" data-minimum="50" data-unit-size="0.045" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.814"> 100 Capsule Pots <small>with Tamper Evident Lid</small></label></li>
+				</ul>
+			</div>
+			<div class="packaging powder">
+				<ul class="grid type">
+					<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-powder" value="1kg Foil Bags" data-minimum="15" data-unit-size="1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48" checked> 1kg Foil Bags</label></li>
+					<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-powder" value="500g Foil Bags" data-minimum="30" data-unit-size="0.5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 500g Foil Bags</label></li>
+					<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-powder" value="250g Foil Bags" data-minimum="60" data-unit-size="0.25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 250g Foil Bags</label></li>
+				</ul>
+			</div>
+			<div class="packaging cut">
+				<ul class="grid type">
+					<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-cut" value="1kg Foil Bags" data-minimum="15" data-unit-size="1" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48" checked> 1kg Foil Bags</label></li>
+					<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-cut" value="500g Foil Bags" data-minimum="30" data-unit-size="0.5" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 500g Foil Bags</label></li>
+					<li><label><img src="/assets/foilbag.jpg" alt="Packaging" /><input type="radio" name="packaging-cut" value="250g Foil Bags" data-minimum="60" data-unit-size="0.25" data-blend-charge="10" data-picking-charge="0.25" data-unit-cost="0.48"> 250g Foil Bags</label></li>
+				</ul>
+			</div>
+
+			<h2>Select a Labelling Option</h2>
+			<label><input type="radio" name="label" value="None" data-label-fee="0" checked> None</label>
+			<label><input type="radio" name="label" value="I Will Supply Labels for Application" data-label-fee="0.2"> I Will Supply Labels for Application</label>
+			<br />
+
+			<h2>Enter Your Order Quantity</h2>
+			<p>Enter your required number of units below - minimum order quantities apply.</p>
+			<input type="number" id="units" min="1" value="1" />
+			<p>Units: <em><span id="unitsText" /></em></p>
+
+			<h2>Here's Your Price</h2>
+			<p>Based on your formulation and the minimum order quantity the total cost for your order would be:</p>
+			<h3>&pound;<span id="price">0.00</span> <small>(&pound;<span id="unitPrice"></span>/unit)</small></h3>
+
+			<h2>Now Request a Call Back</h2>
+			<p>Let's talk! Enter your name, email address and phone number below and we'll give you a call back to discuss your quote in more detail.</p>
+
+			<div class="callback">
+				<div>
+					<label>Name</label>
+					<input type="text" name="Name" id="name" /><br />
+				</div>
+				<div>
+					<label>Email Address</label>
+					<input type="text" name="Email" id="email" /><br />
+				</div>
+				<div>
+					<label>Phone</label>
+					<input type="text" name="Phone" id="phone" /><br />
+				</div>
+				<div>
+					<label>Ready?</label>
+					<button class="btn btn-primary" id="request">Submit Details</button>
+				</div>
+			</div>
+
+			<h2>Want to Chat?</h2>
+			<div class="call-tom">
+				<img src="/assets/tom.jpg" alt="Tom Cull">
+				<div>
+					<h3>Call Tom on 01947 602346</h3>
+					<p>Tom handles manufacturing enquires at Herbal Apothecary. He'd be glad to discuss your requirements and help you create the best possible product for your business.</p>
+				</div>
+			</div>
+
+			<h3>The Small Print</h3>
+			<p><small>The products offered by the calculator are not exhaustive. If you can't find what you need, please give us a call. Although we have worked hard to provide accurate pricing based on the product and
+					packaging options available, the prices quotes are not binding and may be subject to change once you've submitted your details to us for confirmation. The prices shown are based on a single order - if you're
+					able to commit to larger quantities over time we may well be able to offer you a discount on the advertised rate - please call for details.</small></p>
+		</div>
+		<div class="sticky">
+			<h3>Total: &pound;<span id="sticky-price">0.00</span> <small>(&pound;<span id="sticky-unitPrice"></span>/unit)</small></h3>
+		</div>
+	</form>
+</main>
 
 <style>
-form#calculator{
-	text-align: center;
-	padding:0 1rem;
-}
-form h2{
-	margin-top:100px;
-}
-#template-liquid button,#template-powder button,#template-cut button{
-	display:none;
-}
-label{
-	display:block;
-}
-.proceed{
-	display:none;
-}
-.proceed.show{
-	display:block;
-}
-#total-liquid-td,#total-powder-td,#total-cut-td{
-	background:#e9ffb5;
-}
-#total-liquid-td.error,#total-powder-td.error,#total-cut-td.error{
-	background:#ffb4ac;
-}
-.packaging{
-	display:none;
-}
-.packaging.show{
-	display:block;
-}
-ul.grid{
-	display:grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-column-gap:2rem;
-	text-align: center;
-	margin:0;
-	list-style:none;
-	max-width:auto;
-	margin:0 auto;
-	padding-left:0px;
-}
-ul.grid li{
-	
-}
-ul.grid li img{
-	display:block;
-	width:200px;
-	height:200px;
-	margin:0 auto;
-	margin-bottom:1rem;
-	object-fit:contain;
-}
-ul.grid li input{
-	display:block;
-	margin:0 auto;
-}
-ul.grid li small{
-	display:block;
-}
-.sticky{
-	position:fixed;
-	bottom:0px;
-	left:0px;
-	width:100%;
-	padding:0.5rem;
-	background:gold;
-	z-index:1000;
-	margin-bottom:0px;
-}
-
-#calculator select{
-	width:400px;
-}
-
-.select2 {
-	width:100%!important;
-}
-
-.ingredients{
-	width:100%;
-	max-width:720px;
-	margin:0 auto;
-	display:none;
-}
-
-.ingredients select{
-	max-width:400px;
-}
-.ingredients input[type=number]{
-	max-width:60px;
-}
-.ingredients.show{
-	display:block;
-}
-
-.ingredients .i-row{
-	width:100%;
-	text-align: left;
-	display:grid;
-	grid-template-columns: 400px 160px 160px;
-}
-
-.ingredients .i-row div{
-	padding:0.3rem;
-}
-
-.ingredients .i-row.heading{
-	font-weight:700;
-}
-
-.ingredients input{
-	max-width:120px;
-}
-
-.ingredients label{
-	display:none;
-	font-weight:700;
-}
-
-.select2-container{
- width: 100%!important;
- }
- .select2-search--dropdown .select2-search__field {
- width: 98%;
- }
-
-.callback{
-	width:100%;
-	display:grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-column-gap: 1rem;
-}
-
-.callback label{
-	font-weight:700;
-}
-
-.callback input[type=text]{
-	padding:15px 10px;
-}
-
-.call-tom{
-	width:768px;
-	max-width:100%;
-	background:#f1f2f2;
-	display:grid;
-	margin:0 auto;
-	margin-bottom:200px;
-	grid-template-columns: 240px auto;
-}
-
-.call-tom img{
-	width:240px;
-	height:240px;
-	object-fit:cover;
-}
-
-.call-tom div{
-	padding:1rem 2rem;
-	text-align: left;
-}
-
-@media screen and (max-width:1000px){
-	.callback{
-		grid-template-columns: 1fr;
-		grid-row-gap: 1rem;
-	}	
-}
-
-@media screen and (max-width:680px){
-	ul.grid{
-		grid-template-columns: 1fr 1fr 1fr;
+	form#calculator {
+		text-align: center;
+		padding: 0 1rem;
 	}
-	ul.grid li img{
-		height:120px;
-	}
-	#calculator select{
-		width:200px;
-	}
-	.ingredients .i-row{
-		grid-template-columns: 1fr;
-		border-bottom:1px solid #ccc;
-		padding-bottom:0.3rem;
-		margin-bottom:0.3rem;
-	}
-	.ingredients .i-row.heading{
-		display:none;
-	}
-	.ingredients label{
-		display:block;
-	}
-	.select2-container{
-		max-width:240px;
-	}
-	.i-row.footer{
-		border-bottom:none;
-	}
-	.i-row.footer .i-add{
-		grid-row:1;
-	}
-	.sticky h3{
-		font-size:16px;
-		padding:0.8rem;
-		margin:0.5rem;
-	}
-	.call-tom{
-		grid-template-columns: 140px auto;
-		background:transparent;
-		border-top:1px solid #ccc;
-		border-bottom:1px solid #ccc;
-	}
-	.call-tom img{
-		width:140px;
-		height:140px;
-		margin-top:40px;
-	}
-}
 
-@media screen and (max-width:480px){
-	ul.grid{
-		grid-template-columns: 1fr 1fr;
+	form h2 {
+		margin-top: 100px;
 	}
-	ul.grid li img{
-		height:80px;
-	}
-	#calculator select{
-		width:120px;
-	}
-	.call-tom{
-		grid-template-columns: 100px auto;
-	}
-	.call-tom img{
-		width:100px;
-		height:100px;
-	}
-}
 
+	#template-liquid button,
+	#template-powder button,
+	#template-cut button {
+		display: none;
+	}
+
+	label {
+		display: block;
+	}
+
+	.proceed {
+		display: none;
+	}
+
+	.proceed.show {
+		display: block;
+	}
+
+	#total-liquid-td,
+	#total-powder-td,
+	#total-cut-td {
+		background: #e9ffb5;
+	}
+
+	#total-liquid-td.error,
+	#total-powder-td.error,
+	#total-cut-td.error {
+		background: #ffb4ac;
+	}
+
+	.packaging {
+		display: none;
+	}
+
+	.packaging.show {
+		display: block;
+	}
+
+	ul.grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-column-gap: 2rem;
+		text-align: center;
+		margin: 0;
+		list-style: none;
+		max-width: auto;
+		margin: 0 auto;
+		padding-left: 0px;
+	}
+
+	ul.grid li {}
+
+	ul.grid li img {
+		display: block;
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
+		margin-bottom: 1rem;
+		object-fit: contain;
+	}
+
+	ul.grid li input {
+		display: block;
+		margin: 0 auto;
+	}
+
+	ul.grid li small {
+		display: block;
+	}
+
+	.sticky {
+		position: fixed;
+		bottom: 0px;
+		left: 0px;
+		width: 100%;
+		padding: 0.5rem;
+		background: gold;
+		z-index: 1000;
+		margin-bottom: 0px;
+	}
+
+	#calculator select {
+		width: 400px;
+	}
+
+	.select2 {
+		width: 100% !important;
+	}
+
+	.ingredients {
+		width: 100%;
+		max-width: 720px;
+		margin: 0 auto;
+		display: none;
+	}
+
+	.ingredients select {
+		max-width: 400px;
+	}
+
+	.ingredients input[type=number] {
+		max-width: 60px;
+	}
+
+	.ingredients.show {
+		display: block;
+	}
+
+	.ingredients .i-row {
+		width: 100%;
+		text-align: left;
+		display: grid;
+		grid-template-columns: 400px 160px 160px;
+	}
+
+	.ingredients .i-row div {
+		padding: 0.3rem;
+	}
+
+	.ingredients .i-row.heading {
+		font-weight: 700;
+	}
+
+	.ingredients input {
+		max-width: 120px;
+	}
+
+	.ingredients label {
+		display: none;
+		font-weight: 700;
+	}
+
+	.select2-container {
+		width: 100% !important;
+	}
+
+	.select2-search--dropdown .select2-search__field {
+		width: 98%;
+	}
+
+	.callback {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-column-gap: 1rem;
+	}
+
+	.callback label {
+		font-weight: 700;
+	}
+
+	.callback input[type=text] {
+		padding: 15px 10px;
+	}
+
+	.call-tom {
+		width: 768px;
+		max-width: 100%;
+		background: #f1f2f2;
+		display: grid;
+		margin: 0 auto;
+		margin-bottom: 200px;
+		grid-template-columns: 240px auto;
+	}
+
+	.call-tom img {
+		width: 240px;
+		height: 240px;
+		object-fit: cover;
+	}
+
+	.call-tom div {
+		padding: 1rem 2rem;
+		text-align: left;
+	}
+
+	@media screen and (max-width:1000px) {
+		.callback {
+			grid-template-columns: 1fr;
+			grid-row-gap: 1rem;
+		}
+	}
+
+	@media screen and (max-width:680px) {
+		ul.grid {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		ul.grid li img {
+			height: 120px;
+		}
+
+		#calculator select {
+			width: 200px;
+		}
+
+		.ingredients .i-row {
+			grid-template-columns: 1fr;
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 0.3rem;
+			margin-bottom: 0.3rem;
+		}
+
+		.ingredients .i-row.heading {
+			display: none;
+		}
+
+		.ingredients label {
+			display: block;
+		}
+
+		.select2-container {
+			max-width: 240px;
+		}
+
+		.i-row.footer {
+			border-bottom: none;
+		}
+
+		.i-row.footer .i-add {
+			grid-row: 1;
+		}
+
+		.sticky h3 {
+			font-size: 16px;
+			padding: 0.8rem;
+			margin: 0.5rem;
+		}
+
+		.call-tom {
+			grid-template-columns: 140px auto;
+			background: transparent;
+			border-top: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+		}
+
+		.call-tom img {
+			width: 140px;
+			height: 140px;
+			margin-top: 40px;
+		}
+	}
+
+	@media screen and (max-width:480px) {
+		ul.grid {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		ul.grid li img {
+			height: 80px;
+		}
+
+		#calculator select {
+			width: 120px;
+		}
+
+		.call-tom {
+			grid-template-columns: 100px auto;
+		}
+
+		.call-tom img {
+			width: 100px;
+			height: 100px;
+		}
+	}
 </style>
 <script type="text/javascript">
-jQuery('input[type=radio][name=type]').change(function() {
-	jQuery('.ingredients').removeClass('show');
-	jQuery('.packaging').removeClass('show');
-    if (this.value == 'liquid') {
-       jQuery('.ingredients.liquid').addClass('show');
-       jQuery('.packaging.liquid').addClass('show');
-    }
-    else if (this.value == 'capsule') {
-	    jQuery('.ingredients.powder').addClass('show');
-	    jQuery('.packaging.capsule').addClass('show');
-    }
-    else if (this.value == 'powder') {
-    	jQuery('.ingredients.powder').addClass('show');
-    	jQuery('.packaging.powder').addClass('show');
-    }
-    else if (this.value == 'cut') {
-    	jQuery('.ingredients.cut').addClass('show');
-    	jQuery('.packaging.cut').addClass('show');
-    }
-    calcCut();
-    calcLiquid();
-    calcPowder();
-});
-jQuery('#add-liquid').click(function(){
-	jQuery("select.select2-hidden-accessible").select2('destroy');
-	var html = jQuery('#template-liquid').html();
-	jQuery('#body-liquid').append('<div class="i-row">' + html + '</div>');
-	calcLiquid();
-	jQuery('#calculator select').select2();
-})
-jQuery('body').on('click', 'button.remove-liquid', function() {
-	var rowCount = jQuery('.ingredients.liquid .i-row').length;
-	if(rowCount>3){
-		jQuery(this).parents(".i-row").remove();
-	}
-	calcLiquid();
-})
-jQuery('#add-powder').click(function(){
-	jQuery("select.select2-hidden-accessible").select2('destroy');
-	var html = jQuery('#template-powder').html();
-	jQuery('#body-powder').append('<div class="i-row">' + html + '</div>');
-	calcPowder();
-	jQuery('#calculator select').select2();
-})
-jQuery('body').on('click', 'button.remove-powder', function() {
-	var rowCount = jQuery('.ingredients.powder .i-row').length;
-	if(rowCount>3){
-		jQuery(this).parents(".i-row").remove();
-	}
-	calcPowder();
-})
-jQuery('#add-cut').click(function(){
-	jQuery("select.select2-hidden-accessible").select2('destroy');
-	var html = jQuery('#template-cut').html();
-	jQuery('#body-cut').append('<div class="i-row">' + html + '</div>');
-	calcCut();
-	jQuery('#calculator select').select2();
-})
-jQuery('body').on('click', 'button.remove-cut', function() {
-	var rowCount = jQuery('.ingredients.cut .i-row').length;
-	if(rowCount>3){
-		jQuery(this).parents(".i-row").remove();
-	}
-	calcCut();
-})
-
-function calcLiquid(){
-	var totalLiquid = parseInt(0);
-	jQuery(".ingredients.liquid input[type=number]" ).each(function(index){
-		totalLiquid = totalLiquid + parseInt(jQuery(this).val());
+	jQuery('input[type=radio][name=type]').change(function() {
+		jQuery('.ingredients').removeClass('show');
+		jQuery('.packaging').removeClass('show');
+		if (this.value == 'liquid') {
+			jQuery('.ingredients.liquid').addClass('show');
+			jQuery('.packaging.liquid').addClass('show');
+		} else if (this.value == 'capsule') {
+			jQuery('.ingredients.powder').addClass('show');
+			jQuery('.packaging.capsule').addClass('show');
+		} else if (this.value == 'powder') {
+			jQuery('.ingredients.powder').addClass('show');
+			jQuery('.packaging.powder').addClass('show');
+		} else if (this.value == 'cut') {
+			jQuery('.ingredients.cut').addClass('show');
+			jQuery('.packaging.cut').addClass('show');
+		}
+		calcCut();
+		calcLiquid();
+		calcPowder();
 	});
-	jQuery('#total-liquid').text(totalLiquid);
-	if(totalLiquid == 100){
-		jQuery('.proceed').addClass('show');
-		jQuery('#total-liquid-td').removeClass('error');
-	}else{
-		jQuery('.proceed').removeClass('show');
-		jQuery('#total-liquid-td').addClass('error');
-	}
-	calcPrice();
-}
-jQuery('body').on('change', '.ingredients.liquid input[type=number]', function() {
-	calcLiquid();
-});
-jQuery('body').on('change', '.ingredients.liquid select', function() {
-	calcLiquid();
-});
+	jQuery('#add-liquid').click(function() {
+		jQuery("select.select2-hidden-accessible").select2('destroy');
+		var html = jQuery('#template-liquid').html();
+		jQuery('#body-liquid').append('<div class="i-row">' + html + '</div>');
+		calcLiquid();
+		jQuery('#calculator select').select2();
+	})
+	jQuery('body').on('click', 'button.remove-liquid', function() {
+		var rowCount = jQuery('.ingredients.liquid .i-row').length;
+		if (rowCount > 3) {
+			jQuery(this).parents(".i-row").remove();
+		}
+		calcLiquid();
+	})
+	jQuery('#add-powder').click(function() {
+		jQuery("select.select2-hidden-accessible").select2('destroy');
+		var html = jQuery('#template-powder').html();
+		jQuery('#body-powder').append('<div class="i-row">' + html + '</div>');
+		calcPowder();
+		jQuery('#calculator select').select2();
+	})
+	jQuery('body').on('click', 'button.remove-powder', function() {
+		var rowCount = jQuery('.ingredients.powder .i-row').length;
+		if (rowCount > 3) {
+			jQuery(this).parents(".i-row").remove();
+		}
+		calcPowder();
+	})
+	jQuery('#add-cut').click(function() {
+		jQuery("select.select2-hidden-accessible").select2('destroy');
+		var html = jQuery('#template-cut').html();
+		jQuery('#body-cut').append('<div class="i-row">' + html + '</div>');
+		calcCut();
+		jQuery('#calculator select').select2();
+	})
+	jQuery('body').on('click', 'button.remove-cut', function() {
+		var rowCount = jQuery('.ingredients.cut .i-row').length;
+		if (rowCount > 3) {
+			jQuery(this).parents(".i-row").remove();
+		}
+		calcCut();
+	})
 
-function calcPowder(){
-	var totalPowder = parseInt(0);
-	jQuery(".ingredients.powder input[type=number]" ).each(function(index){
-		totalPowder = totalPowder + parseInt(jQuery(this).val());
+	function calcLiquid() {
+		var totalLiquid = parseInt(0);
+		jQuery(".ingredients.liquid input[type=number]").each(function(index) {
+			totalLiquid = totalLiquid + parseInt(jQuery(this).val());
+		});
+		jQuery('#total-liquid').text(totalLiquid);
+		if (totalLiquid == 100) {
+			jQuery('.proceed').addClass('show');
+			jQuery('#total-liquid-td').removeClass('error');
+		} else {
+			jQuery('.proceed').removeClass('show');
+			jQuery('#total-liquid-td').addClass('error');
+		}
+		calcPrice();
+	}
+	jQuery('body').on('change', '.ingredients.liquid input[type=number]', function() {
+		calcLiquid();
 	});
-	jQuery('#total-powder').text(totalPowder);
-	if(totalPowder == 100){
-		jQuery('.proceed').addClass('show');
-		jQuery('#total-powder-td').removeClass('error');
-	}else{
-		jQuery('.proceed').removeClass('show');
-		jQuery('#total-powder-td').addClass('error');
-	}
-	calcPrice();
-}
-jQuery('body').on('change', '.ingredients.powder input[type=number]', function() {
-	calcPowder();
-});
-jQuery('body').on('change', '.ingredients.powder select', function() {
-	calcPowder();
-});
-
-function calcCut(){
-	var totalCut = parseInt(0);
-	jQuery(".ingredients.cut input[type=number]" ).each(function(index){
-		totalCut = totalCut + parseInt(jQuery(this).val());
+	jQuery('body').on('change', '.ingredients.liquid select', function() {
+		calcLiquid();
 	});
-	jQuery('#total-cut').text(totalCut);
-	if(totalCut == 100){
-		jQuery('.proceed').addClass('show');
-		jQuery('#total-cut-td').removeClass('error');
-	}else{
-		jQuery('.proceed').removeClass('show');
-		jQuery('#total-cut-td').addClass('error');
-	}
-	calcPrice();
-}
-jQuery('body').on('change', '.ingredients.cut input[type=number]', function() {
-	calcCut();
-});
-jQuery('body').on('change', '.ingredients.cut select', function() {
-	calcCut();
-});
 
-jQuery('input[type=radio][name=packaging-liquid],input[type=radio][name=packaging-capsule],input[type=radio][name=packaging-powder],input[type=radio][name=packaging-cut],input[type=radio][name=label]').change(function() {
-	calcPrice();	
-});
-
-jQuery('#units').change(function() {
-	calcPrice();	
-});
-
-function calcPrice(){
-	var type = jQuery('input[type=radio][name=type]:checked').val();
-	if(type == 'liquid'){
-		var total = parseInt(0);
-		const prices = [];
-		const quantities = [];
-		jQuery(".ingredients.liquid select" ).each(function(index){
-			var price = jQuery(this).find(':selected').data('price');
-			prices.push(price*100);
+	function calcPowder() {
+		var totalPowder = parseInt(0);
+		jQuery(".ingredients.powder input[type=number]").each(function(index) {
+			totalPowder = totalPowder + parseInt(jQuery(this).val());
 		});
-		jQuery(".ingredients.liquid input[type=number]" ).each(function(index){
-			var quantity = jQuery(this).val();
-			quantities.push(quantity);
-		});
-		var quantity = prices.length;
-		var i = 0;
-		while(i < quantity){
-			var pPrice = prices[i];
-			var pQuantity = quantities[i];
-			var pPrice = parseFloat(pPrice*(pQuantity/100)/100);
-			total = total+pPrice;
-			i++;
+		jQuery('#total-powder').text(totalPowder);
+		if (totalPowder == 100) {
+			jQuery('.proceed').addClass('show');
+			jQuery('#total-powder-td').removeClass('error');
+		} else {
+			jQuery('.proceed').removeClass('show');
+			jQuery('#total-powder-td').addClass('error');
 		}
-		var minimum = jQuery('input[type=radio][name=packaging-liquid]:checked').data('minimum');
-		var unitCost = jQuery('input[type=radio][name=packaging-liquid]:checked').data('unitCost');
-		var unitSize = jQuery('input[type=radio][name=packaging-liquid]:checked').data('unit-size');
-		var pickingCharge = jQuery('input[type=radio][name=packaging-liquid]:checked').data('picking-charge');
-		var blendCharge = jQuery('input[type=radio][name=packaging-liquid]:checked').data('blend-charge');
-	}else if(type == 'capsule'){
-		var total = parseInt(0);
-		const prices = [];
-		const quantities = [];
-		jQuery(".ingredients.powder select" ).each(function(index){
-			var price = jQuery(this).find(':selected').data('price');
-			prices.push(price*100);
-		});
-		jQuery(".ingredients.powder input[type=number]" ).each(function(index){
-			var quantity = jQuery(this).val();
-			quantities.push(quantity);
-		});
-		var quantity = prices.length;
-		var i = 0;
-		while(i < quantity){
-			var pPrice = prices[i];
-			var pQuantity = quantities[i];
-			var pPrice = parseFloat(pPrice*(pQuantity/100)/100);
-			total = total+pPrice;
-			i++;
-		}
-		var minimum = jQuery('input[type=radio][name=packaging-capsule]:checked').data('minimum');
-		var unitCost = jQuery('input[type=radio][name=packaging-capsule]:checked').data('unitCost');
-		var unitSize = jQuery('input[type=radio][name=packaging-capsule]:checked').data('unit-size');
-		var pickingCharge = jQuery('input[type=radio][name=packaging-capsule]:checked').data('picking-charge');
-		var blendCharge = jQuery('input[type=radio][name=packaging-capsule]:checked').data('blend-charge');
-	}else if(type == 'powder'){
-		var total = parseInt(0);
-		const prices = [];
-		const quantities = [];
-		jQuery(".ingredients.powder select" ).each(function(index){
-			var price = jQuery(this).find(':selected').data('price');
-			prices.push(price*100);
-		});
-		jQuery(".ingredients.powder input[type=number]" ).each(function(index){
-			var quantity = jQuery(this).val();
-			quantities.push(quantity);
-		});
-		console.log(prices);
-		var quantity = prices.length;
-		var i = 0;
-		while(i < quantity){
-			var pPrice = prices[i];
-			var pQuantity = quantities[i];
-			var pPrice = parseFloat(pPrice*(pQuantity/100)/100);
-			total = total+pPrice;
-			i++;
-		}
-		var minimum = jQuery('input[type=radio][name=packaging-powder]:checked').data('minimum');
-		var unitCost = jQuery('input[type=radio][name=packaging-powder]:checked').data('unitCost');
-		var unitSize = jQuery('input[type=radio][name=packaging-powder]:checked').data('unit-size');
-		var pickingCharge = jQuery('input[type=radio][name=packaging-powder]:checked').data('picking-charge');
-		var blendCharge = jQuery('input[type=radio][name=packaging-powder]:checked').data('blend-charge');
-	}else if(type == 'cut'){
-		var total = parseInt(0);
-		const prices = [];
-		const quantities = [];
-		jQuery(".ingredients.cut select" ).each(function(index){
-			var price = jQuery(this).find(':selected').data('price');
-			prices.push(price*100);
-		});
-		jQuery(".ingredients.cut input[type=number]" ).each(function(index){
-			var quantity = jQuery(this).val();
-			quantities.push(quantity);
-		});
-		var quantity = prices.length;
-		var i = 0;
-		while(i < quantity){
-			var pPrice = prices[i];
-			var pQuantity = quantities[i];
-			var pPrice = parseFloat(pPrice*(pQuantity/100)/100);
-			total = total+pPrice;
-			i++;
-		}
-		var minimum = jQuery('input[type=radio][name=packaging-cut]:checked').data('minimum');
-		var unitCost = jQuery('input[type=radio][name=packaging-cut]:checked').data('unitCost');
-		var unitSize = jQuery('input[type=radio][name=packaging-cut]:checked').data('unit-size');
-		var pickingCharge = jQuery('input[type=radio][name=packaging-cut]:checked').data('picking-charge');
-		var blendCharge = jQuery('input[type=radio][name=packaging-cut]:checked').data('blend-charge');
+		calcPrice();
 	}
-	var labelFee = jQuery('input[type=radio][name=label]:checked').data('label-fee');
-	var units = jQuery('#units').val();
-	if(units < minimum){
-		jQuery('#units').val(minimum);
-	}
-	jQuery('#units').attr('min',minimum);
-	var units = jQuery('#units').val();
-	
-	//CALC TOTAL MASTER UNITS
-	var totalQuantity = parseInt(units)*parseFloat(unitSize);
-	var productCost = parseFloat(totalQuantity)*parseFloat(total);
-	var packagingCost = (parseFloat(unitCost)+parseFloat(labelFee))*parseInt(units);
-	var ingredients = quantity;
-	var pickingFee = (parseFloat(pickingCharge)*ingredients)*totalQuantity;
-/*
-	console.log("Per KG/L Cost: " + total);
-	console.log("Total Product Cost: " + productCost);
-	console.log("Total Picking Cost: " + pickingFee);
-	console.log("Total Blending Cost: " + blendCharge);
-	console.log("Total Packaging Cost: " + packagingCost);
-*/
-	var grandTotal = (parseFloat(productCost)+parseFloat(packagingCost)+parseFloat(blendCharge)+parseFloat(pickingFee))*2.5;
-	var unitCost = parseFloat(grandTotal/units);
-	jQuery('#price,#sticky-price').text(grandTotal.toFixed(2));
-	jQuery('#unitPrice,#sticky-unitPrice').text(unitCost.toFixed(2));
-	
-	jQuery('#calculator select').select2();
-	
-	var pType = jQuery('input[type=radio][name=type]:checked').val();
-	if(pType=='liquid'){
-		var pPackaging = jQuery('input[type=radio][name=packaging-liquid]:checked').val();
-	}
-	if(pType=='capsule'){
-		var pPackaging = jQuery('input[type=radio][name=packaging-capsule]:checked').val();
-	}
-	if(pType=='powder'){
-		var pPackaging = jQuery('input[type=radio][name=packaging-powder]:checked').val();
-	}
-	if(pType=='cut'){
-		var pPackaging = jQuery('input[type=radio][name=packaging-cut]:checked').val();
-	}
-	jQuery('#unitsText').text(pPackaging);
-}
+	jQuery('body').on('change', '.ingredients.powder input[type=number]', function() {
+		calcPowder();
+	});
+	jQuery('body').on('change', '.ingredients.powder select', function() {
+		calcPowder();
+	});
 
-calcLiquid();
-calcPrice();
+	function calcCut() {
+		var totalCut = parseInt(0);
+		jQuery(".ingredients.cut input[type=number]").each(function(index) {
+			totalCut = totalCut + parseInt(jQuery(this).val());
+		});
+		jQuery('#total-cut').text(totalCut);
+		if (totalCut == 100) {
+			jQuery('.proceed').addClass('show');
+			jQuery('#total-cut-td').removeClass('error');
+		} else {
+			jQuery('.proceed').removeClass('show');
+			jQuery('#total-cut-td').addClass('error');
+		}
+		calcPrice();
+	}
+	jQuery('body').on('change', '.ingredients.cut input[type=number]', function() {
+		calcCut();
+	});
+	jQuery('body').on('change', '.ingredients.cut select', function() {
+		calcCut();
+	});
 
-jQuery(document).ready(function() {
-    jQuery('#calculator select').select2({
-	    width: 'resolve'
-    });
-});
+	jQuery('input[type=radio][name=packaging-liquid],input[type=radio][name=packaging-capsule],input[type=radio][name=packaging-powder],input[type=radio][name=packaging-cut],input[type=radio][name=label]').change(function() {
+		calcPrice();
+	});
 
-jQuery('body').on('click', '#request', function(e) {
-	e.preventDefault();
-	var pName = jQuery('#name').val();
-	var pEmail = jQuery('#email').val();
-	var pPhone = jQuery('#phone').val();
-	var pCost = jQuery('#price').text();
-	var pUnitCost = jQuery('#unitPrice').text();
-	const ingredients = [];
-	const quantities = [];
-	if(pName=='' || pEmail=='' || pPhone==''){
-		alert('Please enter your name, email and phone number');
-	}else{
+	jQuery('#units').change(function() {
+		calcPrice();
+	});
+
+	function calcPrice() {
+		var type = jQuery('input[type=radio][name=type]:checked').val();
+		if (type == 'liquid') {
+			var total = parseInt(0);
+			const prices = [];
+			const quantities = [];
+			jQuery(".ingredients.liquid select").each(function(index) {
+				var price = jQuery(this).find(':selected').data('price');
+				prices.push(price * 100);
+			});
+			jQuery(".ingredients.liquid input[type=number]").each(function(index) {
+				var quantity = jQuery(this).val();
+				quantities.push(quantity);
+			});
+			var quantity = prices.length;
+			var i = 0;
+			while (i < quantity) {
+				var pPrice = prices[i];
+				var pQuantity = quantities[i];
+				var pPrice = parseFloat(pPrice * (pQuantity / 100) / 100);
+				total = total + pPrice;
+				i++;
+			}
+			var minimum = jQuery('input[type=radio][name=packaging-liquid]:checked').data('minimum');
+			var unitCost = jQuery('input[type=radio][name=packaging-liquid]:checked').data('unitCost');
+			var unitSize = jQuery('input[type=radio][name=packaging-liquid]:checked').data('unit-size');
+			var pickingCharge = jQuery('input[type=radio][name=packaging-liquid]:checked').data('picking-charge');
+			var blendCharge = jQuery('input[type=radio][name=packaging-liquid]:checked').data('blend-charge');
+		} else if (type == 'capsule') {
+			var total = parseInt(0);
+			const prices = [];
+			const quantities = [];
+			jQuery(".ingredients.powder select").each(function(index) {
+				var price = jQuery(this).find(':selected').data('price');
+				prices.push(price * 100);
+			});
+			jQuery(".ingredients.powder input[type=number]").each(function(index) {
+				var quantity = jQuery(this).val();
+				quantities.push(quantity);
+			});
+			var quantity = prices.length;
+			var i = 0;
+			while (i < quantity) {
+				var pPrice = prices[i];
+				var pQuantity = quantities[i];
+				var pPrice = parseFloat(pPrice * (pQuantity / 100) / 100);
+				total = total + pPrice;
+				i++;
+			}
+			var minimum = jQuery('input[type=radio][name=packaging-capsule]:checked').data('minimum');
+			var unitCost = jQuery('input[type=radio][name=packaging-capsule]:checked').data('unitCost');
+			var unitSize = jQuery('input[type=radio][name=packaging-capsule]:checked').data('unit-size');
+			var pickingCharge = jQuery('input[type=radio][name=packaging-capsule]:checked').data('picking-charge');
+			var blendCharge = jQuery('input[type=radio][name=packaging-capsule]:checked').data('blend-charge');
+		} else if (type == 'powder') {
+			var total = parseInt(0);
+			const prices = [];
+			const quantities = [];
+			jQuery(".ingredients.powder select").each(function(index) {
+				var price = jQuery(this).find(':selected').data('price');
+				prices.push(price * 100);
+			});
+			jQuery(".ingredients.powder input[type=number]").each(function(index) {
+				var quantity = jQuery(this).val();
+				quantities.push(quantity);
+			});
+			console.log(prices);
+			var quantity = prices.length;
+			var i = 0;
+			while (i < quantity) {
+				var pPrice = prices[i];
+				var pQuantity = quantities[i];
+				var pPrice = parseFloat(pPrice * (pQuantity / 100) / 100);
+				total = total + pPrice;
+				i++;
+			}
+			var minimum = jQuery('input[type=radio][name=packaging-powder]:checked').data('minimum');
+			var unitCost = jQuery('input[type=radio][name=packaging-powder]:checked').data('unitCost');
+			var unitSize = jQuery('input[type=radio][name=packaging-powder]:checked').data('unit-size');
+			var pickingCharge = jQuery('input[type=radio][name=packaging-powder]:checked').data('picking-charge');
+			var blendCharge = jQuery('input[type=radio][name=packaging-powder]:checked').data('blend-charge');
+		} else if (type == 'cut') {
+			var total = parseInt(0);
+			const prices = [];
+			const quantities = [];
+			jQuery(".ingredients.cut select").each(function(index) {
+				var price = jQuery(this).find(':selected').data('price');
+				prices.push(price * 100);
+			});
+			jQuery(".ingredients.cut input[type=number]").each(function(index) {
+				var quantity = jQuery(this).val();
+				quantities.push(quantity);
+			});
+			var quantity = prices.length;
+			var i = 0;
+			while (i < quantity) {
+				var pPrice = prices[i];
+				var pQuantity = quantities[i];
+				var pPrice = parseFloat(pPrice * (pQuantity / 100) / 100);
+				total = total + pPrice;
+				i++;
+			}
+			var minimum = jQuery('input[type=radio][name=packaging-cut]:checked').data('minimum');
+			var unitCost = jQuery('input[type=radio][name=packaging-cut]:checked').data('unitCost');
+			var unitSize = jQuery('input[type=radio][name=packaging-cut]:checked').data('unit-size');
+			var pickingCharge = jQuery('input[type=radio][name=packaging-cut]:checked').data('picking-charge');
+			var blendCharge = jQuery('input[type=radio][name=packaging-cut]:checked').data('blend-charge');
+		}
+		var labelFee = jQuery('input[type=radio][name=label]:checked').data('label-fee');
+		var units = jQuery('#units').val();
+		if (units < minimum) {
+			jQuery('#units').val(minimum);
+		}
+		jQuery('#units').attr('min', minimum);
+		var units = jQuery('#units').val();
+
+		//CALC TOTAL MASTER UNITS
+		var totalQuantity = parseInt(units) * parseFloat(unitSize);
+		var productCost = parseFloat(totalQuantity) * parseFloat(total);
+		var packagingCost = (parseFloat(unitCost) + parseFloat(labelFee)) * parseInt(units);
+		var ingredients = quantity;
+		var pickingFee = (parseFloat(pickingCharge) * ingredients) * totalQuantity;
+		/*
+			console.log("Per KG/L Cost: " + total);
+			console.log("Total Product Cost: " + productCost);
+			console.log("Total Picking Cost: " + pickingFee);
+			console.log("Total Blending Cost: " + blendCharge);
+			console.log("Total Packaging Cost: " + packagingCost);
+		*/
+		var grandTotal = (parseFloat(productCost) + parseFloat(packagingCost) + parseFloat(blendCharge) + parseFloat(pickingFee)) * 2.5;
+		var unitCost = parseFloat(grandTotal / units);
+		jQuery('#price,#sticky-price').text(grandTotal.toFixed(2));
+		jQuery('#unitPrice,#sticky-unitPrice').text(unitCost.toFixed(2));
+
+		jQuery('#calculator select').select2();
+
 		var pType = jQuery('input[type=radio][name=type]:checked').val();
-		var pUnits = jQuery('#units').val();
-		var pLabel = jQuery('input[type=radio][name=label]:checked').val();
-		if(pType=='liquid'){
+		if (pType == 'liquid') {
 			var pPackaging = jQuery('input[type=radio][name=packaging-liquid]:checked').val();
-			jQuery(".ingredients.liquid select" ).each(function(index){
-				var ingredient = jQuery(this).find(':selected').text();
-				ingredients.push(ingredient);
-			});
-			jQuery(".ingredients.liquid input[type=number]" ).each(function(index){
-				var quantity = jQuery(this).val();
-				quantities.push(quantity);
-			});
 		}
-		if(pType=='capsule'){
+		if (pType == 'capsule') {
 			var pPackaging = jQuery('input[type=radio][name=packaging-capsule]:checked').val();
-			jQuery(".ingredients.powder select" ).each(function(index){
-				var ingredient = jQuery(this).find(':selected').text();
-				ingredients.push(ingredient);
-			});
-			jQuery(".ingredients.powder input[type=number]" ).each(function(index){
-				var quantity = jQuery(this).val();
-				quantities.push(quantity);
-			});
 		}
-		if(pType=='powder'){
+		if (pType == 'powder') {
 			var pPackaging = jQuery('input[type=radio][name=packaging-powder]:checked').val();
-			jQuery(".ingredients.powder select" ).each(function(index){
-				var ingredient = jQuery(this).find(':selected').text();
-				ingredients.push(ingredient);
-			});
-			jQuery(".ingredients.powder input[type=number]" ).each(function(index){
-				var quantity = jQuery(this).val();
-				quantities.push(quantity);
-			});
 		}
-		if(pType=='cut'){
+		if (pType == 'cut') {
 			var pPackaging = jQuery('input[type=radio][name=packaging-cut]:checked').val();
-			jQuery(".ingredients.cut select" ).each(function(index){
-				var ingredient = jQuery(this).find(':selected').text();
-				ingredients.push(ingredient);
-			});
-			jQuery(".ingredients.cut input[type=number]" ).each(function(index){
-				var quantity = jQuery(this).val();
-				quantities.push(quantity);
-			});
 		}
+		jQuery('#unitsText').text(pPackaging);
 	}
-	
-	pIngredients = JSON.stringify(ingredients);
-	pQuantities = JSON.stringify(quantities);
-	
-	jQuery.post( "/submitCalculator.php", { name: pName, email: pEmail, phone: pPhone, price: pCost, unitPrice: pUnitCost, type: pType, units: pUnits, label: pLabel, packaging: pPackaging, formulation: pIngredients, values: pQuantities })
-		.done(function( data ) {
-	    	jQuery('#calculator').html('<h2>Thank You</h2><p>Thanks for submitting your request - we have received the information you entered into the calculator and will give you a call back soon to discuss your order. <a href="/calculator/">Click here</a> to get another price.</p>');
-	    	jQuery("html, body").animate({ scrollTop: 0 }, "slow");
-	  	});
-});
+
+	calcLiquid();
+	calcPrice();
+
+	jQuery(document).ready(function() {
+		jQuery('#calculator select').select2({
+			width: 'resolve'
+		});
+	});
+
+	jQuery('body').on('click', '#request', function(e) {
+		e.preventDefault();
+		var pName = jQuery('#name').val();
+		var pEmail = jQuery('#email').val();
+		var pPhone = jQuery('#phone').val();
+		var pCost = jQuery('#price').text();
+		var pUnitCost = jQuery('#unitPrice').text();
+		const ingredients = [];
+		const quantities = [];
+		if (pName == '' || pEmail == '' || pPhone == '') {
+			alert('Please enter your name, email and phone number');
+		} else {
+			var pType = jQuery('input[type=radio][name=type]:checked').val();
+			var pUnits = jQuery('#units').val();
+			var pLabel = jQuery('input[type=radio][name=label]:checked').val();
+			if (pType == 'liquid') {
+				var pPackaging = jQuery('input[type=radio][name=packaging-liquid]:checked').val();
+				jQuery(".ingredients.liquid select").each(function(index) {
+					var ingredient = jQuery(this).find(':selected').text();
+					ingredients.push(ingredient);
+				});
+				jQuery(".ingredients.liquid input[type=number]").each(function(index) {
+					var quantity = jQuery(this).val();
+					quantities.push(quantity);
+				});
+			}
+			if (pType == 'capsule') {
+				var pPackaging = jQuery('input[type=radio][name=packaging-capsule]:checked').val();
+				jQuery(".ingredients.powder select").each(function(index) {
+					var ingredient = jQuery(this).find(':selected').text();
+					ingredients.push(ingredient);
+				});
+				jQuery(".ingredients.powder input[type=number]").each(function(index) {
+					var quantity = jQuery(this).val();
+					quantities.push(quantity);
+				});
+			}
+			if (pType == 'powder') {
+				var pPackaging = jQuery('input[type=radio][name=packaging-powder]:checked').val();
+				jQuery(".ingredients.powder select").each(function(index) {
+					var ingredient = jQuery(this).find(':selected').text();
+					ingredients.push(ingredient);
+				});
+				jQuery(".ingredients.powder input[type=number]").each(function(index) {
+					var quantity = jQuery(this).val();
+					quantities.push(quantity);
+				});
+			}
+			if (pType == 'cut') {
+				var pPackaging = jQuery('input[type=radio][name=packaging-cut]:checked').val();
+				jQuery(".ingredients.cut select").each(function(index) {
+					var ingredient = jQuery(this).find(':selected').text();
+					ingredients.push(ingredient);
+				});
+				jQuery(".ingredients.cut input[type=number]").each(function(index) {
+					var quantity = jQuery(this).val();
+					quantities.push(quantity);
+				});
+			}
+		}
+
+		pIngredients = JSON.stringify(ingredients);
+		pQuantities = JSON.stringify(quantities);
+
+		jQuery.post("/submitCalculator.php", {
+				name: pName,
+				email: pEmail,
+				phone: pPhone,
+				price: pCost,
+				unitPrice: pUnitCost,
+				type: pType,
+				units: pUnits,
+				label: pLabel,
+				packaging: pPackaging,
+				formulation: pIngredients,
+				values: pQuantities
+			})
+			.done(function(data) {
+				jQuery('#calculator').html('<h2>Thank You</h2><p>Thanks for submitting your request - we have received the information you entered into the calculator and will give you a call back soon to discuss your order. <a href="/calculator/">Click here</a> to get another price.</p>');
+				jQuery("html, body").animate({
+					scrollTop: 0
+				}, "slow");
+			});
+	});
 </script>
 
 <?php get_footer(); ?>

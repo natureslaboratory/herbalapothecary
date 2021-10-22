@@ -2183,3 +2183,13 @@ iframe {
 .woocommerce div.product form.cart:not(.variations_form, .grouped-form) {
     display: block;
 }
+
+.c-calculator__heading {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.c-calculator__heading h2 {
+    font-size: 2.4rem;
+}
