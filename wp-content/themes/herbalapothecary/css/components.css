@@ -2189,8 +2189,25 @@ iframe {
     font-size: 2.4rem;
 }
 
+.c-coa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 .c-coa h2 {
     text-align: center;
+    margin-bottom: 0;
+}
+
+.c-coa p {
+    margin-bottom: 0;
+    margin-top: 1rem;
+}
+
+.c-coa p:last-child() {
     margin-bottom: 2rem;
 }
 
