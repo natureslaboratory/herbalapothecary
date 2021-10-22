@@ -352,63 +352,67 @@ function ts_quantity_plus_minus()
 }
 
 
-function custom_search( $query )
+function custom_search($query)
 {
-  // Don't do this filtering on the tag pages
-  if ((array_key_exists("product_tag", $_REQUEST) && $_REQUEST['product_tag'] !== NULL) || strstr($_SERVER['REQUEST_URI'], '/product-tag/') || strstr($_SERVER['REQUEST_URI'], '/calculator/')) {
-    return $query;
-  }
+	// Don't do this filtering on the tag pages
+	if ((array_key_exists("product_tag", $_REQUEST) && $_REQUEST['product_tag'] !== NULL) || strstr($_SERVER['REQUEST_URI'], '/product-tag/') || strstr($_SERVER['REQUEST_URI'], '/calculator/')) {
+		return $query;
+	}
 
 
-  if (is_shop() || is_product_category()) {
-	  if (!is_admin()) { // Don't apply it to admin users
-		if ($query->is_search() || $query->is_archive()) {
-		  $meta_query[] = [
-			'key' => '_sku',
-			'value' => 'C$',
-			'compare' => 'RLIKE'
-		  ];
-		  $query->set('meta_query', $meta_query);
-		  return $query;
+	if (is_shop() || is_product_category()) {
+		if (!is_admin()) { // Don't apply it to admin users
+			if ($query->is_search() || $query->is_archive()) {
+				$meta_query[] = [
+					'key' => '_sku',
+					'value' => 'C$',
+					'compare' => 'RLIKE'
+				];
+				$query->set('meta_query', $meta_query);
+				return $query;
+			}
 		}
-	  }
-  } else {
-	  return $query;
-  }
+	} else {
+		return $query;
+	}
 }
-add_action( 'pre_get_posts', 'custom_search' );
+add_action('pre_get_posts', 'custom_search');
 
-function ha_enctype_custom_registration_forms() {
-	echo 'enctype="multipart/form-data"';
+function ha_enctype_custom_registration_forms()
+{
+	echo 'enctype="multipart/form-data" action="/registration-submitted"';
 }
-add_action( 'woocommerce_register_form_tag', 'ha_enctype_custom_registration_forms' );
+add_action('woocommerce_register_form_tag', 'ha_enctype_custom_registration_forms');
 
-function ha_add_register_form_field_top() {
-	?>
+function ha_add_register_form_field_top()
+{
+?>
 	<style>
 		.width-100 {
 			width: 100%;
 		}
 	</style>
-	<?php
+<?php
 	woocommerce_form_field(
 		'customer_type',
 		array(
 			'type'        => 'select',
 			'required'    => true, // just adds an "*"
 			'label'       => 'Please choose your customer type',
-			'input_class'				=> [ 'width-100' ],
-			'options'			=> [ 'Regular' => 'Regular',
-												 'Qualified Medical Herbalist / Pharmacist' => 'Qualified Medical Herbalist / Pharmacist',
-													'Herbal Medicine Student' => 'Herbal Medicine Student',
-													'CAM practitioner - Homeopath' => 'CAM practitioner - Homeopath',
-													'CAM practitioner - Colon Hydrotherapist' => 'CAM practitioner - Colon Hydrotherapist',
-													'CAM practitioner - Iridologist' => 'CAM practitioner - Iridologist',
-													'CAM practitioner - TCM (Traditional Chinese Medicine) Practitioner' => 'CAM practitioner - TCM (Traditional Chinese Medicine) Practitioner',
-													'Manufacturer (please provide details below)' => 'Manufacturer (please provide details below)',
-													'Other (please provide details below)' => 'Other (please provide details below)' ],
+			'input_class'				=> ['width-100'],
+			'options'			=> [
+				'Regular' => 'Regular',
+				'Qualified Medical Herbalist / Pharmacist' => 'Qualified Medical Herbalist / Pharmacist',
+				'Herbal Medicine Student' => 'Herbal Medicine Student',
+				'CAM practitioner - Homeopath' => 'CAM practitioner - Homeopath',
+				'CAM practitioner - Colon Hydrotherapist' => 'CAM practitioner - Colon Hydrotherapist',
+				'CAM practitioner - Iridologist' => 'CAM practitioner - Iridologist',
+				'CAM practitioner - TCM (Traditional Chinese Medicine) Practitioner' => 'CAM practitioner - TCM (Traditional Chinese Medicine) Practitioner',
+				'Manufacturer (please provide details below)' => 'Manufacturer (please provide details below)',
+				'Other (please provide details below)' => 'Other (please provide details below)'
+			],
 		),
-		( isset($_POST['customer_type']) ? $_POST['customer_type'] : '' )
+		(isset($_POST['customer_type']) ? $_POST['customer_type'] : '')
 	);
 
 	woocommerce_form_field(
@@ -418,46 +422,50 @@ function ha_add_register_form_field_top() {
 			'required'    => true, // just adds an "*"
 			'label'       => 'Details',
 		),
-		( isset($_POST['details']) ? $_POST['details'] : '' )
+		(isset($_POST['details']) ? $_POST['details'] : '')
 	);
 }
 
-function ha_add_register_form_field_bottom(){
-	?>
+function ha_add_register_form_field_bottom()
+{
+?>
 	<div class="form-row validate-required c-register__bottom" id="qualifications" data-priority="">
 		<label for="qualifications" class="">
 			<h3>Qualifications</h3>
 			<p>
-				Some of our products are only available to professional practitioners. If you wish to be approved as a 
-				practitioner please upload a scanned copy of you qualifications. We will then review your application 
-				and contact you via email to let you know. You will still be able to make purchases of some items in 
-				the mean time. Once approved by our sales team you will be able to purchase a wider set of products. 
-				If you are not a practitioner you will still be able to purchase most of our products and you may 
+				Some of our products are only available to professional practitioners. If you wish to be approved as a
+				practitioner please upload a scanned copy of you qualifications. We will then review your application
+				and contact you via email to let you know. You will still be able to make purchases of some items in
+				the mean time. Once approved by our sales team you will be able to purchase a wider set of products.
+				If you are not a practitioner you will still be able to purchase most of our products and you may
 				skip this step.
 			</p>
 		</label>
 		<span class="woocommerce-input-wrapper"><input type='file' name='qualifications' accept='image/*,.pdf,.doc,.docx'></span>
-</div>
-	<?php
+	</div>
+<?php
 
 }
-add_action( 'woocommerce_register_form', 'ha_add_register_form_field_top', 20 );
-add_action( 'woocommerce_register_form', 'ha_add_register_form_field_bottom', 30 );
+add_action('woocommerce_register_form', 'ha_add_register_form_field_top', 20);
+add_action('woocommerce_register_form', 'ha_add_register_form_field_bottom', 30);
 
-function ha_register_top() {
+function ha_register_top()
+{
+?>
+	<div class="c-register__left">
+	<?php
+}
+
+function ha_register_middle()
+{
 	?>
-		<div class="c-register__left">
+	</div>
+	<div class="c-register__right">
 	<?php
 }
 
-function ha_register_middle() {
-	?>
-		</div>
-		<div class="c-register__right">
-	<?php
-}
-
-function ha_register_bottom() {
+function ha_register_bottom()
+{
 	echo "</div>";
 }
 
@@ -467,35 +475,75 @@ add_action("woocommerce_register_form", "ha_register_bottom", 35);
 
 
 
-function ha_save_register_fields( $customer_id ){
-	if ( isset( $_POST['customer_type'] ) ) {
-		update_field('customer_type', wc_clean( $_POST['customer_type'] ), 'user_' . $customer_id );
+function ha_save_register_fields($customer_id)
+{
+	if (isset($_POST['customer_type'])) {
+		update_field('customer_type', wc_clean($_POST['customer_type']), 'user_' . $customer_id);
 	}
 
-	if ( isset( $_POST['details'] ) ) {
-		update_field('details', wc_clean( $_POST['details'] ), 'user_' . $customer_id );
+	if (isset($_POST['details'])) {
+		update_field('details', wc_clean($_POST['details']), 'user_' . $customer_id);
 	}
 
 	//Upload the file
-	require_once(ABSPATH.'wp-admin/includes/file.php');
+	require_once(ABSPATH . 'wp-admin/includes/file.php');
 	$uploadedfile = $_FILES['qualifications'];
 	$movefile = wp_handle_upload($uploadedfile, array('test_form' => false));
 
 	// Add to the media library
 	if ($movefile) {
-	$wp_upload_dir = wp_upload_dir();
-	$attachment = array(
-	'guid' => $wp_upload_dir['url'].'/'.basename($movefile['file']),
-	'post_mime_type' => $movefile['type'],
-	'post_title' => preg_replace('/\.[^.]+$/', '', basename($movefile['file'])),
-	'post_content' => '',
-	'post_status' => 'inherit'
-	);
-	$attach_id = wp_insert_attachment($attachment, $movefile['file']);
+		$wp_upload_dir = wp_upload_dir();
+		$attachment = array(
+			'guid' => $wp_upload_dir['url'] . '/' . basename($movefile['file']),
+			'post_mime_type' => $movefile['type'],
+			'post_title' => preg_replace('/\.[^.]+$/', '', basename($movefile['file'])),
+			'post_content' => '',
+			'post_status' => 'inherit'
+		);
+		$attach_id = wp_insert_attachment($attachment, $movefile['file']);
 
-	update_field('qualifications', $attach_id, 'user_' . $customer_id);
+		update_field('qualifications', $attach_id, 'user_' . $customer_id);
 	}
 }
-add_action( 'woocommerce_created_customer', 'ha_save_register_fields' );
+add_action('woocommerce_created_customer', 'ha_save_register_fields');
 
+
+function ha_custom_register_redirect($redirectURL) {
+	echo "Hello!";
+	return get_home_url();
+}
+add_filter("woocommerce_registration_redirect", "ha_custom_register_redirect", 10, 1);
+
+function update_stock($schedules) {
+	$schedules["every_minute"] = [
+		"interval" => 60,
+		"display" => esc_html__("Every Minute")
+	];
+	return $schedules;
+}
+add_filter("cron_schedules", "update_stock");
+
+function ha_cron_exec() {
+	global $wpdb;
+	$variableProducts = wc_get_products([
+		"type" => "variable"
+	]);
+	$groupedProducts = wc_get_products([
+		"type" => "grouped"
+	]);
+	echo "Variable: <br>";
+	echo '<pre>'; print_r($groupedProducts); echo '</pre>';
+	echo "Grouped: <br>";
+	echo '<pre>'; print_r($groupedProducts); echo '</pre>';
+
+
+}
+
+add_action("ha_cron_hook", "ha_cron_exec");
+
+if (!wp_next_scheduled("ha_cron_hook")) {
+	wp_schedule_event(time(), "every_minute", "ha_cron_hook");
+}
+
+// echo '<pre>'; print_r( _get_cron_array() ); echo '</pre>';
 
