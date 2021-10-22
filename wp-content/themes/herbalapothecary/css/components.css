@@ -2025,10 +2025,11 @@ iframe {
 .c-cart__buttons> :is(a.button, button.button) {
     width: auto;
     opacity: 1;
-    max-width: 130px;
-    width: 100%;
+    /* max-width: 130px; */
+    /* width: 100%; */
     float: unset;
-    padding: 0.9rem 1rem;
+    /* padding: 0.9rem 1rem; */
+    font-size: 0.9rem;
 }
 
 .cart_totals .shipping-calculator-forms {
