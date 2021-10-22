@@ -2222,3 +2222,14 @@ iframe {
     display: flex;
     justify-content: center;
 }
+
+.c-price {
+    color: black;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.woocommerce div.product p.price, .woocommerce div.product span.price {
+    margin: 0;
+}
