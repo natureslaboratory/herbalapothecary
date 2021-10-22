@@ -56,7 +56,7 @@ do_action('woocommerce_before_main_content');
 		echo "<div class='c-shop__main'>";
 
 
-		if (apply_filters('woocommerce_show_page_title', true)) {
+		if (apply_filters('woocommerce_show_page_title', true) && !is_product_category()) {
 			?> <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1> <?php
 		};
 
