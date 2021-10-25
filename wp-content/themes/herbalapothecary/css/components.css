@@ -976,7 +976,7 @@ ul.c-navigation__menu {
         row-gap: 0.5rem;
     }
     .c-product {
-        padding: 0;
+        padding: 0.5rem;
         margin-bottom: 0;
     }
     .c-product__price {
