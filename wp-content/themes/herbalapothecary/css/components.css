@@ -2393,6 +2393,8 @@ span.price .c-price {
 .c-cards--wide {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    margin-top: 0;
+    margin-bottom: 4rem;
 }
 
 .c-cards--wide .c-card__image-container {
