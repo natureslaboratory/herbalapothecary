@@ -75,12 +75,125 @@ get_header();
                 <p>Submit your details and we'll call you back - simple!</p>
             </div>
         </a>
-        <div class="c-socials">
-            <a target="_blank" href="https://www.facebook.com/herbalapothecaryuk/"><i class="fab fa-facebook-square"></i></a>
-            <a target="_blank" href="https://twitter.com/herbalapoth?lang=en"><i class="fab fa-twitter-square"></i></a>
-            <a target="_blank" href="https://www.youtube.com/channel/UCAm5dGGrJEPctkyFP7LclDA"><i class="fab fa-youtube-square"></i></a>
-            <a target="_blank" href="https://www.instagram.com/herbalapothecaryuk/"><i class="fab fa-instagram-square"></i></a>
+        <?php
+
+        function renderCards($cardList, $customClass = "")
+        { ?>
+            <div class="c-cards <?= $customClass ?>">
+                <?php foreach ($cardList as $c) { ?>
+                    <div class="c-card">
+                        <div class="c-card__image-container">
+                            <img src="<?= $c["image"] ?>">
+                        </div>
+                        <h3><?= $c["title"] ?></h3>
+                        <?= $c["description"] ?>
+                        <a class="c-button" href="<?= $c["button-link"] ?>"><?= $c["button_label"] ?></a>
+                    </div>
+                <?php } ?>
+            </div>
+        <?php }
+        $certCards = [
+            [
+                "title" => "Herb Mark",
+                "description" => "<p>Herbal Apothecary are part of the BHMA's
+                                            Herb Mark Scheme. This scheme is
+                                            designed to ensure the quality and safety of
+                                            herbal products by requiring manufacturers
+                                            of herbal products to adopt a common
+                                            Quality Management System. Herbal
+                                            Apothecary are one of a small selection of
+                                            herbal remedy manufacturers who currently
+                                            meet this standard.</p>",
+                "button_label" => "More about Quality",
+                "button_link" => "/",
+                "image" => "/assets/herbmark.svg"
+            ],
+            [
+                "title" => "Organic Certification",
+                "description" =>
+                "<p>
+                            Herbal Apothecary are a producer of organic
+                            products and as such have been awarded
+                            organic certification. Our range of organic
+                            tinctures and herbs sit alongside our nonorganic
+                            products.
+                        </p>
+                        <p>
+                            We believe organic products are better for
+                            growers, better for the environment and
+                            ultimately better for consumers.
+                        </p>
+                        ",
+                "button_label" => "Why Organic is Better",
+                "button_link" => "/",
+                "image" => "/assets/organic.svg"
+            ],
+            [
+                "title" => "ISO 9001:2015",
+                "description" =>
+                "<p>
+                            At Herbal Apothecary we continually assess
+                            our business systems and processes as
+                            part of our ISO 9001 QMS. As a result, our
+                            business undergoes a process of continual
+                            improvement.
+                        </p>
+                        <p>
+                            Our systems are designed to help us
+                            identify potential problems before they arise,
+                            ensuring the quality of our products.
+                        </p>
+                        ",
+                "button_label" => "Manufacturing Innovation",
+                "button_link" => "/",
+                "image" => "/assets/ISO.svg"
+            ],
+            [
+                "title" => "Living Wage Employer",
+                "description" =>
+                "<p>
+                            We pay all our staff the Living Wage. This is
+                            a higher rate than the standard minimum
+                            wage and reflects the actual cost of living.
+                            As well as this, Herbal Apothecary provide
+                            paid compassionate leave, holiday
+                            allowances which increase each year and a
+                            paid volunteering day to give our staff the
+                            opportunity to support community initiatives
+                            of their choice.
+                        </p>
+                        ",
+                "button_label" => "About our Company",
+                "button_link" => "/",
+                "image" => "/assets/livingwage.svg"
+            ]
+        ];
+
+
+        renderCards($certCards);
+        ?>
+
+        <div class="c-newsletter">
+            <div>
+                <h3>Sign Up for our Mailing List</h3>
+                <form class="c-newsletter__signup" action="https://buttondown.email/api/emails/embed-subscribe/herbalapothecary" method="post" target="popupwindow" onsubmit="window.open('https:\//buttondown.email/herbalapothecary', 'popupwindow')" class="embeddable-buttondown-form">
+                    <label for="bd-email" style="font-weight:700">Enter your email</label>
+                    <input type="email" name="email" id="bd-email" />
+                    <input type="hidden" value="1" name="embed" />
+                    <input type="submit" value="Sign Up!" class="c-button" />
+                </form>
+            </div>
+            <div class="c-socials__wrapper">
+                <h3>Follow Us on Social Media</h3>
+                <div class="c-socials">
+                    <a target="_blank" href="https://www.facebook.com/herbalapothecaryuk/"><i class="fab fa-facebook-square"></i></a>
+                    <a target="_blank" href="https://twitter.com/herbalapoth?lang=en"><i class="fab fa-twitter-square"></i></a>
+                    <a target="_blank" href="https://www.youtube.com/channel/UCAm5dGGrJEPctkyFP7LclDA"><i class="fab fa-youtube-square"></i></a>
+                    <a target="_blank" href="https://www.instagram.com/herbalapothecaryuk/"><i class="fab fa-instagram-square"></i></a>
+                </div>
+            </div>
         </div>
+
         <div class="c-products">
             <div class="c-products__header">
                 <h3>Browse Popular Products</h3>
@@ -134,105 +247,71 @@ get_header();
                 ?>
             </div>
         </div>
-        <div class="c-brands">
-            <h3 class="c-brands__title">Shop By Brand</h3>
-            <div class="c-brands__grid">
-                <?php
-                $brands = [
-                    [
-                        "name" => "BeeVital",
-                        "link" => "/product-category/beevital-apiceuticals/",
-                        "logo" => "/wp-content/uploads/2021/09/BeeVital.jpg"
-                    ],
-                    [
-                        "name" => "Sweet Cecily's",
-                        "link" => "/product-category/sweet-cecilys-skincare/",
-                        "logo" => "/wp-content/uploads/2021/09/sweet_cecilys.jpg"
-                    ]
-                ]
-                ?>
-                <?php foreach ($brands as $brand) { ?>
-                    <div class="c-brand">
-                        <a href="<?= $brand["link"] ?>">
-                            <img src="<?= $brand["logo"] ?>" alt="<?= $brand["name"] ?>">
-                        </a>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
-        <div class="c-intro">
-            <h2>Herbal Apothecary Ethos</h2>
-            <p>Herbal Apothecary has always maintained a strong emphasis on our three core values.</p>
-            <p>
-                Firstly, we want our products must be supported by strong scientific evidence.
-                To that end, we have strong links with external research bodies.
-                We also have a growing in-house research team. They are responsible for testing
-                as well as formulating new products.
-            </p>
-            <p>
-                Secondly, our business is sustainable. This is not just about environmental
-                sustainability. We know how important it is to develop strong and sustainable
-                relationships. Sustainability is also impacts our financial decisions. These three
-                combined ensure the long-term sustainability of our company.
-            </p>
-            <p>
-                Thirdly, Herbal Apothecary is committed to ensurring access to herbal practitioners
-                and products. We produce products which allow practitioners to deliver the services
-                their patients need. We want to ensure herbal medicine is available to all.
-            </p>
-            <div class="c-intro__columns">
-                <div class="c-intro__columns-left">
-                    <h2>Evidence</h2>
-                    <p>
-                        Reuniting Science and Nature through rigorous targeted research.
-                        <a href="/evidence">Find out more</a>.
-                    </p>
-                    <h2>Sustainability</h2>
-                    <p>
-                        Creating ecologically sustainable products and processes.
-                        <a href="/sustainability">Find out more</a>.
-                    </p>
-                    <h2>Access</h2>
-                    <p>
-                        Creating connections between practitioners and consumers, through
-                        products and services.
-                        <a href="/access">Find out more</a>.
-                    </p>
-                </div>
-                <div class="c-intro__columns-right">
-                    <h2>Contract Manufacturing of Herbal Products</h2>
-                    <p>
-                        We offer the <strong>complete manufacture of natural products</strong>. Methods
-                        developed for our own specialist products are now available to you.
-                    </p>
-                    <p>
-                        With custom manufacturing we can develop <strong>high quality products</strong> that meet your
-                        unique specifications.
-                    </p>
-                    <p>
-                        For more details about custom orders, please contact our sales team.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="c-newsletter">
-            <div>
-                <h2>Sign up to our Newsletter</h2>
-                <p>for the latest product and research news from Herbal Apothecary</p>
-                <!-- <form class="c-newsletter__signup">
-                    <label for="email">Enter your email</label>
-                    <input type="email" id="email">
-                    <button type="submit" class="c-button">Subscribe</button>
-                </form> -->
-                <form class="c-newsletter__signup" action="https://buttondown.email/api/emails/embed-subscribe/herbalapothecary" method="post" target="popupwindow" onsubmit="window.open('https:\//buttondown.email/herbalapothecary', 'popupwindow')" class="embeddable-buttondown-form">
-                    <label for="bd-email" style="font-weight:700">Enter your email</label>
-                    <input type="email" name="email" id="bd-email" />
-                    <input type="hidden" value="1" name="embed" />
-                    <input type="submit" value="Subscribe" class="c-button" />
-                </form>
-            </div>
-            <img src="/wp-content/uploads/2021/09/ha_logo_no_text_-_resized.jpg.webp" alt="Herbal Apothecary">
-        </div>
+        <?php
+
+        $featureCards = [
+            [
+                "title" => "Evidence",
+                "description" => "
+                <p>
+                At Herbal Apothecary we seek to produce natural medicines of the highest quality. We
+                manufacture under ISO9001:2015 and Organic certification and according to HACCP
+                and GMP principles. We are supported in our work by highly qualified scientific
+                personnel.
+                </p>",
+                "button_label" => "More about Evidence",
+                "button_link" => "/",
+                "image" => "/assets/evidence.jpg"
+            ],
+            [
+                "title" => "Access",
+                "description" =>
+                "<p>
+                    We believe that natural medicine will have a huge part to play in the healthcare of the
+                    21st Century. We are committed to ensuring the long term viability and availability of
+                    herbal medicine, to ensure as many people as possible can benefit from the potentially
+                    life changing treatments this tradition has to offer.
+                </p>
+                ",
+                "button_label" => "More about Access",
+                "button_link" => "/",
+                "image" => "/assets/access.jpg"
+            ],
+            [
+                "title" => "Sustainability",
+                "description" =>
+                "<p>
+                    We believe that truly sustainable businesses must consider all aspects of their operating
+                    processes and strive to create long lasting benefits for customers, employees, the
+                    community and the wider environment.
+                </p>
+                ",
+                "button_label" => "More about Sustainability",
+                "button_link" => "/",
+                "image" => "/assets/sustainability.jpg"
+            ],
+            [
+                "title" => "Quality",
+                "description" =>
+                "<p>
+                    With more than 30 years of experience, our Technical Team continues its commitment to
+                    ensuring our product safety and quality systems are to the highest standards.
+                    Experienced chemists, pharmacists, and herbal experts work on the analysis of the
+                    goods in our modern in-house laboratory.
+                </p>
+                ",
+                "button_label" => "More about Access",
+                "button_link" => "/",
+                "image" => "/assets/quality.jpg"
+            ]
+        ];
+
+        renderCards($featureCards, "c-cards--wide");
+
+
+
+        ?>
+
     </div>
 
 
