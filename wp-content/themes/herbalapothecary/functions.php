@@ -508,13 +508,15 @@ function ha_save_register_fields($customer_id)
 add_action('woocommerce_created_customer', 'ha_save_register_fields');
 
 
-function ha_custom_register_redirect($redirectURL) {
+function ha_custom_register_redirect($redirectURL)
+{
 	echo "Hello!";
 	return get_home_url();
 }
 add_filter("woocommerce_registration_redirect", "ha_custom_register_redirect", 10, 1);
 
-function update_stock($schedules) {
+function update_stock($schedules)
+{
 	$schedules["every_minute"] = [
 		"interval" => 60,
 		"display" => esc_html__("Every Minute")
@@ -523,7 +525,10 @@ function update_stock($schedules) {
 }
 add_filter("cron_schedules", "update_stock");
 
-function ha_cron_exec() {
+
+function ha_cron_exec()
+{
+	$debug = [];
 	global $wpdb;
 	$variableProducts = wc_get_products([
 		"type" => "variable"
@@ -531,18 +536,67 @@ function ha_cron_exec() {
 	$groupedProducts = wc_get_products([
 		"type" => "grouped"
 	]);
-	echo "Variable: <br>";
-	echo '<pre>'; print_r($groupedProducts); echo '</pre>';
-	echo "Grouped: <br>";
-	echo '<pre>'; print_r($groupedProducts); echo '</pre>';
-	?>
-	<script>
-		console.log(<?= json_encode($groupedProducts) ?>);
-		console.log("hello");
-	</script>
+	
+	function get_thousand_stock($variations)
+	{
+		$stock = 0;
+		foreach ($variations as $variationArray) {
+			foreach ($variationArray["attributes"] as $attribute) {
+				if ($attribute == "1000gm" || $attribute == "1000ml") {
+					$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+					$stock = $variation_obj->get_stock_quantity();
+				}
+			}
+		}
+		return $stock;
+	}
 
-	<?php
+	function strip_unit($amount)
+	{
+		preg_match("/[A-Za-z]/", $amount, $matches, PREG_OFFSET_CAPTURE);
+		if ($matches[0][1]) {
+			return intval(substr($amount, 0, $matches[0][1]));
+		} else {
+			return intval($amount);
+		}
+	}
 
+	$debug["test"] = "Test";
+	try {
+		foreach ($variableProducts as $variableProduct) {
+
+			$variations = $variableProduct->get_available_variations("array");
+			$debug["variations"] = $variations;
+			$stock = 0;
+			foreach ($variations as $variationArray) {
+				foreach ($variationArray["attributes"] as $attribute) {
+					if ($attribute == "1000gm" || $attribute == "1000ml") {
+						$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+						$stock = $variation_obj->get_stock_quantity();
+					}
+				}
+			}
+			$debug["thousand_stock"] = $stock;
+			if ($stock) {
+				foreach ($variations as $variationArray) {
+					foreach ($variationArray["attributes"] as $value) {
+						if (!strpos($value, "1000")) {
+							$unit_stripped = strip_unit($value);
+							$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
+							$amount = ($stock * 1000) / $unit_stripped;
+							$debug[$variationArray["variation_id"]]["stock"] = $amount;
+							update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+							wc_update_product_stock($variationArray["variation_id"], $amount);
+						}
+					}
+				}
+			}
+		}
+	} catch (\Throwable $th) {
+		// echo $th->getMessage() . "<br>";
+		// echo $th->getFile() . "<br>";
+		// echo $th->getLine();
+	}
 }
 
 add_action("ha_cron_hook", "ha_cron_exec");
@@ -554,10 +608,11 @@ if (!wp_next_scheduled("ha_cron_hook")) {
 // echo '<pre>'; print_r( _get_cron_array() ); echo '</pre>';
 
 
-function ha_edit_price_display($price) {
+function ha_edit_price_display($price)
+{
 	global $product;
 
-	if ($product -> is_type("grouped") && is_product()) {
+	if ($product && $product->is_type("grouped") && is_product()) {
 		return "";
 	} else if (is_product()) {
 		return "<div class='c-price'>" . $price . "</div>";
