@@ -549,7 +549,14 @@ if (!wp_next_scheduled("ha_cron_hook")) {
 
 
 function ha_edit_price_display($price) {
-	return "<div class='c-price'>" . $price . "</div>";
+	global $product;
+
+	if ($product -> is_type("grouped") && is_product()) {
+		return "";
+	} else if (is_product()) {
+		return "<div class='c-price'>" . $price . "</div>";
+	}
+	return $price;
 }
 
 add_filter('woocommerce_get_price_html', "ha_edit_price_display");
