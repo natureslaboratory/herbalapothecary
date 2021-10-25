@@ -749,6 +749,8 @@ ul.c-navigation__menu {
     text-decoration: none;
     background-color: var(--green);
     border-radius: 0;
+    padding: 0.8rem;
+    line-height: 1;
 }
 
 .woocommerce button.button[type*="submit"], .woocommerce div.product form.cart .button {
