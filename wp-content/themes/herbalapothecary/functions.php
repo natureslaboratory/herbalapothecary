@@ -535,7 +535,13 @@ function ha_cron_exec() {
 	echo '<pre>'; print_r($groupedProducts); echo '</pre>';
 	echo "Grouped: <br>";
 	echo '<pre>'; print_r($groupedProducts); echo '</pre>';
+	?>
+	<script>
+		console.log(<?= json_encode($groupedProducts) ?>);
+		console.log("hello");
+	</script>
 
+	<?php
 
 }
 

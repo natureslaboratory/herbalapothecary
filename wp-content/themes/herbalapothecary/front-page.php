@@ -67,6 +67,14 @@ get_header();
                 <button class="c-button">Shop Now</button>
             </a>
         </div>
+        <a href="/calculator" class="c-calculator-banner" style="background-image: url(/wp-content/uploads/2021/10/AdobeStock_354372002-scaled.jpeg.webp)">
+            <h2>Try our <br><strong>Herbal Product Calculator</strong></h2>
+            <div>
+                <p><strong>Get a price for your own formulation</strong></p>
+                <p>Choose from a liquid, capsule, powder, or cut herb blend</p>
+                <p>Submit your details and we'll call you back - simple!</p>
+            </div>
+        </a>
         <div class="c-socials">
             <a target="_blank" href="https://www.facebook.com/herbalapothecaryuk/"><i class="fab fa-facebook-square"></i></a>
             <a target="_blank" href="https://twitter.com/herbalapoth?lang=en"><i class="fab fa-twitter-square"></i></a>
