@@ -544,6 +544,7 @@ ul.c-navigation__menu {
 
 .c-promises__promise i {
     font-size: 2rem;
+    color:var(--green);
 }
 
 @media screen and (max-width: 870px) {
