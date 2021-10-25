@@ -393,6 +393,7 @@ ul.c-navigation__menu {
     }
     .c-navigation__inner {
         justify-content: center;
+        align-items: center;
     }
     ul.c-navigation__menu {
         display: flex;
@@ -2250,4 +2251,8 @@ iframe {
     .woocommerce ul.order_details li {
         border: none;
     }
+}
+
+.menu-toggle {
+    cursor: pointer;
 }

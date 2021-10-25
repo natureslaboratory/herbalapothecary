@@ -101,7 +101,7 @@
 			<nav id="site-navigation" class="main-navigation c-navigation l-block l-block--no-padding" tabindex="-1">
 				<div class="l-restrict c-navigation__inner">
 					<div>
-						<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'herbalapothecary'); ?></button>
+						<i class="fas fa-bars menu-toggle" aria-controls="primary-menu" aria-expanded="false"></i>
 						<?php
 						wp_nav_menu(
 							array(
