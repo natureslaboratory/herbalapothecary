@@ -586,12 +586,12 @@ ul.c-navigation__menu {
     color: black;
 }
 
-.c-specials h3 {
+.c-specials h2 {
     margin: 0;
     font-size: 1.4rem;
 }
 
-.c-specials h4 {
+.c-specials h3 {
     margin: 0;
     font-size: 1.4rem;
     font-weight: 400;
@@ -602,6 +602,10 @@ ul.c-navigation__menu {
     margin: 0;
     margin-bottom: 1.3rem;
     display: flex;
+}
+
+.c-specials a h2, .c-specials a h3, .c-specials a p{
+	text-decoration: none;
 }
 
 a.c-calculator-banner {

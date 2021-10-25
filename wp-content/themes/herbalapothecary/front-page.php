@@ -55,14 +55,14 @@ get_header();
         </div>
         <div class="c-specials">
             <a class="c-specials__option" href="/product-category/beevital-apiceuticals/" style="background-image: url(/wp-content/uploads/2021/09/Oral_Health_Range_2-scaled.jpg.webp)">
-                <h3>BeeVital Propolis</h3>
-                <h4>Discover our range of propolis products</h4>
+                <h2>BeeVital Propolis</h2>
+                <h3>Discover our range of propolis products</h3>
                 <p>Including tinctures. liquids, tablets and oral health products</p>
                 <button class="c-button">Shop Now</button>
             </a>
             <a class="c-specials__option" href="/products/" style="background-image: url(/wp-content/uploads/2021/09/herb-2.jpg.webp)">
-                <h3>Explore Our Range of Herbs</h3>
-                <h4>Including Western, Chinese, and Ayurvedic</h4>
+                <h2>Explore Our Range of Herbs</h2>
+                <h3>Including Western, Chinese, and Ayurvedic</h3>
                 <p>Cut, whole, powdered, tinctures and fluid extracts</p>
                 <button class="c-button">Shop Now</button>
             </a>
