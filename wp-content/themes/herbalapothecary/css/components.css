@@ -605,7 +605,7 @@ ul.c-navigation__menu {
 }
 
 .c-specials a h2, .c-specials a h3, .c-specials a p{
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 a.c-calculator-banner {
