@@ -544,6 +544,7 @@ ul.c-navigation__menu {
 
 .c-promises__promise i {
     font-size: 2rem;
+    color:var(--green);
 }
 
 @media screen and (max-width: 870px) {
@@ -586,12 +587,12 @@ ul.c-navigation__menu {
     color: black;
 }
 
-.c-specials h3 {
+.c-specials h2 {
     margin: 0;
     font-size: 1.4rem;
 }
 
-.c-specials h4 {
+.c-specials h3 {
     margin: 0;
     font-size: 1.4rem;
     font-weight: 400;
@@ -602,6 +603,10 @@ ul.c-navigation__menu {
     margin: 0;
     margin-bottom: 1.3rem;
     display: flex;
+}
+
+.c-specials a h2, .c-specials a h3, .c-specials a p{
+	text-decoration: none !important;
 }
 
 a.c-calculator-banner {

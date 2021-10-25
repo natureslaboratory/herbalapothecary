@@ -14,7 +14,7 @@
 	<div id="page">
 		<header class="c-header">
 			<div class="c-header__inner l-restrict">
-				<a href="/"><img class="c-header__logo" src="<?= get_bloginfo("template_url") ?>/images/logo.webp"></a>
+				<a href="/"><img class="c-header__logo" alt="Herbal Apothecary Logo" src="<?= get_bloginfo("template_url") ?>/images/logo.webp"></a>
 				<?php echo get_template_part("template-parts/header-search", "search", ["cat" => true]) ?>
 				<div class="c-header__buttons">
 					<div class="c-header__contact">
