@@ -773,10 +773,17 @@ ul.c-navigation__menu {
     .woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product {
         width: auto;
         margin-bottom: 0;
+        padding: 0.5rem;
     }
-    .c-product .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+
+    .woocommerce ul.products[class*=columns-] li.product, .woocommerce-page ul.products[class*=columns-] li.product:hover {
+        border: none;
+    }
+
+    .c-product .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce .c-shop__main a.button {
         opacity: 1;
     }
+
 }
 
 .c-product__image, .woocommerce ul.products li.product a img {
