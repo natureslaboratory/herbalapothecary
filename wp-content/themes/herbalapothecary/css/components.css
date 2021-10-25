@@ -1114,6 +1114,8 @@ ul.c-navigation__menu {
     justify-content: space-between;
     align-items: center;
     padding: 0.7rem;
+    flex-wrap: wrap;
+    row-gap: 1rem;
 }
 
 .c-products__banner p {
@@ -2236,4 +2238,16 @@ iframe {
 
 .woocommerce div.product p.price, .woocommerce div.product span.price {
     margin: 0;
+}
+
+@media screen and (max-width: 937px) {
+    .woocommerce ul.order_details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .woocommerce ul.order_details li {
+        border: none;
+    }
 }
