@@ -87,7 +87,7 @@ get_header();
                         </div>
                         <h3><?= $c["title"] ?></h3>
                         <?= $c["description"] ?>
-                        <a class="c-button" href="<?= $c["button-link"] ?>"><?= $c["button_label"] ?></a>
+                        <a class="c-button" href="<?= $c["button_link"] ?>"><?= $c["button_label"] ?></a>
                     </div>
                 <?php } ?>
             </div>
