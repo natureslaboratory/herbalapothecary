@@ -1,6 +1,6 @@
 <form class="c-search <?= array_key_exists("cat", $args) ? "" : "c-search--navigation" ?>">
     <?php if (array_key_exists("cat", $args)) { ?>
-        <select class="c-search__dropdown search-category" id="search-category">
+        <select class="c-search__dropdown search-category">
             <?php
             $current_selected = "";
             if (array_key_exists("product_cat", $_GET)) {
