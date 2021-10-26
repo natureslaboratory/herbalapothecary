@@ -362,6 +362,10 @@ ul.c-navigation__menu {
     font-size: 1.65rem;
 }
 
+i.menu-toggle {
+    display: none;
+}
+
 @media screen and (max-width: 992px) {
     .c-search {
         display: none;
@@ -422,6 +426,10 @@ ul.c-navigation__menu {
     }
     ul.c-navigation__menu>* {
         border-bottom: 1px solid rgb(224, 224, 224);
+    }
+
+    i.menu-toggle {
+        display: block;
     }
 }
 

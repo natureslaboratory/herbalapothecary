@@ -6,3 +6,4 @@
 !/wp-content/themes/herbalapothecary
 !.gitignore 
 !.cpanel.yml
+/wp-content/themes/herbalapothecary/node_modules
