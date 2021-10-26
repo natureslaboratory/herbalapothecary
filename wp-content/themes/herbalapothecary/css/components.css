@@ -2439,3 +2439,14 @@ span.price .c-price {
 .woocommerce ul.products li.product .price {
     color: rgb(39, 39, 39);
 }
+
+.entry-content blockquote {
+    margin: 0 1.5em;
+    padding: 2rem 0;
+    padding-top: 1rem;
+}
+
+.entry-content > [class*=wp-block] {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
