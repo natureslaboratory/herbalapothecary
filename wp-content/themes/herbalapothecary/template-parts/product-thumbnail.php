@@ -16,7 +16,6 @@
             <div class="c-product__inner">
                 <div class="c-product__image-wrapper">
                     <?= $product->get_image("woocommerce_thumbnail", ["class" => "c-product__image"]) ?>
-                    <div class="c-product__image-overlay">Overlay</div>
                 </div>
                 <p class="c-product__name"><?php the_title() ?></p>
                 <p class="c-product__price"><?= wc_price($product->get_price()) ?></p>
