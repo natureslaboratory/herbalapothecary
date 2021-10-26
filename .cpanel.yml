@@ -3,3 +3,5 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/herbal/dev.herbalapothecaryuk.com/
     - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/herbal/public_html/
+    - /bin/cp -R * $DEPLOYPATH
