@@ -24,7 +24,7 @@
 							<a href="tel:+441947602346" aria-label="Phone Number">01947 602346</a>
 						</div>
 					</div>
-					<div class="c-header__cart c-menu__trigger">
+					<div class="c-header__cart c-menu__trigger" tabindex="0">
 						<a aria-label="Shopping Cart" href="<?= wc_get_cart_url() ?>">
 							<i class="fas fa-shopping-bag"></i>
 						</a>
@@ -55,8 +55,8 @@
 									<p><?= wc_price($woocommerce->cart->cart_contents_total) ?></p>
 								</div>
 								<div class="c-header__cart-buttons">
-									<a href="<?= wc_get_cart_url() ?>"><button class="c-button">View Basket</button></a>
-									<a href="<?= wc_get_checkout_url() ?>"><button class="c-button">Checkout</button></a>
+									<a href="<?= wc_get_cart_url() ?>" tabindex="-1"><button class="c-button">View Basket</button></a>
+									<a href="<?= wc_get_checkout_url() ?>" tabindex="-1"><button class="c-button">Checkout</button></a>
 								</div>
 							</div>
 						</div>

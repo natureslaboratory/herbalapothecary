@@ -95,7 +95,7 @@ input.c-search__box {
     padding-top: 1rem;
 }
 
-.c-menu__trigger:hover .c-menu__wrapper, .c-menu__wrapper:hover {
+.c-menu__trigger:is(:hover, :focus, :focus-within) .c-menu__wrapper, .c-menu__wrapper:is(:hover, :focus, :focus-within) {
     opacity: 1;
     pointer-events: all;
     transform: translateY(0%);
@@ -2416,4 +2416,8 @@ span.price .c-price {
     .c-cards--wide {
         grid-template-columns: 1fr;
     }
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle:focus {
+    outline: 1px solid black;
 }

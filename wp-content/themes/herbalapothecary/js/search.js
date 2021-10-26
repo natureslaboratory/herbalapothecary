@@ -40,3 +40,15 @@ button.addEventListener("click", () => {
 overlay.addEventListener("click", () => {
     nav.classList.remove("show");
 })
+
+document.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+        e.target.click();
+    }
+})
+
+let searchButtons = Array.from(document.getElementsByClassName("wc-block-product-search__button"));
+searchButtons.forEach(b => {
+    console.log(b);
+    b.setAttribute("aria-label", "Search");
+});

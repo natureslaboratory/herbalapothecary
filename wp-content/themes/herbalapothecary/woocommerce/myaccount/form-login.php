@@ -27,8 +27,8 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
 <?php if ($isRegEnabled) { ?>
 	<div class="c-login__titles">
-		<h2 class="c-login__title selected"><?php esc_html_e('Login', 'woocommerce'); ?></h2>
-		<h2 class="c-register__title"><?php esc_html_e('Register', 'woocommerce'); ?></h2>
+		<h2 tabindex="0" class="c-login__title selected"><?php esc_html_e('Login', 'woocommerce'); ?></h2>
+		<h2 tabindex="0" class="c-register__title"><?php esc_html_e('Register', 'woocommerce'); ?></h2>
 	</div>
 <?php } else { ?>
 	<div class="c-login__titles">
@@ -42,7 +42,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
 	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 		<label for="username"><?php esc_html_e('Username or email address', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo (!empty($_POST['username'])) ? esc_attr(wp_unslash($_POST['username'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
+		<input required type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="<?php echo (!empty($_POST['username'])) ? esc_attr(wp_unslash($_POST['username'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
 																																																													?>
 	</p>
 	<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
@@ -86,7 +86,7 @@ do_action('woocommerce_before_customer_login_form'); ?>
 
 			<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
 				<label for="reg_email"><?php esc_html_e('Email address', 'woocommerce'); ?>&nbsp;<span class="required">*</span></label>
-				<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo (!empty($_POST['email'])) ? esc_attr(wp_unslash($_POST['email'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
+				<input required type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" autocomplete="email" value="<?php echo (!empty($_POST['email'])) ? esc_attr(wp_unslash($_POST['email'])) : ''; ?>" /><?php // @codingStandardsIgnoreLine 
 																																																													?>
 			</p>
 
