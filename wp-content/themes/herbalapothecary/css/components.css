@@ -2421,3 +2421,7 @@ span.price .c-price {
 .woocommerce .widget_price_filter .ui-slider .ui-slider-handle:focus {
     outline: 1px solid black;
 }
+
+.woocommerce ul.products li.product .price {
+    color: rgb(39, 39, 39);
+}
