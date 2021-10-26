@@ -2440,10 +2440,19 @@ span.price .c-price {
     color: rgb(39, 39, 39);
 }
 
-.entry-content blockquote {
+.entry-content blockquote[class*=wp-block] {
     margin: 0 1.5em;
-    padding: 2rem 0;
+    padding-left: 2rem;
     padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid #b7b7b7;
+}
+
+.entry-content blockquote[class*=wp-block] > *:first-child {
+    margin-top: 0;
 }
 
 .entry-content > [class*=wp-block] {
