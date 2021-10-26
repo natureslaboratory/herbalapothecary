@@ -83,11 +83,11 @@ get_header();
                 <?php foreach ($cardList as $c) { ?>
                     <div class="c-card">
                         <div class="c-card__image-container">
-                            <img src="<?= $c["image"] ?>" alt="<?= $c["image_alt"] ?>">
+                            <img src="<?= $c["image"] ?>" alt="<?= $c["image_alt"] ?>" loading="lazy">
                         </div>
                         <h3><?= $c["title"] ?></h3>
                         <?= $c["description"] ?>
-                        <a class="c-button" href="<?= $c["button-link"] ?>"><?= $c["button_label"] ?></a>
+                        <a class="c-button" href="<?= $c["button_link"] ?>"><?= $c["button_label"] ?></a>
                     </div>
                 <?php } ?>
             </div>
