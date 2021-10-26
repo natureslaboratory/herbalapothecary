@@ -15,7 +15,7 @@
 <footer class="c-footer">
 	<div class="c-footer__top l-restrict">
 		<div class="c-footer__herbal">
-			<img src="/wp-content/themes/herbalapothecary/images/logo.webp" alt="Herbal Apothecary">
+			<img src="/wp-content/themes/herbalapothecary/images/logo.webp" alt="Herbal Apothecary" loading="lazy">
 			<p>
 				We offer professionals all the usual practitioner products and services – but with
 				a difference. Herbal Apothecary has been in existence for over 30 years and we produce
@@ -30,8 +30,8 @@
 			</p>
 			<div class="c-footer__accreditations-logos">
 				<a href="https://www.livingwage.org.uk/"><img src="/wp-content/uploads/2021/09/living-wage.png" alt="Living Wage"></a>
-				<img src="/wp-content/uploads/2021/09/cqs.png" alt="CQS">
-				<img src="/wp-content/uploads/2021/09/euorg.png" alt="euorg">
+				<img src="/wp-content/uploads/2021/09/cqs.png" alt="CQS" loading="lazy">
+				<img src="/wp-content/uploads/2021/09/euorg.png" alt="euorg" loading="lazy">
 			</div>
 		</div>
 		<div class="c-footer__info c-footer__column">
