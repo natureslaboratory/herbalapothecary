@@ -105,7 +105,7 @@ get_header();
                                             herbal remedy manufacturers who currently
                                             meet this standard.</p>",
                 "button_label" => "More about Quality",
-                "button_link" => "/",
+                "button_link" => "/quality",
                 "image" => "/assets/herbmark.svg",
                 "image_alt" => "Herbmark Logo"
             ],
@@ -126,7 +126,7 @@ get_header();
                         </p>
                         ",
                 "button_label" => "Why Organic is Better",
-                "button_link" => "/",
+                "button_link" => "/organic",
                 "image" => "/assets/organic.svg",
                 "image_alt" => "Organic Certification Logo"
             ],
@@ -147,7 +147,7 @@ get_header();
                         </p>
                         ",
                 "button_label" => "Manufacturing Innovation",
-                "button_link" => "/",
+                "button_link" => "/manufacturing",
                 "image" => "/assets/ISO.svg",
                 "image_alt" => "ISO Logo"
             ],
@@ -167,7 +167,7 @@ get_header();
                         </p>
                         ",
                 "button_label" => "About our Company",
-                "button_link" => "/",
+                "button_link" => "/about-us",
                 "image" => "/assets/livingwage.svg",
                 "image_alt" => "Living Wage Employer Logo"
             ]
@@ -264,7 +264,7 @@ get_header();
                 personnel.
                 </p>",
                 "button_label" => "More about Evidence",
-                "button_link" => "/",
+                "button_link" => "/evidence",
                 "image" => "/assets/evidence.jpg",
                 "image_alt" => "Scientific Equipment"
             ],
@@ -279,7 +279,7 @@ get_header();
                 </p>
                 ",
                 "button_label" => "More about Access",
-                "button_link" => "/",
+                "button_link" => "/access",
                 "image" => "/assets/access.jpg",
                 "image_alt" => "Wooden gate in field"
             ],
@@ -293,7 +293,7 @@ get_header();
                 </p>
                 ",
                 "button_label" => "More about Sustainability",
-                "button_link" => "/",
+                "button_link" => "/sustainability",
                 "image" => "/assets/sustainability.jpg",
                 "image_alt" => "Plant shoot"
             ],
@@ -307,8 +307,8 @@ get_header();
                     goods in our modern in-house laboratory.
                 </p>
                 ",
-                "button_label" => "More about Access",
-                "button_link" => "/",
+                "button_label" => "More about Quality",
+                "button_link" => "/quality",
                 "image" => "/assets/quality.jpg",
                 "image_alt" => "Scientific Equipment"
             ]
