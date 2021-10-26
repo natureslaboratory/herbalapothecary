@@ -265,7 +265,7 @@ get_header();
                 </p>",
                 "button_label" => "More about Evidence",
                 "button_link" => "/evidence",
-                "image" => "/assets/evidence.jpg",
+                "image" => "/assets/evidence.webp",
                 "image_alt" => "Scientific Equipment"
             ],
             [
@@ -280,7 +280,7 @@ get_header();
                 ",
                 "button_label" => "More about Access",
                 "button_link" => "/access",
-                "image" => "/assets/access.jpg",
+                "image" => "/assets/access.webp",
                 "image_alt" => "Wooden gate in field"
             ],
             [
@@ -294,7 +294,7 @@ get_header();
                 ",
                 "button_label" => "More about Sustainability",
                 "button_link" => "/sustainability",
-                "image" => "/assets/sustainability.jpg",
+                "image" => "/assets/sustainability.webp",
                 "image_alt" => "Plant shoot"
             ],
             [
@@ -309,7 +309,7 @@ get_header();
                 ",
                 "button_label" => "More about Quality",
                 "button_link" => "/quality",
-                "image" => "/assets/quality.jpg",
+                "image" => "/assets/quality.webp",
                 "image_alt" => "Scientific Equipment"
             ]
         ];
