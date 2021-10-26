@@ -28,6 +28,6 @@
             ?>
         </select>
     <?php } ?>
-    <input id="search-text" class="c-search__box search-text" type="text" placeholder="I'm shopping for...">
-    <button type="submit" id="search-submit" class="c-button search-submit">Search</button>
+    <input class="c-search__box search-text" type="text" placeholder="I'm shopping for...">
+    <button type="submit" class="c-button search-submit">Search</button>
 </form>

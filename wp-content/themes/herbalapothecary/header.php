@@ -14,18 +14,18 @@
 	<div id="page">
 		<header class="c-header">
 			<div class="c-header__inner l-restrict">
-				<a href="/"><img class="c-header__logo" alt="Herbal Apothecary Logo" src="<?= get_bloginfo("template_url") ?>/images/logo.webp"></a>
+				<a href="/" aria-label="Home"><img class="c-header__logo" alt="Herbal Apothecary Logo" src="<?= get_bloginfo("template_url") ?>/images/logo.webp"></a>
 				<?php echo get_template_part("template-parts/header-search", "search", ["cat" => true]) ?>
 				<div class="c-header__buttons">
 					<div class="c-header__contact">
 						<i class="fas fa-phone-alt"></i>
 						<div class="c-header__contact-details">
 							<p>Hotline</p>
-							<a href="/">01947 602346</a>
+							<a href="tel:+441947602346" aria-label="Phone Number">01947 602346</a>
 						</div>
 					</div>
 					<div class="c-header__cart c-menu__trigger">
-						<a href="<?= wc_get_cart_url() ?>">
+						<a aria-label="Shopping Cart" href="<?= wc_get_cart_url() ?>">
 							<i class="fas fa-shopping-bag"></i>
 						</a>
 						<div class="c-header__cart-menu-wrapper c-menu__wrapper">
@@ -45,7 +45,7 @@
 													<a class="c-header__cart-product-name" href="<?= $_product->get_permalink() ?>"><?= $_product->get_title() ?></a>
 													<p><?= $quantity ?> &#215; <?= wc_price($_product->get_price()) ?></p>
 												</div>
-												<a class="c-header__cart-product-delete" href="<?= wc_get_cart_remove_url($itemKey) ?>"><i class="fas fa-times"></i></a>
+												<a aria-label="Remove From Basket" class="c-header__cart-product-delete" href="<?= wc_get_cart_remove_url($itemKey) ?>"><i class="fas fa-times"></i></a>
 											</li>
 										<?php } ?>
 
@@ -62,11 +62,11 @@
 						</div>
 					</div>
 					<div class="c-header__account c-menu__trigger">
-						<a class="c-header__account-link" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
+						<a aria-label="Your Account" class="c-header__account-link" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
 							<i class="far fa-user"></i>
 						</a>
 						<?php if (!is_user_logged_in()) { ?>
-							<a href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
+							<a aria-label="Login Or Register" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
 								<div class="c-header__login">
 									<p>Log In</p>
 									<p>Register</p>

@@ -23,7 +23,7 @@
 			</p>
 		</div>
 		<div class="c-footer__accreditations">
-			<h5>Accreditations</h5>
+			<h2>Accreditations</h2>
 			<p>
 				We are proud to be a real Living Wage employer with ISO9001:2015 quality management
 				systems and organic certification.
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div class="c-footer__info c-footer__column">
-			<h5>Company Info</h5>
+			<h2>Company Info</h2>
 			<a href="tel:+441947602346">
 				+44 (0)1947 602346
 			</a>
@@ -47,7 +47,7 @@
 			</p>
 		</div>
 		<div class="c-footer__social c-footer__column">
-			<h5>Social</h5>
+			<h2>Social</h2>
 			<p>
 				Find us on the following social channels
 			</p>
@@ -64,13 +64,13 @@
 	</div> <!-- End .c-footer__top -->
 	<div class="c-footer__bottom l-restrict">
 		<div class="c-footer__bottom-column c-footer__questions">
-			<h5>Questions?</h5>
+			<h2>Questions?</h2>
 			<div class="c-footer__link-list">
 				<a href="/customer-service">Customer Service</a>
 			</div>
 		</div>
 		<div class="c-footer__bottom-column c-footer__shipping">
-			<h5>Shipping</h5>
+			<h2>Shipping</h2>
 			<div class="c-footer__link-list">
 				<a href="/customer-service#answer1">Delivery</a>
 				<a href="/customer-service#answer3">Returns</a>
@@ -78,7 +78,7 @@
 			</div>
 		</div>
 		<div class="c-footer__bottom-column c-footer__about">
-			<h5>About Us</h5>
+			<h2>About Us</h2>
 			<div class="c-footer__link-list">
 				<a href="/about-us">About Us</a>
 				<a href="<?= get_post_type_archive_link('post'); ?>">Blog</a>
@@ -89,7 +89,7 @@
 			</div>
 		</div>
 		<div class="c-footer__bottom-column c-footer__legal">
-			<h5>Legal</h5>
+			<h2>Legal</h2>
 
 			<div class="c-footer__link-list">
 				<a href="/terms-and-conditions">Terms & Conditions</a>

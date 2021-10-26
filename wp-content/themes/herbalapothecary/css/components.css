@@ -525,7 +525,7 @@ ul.c-navigation__menu {
     border-right: 1px solid #ccc;
 }
 
-.c-promises__promise h4 {
+.c-promises__promise h2 {
     margin: 0;
     font-weight: 400;
     font-size: 1rem;
@@ -581,6 +581,7 @@ ul.c-navigation__menu {
     padding: 1.5rem;
     min-height: 280px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .c-specials *:not(button) {
@@ -926,7 +927,10 @@ a.c-calculator-banner:hover {
 }
 
 .c-newsletter__signup label {
-    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
 }
 
 .c-newsletter__signup input[type*="email"] {
@@ -937,7 +941,7 @@ a.c-calculator-banner:hover {
 
 .c-newsletter__signup input.c-button {
     border: none;
-    background-color: #93c01c;
+    background-color: #607C13;
     color: white;
 }
 

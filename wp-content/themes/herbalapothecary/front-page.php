@@ -19,7 +19,7 @@ get_header();
                     <p class="c-carousel__description">
                         We supply one of the largest ranges of herbal products in the UK
                     </p>
-                    <a href="/about-us/"><button class="c-button">Find Out More</button></a>
+                    <a href="/about-us/" aria-label="About Us"><button class="c-button">Find Out More</button></a>
                 </div>
             </div>
         </div>
@@ -27,28 +27,28 @@ get_header();
             <div class="c-promises__promise">
                 <i class="fas fa-capsules"></i>
                 <div>
-                    <h4>Reliable</h4>
+                    <h2>Reliable</h2>
                     <p>Products You Can Trust</p>
                 </div>
             </div>
             <div class="c-promises__promise">
                 <i class="fas fa-truck"></i>
                 <div>
-                    <h4>Home Delivery</h4>
+                    <h2>Home Delivery</h2>
                     <p>Straight To Your Door</p>
                 </div>
             </div>
             <div class="c-promises__promise">
                 <i class="far fa-credit-card"></i>
                 <div>
-                    <h4>Secure Payment</h4>
+                    <h2>Secure Payment</h2>
                     <p>100% Secure via Card or PayPal</p>
                 </div>
             </div>
             <div class="c-promises__promise">
                 <i class="far fa-comments"></i>
                 <div>
-                    <h4>Support</h4>
+                    <h2>Support</h2>
                     <p>Get In Touch With Our Team</p>
                 </div>
             </div>
@@ -83,7 +83,7 @@ get_header();
                 <?php foreach ($cardList as $c) { ?>
                     <div class="c-card">
                         <div class="c-card__image-container">
-                            <img src="<?= $c["image"] ?>">
+                            <img src="<?= $c["image"] ?>" alt="<?= $c["image_alt"] ?>">
                         </div>
                         <h3><?= $c["title"] ?></h3>
                         <?= $c["description"] ?>
@@ -106,7 +106,8 @@ get_header();
                                             meet this standard.</p>",
                 "button_label" => "More about Quality",
                 "button_link" => "/",
-                "image" => "/assets/herbmark.svg"
+                "image" => "/assets/herbmark.svg",
+                "image_alt" => "Herbmark Logo"
             ],
             [
                 "title" => "Organic Certification",
@@ -126,7 +127,8 @@ get_header();
                         ",
                 "button_label" => "Why Organic is Better",
                 "button_link" => "/",
-                "image" => "/assets/organic.svg"
+                "image" => "/assets/organic.svg",
+                "image_alt" => "Organic Certification Logo"
             ],
             [
                 "title" => "ISO 9001:2015",
@@ -146,7 +148,8 @@ get_header();
                         ",
                 "button_label" => "Manufacturing Innovation",
                 "button_link" => "/",
-                "image" => "/assets/ISO.svg"
+                "image" => "/assets/ISO.svg",
+                "image_alt" => "ISO Logo"
             ],
             [
                 "title" => "Living Wage Employer",
@@ -165,7 +168,8 @@ get_header();
                         ",
                 "button_label" => "About our Company",
                 "button_link" => "/",
-                "image" => "/assets/livingwage.svg"
+                "image" => "/assets/livingwage.svg",
+                "image_alt" => "Living Wage Employer Logo"
             ]
         ];
 
@@ -186,10 +190,10 @@ get_header();
             <div class="c-socials__wrapper">
                 <h3>Follow Us on Social Media</h3>
                 <div class="c-socials">
-                    <a target="_blank" rel="noreferrer" href="https://www.facebook.com/herbalapothecaryuk/"><i class="fab fa-facebook-square"></i></a>
-                    <a target="_blank" rel="noreferrer" href="https://twitter.com/herbalapoth?lang=en"><i class="fab fa-twitter-square"></i></a>
-                    <a target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCAm5dGGrJEPctkyFP7LclDA"><i class="fab fa-youtube-square"></i></a>
-                    <a target="_blank" rel="noreferrer" href="https://www.instagram.com/herbalapothecaryuk/"><i class="fab fa-instagram-square"></i></a>
+                    <a aria-label="Our Facebook Page" target="_blank" rel="noreferrer" href="https://www.facebook.com/herbalapothecaryuk/"><i class="fab fa-facebook-square"></i></a>
+                    <a aria-label="Our Twitter Page" target="_blank" rel="noreferrer" href="https://twitter.com/herbalapoth?lang=en"><i class="fab fa-twitter-square"></i></a>
+                    <a aria-label="Our Youtube Channel" target="_blank" rel="noreferrer" href="https://www.youtube.com/channel/UCAm5dGGrJEPctkyFP7LclDA"><i class="fab fa-youtube-square"></i></a>
+                    <a aria-label="Our Instagram Page" target="_blank" rel="noreferrer" href="https://www.instagram.com/herbalapothecaryuk/"><i class="fab fa-instagram-square"></i></a>
                 </div>
             </div>
         </div>
@@ -221,7 +225,7 @@ get_header();
                     <a>Chinese Herbs</a>
                     <a>Ayurvedic Herbs</a>
                     <a>Propolis</a> -->
-                    <a href="/shop">View All</a>
+                    <a href="/shop" aria-label="View All Products">View All</a>
                 </div>
             </div>
             <div class="c-products__grid">
@@ -261,7 +265,8 @@ get_header();
                 </p>",
                 "button_label" => "More about Evidence",
                 "button_link" => "/",
-                "image" => "/assets/evidence.jpg"
+                "image" => "/assets/evidence.jpg",
+                "image_alt" => "Scientific Equipment"
             ],
             [
                 "title" => "Access",
@@ -275,7 +280,8 @@ get_header();
                 ",
                 "button_label" => "More about Access",
                 "button_link" => "/",
-                "image" => "/assets/access.jpg"
+                "image" => "/assets/access.jpg",
+                "image_alt" => "Wooden gate in field"
             ],
             [
                 "title" => "Sustainability",
@@ -288,7 +294,8 @@ get_header();
                 ",
                 "button_label" => "More about Sustainability",
                 "button_link" => "/",
-                "image" => "/assets/sustainability.jpg"
+                "image" => "/assets/sustainability.jpg",
+                "image_alt" => "Plant shoot"
             ],
             [
                 "title" => "Quality",
@@ -302,7 +309,8 @@ get_header();
                 ",
                 "button_label" => "More about Access",
                 "button_link" => "/",
-                "image" => "/assets/quality.jpg"
+                "image" => "/assets/quality.jpg",
+                "image_alt" => "Scientific Equipment"
             ]
         ];
 
