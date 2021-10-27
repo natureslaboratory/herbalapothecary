@@ -653,6 +653,7 @@ function customizing_woocommerce_description( $content ) {
 			if($description=='pet_bottles'){
 				$content .= "<h2>Packaging</h2><p>Product is supplied in amber PET bottles with tamper evident screw tops.</p>";
 			}
+			echo $description;
 		}
 	
 	    return $content;
