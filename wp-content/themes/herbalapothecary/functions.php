@@ -643,8 +643,7 @@ function customizing_woocommerce_description( $content ) {
 	$info = get_post_meta($productId,$key,true);
 	$data = unserialize($info['product_descriptions'][0]);
 	foreach($data as $description){
-		$file = './inc/'.$description.'.php';
-		$content .= $file;
+		$file = 'inc/'.$description.'.php';
 	    $content .= file_get_contents($file);
 	}
 
