@@ -637,6 +637,8 @@ function vna_is_purchasable( $purchasable, $product ){
 add_action( 'wpo_wcpdf_after_item_meta', 'wpo_wcpdf_product_custom_field', 10, 3 );
 function wpo_wcpdf_product_custom_field ( $template_type, $item, $order ) {
 	$field_name = 'tincture';
+	
+	echo 'here';
 	if ( $location = $product->get_meta( $field_name ) ) {
 		echo '<h2>Tincture</h2>';
 	}
