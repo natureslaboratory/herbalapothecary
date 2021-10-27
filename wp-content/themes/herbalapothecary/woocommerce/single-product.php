@@ -39,7 +39,7 @@ do_action('woocommerce_before_main_content');
 
 		<?php wc_get_template_part('content', 'single-product'); ?>
 		
-		<?php if($tincture = herbal__getExtraProductData($product->get_id(),'tincture')) : ?>
+		<?php echo $product->get_id(); if($tincture = herbal__getExtraProductData($product->get_id(),'tincture')) : ?>
             <div class="sub_heading">
                 Tincture
             </div>
