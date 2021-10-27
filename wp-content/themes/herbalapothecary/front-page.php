@@ -201,25 +201,25 @@ get_header();
         <div class="c-home-categories">
             <h2>Product Categories</h2>
             <?php
-            // $args = [
-            //     'post_type' => ["product"],
-            //     'meta_key' => 'total_sales',
-            //     'orderby' => 'meta_value_num',
-            //     'order' => 'desc',
-            //     'posts_per_page' => 12
-            // ];
+            $args = [
+                'post_type' => ["product"],
+                'meta_key' => 'total_sales',
+                'orderby' => 'meta_value_num',
+                'order' => 'desc',
+                'posts_per_page' => 12
+            ];
 
-            // $popular_products = new WP_Query($args);
+            $popular_products = new WP_Query($args);
 
-            // if ($popular_products->have_posts()) :
-            //     while ($popular_products->have_posts()) :
-            //         $popular_products->the_post();
-            //         get_template_part('template-parts/product-thumbnail');
-            //     endwhile;
-            // endif;
+            if ($popular_products->have_posts()) :
+                while ($popular_products->have_posts()) :
+                     $popular_products->the_post();
+                     get_template_part('template-parts/product-thumbnail');
+                 endwhile;
+             endif;
 
-            // wp_reset_postdata();
-            echo get_template_part("template-parts/product-categories", "categories");
+            wp_reset_postdata();
+            //echo get_template_part("template-parts/product-categories", "categories");
             ?>
         </div>
         <?php
