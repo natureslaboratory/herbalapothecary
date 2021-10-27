@@ -81,10 +81,6 @@ if (post_password_required()) {
 			Review this product and let others know what you think.
 		</p>
 	</div>
-	
-	<?php
-		$value = get_field( "text_field", $product->get_id() );	
-	?>
 
 	<?php
 	/**

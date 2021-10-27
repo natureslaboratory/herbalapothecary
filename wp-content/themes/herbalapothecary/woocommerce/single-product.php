@@ -39,20 +39,6 @@ do_action('woocommerce_before_main_content');
 
 		<?php wc_get_template_part('content', 'single-product'); ?>
 		
-		<?php 
-			$productId = $product->get_id(); 
-			$info = get_post_meta($productId,$key,true);
-			$data = unserialize($info['product_descriptions'][0]);
-			foreach($data as $description){
-				if($description == 'tincture'){
-					include($description.'.php');
-				}
-				if($description == 'fluidextract'){
-					include($description.'.php');
-				}
-			}
-		?>
-		
 
 	<?php endwhile; // end of the loop. 
 	?>

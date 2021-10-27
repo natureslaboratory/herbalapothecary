@@ -634,13 +634,17 @@ function vna_is_purchasable( $purchasable, $product ){
     return true || false; // depending on your condition
 }
 
-function herbal__getExtraProductData(int $productId, string $key) : ?string
-{
+add_filter( 'the_content', 'customizing_woocommerce_description' );
+function customizing_woocommerce_description( $content ) {
 
-    $key = 'herbal__' . str_replace('herbal__','',$key);
+    // Only for single product pages (woocommerce)
+    if ( is_product() ) {
 
-    $info = get_post_meta($productId,$key,true);
-    print_r($info);
+        // The custom content
+        $custom_content = '<p class="custom-content">' . __("This is the last line in the description", "woocommerce").'</p>';
 
-    return $info && !empty($info) ? (string)$info : null;
+        // Inserting the custom content at the end
+        $content .= $custom_content;
+    }
+    return $content;
 }
