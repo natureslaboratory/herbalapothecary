@@ -628,3 +628,22 @@ function ha_edit_price_display($price)
 }
 
 add_filter('woocommerce_get_price_html', "ha_edit_price_display");
+
+add_filter( 'woocommerce_get_description', 'custom_description', 10, 2 );
+
+function custom_description( $description, $object ) {
+
+    $terms = get_the_terms( $object->post->ID 'product_tag' );
+
+    foreach ( $terms as $term ) {
+
+        if ( $term->name == 'tincture' ) {
+            $text = 'This product is tagged as tincture';
+        }else{
+	        $text = 'not tagged';
+        }
+
+    }
+
+    return $description . $text;
+}
