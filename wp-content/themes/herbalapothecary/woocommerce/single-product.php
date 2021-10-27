@@ -46,6 +46,8 @@ do_action('woocommerce_before_main_content');
 			foreach($info['product_descriptions'] as $description){
 				
 				print_r($description);
+				$this = unserialize($description);
+				print_r($this);
 			}
 		?>
 		
