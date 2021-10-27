@@ -633,3 +633,11 @@ add_filter( 'woocommerce_is_purchasable', 'vna_is_purchasable', 10, 2 );
 function vna_is_purchasable( $purchasable, $product ){
     return true || false; // depending on your condition
 }
+
+add_action( 'wpo_wcpdf_after_item_meta', 'wpo_wcpdf_product_custom_field', 10, 3 );
+function wpo_wcpdf_product_custom_field ( $template_type, $item, $order ) {
+	$field_name = 'tincture';
+	if ( $location = $product->get_meta( $field_name ) ) {
+		echo '<h2>Tincture</h2>';
+	}
+}
