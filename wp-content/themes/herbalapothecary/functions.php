@@ -359,7 +359,7 @@ function custom_search($query)
 	}
 
 
-	if (is_shop() || is_product_category()) {
+	if ((is_shop() || is_product_category()) && !is_search()) {
 		if (!is_admin()) { // Don't apply it to admin users
 			if ($query->is_search() || $query->is_archive()) {
 				$meta_query[] = [
@@ -530,7 +530,8 @@ function ha_cron_exec()
 	$debug = [];
 	global $wpdb;
 	$variableProducts = wc_get_products([
-		"type" => "variable"
+		"type" => "variable",
+		"no-paging" => "true"
 	]);
 	$groupedProducts = wc_get_products([
 		"type" => "grouped"
@@ -590,12 +591,19 @@ function ha_cron_exec()
 					}
 				}
 			}
+			update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
+			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
 		}
 	} catch (\Throwable $th) {
-		// echo $th->getMessage() . "<br>";
-		// echo $th->getFile() . "<br>";
-		// echo $th->getLine();
+		echo $th->getMessage() . "<br>";
+		echo $th->getFile() . "<br>";
+		echo $th->getLine();
 	}
+	?>
+	<script>
+		console.log(<?= json_encode($debug) ?>);
+	</script>
+	<?php
 }
 
 add_action("ha_cron_hook", "ha_cron_exec");
@@ -620,3 +628,8 @@ function ha_edit_price_display($price)
 }
 
 add_filter('woocommerce_get_price_html', "ha_edit_price_display");
+
+add_filter( 'woocommerce_is_purchasable', 'vna_is_purchasable', 10, 2 );
+function vna_is_purchasable( $purchasable, $product ){
+    return true || false; // depending on your condition
+}
