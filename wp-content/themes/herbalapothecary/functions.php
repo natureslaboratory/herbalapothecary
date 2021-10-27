@@ -643,10 +643,9 @@ function customizing_woocommerce_description( $content ) {
 	$info = get_post_meta($productId,$key,true);
 	$data = unserialize($info['product_descriptions'][0]);
 	foreach($data as $description){
-		$file = '/wp-content/themes/herbalapothecary/inc/'.$description.'.php';
+		$file = 'inc/'.$description.'.php';
 		$content .= $file;
 	    $content .= file_get_contents($file);
-	    echo $content;
 	}
 
     return $content;
