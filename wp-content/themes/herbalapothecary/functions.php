@@ -633,3 +633,13 @@ add_filter( 'woocommerce_is_purchasable', 'vna_is_purchasable', 10, 2 );
 function vna_is_purchasable( $purchasable, $product ){
     return true || false; // depending on your condition
 }
+
+function herbal__getExtraProductData(int $productId, string $key) : ?string
+{
+
+    $key = 'herbal__' . str_replace('herbal__','',$key);
+
+    $info = get_post_meta($productId,$key,true);
+
+    return $info && !empty($info) ? (string)$info : null;
+}
