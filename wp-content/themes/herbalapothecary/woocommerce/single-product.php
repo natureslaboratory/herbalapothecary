@@ -39,15 +39,12 @@ do_action('woocommerce_before_main_content');
 
 		<?php wc_get_template_part('content', 'single-product'); ?>
 		
-		<?php echo $product->get_id(); if($tincture = herbal__getExtraProductData($product->get_id(),'tincture')) : ?>
-            <div class="sub_heading">
-                Tincture
-            </div>
-
-            <p>
-                This is a tincture.
-            </p>
-        <?php endif; ?>
+		<?php 
+			$productId = $product->get_id(); 
+			$info = get_post_meta($productId,$key,true);
+			print_r($info);
+		?>
+		
 
 	<?php endwhile; // end of the loop. 
 	?>
