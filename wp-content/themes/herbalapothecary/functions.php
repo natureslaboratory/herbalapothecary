@@ -642,6 +642,7 @@ function customizing_woocommerce_description( $content ) {
 
 	global $product;
 	
+	if($product){
 	$productId = $product->get_id(); 
 	$info = get_post_meta($productId,$key,true);
 	$data = unserialize($info['product_descriptions'][0]);
@@ -652,4 +653,6 @@ function customizing_woocommerce_description( $content ) {
 	}
 
     return $content;
+    
+    }
 }
