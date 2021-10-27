@@ -7,6 +7,9 @@
  *
  * @package herbalapothecary
  */
+ 
+require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
@@ -644,7 +647,7 @@ function customizing_woocommerce_description( $content ) {
 	$data = unserialize($info['product_descriptions'][0]);
 	foreach($data as $description){
 		$file = 'inc/'.$description.'.php';
-	    $content .= file_get_contents($file);
+	    $content .= WP_Filesystem_Direct::get_contents($file);
 	}
 
     return $content;
