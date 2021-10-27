@@ -644,7 +644,7 @@ function customizing_woocommerce_description( $content ) {
 	$data = unserialize($info['product_descriptions'][0]);
 	foreach($data as $description){
 		if($description == 'tincture'){
-			$content .= file_get_contents('inc/'.$description.'.php');
+			$content .= 'inc/'.$description.'.php';
 		}
 	}
 
