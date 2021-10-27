@@ -1,31 +1,22 @@
 <form class="c-search <?= array_key_exists("cat", $args) ? "" : "c-search--navigation" ?>">
     <?php if (array_key_exists("cat", $args)) { ?>
         <select class="c-search__dropdown search-category">
-            <?php
-            $current_selected = "";
-            if (array_key_exists("product_cat", $_GET)) {
-                $current_selected = trim($_GET["product_cat"]);
-                echo $current_selected . " - " . strlen($current_selected);
-            }
-            ?>
-            <option value="" selected="<?= $current_selected ? "" : "selected" ?>">All</option>
-            <?php
-            $orderby = 'name';
-            $order = 'asc';
-            $hide_empty = false;
-            $cat_args = array(
-                'orderby'    => $orderby,
-                'order'      => $order,
-                'hide_empty' => $hide_empty,
-            );
-
-            $product_categories = get_terms('product_cat', $cat_args);
-            foreach ($product_categories as $key => $cat) { ?>
-                <option value="<?= $cat->slug ?>" <?= $cat->slug == $current_selected ? "selected" : "" ?>><?= $cat->name ?></option>
-            <?php }
-
-
-            ?>
+            <option value="" selected="selected">All</option>
+            <option value="ayurvedic-herbs">Ayurvedic Herbs</option>
+            <option value="beevital-apiceuticals">BeeVital Apiceuticals</option>
+            <option value="herbal-capsules">Capsules</option>
+            <option value="carrier-oils-waters">Carrier Oils &amp; Waters</option>
+            <option value="chinese-herbs">Chinese Herbs</option>
+            <option value="creams-base-products">Creams &amp; Base Products</option>
+            <option value="detox">Detox</option>
+            <option value="essential-oils">Essential Oils</option>
+            <option value="gums-waxes">Gums &amp; Waxes</option>
+            <option value="packaging">Packaging</option>
+            <option value="herbal-products">Products A-Z</option>
+            <option value="sale">Sale</option>
+            <option value="sweet-cecilys-skincare">Sweet Cecily's Skincare</option>
+            <option value="uncategorised">Uncategorised</option>
+            <option value="western-herbs">Western Herbs</option>
         </select>
     <?php } ?>
     <input class="c-search__box search-text" type="text" placeholder="I'm shopping for...">

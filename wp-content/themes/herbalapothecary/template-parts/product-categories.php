@@ -25,4 +25,4 @@ if (!empty($product_categories)) { ?>
             </div>
         <?php } ?>
     </div>
-<?php } ?>
+<?php } else { echo "empty"; } ?>
