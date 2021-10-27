@@ -44,7 +44,14 @@ do_action('woocommerce_before_main_content');
 			$info = get_post_meta($productId,$key,true);
 			print_r($info['product_descriptions']);
 			$data = unserialize($info['product_descriptions'][0]);
-			print_r($data);
+			foreach($data as $description){
+				if($description == 'tincture'){
+					echo '<h2>Tincture</h2>';
+				}
+				if($description == 'fluidextract'){
+					echo '<h2>Fluid Extract</h2>';
+				}
+			}
 		?>
 		
 
