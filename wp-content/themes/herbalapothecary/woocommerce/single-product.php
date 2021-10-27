@@ -43,7 +43,7 @@ do_action('woocommerce_before_main_content');
 			$productId = $product->get_id(); 
 			$info = get_post_meta($productId,$key,true);
 			print_r($info['product_descriptions']);
-			$data = unserialize($into['product_descriptions'][0]);
+			$data = unserialize($info['product_descriptions'][0]);
 			print_r($data);
 		?>
 		
