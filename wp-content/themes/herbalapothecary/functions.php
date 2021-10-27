@@ -620,3 +620,8 @@ function ha_edit_price_display($price)
 }
 
 add_filter('woocommerce_get_price_html', "ha_edit_price_display");
+
+add_filter( 'woocommerce_is_purchasable', 'vna_is_purchasable', 10, 2 );
+function vna_is_purchasable( $purchasable, $product ){
+    return true || false; // depending on your condition
+}
