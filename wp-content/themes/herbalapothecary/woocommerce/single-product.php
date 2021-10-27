@@ -44,8 +44,8 @@ do_action('woocommerce_before_main_content');
 			$info = get_post_meta($productId,$key,true);
 			print_r($info['product_descriptions']);
 			foreach($info['product_descriptions'] as $description){
-				$this = unserialize($description[0]);
-				print_r($this);
+				
+				print_r($description);
 			}
 		?>
 		
