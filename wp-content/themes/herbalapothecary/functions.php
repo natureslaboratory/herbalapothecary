@@ -646,8 +646,9 @@ function customizing_woocommerce_description( $content ) {
 	$info = get_post_meta($productId,$key,true);
 	$data = unserialize($info['product_descriptions'][0]);
 	foreach($data as $description){
-		$file = './inc/'.$description.'.php';
-	    $content .= WP_Filesystem_Direct::get_contents($file);
+		if($description=='tincture'){
+			$content .= "<h2>Tincture</h2>";
+		}
 	}
 
     return $content;
