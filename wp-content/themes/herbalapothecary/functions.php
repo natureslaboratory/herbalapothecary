@@ -530,7 +530,8 @@ function ha_cron_exec()
 	$debug = [];
 	global $wpdb;
 	$variableProducts = wc_get_products([
-		"type" => "variable"
+		"type" => "variable",
+		"no-paging" => "true"
 	]);
 	$groupedProducts = wc_get_products([
 		"type" => "grouped"
