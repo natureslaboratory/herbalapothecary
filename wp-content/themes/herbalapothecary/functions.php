@@ -644,8 +644,8 @@ function customizing_woocommerce_description( $content ) {
 	$data = unserialize($info['product_descriptions'][0]);
 	foreach($data as $description){
 		if($description == 'tincture'){
-			$file .= '/wp-content/themes/herbalapothecary/inc/'.$description.'.php';
-			$content .= $file.file_get_contents($file);
+			$file = '/wp-content/themes/herbalapothecary/inc/'.$description.'.php';
+			$content .= file_get_contents($file);
 		}
 	}
 
