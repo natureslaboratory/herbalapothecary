@@ -637,14 +637,16 @@ function vna_is_purchasable( $purchasable, $product ){
 add_filter( 'the_content', 'customizing_woocommerce_description' );
 function customizing_woocommerce_description( $content ) {
 
-    // Only for single product pages (woocommerce)
-    if ( is_product() ) {
+	global $product;
+	
+	$productId = $product->get_id(); 
+	$info = get_post_meta($productId,$key,true);
+	$data = unserialize($info['product_descriptions'][0]);
+	foreach($data as $description){
+		if($description == 'tincture'){
+			$content .= "<h2>Tincture</h2>";
+		}
+	}
 
-        // The custom content
-        $custom_content = '<p class="custom-content">' . __("This is the last line in the description", "woocommerce").'</p>';
-
-        // Inserting the custom content at the end
-        $content .= $custom_content;
-    }
     return $content;
 }
