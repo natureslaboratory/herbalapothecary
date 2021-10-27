@@ -640,6 +640,7 @@ function herbal__getExtraProductData(int $productId, string $key) : ?string
     $key = 'herbal__' . str_replace('herbal__','',$key);
 
     $info = get_post_meta($productId,$key,true);
+    print_r($info);
 
     return $info && !empty($info) ? (string)$info : null;
 }
