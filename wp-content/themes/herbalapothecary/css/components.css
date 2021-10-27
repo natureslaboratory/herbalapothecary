@@ -295,6 +295,7 @@ option {
 
 ul.c-navigation__menu {
     gap: 1.2rem;
+    overflow-y: auto;
 }
 
 .c-navigation__overlay {
@@ -2458,4 +2459,8 @@ span.price .c-price {
 .entry-content > [class*=wp-block] {
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.c-home-categories {
+    margin-bottom: 4rem;
 }

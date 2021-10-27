@@ -198,58 +198,29 @@ get_header();
             </div>
         </div>
 
-        <div class="c-products">
-            <div class="c-products__header">
-                <h3>Browse Popular Products</h3>
-                <div class="c-products__categories">
-                    <?php
-                    $orderby = 'count';
-                    $order = 'desc';
-                    $hide_empty = false;
-                    $cat_args = array(
-                        'orderby'    => $orderby,
-                        'order'      => $order,
-                        'hide_empty' => $hide_empty,
-                        'number' => 4
-                    );
+        <div class="c-home-categories">
+            <h2>Product Categories</h2>
+            <?php
+            // $args = [
+            //     'post_type' => ["product"],
+            //     'meta_key' => 'total_sales',
+            //     'orderby' => 'meta_value_num',
+            //     'order' => 'desc',
+            //     'posts_per_page' => 12
+            // ];
 
-                    $cats = get_terms('product_cat', $cat_args);
+            // $popular_products = new WP_Query($args);
 
-                    foreach ($cats as $key => $cat) { ?>
-                        <a href="/product-category/<?= $cat->slug ?>"><?= $cat->name ?></a>
-                    <?php }
+            // if ($popular_products->have_posts()) :
+            //     while ($popular_products->have_posts()) :
+            //         $popular_products->the_post();
+            //         get_template_part('template-parts/product-thumbnail');
+            //     endwhile;
+            // endif;
 
-
-                    ?>
-                    <!-- <a>Western Herbs</a>
-                    <a>Chinese Herbs</a>
-                    <a>Ayurvedic Herbs</a>
-                    <a>Propolis</a> -->
-                    <a href="/shop" aria-label="View All Products">View All</a>
-                </div>
-            </div>
-            <div class="c-products__grid">
-                <?php
-                $args = [
-                    'post_type' => ["product"],
-                    'meta_key' => 'total_sales',
-                    'orderby' => 'meta_value_num',
-                    'order' => 'desc',
-                    'posts_per_page' => 12
-                ];
-
-                $popular_products = new WP_Query($args);
-
-                if ($popular_products->have_posts()) :
-                    while ($popular_products->have_posts()) :
-                        $popular_products->the_post();
-                        get_template_part('template-parts/product-thumbnail');
-                    endwhile;
-                endif;
-
-                wp_reset_postdata();
-                ?>
-            </div>
+            // wp_reset_postdata();
+            echo get_template_part("template-parts/product-categories", "categories");
+            ?>
         </div>
         <?php
 
