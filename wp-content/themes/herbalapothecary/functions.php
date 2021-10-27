@@ -531,7 +531,7 @@ function ha_cron_exec()
 	global $wpdb;
 	$variableProducts = wc_get_products([
 		"type" => "variable",
-		"limit" => "-1"
+		"limit" => "100"
 	]);
 	$groupedProducts = wc_get_products([
 		"type" => "grouped"
