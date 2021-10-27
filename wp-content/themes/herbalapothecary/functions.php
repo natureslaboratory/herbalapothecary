@@ -598,6 +598,11 @@ function ha_cron_exec()
 		echo $th->getFile() . "<br>";
 		echo $th->getLine();
 	}
+	?>
+	<script>
+		console.log(<?= json_encode($debug) ?>);
+	</script>
+	<?php
 }
 
 add_action("ha_cron_hook", "ha_cron_exec");
