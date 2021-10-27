@@ -531,7 +531,7 @@ function ha_cron_exec()
 	global $wpdb;
 	$variableProducts = wc_get_products([
 		"type" => "variable",
-		"limit" => "100"
+		"no-paging" => "true"
 	]);
 	$groupedProducts = wc_get_products([
 		"type" => "grouped"
@@ -629,21 +629,7 @@ function ha_edit_price_display($price)
 
 add_filter('woocommerce_get_price_html', "ha_edit_price_display");
 
-add_filter( 'woocommerce_get_description', 'custom_description', 10, 2 );
-
-function custom_description( $description, $object ) {
-
-    $terms = get_the_terms( $object->post->ID 'product_tag' );
-
-    foreach ( $terms as $term ) {
-
-        if ( $term->name == 'tincture' ) {
-            $text = 'This product is tagged as tincture';
-        }else{
-	        $text = 'not tagged';
-        }
-
-    }
-
-    return $description . $text;
+add_filter( 'woocommerce_is_purchasable', 'vna_is_purchasable', 10, 2 );
+function vna_is_purchasable( $purchasable, $product ){
+    return true || false; // depending on your condition
 }
