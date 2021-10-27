@@ -646,6 +646,7 @@ function customizing_woocommerce_description( $content ) {
 		$file = '/wp-content/themes/herbalapothecary/inc/'.$description.'.php';
 		$content .= $file;
 	    $content .= file_get_contents($file);
+	    echo $content;
 	}
 
     return $content;
