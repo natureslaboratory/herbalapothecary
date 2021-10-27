@@ -43,7 +43,7 @@ do_action('woocommerce_before_main_content');
 			$productId = $product->get_id(); 
 			$info = get_post_meta($productId,$key,true);
 			print_r($info['product_descriptions']);
-			foreach($info['prodict_descriptions'] as $description){
+			foreach($info['product_descriptions'] as $description){
 				$this = unserialize($description);
 				if($this=='tincture'){
 					echo "<h2>Tincture</h2>";		
