@@ -42,7 +42,7 @@ do_action('woocommerce_before_main_content');
 		<?php 
 			$productId = $product->get_id(); 
 			$info = get_post_meta($productId,$key,true);
-			print_r($info['product_descriptions']);
+			print_r(json_decode($info['product_descriptions'],true));
 		?>
 		
 
