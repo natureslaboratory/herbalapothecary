@@ -585,11 +585,12 @@ function ha_cron_exec()
 					$stock = 0;
 					foreach ($variationArray["attributes"] as $attribute) {
 						if ($attribute == "1000gm" || $attribute == "1000ml") {
+							$is_correct_type = true;
 							$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
 							$stock = $variation_obj->get_stock_quantity();
 						}
 					}
-					if ($stock > 0) {
+					if ($is_correct_type) {
 						foreach ($variationArray["attributes"] as $value) {
 							if (!strpos($value, "1000")) {
 								$unit_stripped = strip_unit($value);
