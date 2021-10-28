@@ -580,42 +580,44 @@ function ha_cron_exec_new()
 			$debug["variations"] = $variations;
 			$limit = 1000;
 			$count = 0;
-			if ($count < $limit) {
+
+			$is_correct_type = false;
+			$correct_type_stock = 0;
+			foreach ($variations as $variationArray) {
+				foreach ($variationArray["attributes"] as $attribute) {
+					if ($attribute == "1000gm" || $attribute == "1000ml") {
+						$is_correct_type = true;
+						$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+						$correct_type_stock = $variation_obj->get_stock_quantity();
+					}
+				}
+			}
+
+
+			if ($is_correct_type) {
 				foreach ($variations as $variationArray) {
-					$stock = 0;
-					$is_correct_type = false;
-					foreach ($variationArray["attributes"] as $attribute) {
-						if ($attribute == "1000gm" || $attribute == "1000ml") {
-							$is_correct_type = true;
-							$debug["TEST"][] = $variationArray; 
-							$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
-							$stock = $variation_obj->get_stock_quantity();
+					foreach ($variationArray["attributes"] as $value) {
+						if (!strpos($value, "1000")) {
+							
+							$unit_stripped = strip_unit($value);
+							$amount = ($correct_type_stock * 1000) / $unit_stripped;
+							$debug["products"][] = [
+								"id" => $variationArray["variation_id"],
+								"stock" => $amount
+							];
+							
+							update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+							wc_update_product_stock($variationArray["variation_id"], $amount);
 						}
 					}
-					if ($is_correct_type) {
-						foreach ($variationArray["attributes"] as $value) {
-							if (!strpos($value, "1000")) {
-								$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
-								$stock = $variation_obj->get_stock_quantity();
-
-								$unit_stripped = strip_unit($value);
-								$amount = ($stock * 1000) / $unit_stripped;
-								$debug["products"][] = [
-									"id" => $variationArray["variation_id"],
-									"stock" => $amount
-								];
-								
-								// update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
-								// wc_update_product_stock($variationArray["variation_id"], $amount);
-							}
-						}
-					} else {
-						foreach ($variationArray["attributes"] as $value) {
-
-							$debug["other_products"][] = $value;
-						}
-					}
-					$count++;
+					
+				}
+			} else {
+				foreach ($variations as $variationArray) {
+					$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+					$stock = $variation_obj->get_stock_quantity();
+					update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+					wc_update_product_stock($variationArray["variation_id"], $stock);
 				}
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
