@@ -529,13 +529,21 @@ function ha_cron_exec()
 {
 	$debug = [];
 	global $wpdb;
-	$variableProducts = wc_get_products([
-		"type" => "variable",
-		"limit" => "100"
-	]);
-	$groupedProducts = wc_get_products([
-		"type" => "grouped"
-	]);
+	try {
+		$variableProducts = wc_get_products([
+			"type" => "variable",
+			"limit" => "-1"
+		]);
+	} catch (Throwable $th) {
+		echo $th->getMessage();
+		$variableProducts = wc_get_products([
+			"type" => "variable",
+			"limit" => "100"
+		]);
+	}
+	// $groupedProducts = wc_get_products([
+	// 	"type" => "grouped"
+	// ]);
 	
 	function get_thousand_stock($variations)
 	{
@@ -577,7 +585,7 @@ function ha_cron_exec()
 				}
 			}
 			$debug["thousand_stock"] = $stock;
-			if ($stock) {
+			if ($stock && $stock > 0) {
 				foreach ($variations as $variationArray) {
 					foreach ($variationArray["attributes"] as $value) {
 						if (!strpos($value, "1000")) {
