@@ -594,7 +594,7 @@ function ha_cron_exec_new()
 			$is_correct_type = false;
 			$correct_type_stock = 0;
 			foreach ($variations as $variationArray) {
-				if ($count < 10) {
+				if ($count < 1) {
 					echo "<pre>" . print_r($variationArray, true) . "</pre";
 					$count++;
 				}
