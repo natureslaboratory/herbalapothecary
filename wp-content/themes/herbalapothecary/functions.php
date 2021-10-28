@@ -578,7 +578,7 @@ function ha_cron_exec()
 
 			$variations = $variableProduct->get_available_variations("array");
 			$debug["variations"] = $variations;
-			$limit = 100;
+			$limit = 1000;
 			$count = 0;
 			if ($count < $limit) {
 				foreach ($variations as $variationArray) {
