@@ -586,14 +586,31 @@ function ha_cron_exec_new()
 
 			$is_correct_type = false;
 			$correct_type_stock = 0;
-			foreach ($variations as $variationArray) {
-				// Loops through variations, then loops through attributes of that variation looking for
-				// 1000gm or 1000ml values.
-				foreach ($variationArray["attributes"] as $attribute) {
-					if ($attribute == "1000gm" || $attribute == "1000ml") {
-						$is_correct_type = true;
-						$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
-						$correct_type_stock = $variation_obj->get_stock_quantity();
+			// foreach ($variations as $variationArray) {
+			// 	// Loops through variations, then loops through attributes of that variation looking for
+			// 	// 1000gm or 1000ml values.
+			// 	foreach ($variationArray["attributes"] as $attribute) {
+			// 		if ($attribute == "1000gm" || $attribute == "1000ml") {
+			// 			$is_correct_type = true;
+			// 			$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+			// 			$correct_type_stock = $variation_obj->get_stock_quantity();
+			// 		}
+			// 	}
+			// }
+
+			for ($i=0; $i < count($variations); $i++) { 
+				$variationArray = $variations[$i];
+				if ($is_correct_type) {
+					break;
+				} else {
+					for ($j=0; $j < count($variationArray["attributes"]); $j++) { 
+						$attribute = $variationArray["attributes"][$j];
+						if ($attribute == "1000gm" || $attribute == "1000ml") {
+							$is_correct_type = true;
+							$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+							$correct_type_stock = $variation_obj->get_stock_quantity();
+							break;
+						}
 					}
 				}
 			}
