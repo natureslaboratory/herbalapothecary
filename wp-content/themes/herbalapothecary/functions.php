@@ -602,6 +602,11 @@ function ha_cron_exec_new()
 			if ($is_correct_type) {
 				foreach ($variations as $variationArray) {
 					foreach ($variationArray["attributes"] as $value) {
+						$debug["correct_type"] = [
+							"id" => $variationArray["variation_id"],
+							"match_first" => strpos($value, "1000"),
+							"value" => $value
+						];
 						if (!strpos($value, "1000")) {
 							// Updates every variation which is dictated by it's 1000gm/ml variation  
 							$unit_stripped = strip_unit($value);
