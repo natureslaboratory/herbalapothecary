@@ -535,7 +535,7 @@ function ha_cron_exec()
 	try {
 		$variableProducts = wc_get_products([
 			"type" => "variable",
-			"limit" => "-1"
+			"limit" => "1000"
 		]);
 	} catch (Throwable $th) {
 		echo $th->getMessage();
@@ -573,43 +573,43 @@ function ha_cron_exec()
 	}
 
 	$debug["test"] = "Test";
-	try {
-		foreach ($variableProducts as $variableProduct) {
+	// try {
+	// 	foreach ($variableProducts as $variableProduct) {
 
-			$variations = $variableProduct->get_available_variations("array");
-			$debug["variations"] = $variations;
-			$stock = 0;
-			foreach ($variations as $variationArray) {
-				foreach ($variationArray["attributes"] as $attribute) {
-					if ($attribute == "1000gm" || $attribute == "1000ml") {
-						$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
-						$stock = $variation_obj->get_stock_quantity();
-					}
-				}
-			}
-			$debug["thousand_stock"] = $stock;
-			if ($stock && $stock > 0) {
-				foreach ($variations as $variationArray) {
-					foreach ($variationArray["attributes"] as $value) {
-						if (!strpos($value, "1000")) {
-							$unit_stripped = strip_unit($value);
-							$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
-							$amount = ($stock * 1000) / $unit_stripped;
-							$debug[$variationArray["variation_id"]]["stock"] = $amount;
-							update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
-							wc_update_product_stock($variationArray["variation_id"], $amount);
-						}
-					}
-				}
-			}
-			update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
-			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
-		}
-	} catch (\Throwable $th) {
-		echo $th->getMessage() . "<br>";
-		echo $th->getFile() . "<br>";
-		echo $th->getLine();
-	}
+	// 		$variations = $variableProduct->get_available_variations("array");
+	// 		$debug["variations"] = $variations;
+	// 		$stock = 0;
+	// 		foreach ($variations as $variationArray) {
+	// 			foreach ($variationArray["attributes"] as $attribute) {
+	// 				if ($attribute == "1000gm" || $attribute == "1000ml") {
+	// 					$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+	// 					$stock = $variation_obj->get_stock_quantity();
+	// 				}
+	// 			}
+	// 		}
+	// 		$debug["thousand_stock"] = $stock;
+	// 		if ($stock && $stock > 0) {
+	// 			foreach ($variations as $variationArray) {
+	// 				foreach ($variationArray["attributes"] as $value) {
+	// 					if (!strpos($value, "1000")) {
+	// 						$unit_stripped = strip_unit($value);
+	// 						$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
+	// 						$amount = ($stock * 1000) / $unit_stripped;
+	// 						$debug[$variationArray["variation_id"]]["stock"] = $amount;
+	// 						update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+	// 						wc_update_product_stock($variationArray["variation_id"], $amount);
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 		update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
+	// 		// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
+	// 	}
+	// } catch (\Throwable $th) {
+	// 	echo $th->getMessage() . "<br>";
+	// 	echo $th->getFile() . "<br>";
+	// 	echo $th->getLine();
+	// }
 	?>
 	<script>
 		console.log(<?= json_encode($debug) ?>);
