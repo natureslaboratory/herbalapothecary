@@ -588,20 +588,20 @@ function ha_cron_exec()
 				}
 			}
 			$debug["thousand_stock"] = $stock;
-			// if ($stock && $stock > 0) {
-			// 	foreach ($variations as $variationArray) {
-			// 		foreach ($variationArray["attributes"] as $value) {
-			// 			if (!strpos($value, "1000")) {
-			// 				$unit_stripped = strip_unit($value);
-			// 				$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
-			// 				$amount = ($stock * 1000) / $unit_stripped;
-			// 				$debug[$variationArray["variation_id"]]["stock"] = $amount;
-			// 				update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
-			// 				wc_update_product_stock($variationArray["variation_id"], $amount);
-			// 			}
-			// 		}
-			// 	}
-			// }
+			if ($stock && $stock > 0) {
+				foreach ($variations as $variationArray) {
+					foreach ($variationArray["attributes"] as $value) {
+						if (!strpos($value, "1000")) {
+							$unit_stripped = strip_unit($value);
+							$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
+							$amount = ($stock * 1000) / $unit_stripped;
+							$debug[$variationArray["variation_id"]]["stock"] = $amount;
+							update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+							wc_update_product_stock($variationArray["variation_id"], $amount);
+						}
+					}
+				}
+			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
 		}
