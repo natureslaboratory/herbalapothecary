@@ -604,6 +604,11 @@ function ha_cron_exec_new()
 								wc_update_product_stock($variationArray["variation_id"], $amount);
 							}
 						}
+					} else {
+						foreach ($variationArray["attributes"] as $value) {
+
+							$debug["other_products"][] = $value;
+						}
 					}
 					$count++;
 				}
