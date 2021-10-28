@@ -595,8 +595,7 @@ function ha_cron_exec_new()
 			$correct_type_stock = 0;
 			foreach ($variations as $variationArray) {
 				if ($count < 1) {
-					echo "<pre>" . print_r($variationArray, true) . "</pre";
-					$count++;
+					$debug["homnomnom"] = $variationArray;
 				}
 				// Loops through variations, then loops through attributes of that variation looking for
 				// 1000gm or 1000ml values.
