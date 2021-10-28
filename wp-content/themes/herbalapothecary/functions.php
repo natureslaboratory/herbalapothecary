@@ -618,6 +618,9 @@ function ha_cron_exec_new()
 				$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
 				$stock = $variation_obj->get_stock_quantity();
 				update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+				if (get_post_meta($variation_obj->get_id(), "_stock_status") == "onbackorder") {
+					update_post_meta($variation_obj->get_id(), "_stock_status", "outofstock");
+				}
 				wc_update_product_stock($variationArray["variation_id"], $stock);
 				wc_delete_product_transients($variationArray["variation_id"]);
 			}
