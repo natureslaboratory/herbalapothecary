@@ -594,7 +594,6 @@ function ha_cron_exec_new()
 						foreach ($variationArray["attributes"] as $value) {
 							if (!strpos($value, "1000")) {
 								$unit_stripped = strip_unit($value);
-								$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
 								$amount = ($stock * 1000) / $unit_stripped;
 								$debug["products"][] = [
 									"id" => $variationArray["variation_id"],
