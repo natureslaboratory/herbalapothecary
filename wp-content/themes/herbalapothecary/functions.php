@@ -553,6 +553,11 @@ function ha_cron_exec_new()
 		"product_type" => "variable"
 	];
 	$results = new WP_Query($query);
+	?>
+		<script>
+			console.log(<?= json_encode($results) ?>);
+		</script>
+	<?php
 	// $groupedProducts = wc_get_products([
 	// 	"type" => "grouped"
 	// ]);
