@@ -623,6 +623,8 @@ function ha_cron_exec_new()
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
+			
+			wc_delete_product_transients($variableProduct->get_id());
 		}
 	} catch (\Throwable $th) {
 		echo $th->getMessage() . "<br>";
