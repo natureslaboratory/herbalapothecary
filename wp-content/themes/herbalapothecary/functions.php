@@ -602,7 +602,7 @@ function ha_cron_exec_new()
 			if ($is_correct_type) {
 				foreach ($variations as $variationArray) {
 					foreach ($variationArray["attributes"] as $value) {
-						$debug["correct_type"] = [
+						$debug["correct_type"][] = [
 							"id" => $variationArray["variation_id"],
 							"match_first" => strpos($value, "1000"),
 							"value" => $value
