@@ -582,6 +582,7 @@ function ha_cron_exec_new()
 	$debug["test"] = "Test";
 	$debug["check_num"] = 0;
 	try {
+		$count = 0;
 		foreach ($variableProducts as $variableProduct) {
 
 			// $variableProduct is type WC_Product_Variable, contains variations.
@@ -593,7 +594,6 @@ function ha_cron_exec_new()
 
 			$is_correct_type = false;
 			$correct_type_stock = 0;
-			$count = 0;
 			foreach ($variations as $variationArray) {
 				if ($count < 10) {
 					echo "<pre>" . print_r($variationArray, true) . "</pre";
