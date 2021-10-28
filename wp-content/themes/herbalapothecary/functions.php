@@ -596,7 +596,7 @@ function ha_cron_exec_new()
 			$count = 0;
 			foreach ($variations as $variationArray) {
 				if ($count < 10) {
-					echo "<pre>" . print_r($variationArray) . "</pre";
+					echo "<pre>" . print_r($variationArray, true) . "</pre";
 					$count++;
 				}
 				// Loops through variations, then loops through attributes of that variation looking for
