@@ -619,6 +619,7 @@ function ha_cron_exec_new()
 							$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
 							$correct_type_stock = $variation_obj->get_stock_quantity();
 							$debug["correct_type_check_result"][] = $attribute;
+							echo "Correct Type? $is_correct_type Stock: $correct_type_stock";
 							break;
 						}
 					}
