@@ -607,7 +607,7 @@ function ha_cron_exec_new()
 							"match_first" => strpos($value, "1000"),
 							"value" => $value
 						];
-						if (!strpos($value, "1000")) {
+						if (gettype(strpos($value, "1000")) == "boolean") {
 							// Updates every variation which is dictated by it's 1000gm/ml variation  
 							$unit_stripped = strip_unit($value);
 							$amount = ($correct_type_stock * 1000) / $unit_stripped;
