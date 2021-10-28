@@ -541,23 +541,25 @@ function ha_cron_exec_new()
 		echo $th->getMessage();
 		$variableProducts = wc_get_products([
 			"type" => "variable",
-			"limit" => "100"
+			"limit" => "100",
+			"stock_status" => "instock"
 		]);
 	}
 
+	$inStockVariableProducts = wc_get_products([
+		"type" => "variable",
+		"limit" => "-1",
+		"stock_status" => "instock"
+	]);
 
+	$outOfStockVariableProducts = wc_get_products([
+		"type" => "variable",
+		"limit" => "-1",
+		"stock_status" => "outofstock"
+	]);
 
-	$query = [
-		"post_type" => "product",
-		"limit" => -1,
-		"product_type" => "variable"
-	];
-	$results = new WP_Query($query);
-	?>
-		<script>
-			console.log(<?= json_encode($results) ?>);
-		</script>
-	<?php
+	$variableProducts = array_merge($inStockVariableProducts, $outOfStockVariableProducts);
+
 	// $groupedProducts = wc_get_products([
 	// 	"type" => "grouped"
 	// ]);
