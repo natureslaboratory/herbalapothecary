@@ -675,7 +675,8 @@ function ha_cron_exec_new()
 				$debug["incorrect_type"] = $debug["incorrect_type"] + 1;
 				if (empty($variations)) {
 					$debug["empty_variations"][] = [
-						"product" => $variableProduct->get_data()
+						"product" => $variableProduct->get_data(),
+						"children" => $variableProduct->get_children()
 					];
 				}
 				foreach ($variations as $variationArray) {
