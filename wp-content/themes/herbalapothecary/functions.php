@@ -582,7 +582,6 @@ function ha_cron_exec_new()
 	$debug["test"] = "Test";
 	$debug["check_num"] = 0;
 	$debug["incorrect_type"] = 0;
-	$debug["empty_variations"] = 0;
 	try {
 		$count = 0;
 		foreach ($variableProducts as $variableProduct) {
