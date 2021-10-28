@@ -623,8 +623,8 @@ function ha_cron_exec_new()
 					"id" => $variation_obj->get_id(),
 					"stockStatus" => $stockStatus
 				];
-				if ($stockStatus == "onbackorder") {
-					update_post_meta($variation_obj->get_id(), "_stock_status", "outofstock");
+				if (in_array("onbackorder", $stockStatus)) {
+					update_post_meta($variation_obj->get_id(), "_stock_status", ["outofstock"]);
 				}
 				wc_update_product_stock($variationArray["variation_id"], $stock);
 				wc_delete_product_transients($variationArray["variation_id"]);
@@ -632,8 +632,8 @@ function ha_cron_exec_new()
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
 			
-			if (get_post_meta($variableProduct->get_id(), "_stock_status") == "onbackorder") {
-				update_post_meta($variableProduct->get_id(), "_stock_status", "outofstock");
+			if (in_array("onbackorder", get_post_meta($variableProduct->get_id(), "_stock_status"))) {
+				update_post_meta($variableProduct->get_id(), "_stock_status", ["outofstock"]);
 			}
 			wc_delete_product_transients($variableProduct->get_id());
 		}
