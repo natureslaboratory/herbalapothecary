@@ -528,7 +528,7 @@ function update_stock($schedules)
 add_filter("cron_schedules", "update_stock");
 
 
-function ha_cron_exec()
+function ha_cron_exec_new()
 {
 	$debug = [];
 	global $wpdb;
@@ -621,7 +621,7 @@ function ha_cron_exec()
 	<?php
 }
 
-add_action("ha_cron_hook", "ha_cron_exec");
+// add_action("ha_cron_hook", "ha_cron_exec");
 
 if (!wp_next_scheduled("ha_cron_hook")) {
 	wp_schedule_event(time(), "every_minute", "ha_cron_hook");

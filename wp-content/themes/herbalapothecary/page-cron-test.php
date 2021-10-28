@@ -9,6 +9,6 @@
 
 get_header();
 
-ha_cron_exec();
+ha_cron_exec_new();
 
 get_footer();
