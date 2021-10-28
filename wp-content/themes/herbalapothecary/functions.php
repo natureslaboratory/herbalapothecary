@@ -675,7 +675,7 @@ function ha_cron_exec_new()
 			} else {
 				$debug["incorrect_type"] = $debug["incorrect_type"] + 1;
 				if (empty($variations)) {
-					$debug["empty_variations"] = $debug["empty_variations"] + 1;
+					$debug["empty_variations"][] = $variableProduct->get_data();
 				}
 				foreach ($variations as $variationArray) {
 					// Loops through each variation of a product
