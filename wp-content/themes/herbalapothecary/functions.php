@@ -544,6 +544,15 @@ function ha_cron_exec_new()
 			"limit" => "100"
 		]);
 	}
+
+
+
+	$query = [
+		"post_type" => "product",
+		"limit" => -1,
+		"product_type" => "variable"
+	];
+	$results = new WP_Query($query);
 	// $groupedProducts = wc_get_products([
 	// 	"type" => "grouped"
 	// ]);
@@ -664,7 +673,7 @@ function ha_cron_exec_new()
 						"stock" => $stock,
 						"details" => $variationArray
 					];
-					update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+					// update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
 
 					// $stockStatus = get_post_meta($variation_obj->get_id(), "_stock_status");
 					// $debug["backorders"][] = [
@@ -675,8 +684,8 @@ function ha_cron_exec_new()
 					// 	update_post_meta($variation_obj->get_id(), "_stock_status", "outofstock");
 					// }
 
-					wc_update_product_stock($variationArray["variation_id"], $stock);
-					wc_delete_product_transients($variationArray["variation_id"]);
+					// wc_update_product_stock($variationArray["variation_id"], $stock);
+					// wc_delete_product_transients($variationArray["variation_id"]);
 				}
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
@@ -697,6 +706,7 @@ function ha_cron_exec_new()
 	<script>
 		console.log(<?= json_encode($variableProducts) ?>)
 		console.log(<?= json_encode($debug) ?>);
+		console.log($results);
 	</script>
 	<?php
 }
