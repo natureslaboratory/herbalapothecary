@@ -608,17 +608,18 @@ function ha_cron_exec_new()
 							
 							update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
 							wc_update_product_stock($variationArray["variation_id"], $amount);
+							wc_delete_product_transients($variationArray["variation_id"]);
 						}
 					}
 					
 				}
-			} else {
-				foreach ($variations as $variationArray) {
-					$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
-					$stock = $variation_obj->get_stock_quantity();
-					update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
-					wc_update_product_stock($variationArray["variation_id"], $stock);
-				}
+			}
+			foreach ($variations as $variationArray) {
+				$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+				$stock = $variation_obj->get_stock_quantity();
+				update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+				wc_update_product_stock($variationArray["variation_id"], $stock);
+				wc_delete_product_transients($variationArray["variation_id"]);
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
