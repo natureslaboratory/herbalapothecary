@@ -588,7 +588,9 @@ function ha_cron_exec()
 				}
 			}
 			$debug["thousand_stock"] = $stock;
-			if ($stock && $stock > 0) {
+			$limit = 500;
+			$count = 0;
+			if ($stock && $stock > 0 && $count < $limit) {
 				foreach ($variations as $variationArray) {
 					foreach ($variationArray["attributes"] as $value) {
 						if (!strpos($value, "1000")) {
@@ -600,6 +602,7 @@ function ha_cron_exec()
 							wc_update_product_stock($variationArray["variation_id"], $amount);
 						}
 					}
+					$count++;
 				}
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
