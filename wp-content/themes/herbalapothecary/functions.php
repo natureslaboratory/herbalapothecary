@@ -590,7 +590,6 @@ function ha_cron_exec_new()
 			$variations = $variableProduct->get_available_variations("array");
 			$debug["variations"] = $variations;
 			$limit = 1000;
-			$count = 0;
 
 			$is_correct_type = false;
 			$correct_type_stock = 0;
