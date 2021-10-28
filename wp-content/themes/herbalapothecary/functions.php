@@ -704,7 +704,6 @@ function ha_cron_exec_new()
 	}
 	?>
 	<script>
-		console.log(<?= json_encode($variableProducts) ?>)
 		console.log(<?= json_encode($debug) ?>);
 		console.log($results);
 	</script>
