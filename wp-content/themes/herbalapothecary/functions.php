@@ -573,6 +573,7 @@ function ha_cron_exec_new()
 	}
 
 	$debug["test"] = "Test";
+	$debug["check_num"] = 0;
 	try {
 		foreach ($variableProducts as $variableProduct) {
 
@@ -635,6 +636,7 @@ function ha_cron_exec_new()
 			// if (!in_array("instock", get_post_meta($variableProduct->get_id(), "_stock_status"))) {
 			// 	update_post_meta($variableProduct->get_id(), "_stock_status", "outofstock");
 			// }
+			$debug["check_num"] = $debug["check_num"] + 1;
 			wc_delete_product_transients($variableProduct->get_id());
 		}
 	} catch (\Throwable $th) {
