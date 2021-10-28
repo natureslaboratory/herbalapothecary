@@ -612,6 +612,7 @@ function ha_cron_exec()
 	// }
 	?>
 	<script>
+		console.log(<?= json_encode($variableProducts) ?>)
 		console.log(<?= json_encode($debug) ?>);
 	</script>
 	<?php
