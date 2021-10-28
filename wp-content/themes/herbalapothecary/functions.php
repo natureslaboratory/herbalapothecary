@@ -581,6 +581,7 @@ function ha_cron_exec_new()
 
 	$debug["test"] = "Test";
 	$debug["check_num"] = 0;
+	$debug["incorrect_type"] = 0;
 	try {
 		$count = 0;
 		foreach ($variableProducts as $variableProduct) {
@@ -671,6 +672,7 @@ function ha_cron_exec_new()
 					
 				}
 			} else {
+				$debug["incorrect_type"] = $debug["incorrect_type"] + 1;
 				foreach ($variations as $variationArray) {
 					// Loops through each variation of a product
 
