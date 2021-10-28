@@ -588,7 +588,7 @@ function ha_cron_exec()
 				}
 			}
 			$debug["thousand_stock"] = $stock;
-			$limit = 500;
+			$limit = 100;
 			$count = 0;
 			if ($stock && $stock > 0 && $count < $limit) {
 				foreach ($variations as $variationArray) {
