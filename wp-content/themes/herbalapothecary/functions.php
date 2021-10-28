@@ -578,28 +578,27 @@ function ha_cron_exec()
 
 			$variations = $variableProduct->get_available_variations("array");
 			$debug["variations"] = $variations;
-			$stock = 0;
-			foreach ($variations as $variationArray) {
-				foreach ($variationArray["attributes"] as $attribute) {
-					if ($attribute == "1000gm" || $attribute == "1000ml") {
-						$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
-						$stock = $variation_obj->get_stock_quantity();
-					}
-				}
-			}
-			$debug["thousand_stock"] = $stock;
 			$limit = 100;
 			$count = 0;
-			if ($stock && $stock > 0 && $count < $limit) {
+			if ($count < $limit) {
 				foreach ($variations as $variationArray) {
-					foreach ($variationArray["attributes"] as $value) {
-						if (!strpos($value, "1000")) {
-							$unit_stripped = strip_unit($value);
-							$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
-							$amount = ($stock * 1000) / $unit_stripped;
-							$debug[$variationArray["variation_id"]]["stock"] = $amount;
-							update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
-							wc_update_product_stock($variationArray["variation_id"], $amount);
+					$stock = 0;
+					foreach ($variationArray["attributes"] as $attribute) {
+						if ($attribute == "1000gm" || $attribute == "1000ml") {
+							$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+							$stock = $variation_obj->get_stock_quantity();
+						}
+					}
+					if ($stock > 0) {
+						foreach ($variationArray["attributes"] as $value) {
+							if (!strpos($value, "1000")) {
+								$unit_stripped = strip_unit($value);
+								$debug[$variationArray["variation_id"]]["weight_without_unit"] = $unit_stripped;
+								$amount = ($stock * 1000) / $unit_stripped;
+								$debug[$variationArray["variation_id"]]["stock"] = $amount;
+								update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+								wc_update_product_stock($variationArray["variation_id"], $amount);
+							}
 						}
 					}
 					$count++;
