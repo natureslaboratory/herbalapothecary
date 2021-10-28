@@ -609,7 +609,7 @@ function ha_cron_exec_new()
 				}
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
-			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
+			update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
 		}
 	} catch (\Throwable $th) {
 		echo $th->getMessage() . "<br>";
