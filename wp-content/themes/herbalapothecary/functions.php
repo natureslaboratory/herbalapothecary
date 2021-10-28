@@ -546,19 +546,10 @@ function ha_cron_exec_new()
 		]);
 	}
 
-	$inStockVariableProducts = wc_get_products([
+	$variableProducts = wc_get_products([
 		"type" => "variable",
 		"limit" => "-1",
-		"stock_status" => "instock"
 	]);
-
-	$outOfStockVariableProducts = wc_get_products([
-		"type" => "variable",
-		"limit" => "-1",
-		"stock_status" => "outofstock"
-	]);
-
-	$variableProducts = array_merge($inStockVariableProducts, $outOfStockVariableProducts);
 
 	// $groupedProducts = wc_get_products([
 	// 	"type" => "grouped"
@@ -615,11 +606,13 @@ function ha_cron_exec_new()
 			// }
 
 			for ($i=0; $i < count($variations); $i++) { 
+				echo "Starting outer loop <br>";
 				$variationArray = $variations[$i];
 				if ($is_correct_type) {
 					break;
 				} else {
 					for ($j=0; $j < count($variationArray["attributes"]); $j++) { 
+						echo "Starting inner Loop <br>";
 						$attribute = $variationArray["attributes"][$j];
 						if ($attribute == "1000gm" || $attribute == "1000ml") {
 							$is_correct_type = true;
@@ -712,7 +705,6 @@ function ha_cron_exec_new()
 	?>
 	<script>
 		console.log(<?= json_encode($debug) ?>);
-		console.log($results);
 	</script>
 	<?php
 }
