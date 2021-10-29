@@ -581,7 +581,7 @@ function ha_cron_exec_new()
 
 	function custom_get_variations($variableProduct) {
 		$children = $variableProduct->get_children();
-		print_r($children);
+		// print_r($children);
 		$variations = [];
 		if (!empty($children)) {
 			foreach ($children as $childID) {
