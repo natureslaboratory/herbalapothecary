@@ -780,7 +780,9 @@ function customizing_woocommerce_description($content)
 	if ($product) {
 		$productId = $product->get_id();
 		$info = get_post_meta($productId, "", true);
-		$data = unserialize($info['product_descriptions'][0]);
+		if (gettype($info) == "array" && array_key_exists("product_descriptions", $info)) {
+			$data = unserialize($info['product_descriptions'][0]);
+		}
 		if ($data) {
 			foreach ($data as $description) {
 				if ($description == 'pet_bottles') {
