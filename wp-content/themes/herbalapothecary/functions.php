@@ -378,7 +378,7 @@ function custom_search($query)
 		return $query;
 	}
 }
-add_action('pre_get_posts', 'custom_search');
+add_action('woocommerce_product_query', 'custom_search');
 
 
 function show_only_instock_products($query) {
