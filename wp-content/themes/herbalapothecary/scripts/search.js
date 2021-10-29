@@ -70,7 +70,7 @@ quantities.forEach(q => {
 
     function decrement() {
         let currentValue = parseInt(input.value);
-        if (currentValue > input.min && currentValue > 1) {
+        if (currentValue > input.min && currentValue > 0) {
             input.value = parseInt(input.value) - 1;
         }
     }
