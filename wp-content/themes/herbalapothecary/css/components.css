@@ -2266,7 +2266,7 @@ iframe {
     gap: 1.5rem;
 }
 
-.woocommerce div.product form.cart:not(.variations_form, .grouped_form) {
+.woocommerce div.product form.cart:not(.variations_form) {
     display: block;
 }
 
