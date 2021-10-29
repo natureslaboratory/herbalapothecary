@@ -11,6 +11,21 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("c-post"); ?>>
+	<?php
+	if (is_cart()) {
+		echo "Cart!";
+		?>
+			<script>
+				console.log("cart");
+			</script>
+		<?php
+	} else {
+		?>
+			<script>
+				console.log("no cart");
+			</script>
+		<?php
+	} ?>
 	<header class="entry-header c-post__header">
 		<?php
 		if (is_singular()) :
