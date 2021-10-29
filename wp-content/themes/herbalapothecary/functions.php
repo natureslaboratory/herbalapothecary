@@ -639,7 +639,7 @@ function ha_cron_exec_new()
 					break;
 				}
 				foreach ($variation["attributes"] as $attribute) {
-					if ($attribute == "1000gm" || $attribute == "1000ml") {
+					if ($attribute == "1000gm" || $attribute == "1000ml" || $attribute == "1000-ml") {
 						$is_correct_type = true;
 						$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 						$correct_type_stock = get_stock_safe($variation_obj);
