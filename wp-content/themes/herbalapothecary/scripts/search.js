@@ -64,6 +64,7 @@ quantities.forEach(q => {
     function increment() {
         console.log("increment");
         let currentValue = parseInt(input.value);
+        console.log(currentValue, parseInt(input.max), currentValue < parseInt(input.max));
         if (currentValue < parseInt(input.max)) {
             input.value = currentValue + 1;
         }
