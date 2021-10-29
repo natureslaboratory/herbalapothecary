@@ -776,7 +776,8 @@ function ha_edit_price_display($price)
 	if ($product && $product->is_type("grouped") && is_product()) {
 		return "";
 	} else if (is_product()) {
-		return "<div class='c-price'>" . $price . "</div>";
+		$class = "c-price c-price--" . $product->get_type();
+		return "<div class='" . $class . "'>" . $price . "</div>";
 	}
 	return $price;
 }
