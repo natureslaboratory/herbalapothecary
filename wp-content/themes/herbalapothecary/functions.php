@@ -571,7 +571,7 @@ function ha_cron_exec_new()
 
 	function strip_unit($amount)
 	{
-		preg_match("/[A-Za-z]/", $amount, $matches, PREG_OFFSET_CAPTURE);
+		preg_match("/[A-Za-z-]/", $amount, $matches, PREG_OFFSET_CAPTURE);
 		if ($matches[0][1]) {
 			return intval(substr($amount, 0, $matches[0][1]));
 		} else {
