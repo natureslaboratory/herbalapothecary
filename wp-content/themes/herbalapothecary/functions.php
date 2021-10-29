@@ -671,9 +671,9 @@ function ha_cron_exec_new()
 								];
 							}
 
-							// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
-							// wc_update_product_stock($variation["variation_id"], $amount);
-							// wc_delete_product_transients($variation["variation_id"]);
+							update_post_meta($variation["variation_id"], "_manage_stock", "yes");
+							wc_update_product_stock($variation["variation_id"], $amount);
+							wc_delete_product_transients($variation["variation_id"]);
 						} else {
 							// Refreshes the 1000gm/ml variation
 							$variation_obj = new WC_Product_Variation($variation["variation_id"]);
@@ -685,8 +685,9 @@ function ha_cron_exec_new()
 									"details" => $variation
 								];
 							}
-							// wc_update_product_stock($variation["variation_id"], $stock);
-							// wc_delete_product_transients($variation["variation_id"]);
+							update_post_meta($variation["variation_id"], "_manage_stock", "yes");
+							wc_update_product_stock($variation["variation_id"], $stock);
+							wc_delete_product_transients($variation["variation_id"]);
 						}
 					}
 				}
@@ -705,7 +706,7 @@ function ha_cron_exec_new()
 							"details" => $variation
 						];
 					}
-					// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
+					update_post_meta($variation["variation_id"], "_manage_stock", "yes");
 
 					// $stockStatus = get_post_meta($variation_obj->get_id(), "_stock_status");
 					// $debug["backorders"][] = [
@@ -716,8 +717,8 @@ function ha_cron_exec_new()
 					// 	update_post_meta($variation_obj->get_id(), "_stock_status", "outofstock");
 					// }
 
-					// wc_update_product_stock($variation["variation_id"], $stock);
-					// wc_delete_product_transients($variation["variation_id"]);
+					wc_update_product_stock($variation["variation_id"], $stock);
+					wc_delete_product_transients($variation["variation_id"]);
 				}
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
