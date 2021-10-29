@@ -7,7 +7,7 @@
  *
  * @package herbalapothecary
  */
- 
+
 require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
 require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 
@@ -554,7 +554,7 @@ function ha_cron_exec_new()
 	// $groupedProducts = wc_get_products([
 	// 	"type" => "grouped"
 	// ]);
-	
+
 	function get_thousand_stock($variations)
 	{
 		$stock = 0;
@@ -579,7 +579,8 @@ function ha_cron_exec_new()
 		}
 	}
 
-	function custom_get_variations($variableProduct) {
+	function custom_get_variations($variableProduct)
+	{
 		$children = $variableProduct->get_children();
 		// print_r($children);
 		$variations = [];
@@ -594,8 +595,17 @@ function ha_cron_exec_new()
 		return $variations;
 	}
 
-	function print_readable($array) {
+	function print_readable($array)
+	{
 		echo "<pre>" . print_r($array, true) . "</pre>";
+	}
+
+	function get_stock_safe(WC_Product_Variation $variation_obj)
+	{
+		$stock = $variation_obj->get_stock_quantity();
+		if (gettype($stock) != "integer") {
+			$correct_type_stock = 0;
+		}
 	}
 
 	$debug["test"] = "Test";
@@ -607,7 +617,7 @@ function ha_cron_exec_new()
 
 			// $variableProduct is type WC_Product_Variable, contains variations.
 
-			
+
 
 			$variations = custom_get_variations($variableProduct);
 			$other_variations = $variableProduct->get_available_variations();
@@ -616,7 +626,7 @@ function ha_cron_exec_new()
 			// print_readable($variations);
 			// print_readable($other_variations);
 			// echo "</div>";
-			
+
 			$debug["variations"] = $variations;
 			$limit = 1000;
 
@@ -635,7 +645,7 @@ function ha_cron_exec_new()
 					if ($attribute == "1000gm" || $attribute == "1000ml") {
 						$is_correct_type = true;
 						$variation_obj = new WC_Product_Variation($variation["variation_id"]);
-						$correct_type_stock = $variation_obj->get_stock_quantity();
+						$correct_type_stock = get_stock_safe($variation_obj);
 						break;
 					}
 				}
@@ -658,14 +668,14 @@ function ha_cron_exec_new()
 								"stock" => $amount,
 								"details" => $variation
 							];
-							
+
 							// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
 							// wc_update_product_stock($variation["variation_id"], $amount);
 							// wc_delete_product_transients($variation["variation_id"]);
 						} else {
 							// Refreshes the 1000gm/ml variation
 							$variation_obj = new WC_Product_Variation($variation["variation_id"]);
-							$stock = $variation_obj->get_stock_quantity();
+							$stock = get_stock_safe($variation_obj);
 							$debug["variations_of_1000"][] = [
 								"id" => $variation["variation_id"],
 								"stock" => $stock,
@@ -675,21 +685,15 @@ function ha_cron_exec_new()
 							// wc_delete_product_transients($variation["variation_id"]);
 						}
 					}
-					
 				}
 			} else {
 				$debug["incorrect_type"] = $debug["incorrect_type"] + 1;
-				if (empty($variations)) {
-					$debug["empty_variations"][] = [
-						"product" => $variableProduct->get_data(),
-						"children" => $variableProduct->get_children()
-					];
-				}
+
 				foreach ($variations as $variation) {
 					// Loops through each variation of a product
 
 					$variation_obj = new WC_Product_Variation($variation["variation_id"]);
-					$stock = $variation_obj->get_stock_quantity();
+					$stock = get_stock_safe($variation_obj);
 					$debug["other_variations"][] = [
 						"id" => $variation["variation_id"],
 						"stock" => $stock,
@@ -712,7 +716,7 @@ function ha_cron_exec_new()
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
-			
+
 			// if (!in_array("instock", get_post_meta($variableProduct->get_id(), "_stock_status"))) {
 			// 	update_post_meta($variableProduct->get_id(), "_stock_status", "outofstock");
 			// }
@@ -725,9 +729,9 @@ function ha_cron_exec_new()
 		echo $th->getLine();
 	}
 	?>
-	<script>
-		console.log(<?= json_encode($debug) ?>);
-	</script>
+		<script>
+			console.log(<?= json_encode($debug) ?>);
+		</script>
 	<?php
 }
 
@@ -754,35 +758,36 @@ function ha_edit_price_display($price)
 
 add_filter('woocommerce_get_price_html', "ha_edit_price_display");
 
-add_filter( 'woocommerce_is_purchasable', 'vna_is_purchasable', 10, 2 );
-function vna_is_purchasable( $purchasable, $product ){
-    return true || false; // depending on your condition
+add_filter('woocommerce_is_purchasable', 'vna_is_purchasable', 10, 2);
+function vna_is_purchasable($purchasable, $product)
+{
+	return true || false; // depending on your condition
 }
 
-add_filter( 'the_content', 'customizing_woocommerce_description' );
-function customizing_woocommerce_description( $content ) {
+add_filter('the_content', 'customizing_woocommerce_description');
+function customizing_woocommerce_description($content)
+{
 
 	global $product;
-	
-	if($product){
-		$productId = $product->get_id(); 
-		$info = get_post_meta($productId,$key,true);
+
+	if ($product) {
+		$productId = $product->get_id();
+		$info = get_post_meta($productId, $key, true);
 		$data = unserialize($info['product_descriptions'][0]);
-		foreach($data as $description){
-			if($description=='pet_bottles'){
+		foreach ($data as $description) {
+			if ($description == 'pet_bottles') {
 				$content .= "<h2>Packaging</h2><p>Product is supplied in amber PET bottles with tamper evident screw tops.</p>";
 			}
-			if($description=='tincture'){
+			if ($description == 'tincture') {
 				$content .= "<h2>What is a Tincture?</h2><p>A herbal tincture is a concentrated extract of one or more herbs. The liquid in a tincture is a combination of alcohol and water. A tincture must contain at least 20% alcohol for preservation purposes. Alcohol concentrations tend to vary between 20% and 60%, but can be as high as 90% in some circumstances. At Herbal Apothecary we generally produce tinctures with alcohol concentrations of 25% - 45%. We use ethanol derived from sugar beat.</p><h2>How Are Tinctures Made?</h2><p>To produce the tincture we combine a quantity of herb with a proportional amount of liquid. Depending on the herb and the strength of tincture required this ratio can be 1:2, 1:3 or 1:4. The herb, alcohol and water is placed in a production vessel suitable for the size of the batch.</p><p>Traditionally, tinctures have been made by a process of maceration. This is where the herb sits in the liquid and over a period of time the plant cells break down. This allows the plant matter to be released into the liquid. Occasionally the producer might agitate the mixture to help the process along.</p><p>At Herbal Apothecary we have spent decades improving our tincture production processes. We use a system called Hydro-Ethanolic Percolation. Percolation is where liquid slowly passes through the herb, from top to bottom. In our case, the liquid is not simply passed through the herb once and then collected. Instead, it is continually cycled through the herb. Hydro-Ethanolic Percolation is a combination of maceration and traditional percolation. The circulation of liquid through a spray head agitates the herb, helping the key chemical compounds to be released into the liquid.</p><p>Our production vessels are primarily stainless steel. We use low voltage (24v) pumps to circulate the liquid. We have also developed a system of float switches and relays. These ensure the pumps only activate when an adequate level of liquid is present in the sump at the bottom of the vessel. It can take some time for the liquid to filter through the herb.</p><p>We produce most of our tinctures using dried herbs, although we sometimes use fresh. It's important that the size of the pieces of herb in the production vessel are small enough for the alcohol to thoroughly penetrate. No prior processing is required for flowers and leaves which are smaller and more delicate. However, for roots, bark and berries which tend to be tougher and larger we use herbs which are diced up into small pieces. This ensures that the maximum amount of plant material can be extracted into the liquid.</p><p>The manufacturing process takes 7 days to complete. Once the process is finished, the herb is pressed to extract every last drop of precious liquid. The liquid is filtered and then stored in bulk containers, before being bottled in smaller 250ml, 500ml and 1000ml quantities.</p><p><a href='/manufacturing/'>Click here if you'd like to know more about our herbal tincture manufacturing technology</a>. At Herbal Apothecary we are committed to research - we want to provide a robust evidence base for the products we produce. As a result we review our manufacturing systems and processes in order to ensure we're making best use of the raw ingredients.</p>";
 			}
-			if($description=='organic'){
+			if ($description == 'organic') {
 				$content .= "<h2>Organic Herbs</h2><p>We’re all aware of the importance of choosing organic where possible. Agriculture and farming without the use of chemicals is better for both the environment as well as for our bodies! This is certainly the case when it comes to herbal medicine.</p><p>We are a certified organic producer. We undergo regular inspections. These ensure that our systems and processes meet the requirements of certified producers. Our customers can be confident that our organic products meet all the statutory requirements. At Herbal Apothecary we manufacture a very wide range of herbal tinctures and fluid extracts. We also supply whole, cut and powdered herbs.</p><p>Organic farming respects nature and improve the health of soils, water and air. It’s about growing food in a way which is sustainable and protects ecosystems. Pesticides are a key contributor to the decline of pollinator populations. They are responsible for driving down the numbers of pollinating insects. There are also strict rules governing the use of additives and preservatives in organic products. Organic agriculture opposes the use of GM crops. Because organic agriculture doesn’t use any chemical pesticides or fertilisers it is better for nature and wildlife. Farms run this way provide a haven for wildlife like bees, birds and butterflies. Studies have found that insect, plant and bird life is upto 50% more abundant on organic farmland. And there are upto 75% more bees on organic land too! <a href='/organic/'>Find out more about our commitment to organic products</a>.</p>";
 			}
 		}
-	
-	    return $content;
-    
-    }else{
-	    return $content;
-    }
+
+		return $content;
+	} else {
+		return $content;
+	}
 }
