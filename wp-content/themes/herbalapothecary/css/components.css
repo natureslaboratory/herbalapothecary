@@ -2144,6 +2144,13 @@ iframe {
         margin: 0 auto;
         margin-bottom: 4rem;
     }
+
+    .c-cart__title {
+        max-width: 400px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
     .woocommerce table.shop_table_responsive tbody th, .woocommerce-page table.shop_table_responsive tbody th {
         display: table-cell;
     }
