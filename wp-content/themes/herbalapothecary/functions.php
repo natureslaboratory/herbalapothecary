@@ -604,8 +604,9 @@ function ha_cron_exec_new()
 	{
 		$stock = $variation_obj->get_stock_quantity();
 		if (gettype($stock) != "integer") {
-			$correct_type_stock = 0;
+			$stock = 0;
 		}
+		return $stock;
 	}
 
 	$debug["test"] = "Test";
