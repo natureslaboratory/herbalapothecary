@@ -2317,6 +2317,10 @@ iframe {
     margin-bottom: 2rem;
 }
 
+.c-price > *:empty {
+    margin: 0;
+}
+
 span.price .c-price {
     margin-bottom: 0;
 }
