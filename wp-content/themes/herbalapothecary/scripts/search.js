@@ -62,20 +62,17 @@ quantities.forEach(q => {
     const input = q.getElementsByClassName("input-text")[0];
 
     function increment() {
-        console.log("increment");
         let currentValue = parseInt(input.value);
         if (!currentValue || currentValue == "NaN") {
             input.value = 0;
             currentValue = 0;
         }
-        console.log(currentValue, parseInt(input.max), currentValue < parseInt(input.max));
         if (currentValue < parseInt(input.max)) {
             input.value = currentValue + 1;
         }
     }
 
     function decrement() {
-        console.log("decrement")
         let currentValue = parseInt(input.value);
         if (currentValue > parseInt(input.min) && currentValue > 0) {
             input.value = parseInt(input.value) - 1;
