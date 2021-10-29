@@ -609,9 +609,9 @@ function ha_cron_exec_new()
 		return $stock;
 	}
 
-	$debug["test"] = "Test";
 	$debug["check_num"] = 0;
 	$debug["incorrect_type"] = 0;
+	$debug["correct_type"] = 0;
 	try {
 		$count = 0;
 		foreach ($variableProducts as $variableProduct) {
@@ -628,15 +628,11 @@ function ha_cron_exec_new()
 			// print_readable($other_variations);
 			// echo "</div>";
 
-			$debug["variations"] = $variations;
 			$limit = 1000;
 
 			$is_correct_type = false;
 			$correct_type_stock = 0;
 			foreach ($variations as $variation) {
-				if ($count < 1) {
-					$debug["homnomnom"] = $variation;
-				}
 				// Loops through variations, then loops through attributes of that variation looking for
 				// 1000gm or 1000ml values.
 				if ($is_correct_type) {
@@ -653,22 +649,27 @@ function ha_cron_exec_new()
 			}
 
 			if ($is_correct_type) {
+				$debug["correct_type"] = $debug["correct_type"] + 1;
 				foreach ($variations as $variation) {
 					foreach ($variation["attributes"] as $value) {
-						$debug["correct_type"][] = [
-							"id" => $variation["variation_id"],
-							"match_first" => strpos($value, "1000"),
-							"value" => $value
-						];
+						if ($count < 10) {
+							$debug["correct_type_values"][] = [
+								"id" => $variation["variation_id"],
+								"match_first" => strpos($value, "1000"),
+								"value" => $value
+							];
+						}
 						if (gettype(strpos($value, "1000")) == "boolean") {
 							// Updates every variation which is dictated by it's 1000gm/ml variation  
 							$unit_stripped = strip_unit($value);
 							$amount = ($correct_type_stock * 1000) / $unit_stripped;
-							$debug["variations_less_than_1000"][] = [
-								"id" => $variation["variation_id"],
-								"stock" => $amount,
-								"details" => $variation
-							];
+							if ($count < 10) {
+								$debug["variations_less_than_1000"][] = [
+									"id" => $variation["variation_id"],
+									"stock" => $amount,
+									"details" => $variation
+								];
+							}
 
 							// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
 							// wc_update_product_stock($variation["variation_id"], $amount);
@@ -677,11 +678,13 @@ function ha_cron_exec_new()
 							// Refreshes the 1000gm/ml variation
 							$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 							$stock = get_stock_safe($variation_obj);
-							$debug["variations_of_1000"][] = [
-								"id" => $variation["variation_id"],
-								"stock" => $stock,
-								"details" => $variation
-							];
+							if ($count < 10) {
+								$debug["variations_of_1000"][] = [
+									"id" => $variation["variation_id"],
+									"stock" => $stock,
+									"details" => $variation
+								];
+							}
 							// wc_update_product_stock($variation["variation_id"], $stock);
 							// wc_delete_product_transients($variation["variation_id"]);
 						}
@@ -695,11 +698,13 @@ function ha_cron_exec_new()
 
 					$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 					$stock = get_stock_safe($variation_obj);
-					$debug["other_variations"][] = [
-						"id" => $variation["variation_id"],
-						"stock" => $stock,
-						"details" => $variation
-					];
+					if ($count < 10) {
+						$debug["other_variations"][] = [
+							"id" => $variation["variation_id"],
+							"stock" => $stock,
+							"details" => $variation
+						];
+					}
 					// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
 
 					// $stockStatus = get_post_meta($variation_obj->get_id(), "_stock_status");
@@ -721,8 +726,8 @@ function ha_cron_exec_new()
 			// if (!in_array("instock", get_post_meta($variableProduct->get_id(), "_stock_status"))) {
 			// 	update_post_meta($variableProduct->get_id(), "_stock_status", "outofstock");
 			// }
-			$debug["check_num"] = $debug["check_num"] + 1;
 			wc_delete_product_transients($variableProduct->get_id());
+			$count++;
 		}
 	} catch (\Throwable $th) {
 		echo $th->getMessage() . "<br>";
