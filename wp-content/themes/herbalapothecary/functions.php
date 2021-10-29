@@ -380,17 +380,23 @@ function custom_search($query)
 }
 add_action('pre_get_posts', 'custom_search');
 
-add_action('woocommerce_product_query', 'show_only_instock_products');
 
 function show_only_instock_products($query) {
-        $meta_query = $query->get( 'meta_query' );
-        $meta_query[] = array(
-                'key'       => '_stock_status',
-                'compare'   => '=',
-                'value'     => 'instock'
-        );
-        $query->set( 'meta_query', $meta_query );
+	$meta_query = $query->get( 'meta_query' );
+	$meta_query[] = array(
+		'key'       => '_stock_status',
+		'compare'   => '=',
+		'value'     => 'instock'
+	);
+	$query->set( 'meta_query', $meta_query );
+	?>
+	<script>
+		console.log(<?= json_encode($query) ?>)
+	</script>
+	<?php
 }
+add_action('woocommerce_product_query', 'show_only_instock_products');
+
 
 function ha_enctype_custom_registration_forms()
 {
