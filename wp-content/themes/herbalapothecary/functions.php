@@ -612,10 +612,10 @@ function ha_cron_exec_new()
 			$variations = custom_get_variations($variableProduct);
 			$other_variations = $variableProduct->get_available_variations();
 
-			echo "<div style='display: grid; grid-template-columns: 1fr 1fr;'>";
-			print_readable($variations);
-			print_readable($other_variations);
-			echo "</div>";
+			// echo "<div style='display: grid; grid-template-columns: 1fr 1fr;'>";
+			// print_readable($variations);
+			// print_readable($other_variations);
+			// echo "</div>";
 			
 			$debug["variations"] = $variations;
 			$limit = 1000;
