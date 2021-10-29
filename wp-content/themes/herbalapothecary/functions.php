@@ -558,10 +558,10 @@ function ha_cron_exec_new()
 	function get_thousand_stock($variations)
 	{
 		$stock = 0;
-		foreach ($variations as $variationArray) {
-			foreach ($variationArray["attributes"] as $attribute) {
+		foreach ($variations as $variation) {
+			foreach ($variation["attributes"] as $attribute) {
 				if ($attribute == "1000gm" || $attribute == "1000ml") {
-					$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+					$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 					$stock = $variation_obj->get_stock_quantity();
 				}
 			}
@@ -579,6 +579,25 @@ function ha_cron_exec_new()
 		}
 	}
 
+	function custom_get_variations($variableProduct) {
+		$children = $variableProduct->get_children();
+		print_r($children);
+		$variations = [];
+		if (!empty($children)) {
+			foreach ($children as $childID) {
+				$child = wc_get_product($childID)->get_data();
+				$child["variation_id"] = $child["id"];
+				$variations[] = $child;
+			}
+		}
+		// echo "<pre>" . print_r($variations, true) . "</pre>";
+		return $variations;
+	}
+
+	function print_readable($array) {
+		echo "<pre>" . print_r($array, true) . "</pre>";
+	}
+
 	$debug["test"] = "Test";
 	$debug["check_num"] = 0;
 	$debug["incorrect_type"] = 0;
@@ -588,58 +607,45 @@ function ha_cron_exec_new()
 
 			// $variableProduct is type WC_Product_Variable, contains variations.
 
-			$variations = $variableProduct->get_available_variations("array");
+			
+
+			$variations = custom_get_variations($variableProduct);
+			$other_variations = $variableProduct->get_available_variations();
+
+			echo "<div style='display: grid; grid-template-columns: 1fr 1fr;'>";
+			print_readable($variations);
+			print_readable($other_variations);
+			echo "</div>";
+			
 			$debug["variations"] = $variations;
 			$limit = 1000;
 
 			$is_correct_type = false;
 			$correct_type_stock = 0;
-			foreach ($variations as $variationArray) {
+			foreach ($variations as $variation) {
 				if ($count < 1) {
-					$debug["homnomnom"] = $variationArray;
+					$debug["homnomnom"] = $variation;
 				}
 				// Loops through variations, then loops through attributes of that variation looking for
 				// 1000gm or 1000ml values.
 				if ($is_correct_type) {
 					break;
 				}
-				foreach ($variationArray["attributes"] as $attribute) {
+				foreach ($variation["attributes"] as $attribute) {
 					if ($attribute == "1000gm" || $attribute == "1000ml") {
 						$is_correct_type = true;
-						$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+						$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 						$correct_type_stock = $variation_obj->get_stock_quantity();
 						break;
 					}
 				}
 			}
 
-			// for ($i=0; $i < count($variations); $i++) { 
-			// 	echo "Starting outer loop <br>";
-			// 	$variationArray = $variations[$i];
-			// 	if ($is_correct_type) {
-			// 		break;
-			// 	} else {
-			// 		for ($j=0; $j < count($variationArray["attributes"]); $j++) { 
-			// 			echo "Starting inner Loop <br>";
-			// 			$attribute = $variationArray["attributes"][$j];
-			// 			if ($attribute == "1000gm" || $attribute == "1000ml") {
-			// 				$is_correct_type = true;
-			// 				$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
-			// 				$correct_type_stock = $variation_obj->get_stock_quantity();
-			// 				$debug["correct_type_check_result"][] = $attribute;
-			// 				echo "Correct Type? $is_correct_type Stock: $correct_type_stock";
-			// 				break;
-			// 			}
-			// 		}
-			// 	}
-			// }
-
-
 			if ($is_correct_type) {
-				foreach ($variations as $variationArray) {
-					foreach ($variationArray["attributes"] as $value) {
+				foreach ($variations as $variation) {
+					foreach ($variation["attributes"] as $value) {
 						$debug["correct_type"][] = [
-							"id" => $variationArray["variation_id"],
+							"id" => $variation["variation_id"],
 							"match_first" => strpos($value, "1000"),
 							"value" => $value
 						];
@@ -648,25 +654,25 @@ function ha_cron_exec_new()
 							$unit_stripped = strip_unit($value);
 							$amount = ($correct_type_stock * 1000) / $unit_stripped;
 							$debug["variations_less_than_1000"][] = [
-								"id" => $variationArray["variation_id"],
+								"id" => $variation["variation_id"],
 								"stock" => $amount,
-								"details" => $variationArray
+								"details" => $variation
 							];
 							
-							// update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
-							// wc_update_product_stock($variationArray["variation_id"], $amount);
-							// wc_delete_product_transients($variationArray["variation_id"]);
+							// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
+							// wc_update_product_stock($variation["variation_id"], $amount);
+							// wc_delete_product_transients($variation["variation_id"]);
 						} else {
 							// Refreshes the 1000gm/ml variation
-							$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+							$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 							$stock = $variation_obj->get_stock_quantity();
 							$debug["variations_of_1000"][] = [
-								"id" => $variationArray["variation_id"],
+								"id" => $variation["variation_id"],
 								"stock" => $stock,
-								"details" => $variationArray
+								"details" => $variation
 							];
-							// wc_update_product_stock($variationArray["variation_id"], $stock);
-							// wc_delete_product_transients($variationArray["variation_id"]);
+							// wc_update_product_stock($variation["variation_id"], $stock);
+							// wc_delete_product_transients($variation["variation_id"]);
 						}
 					}
 					
@@ -679,17 +685,17 @@ function ha_cron_exec_new()
 						"children" => $variableProduct->get_children()
 					];
 				}
-				foreach ($variations as $variationArray) {
+				foreach ($variations as $variation) {
 					// Loops through each variation of a product
 
-					$variation_obj = new WC_Product_Variation($variationArray["variation_id"]);
+					$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 					$stock = $variation_obj->get_stock_quantity();
 					$debug["other_variations"][] = [
-						"id" => $variationArray["variation_id"],
+						"id" => $variation["variation_id"],
 						"stock" => $stock,
-						"details" => $variationArray
+						"details" => $variation
 					];
-					// update_post_meta($variationArray["variation_id"], "_manage_stock", "yes");
+					// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
 
 					// $stockStatus = get_post_meta($variation_obj->get_id(), "_stock_status");
 					// $debug["backorders"][] = [
@@ -700,8 +706,8 @@ function ha_cron_exec_new()
 					// 	update_post_meta($variation_obj->get_id(), "_stock_status", "outofstock");
 					// }
 
-					// wc_update_product_stock($variationArray["variation_id"], $stock);
-					// wc_delete_product_transients($variationArray["variation_id"]);
+					// wc_update_product_stock($variation["variation_id"], $stock);
+					// wc_delete_product_transients($variation["variation_id"]);
 				}
 			}
 			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
