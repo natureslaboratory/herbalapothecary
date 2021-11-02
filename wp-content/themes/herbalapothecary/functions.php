@@ -808,3 +808,8 @@ function ha_add_to_cart_filter($button, $product, $args) {
 }
 
 add_filter("woocommerce_loop_add_to_cart_link", "ha_add_to_cart_filter", 40, 3);
+
+function ha_remove_product_image_link( $html, $post_id ) {
+    return preg_replace( "!<(a|/a).*?>!", '', $html );
+}
+add_filter( 'woocommerce_single_product_image_thumbnail_html', 'ha_remove_product_image_link', 10, 2 );
