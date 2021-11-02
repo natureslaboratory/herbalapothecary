@@ -2478,3 +2478,7 @@ span.price .c-price {
 .c-home-categories {
     margin-bottom: 4rem;
 }
+
+.woocommerce div.product .out-of-stock{
+	color:#b80000;
+}
