@@ -784,11 +784,22 @@ function ha_add_to_cart_filter($button, $product, $args) {
 	// echo "<pre>" . print_r($product->get_id(), true) . "</pre>";
 	// echo "<pre>" . print_r($args, true) . "</pre>";
 	if ($product->get_type() == "simple") {
+		$args_class = $args['class'] ? $args['class'] : 'button';
+		$args_class_array = explode(" ", $args_class);
+		$new_class_array = [];
+		foreach ($args_class_array as $class) {
+			if (gettype(strpos($class, "add_to_cart")) == "boolean") {
+				$new_class_array[] = $class;
+			}
+		}
+		$new_classes = implode(" ", $new_class_array);
+
+
 		return sprintf(
 			'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
 			esc_url( $product->get_permalink() ),
 			esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-			esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),
+			esc_attr( $new_classes ),
 			isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
 			esc_html( "View Product" )
 		);
