@@ -617,7 +617,7 @@ function ha_cron_exec_new()
 					break;
 				}
 				foreach ($variation["attributes"] as $attribute) {
-					if ($attribute == "1000gm" || $attribute == "1000ml" || $attribute == "1000-ml") {
+					if ($attribute == "1000gm") {
 						$is_correct_type = true;
 						$variation_obj = new WC_Product_Variation($variation["variation_id"]);
 						$correct_type_stock = get_stock_safe($variation_obj);
@@ -844,7 +844,7 @@ add_filter('woocommerce_single_product_image_thumbnail_html', 'ha_remove_product
 function ha_single_product_acf_details()
 {
 	global $post;
-	
+
 	$details_to_list = [];
 
 	$ratio = get_field("ratio");
