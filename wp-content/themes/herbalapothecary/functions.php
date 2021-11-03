@@ -866,3 +866,60 @@ function ha_single_product_acf_details()
 	<?php }
 }
 add_action("woocommerce_single_product_summary", "ha_single_product_acf_details", 25);
+
+/**
+ * Add upload button to WP dashboard
+ * @return null
+ */
+function ha_dashboard_widgets() {
+	global $wp_meta_boxes;
+
+	wp_add_dashboard_widget('ha_upload_widget', 'Herbal Apothecary Stock Upload', 'ha_upload_widget');
+}
+
+function ha_upload_widget() {
+	// Generate a custom nonce value.
+	if( current_user_can( 'edit_users' ) ) {
+		$ha_upload_nonce = wp_create_nonce( 'ha_upload_stock_form_nonce' );
+	?>
+<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" id="ha_upload_stock_form" enctype="multipart/form-data">
+	<input type="file" name="ha_upload_stock_file" id="ha_upload_stock_file" />
+	<input type="hidden" name="action" value="ha_upload_stock">
+	<input type="hidden" name="ha_upload_stock_form_nonce" value="<?php echo $ha_upload_nonce; ?>" />
+	<script>
+		jQuery('#ha_upload_stock_file').on('change', function() {
+			jQuery('#ha_upload_stock_form').submit();
+		});
+	</script>
+</form>
+	<?php
+	} else {
+	 echo __("You are not authorized to perform this operation.", $this->plugin_name);
+	}
+}
+add_action('wp_dashboard_setup', 'ha_dashboard_widgets');
+
+function ha_upload_handler() {
+		if( isset( $_POST['ha_upload_stock_form_nonce'] ) &&
+				wp_verify_nonce( $_POST['ha_upload_stock_form_nonce'], 'ha_upload_stock_form_nonce') ) {
+			// Check we've got the right file type
+			if ($_FILES['ha_upload_stock_file']['type'] != 'text/csv' &&
+					$_FILES['ha_upload_stock_file']['type'] != 'application/vnd.ms-excel')
+				wp_die( 'File must be in CSV format, the MIME type for this file is ' . $_FILES['ha_upload_stock_file']['type'], __( 'Error' ), array(
+					'response' 	=> 403
+				) );
+
+			// Move to the wp-content dir
+			if (move_uploaded_file($_FILES['ha_upload_stock_file']["tmp_name"], WP_CONTENT_DIR . '/ha_stock_upload.csv')) {
+				echo "File has been uploaded and will be processed shortly. <br /><a href=\"/wp-admin\">Click here to go back</a>";
+			} else {
+				echo "There was an error uploading the file. Please check the logs for more details.";
+			}
+		} else {
+			echo "Unable to upload.";
+			wp_die( __( 'Invalid nonce specified'), __( 'Error' ), array(
+				'response' 	=> 403
+			) );
+		}
+}
+add_action( 'admin_post_ha_upload_stock', 'ha_upload_handler');
