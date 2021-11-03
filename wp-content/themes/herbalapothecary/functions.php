@@ -340,19 +340,20 @@ function custom_search($query)
 add_action('woocommerce_product_query', 'custom_search');
 
 
-function show_only_instock_products($query) {
-	$meta_query = $query->get( 'meta_query' );
+function show_only_instock_products($query)
+{
+	$meta_query = $query->get('meta_query');
 	$meta_query[] = array(
 		'key'       => '_stock_status',
 		'compare'   => '=',
 		'value'     => 'instock'
 	);
-	$query->set( 'meta_query', $meta_query );
-	?>
+	$query->set('meta_query', $meta_query);
+?>
 	<script>
 		console.log(<?= json_encode($query) ?>)
 	</script>
-	<?php
+<?php
 }
 add_action('woocommerce_product_query', 'show_only_instock_products');
 
@@ -801,7 +802,8 @@ function customizing_woocommerce_description($content)
 }
 
 
-function ha_add_to_cart_filter($button, $product, $args) {
+function ha_add_to_cart_filter($button, $product, $args)
+{
 	// echo "<pre>" . print_r($product->get_id(), true) . "</pre>";
 	// echo "<pre>" . print_r($args, true) . "</pre>";
 	if ($product->get_type() == "simple") {
@@ -818,11 +820,11 @@ function ha_add_to_cart_filter($button, $product, $args) {
 
 		return sprintf(
 			'<a href="%s" data-quantity="%s" class="%s" %s>%s</a>',
-			esc_url( $product->get_permalink() ),
-			esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
-			esc_attr( $new_classes ),
-			isset( $args['attributes'] ) ? wc_implode_html_attributes( $args['attributes'] ) : '',
-			esc_html( "View Product" )
+			esc_url($product->get_permalink()),
+			esc_attr(isset($args['quantity']) ? $args['quantity'] : 1),
+			esc_attr($new_classes),
+			isset($args['attributes']) ? wc_implode_html_attributes($args['attributes']) : '',
+			esc_html("View Product")
 		);
 	}
 	return $button;
@@ -830,8 +832,39 @@ function ha_add_to_cart_filter($button, $product, $args) {
 
 add_filter("woocommerce_loop_add_to_cart_link", "ha_add_to_cart_filter", 40, 3);
 
-function ha_remove_product_image_link( $html, $post_id ) {
-	$html = str_replace("<img ","<img loading='lazy'",$html);
-    return preg_replace( "!<(a|/a).*?>!", '', $html );
+function ha_remove_product_image_link($html, $post_id)
+{
+	$html = str_replace("<img ", "<img loading='lazy'", $html);
+	return preg_replace("!<(a|/a).*?>!", '', $html);
 }
-add_filter( 'woocommerce_single_product_image_thumbnail_html', 'ha_remove_product_image_link', 10, 2 );
+add_filter('woocommerce_single_product_image_thumbnail_html', 'ha_remove_product_image_link', 10, 2);
+
+
+
+function print_hello()
+{
+	global $post;
+
+	$fields = get_fields($post->ID);
+	// echo "<pre>" . print_r($fields, true) . "</pre>";
+	$details_to_list = [];
+
+	$ratio = get_field("ratio");
+	if ($ratio) {
+		$details_to_list["Ratio"] = $ratio;
+	}
+
+	$alcohol = get_field("alcohol");
+	if ($alcohol) {
+		$details_to_list["Alcohol"] = $alcohol;
+	}
+
+	if (!empty($details_to_list)) { ?>
+		<div class="c-product__custom-details">
+			<?php foreach ($details_to_list as $key => $value) { ?>
+				<p><span><?= $key ?>:</span> <?= $value ?></p>
+			<?php } ?>
+		</div>
+	<?php }
+}
+add_action("woocommerce_single_product_summary", "print_hello", 25);

@@ -30,30 +30,4 @@ if ( ! $short_description ) {
 ?>
 <div class="woocommerce-product-details__short-description">
 	<?php echo $short_description; // WPCS: XSS ok. ?>
-	<?php 
-	
-	$fields = get_fields($post->ID);
-	// echo "<pre>" . print_r($fields, true) . "</pre>";
-	$details_to_list = [];
-	
-	$ratio = get_field("ratio");
-	if ($ratio) {
-		$details_to_list["Ratio"] = $ratio;
-	}
-
-	$alcohol = get_field("alcohol");
-	if ($alcohol) {
-		$details_to_list["Alcohol"] = $alcohol;
-	}
-
-	if (!empty($details_to_list)) { ?>
-		<div class="c-product__custom-details">
-			<?php foreach ($details_to_list as $key => $value) { ?>
-				<p><span><?= $key ?>:</span> <?= $value ?></p>
-			<?php } ?>
-		</div>
-	<?php }
-	
-	
-	?>
 </div>
