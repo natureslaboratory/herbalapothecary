@@ -718,7 +718,7 @@ a.c-calculator-banner:hover {
 }
 
 .c-product__custom-details span {
-    opacity: 0.8;
+    font-weight: bold;
 }
 
 .c-product__custom-details p {
