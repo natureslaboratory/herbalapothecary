@@ -713,6 +713,10 @@ a.c-calculator-banner:hover {
     font-size: 0.95rem;
 }
 
+.c-product__custom-details + .woocommerce div.product p.stock {
+    margin-top: -1rem;
+}
+
 .c-product__custom-details span {
     opacity: 0.8;
 }
@@ -1676,6 +1680,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
 .woocommerce div.product form.cart {
     padding-bottom: 2rem;
     margin-bottom: 1em;
+    margin-top: 1rem;
 }
 
 .woocommerce div.product form.cart .button {
