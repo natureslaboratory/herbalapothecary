@@ -2509,7 +2509,7 @@ span.price .c-price {
     max-width: 300px;
 }
 
-[class*="wp-block-contact-form"] form textarea {
+[class*="wp-block-contact-form"] form textarea[class*="wpc"] {
     width: 100%;
     max-width: unset;
 }
