@@ -844,9 +844,7 @@ add_filter('woocommerce_single_product_image_thumbnail_html', 'ha_remove_product
 function ha_single_product_acf_details()
 {
 	global $post;
-
-	$fields = get_fields($post->ID);
-	// echo "<pre>" . print_r($fields, true) . "</pre>";
+	
 	$details_to_list = [];
 
 	$ratio = get_field("ratio");
