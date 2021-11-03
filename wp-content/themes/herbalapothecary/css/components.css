@@ -2503,3 +2503,13 @@ span.price .c-price {
 .woocommerce div.product .out-of-stock{
 	color:#b80000;
 }
+
+[class*="wp-block-contact-form"] :is(input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea) {
+    width: 100%;
+    max-width: 300px;
+}
+
+[class*="wp-block-contact-form"] :is(textarea) {
+    width: 100%;
+    max-width: unset;
+}
