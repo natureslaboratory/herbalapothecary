@@ -841,7 +841,7 @@ add_filter('woocommerce_single_product_image_thumbnail_html', 'ha_remove_product
 
 
 
-function print_hello()
+function ha_single_product_acf_details()
 {
 	global $post;
 
@@ -867,4 +867,4 @@ function print_hello()
 		</div>
 	<?php }
 }
-add_action("woocommerce_single_product_summary", "print_hello", 25);
+add_action("woocommerce_single_product_summary", "ha_single_product_acf_details", 25);
