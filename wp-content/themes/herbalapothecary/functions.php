@@ -904,12 +904,12 @@ function ha_show_out_of_stock() {
 	}
 
 	$debug = [];
-	$debug["product"] = $product;
+	$debug["product"] = $product->get_data();
 
 	$has_stock = false;
 	foreach ($child_products as $child_id) {
 		$child = wc_get_product($child_id);
-		$debug["children"][$child_id] = $child;
+		$debug["children"][$child_id] = $child->get_data();
 		if ($child->get_stock_quantity() > 0) {
 			$has_stock = true;
 			break;
