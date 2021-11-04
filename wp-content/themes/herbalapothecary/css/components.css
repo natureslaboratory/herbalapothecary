@@ -729,6 +729,12 @@ a.c-calculator-banner:hover {
     max-width: 100px;
 }
 
+.c-product__out-of-stock {
+    color: red;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
 @media screen and (max-width: 1450px) {
     .c-products__grid, .woocommerce ul.products, .wc-block-grid__products {
         grid-template-columns: repeat(4, 1fr);
@@ -2510,7 +2516,7 @@ span.price .c-price {
     margin-bottom: 4rem;
 }
 
-.woocommerce div.product .out-of-stock{
+.woocommerce div.product .out-of-stock, .out-of-stock{
 	color:#b80000;
 }
 

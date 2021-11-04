@@ -894,3 +894,27 @@ function ha_redirect_page_one() {
 }
 
 add_action("wp_loaded", "ha_redirect_page_one");
+
+function ha_show_out_of_stock() {
+	global $product;
+
+	$child_products = $product->get_children();
+	if (empty($child_products)) {
+		return;
+	}
+
+	$has_stock = false;
+	foreach ($child_products as $child_id) {
+		$child = wc_get_product($child_id);
+		if ($child->get_stock_quantity() > 0) {
+			$has_stock = true;
+			break;
+		}
+	}
+
+	if (!$has_stock) { ?>
+		<p class="stock out-of-stock c-product__out-of-stock">Out of stock</p>
+	<?php }
+}
+
+add_action('woocommerce_after_shop_loop_item_title', "ha_show_out_of_stock", 25);
