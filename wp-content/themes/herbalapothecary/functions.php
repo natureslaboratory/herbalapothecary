@@ -643,6 +643,28 @@ function ha_cron_exec_new()
 	<?php
 }
 
+function verify_variable_stock(WC_Product_Variable $variable_product) {
+	$has_stock = false;
+
+	$variation_ids = $variable_product->get_children();
+	foreach ($variation_ids as $variation_id) {
+		$variation = wc_get_product($variation_id);
+		if ($variation->get_stock_quantity() > 0) {
+			$has_stock = true;
+			break;
+		}
+	}
+
+
+	update_post_meta($variable_product->get_id(), "_manage_stock", "no");
+
+	if ($has_stock) {
+		update_post_meta($variable_product->get_id(), "_stock_status", "instock");
+	} else {
+		update_post_meta($variable_product->get_id(), "_stock_status", "outofstock");
+	}
+}
+
 // add_action("ha_cron_hook", "ha_cron_exec");
 
 if (!wp_next_scheduled("ha_cron_hook")) {
@@ -910,7 +932,7 @@ function ha_show_out_of_stock() {
 	foreach ($child_products as $child_id) {
 		$child = wc_get_product($child_id);
 		$debug["children"][$child_id] = $child->get_data();
-		
+
 		if ($child->get_type() == "variable") {
 			$variation_ids = $child->get_children();
 			if (!empty($variation_ids)) {
