@@ -590,7 +590,6 @@ function ha_cron_exec_new()
 
 		// $variableProduct is type WC_Product_Variable, contains variations.
 		$variations = custom_get_variations($variableProduct);
-		$other_variations = $variableProduct->get_available_variations();
 
 		$limit = 1000;
 
