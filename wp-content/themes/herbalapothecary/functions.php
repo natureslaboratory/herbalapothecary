@@ -602,108 +602,104 @@ function ha_cron_exec_new()
 		return $stock;
 	}
 
-	$debug["check_num"] = 0;
-	$debug["incorrect_type"] = 0;
-	$debug["correct_type"] = 0;
-	try {
-		$count = 0;
-		foreach ($variableProducts as $variableProduct) {
+	// $debug["check_num"] = 0;
+	// $debug["incorrect_type"] = 0;
+	// $debug["correct_type"] = 0;
+	
+	$count = 0;
+	foreach ($variableProducts as $variableProduct) {
 
-			// $variableProduct is type WC_Product_Variable, contains variations.
-			$variations = custom_get_variations($variableProduct);
-			$other_variations = $variableProduct->get_available_variations();
+		// $variableProduct is type WC_Product_Variable, contains variations.
+		$variations = custom_get_variations($variableProduct);
+		$other_variations = $variableProduct->get_available_variations();
 
-			$limit = 1000;
+		$limit = 1000;
 
-			$is_correct_type = false;
-			$correct_type_stock = 0;
-			foreach ($variations as $variation) {
-				// Loops through variations, then loops through attributes of that variation looking for
-				// 1000gm or 1000ml values.
-				if ($is_correct_type) {
+		$is_correct_type = false;
+		$correct_type_stock = 0;
+		foreach ($variations as $variation) {
+			// Loops through variations, then loops through attributes of that variation looking for
+			// 1000gm or 1000ml values.
+			if ($is_correct_type) {
+				break;
+			}
+			foreach ($variation["attributes"] as $attribute) {
+				if ($attribute == "1000gm") {
+					$is_correct_type = true;
+					$variation_obj = new WC_Product_Variation($variation["variation_id"]);
+					$correct_type_stock = get_stock_safe($variation_obj);
 					break;
 				}
-				foreach ($variation["attributes"] as $attribute) {
-					if ($attribute == "1000gm") {
-						$is_correct_type = true;
-						$variation_obj = new WC_Product_Variation($variation["variation_id"]);
-						$correct_type_stock = get_stock_safe($variation_obj);
-						break;
-					}
-				}
 			}
+		}
 
-			if ($is_correct_type) {
-				$debug["correct_type"] = $debug["correct_type"] + 1;
-				foreach ($variations as $variation) {
-					foreach ($variation["attributes"] as $value) {
+		if ($is_correct_type) {
+			$debug["correct_type"] = $debug["correct_type"] + 1;
+			foreach ($variations as $variation) {
+				foreach ($variation["attributes"] as $value) {
+					// if ($count < 10) {
+					// 	$debug["correct_type_values"][] = [
+					// 		"id" => $variation["variation_id"],
+					// 		"match_first" => strpos($value, "1000"),
+					// 		"value" => $value
+					// 	];
+					// }
+					if (gettype(strpos($value, "1000")) == "boolean") {
+						// Updates every variation which is dictated by it's 1000gm variation  
+						$unit_stripped = strip_unit($value);
+						$amount = ($correct_type_stock * 1000) / $unit_stripped;
 						if ($count < 10) {
-							$debug["correct_type_values"][] = [
+							$debug["variations_less_than_1000"][] = [
 								"id" => $variation["variation_id"],
-								"match_first" => strpos($value, "1000"),
-								"value" => $value
+								"stock" => $amount,
+								"details" => $variation
 							];
 						}
-						if (gettype(strpos($value, "1000")) == "boolean") {
-							// Updates every variation which is dictated by it's 1000gm variation  
-							$unit_stripped = strip_unit($value);
-							$amount = ($correct_type_stock * 1000) / $unit_stripped;
-							if ($count < 10) {
-								$debug["variations_less_than_1000"][] = [
-									"id" => $variation["variation_id"],
-									"stock" => $amount,
-									"details" => $variation
-								];
-							}
 
-							update_post_meta($variation["variation_id"], "_manage_stock", "yes");
-							wc_update_product_stock($variation["variation_id"], $amount);
-							wc_delete_product_transients($variation["variation_id"]);
-						} else {
-							// Refreshes the 1000gm/ml variation
-							$variation_obj = new WC_Product_Variation($variation["variation_id"]);
-							$stock = get_stock_safe($variation_obj);
-							if ($count < 10) {
-								$debug["variations_of_1000"][] = [
-									"id" => $variation["variation_id"],
-									"stock" => $stock,
-									"details" => $variation
-								];
-							}
-							update_post_meta($variation["variation_id"], "_manage_stock", "yes");
-							wc_update_product_stock($variation["variation_id"], $stock);
-							wc_delete_product_transients($variation["variation_id"]);
-						}
+						update_post_meta($variation["variation_id"], "_manage_stock", "yes");
+						wc_update_product_stock($variation["variation_id"], $amount);
+						wc_delete_product_transients($variation["variation_id"]);
+					} else {
+						// Refreshes the 1000gm/ml variation
+						// $variation_obj = new WC_Product_Variation($variation["variation_id"]);
+						// $stock = get_stock_safe($variation_obj);
+						// if ($count < 10) {
+						// 	$debug["variations_of_1000"][] = [
+						// 		"id" => $variation["variation_id"],
+						// 		"stock" => $stock,
+						// 		"details" => $variation
+						// 	];
+						// }
+						// update_post_meta($variation["variation_id"], "_manage_stock", "yes");
+						// wc_update_product_stock($variation["variation_id"], $stock);
+						// wc_delete_product_transients($variation["variation_id"]);
 					}
-				}
-			} else {
-				$debug["incorrect_type"] = $debug["incorrect_type"] + 1;
-
-				foreach ($variations as $variation) {
-					// Loops through each variation of a product
-
-					$variation_obj = new WC_Product_Variation($variation["variation_id"]);
-					$stock = get_stock_safe($variation_obj);
-					if ($count < 10) {
-						$debug["other_variations"][] = [
-							"id" => $variation["variation_id"],
-							"stock" => $stock,
-							"details" => $variation
-						];
-					}
-					update_post_meta($variation["variation_id"], "_manage_stock", "yes");
-					wc_update_product_stock($variation["variation_id"], $stock);
-					wc_delete_product_transients($variation["variation_id"]);
 				}
 			}
-			wc_delete_product_transients($variableProduct->get_id());
-			$count++;
-		}
-	} catch (\Throwable $th) {
-		echo $th->getMessage() . "<br>";
-		echo $th->getFile() . "<br>";
-		echo $th->getLine();
+		} else {
+		// 	$debug["incorrect_type"] = $debug["incorrect_type"] + 1;
+
+		// 	foreach ($variations as $variation) {
+		// 		// Loops through each variation of a product
+
+		// 		$variation_obj = new WC_Product_Variation($variation["variation_id"]);
+		// 		$stock = get_stock_safe($variation_obj);
+		// 		if ($count < 10) {
+		// 			$debug["other_variations"][] = [
+		// 				"id" => $variation["variation_id"],
+		// 				"stock" => $stock,
+		// 				"details" => $variation
+		// 			];
+		// 		}
+		// 		update_post_meta($variation["variation_id"], "_manage_stock", "yes");
+		// 		wc_update_product_stock($variation["variation_id"], $stock);
+		// 		wc_delete_product_transients($variation["variation_id"]);
+		// 	}
+		// }
+		// wc_delete_product_transients($variableProduct->get_id());
+		$count++;
 	}
+	
 	?>
 		<script>
 			console.log(<?= json_encode($debug) ?>);
