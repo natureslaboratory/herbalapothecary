@@ -199,6 +199,21 @@ function custom_woocommerce_breadcrumbs()
 }
 add_filter("woocommerce_breadcrumb_defaults", "custom_woocommerce_breadcrumbs");
 
+function ha_add_grouped_product_to_breadcrumb($breadcrumbs, $args) {
+	global $post;
+
+	$product = wc_get_product($post->ID);
+
+	// echo "post parent: " . get_post_parent() . "<br>";
+	// echo "<pre>". print_r($product, true) . "</pre>";
+	// echo "<pre>". print_r($post, true) . "</pre>";
+
+	// echo "<pre>". print_r($args, true) . "</pre>";
+	return $breadcrumbs;
+}
+
+add_filter("woocommerce_breadcrumb", "ha_add_grouped_product_to_breadcrumb", 20, 2);
+
 
 
 function herbalapothecary_add_custom_sorting_options($options)
@@ -775,7 +790,7 @@ function customizing_woocommerce_description($content)
 					$content .= "<h2>Packaging</h2><p>This product is packaged in resealable clear bags. These keep the contents fresh and protected from moisture. Look out for the QR code on the label - you can scan this with your smartphone to download the Certificate of Analysis document for this product.</p>";
 				}
 				if ($description == 'tincture') {
-					$content .= "<h2>What is a Tincture?</h2><p>A herbal tincture is a concentrated extract of one or more herbs. The liquid in a tincture is a combination of alcohol and water. A tincture must contain at least 20% alcohol for preservation purposes. Alcohol concentrations tend to vary between 20% and 60%, but can be as high as 90% in some circumstances. At Herbal Apothecary we generally produce tinctures with alcohol concentrations of 25% - 45%. We use ethanol derived from sugar beat.</p><h2>How Are Tinctures Made?</h2><p>To produce the ".$product->get_name()." we combine a quantity of herb with a proportional amount of liquid. Depending on the herb and the strength of tincture required this ratio can be 1:2, 1:3 or 1:4. The herb, alcohol and water is placed in a production vessel suitable for the size of the batch.</p><p>Traditionally, tinctures have been made by a process of maceration. This is where the herb sits in the liquid and over a period of time the plant cells break down. This allows the plant matter to be released into the liquid. Occasionally the producer might agitate the mixture to help the process along.</p><p>At Herbal Apothecary we have spent decades improving our tincture production processes. We use a system called Hydro-Ethanolic Percolation. Percolation is where liquid slowly passes through the herb, from top to bottom. In our case, the liquid is not simply passed through the herb once and then collected. Instead, it is continually cycled through the herb. Hydro-Ethanolic Percolation is a combination of maceration and traditional percolation. The circulation of liquid through a spray head agitates the herb, helping the key chemical compounds to be released into the liquid.</p><p>Our production vessels are primarily stainless steel. We use low voltage (24v) pumps to circulate the liquid. We have also developed a system of float switches and relays. These ensure the pumps only activate when an adequate level of liquid is present in the sump at the bottom of the vessel. It can take some time for the liquid to filter through the herb.</p><p>We produce most of our tinctures using dried herbs, although we sometimes use fresh. It's important that the size of the pieces of herb in the production vessel are small enough for the alcohol to thoroughly penetrate. No prior processing is required for flowers and leaves which are smaller and more delicate. However, for roots, bark and berries which tend to be tougher and larger we use herbs which are diced up into small pieces. This ensures that the maximum amount of plant material can be extracted into the liquid.</p><p>The manufacturing process takes 7 days to complete. Once the process is finished, the herb is pressed to extract every last drop of precious liquid. The liquid is filtered and then stored in bulk containers, before being bottled in smaller 250ml, 500ml and 1000ml quantities.</p><p><a href='/manufacturing/'>Click here if you'd like to know more about our herbal tincture manufacturing technology</a>. At Herbal Apothecary we are committed to research - we want to provide a robust evidence base for the products we produce. As a result we review our manufacturing systems and processes in order to ensure we're making best use of the raw ingredients.</p>";
+					$content .= "<h2>What is a Tincture?</h2><p>A herbal tincture is a concentrated extract of one or more herbs. The liquid in a tincture is a combination of alcohol and water. A tincture must contain at least 20% alcohol for preservation purposes. Alcohol concentrations tend to vary between 20% and 60%, but can be as high as 90% in some circumstances. At Herbal Apothecary we generally produce tinctures with alcohol concentrations of 25% - 45%. We use ethanol derived from sugar beat.</p><h2>How Are Tinctures Made?</h2><p>To produce the tincture we combine a quantity of herb with a proportional amount of liquid. Depending on the herb and the strength of tincture required this ratio can be 1:2, 1:3 or 1:4. The herb, alcohol and water is placed in a production vessel suitable for the size of the batch.</p><p>Traditionally, tinctures have been made by a process of maceration. This is where the herb sits in the liquid and over a period of time the plant cells break down. This allows the plant matter to be released into the liquid. Occasionally the producer might agitate the mixture to help the process along.</p><p>At Herbal Apothecary we have spent decades improving our tincture production processes. We use a system called Hydro-Ethanolic Percolation. Percolation is where liquid slowly passes through the herb, from top to bottom. In our case, the liquid is not simply passed through the herb once and then collected. Instead, it is continually cycled through the herb. Hydro-Ethanolic Percolation is a combination of maceration and traditional percolation. The circulation of liquid through a spray head agitates the herb, helping the key chemical compounds to be released into the liquid.</p><p>Our production vessels are primarily stainless steel. We use low voltage (24v) pumps to circulate the liquid. We have also developed a system of float switches and relays. These ensure the pumps only activate when an adequate level of liquid is present in the sump at the bottom of the vessel. It can take some time for the liquid to filter through the herb.</p><p>We produce most of our tinctures using dried herbs, although we sometimes use fresh. It's important that the size of the pieces of herb in the production vessel are small enough for the alcohol to thoroughly penetrate. No prior processing is required for flowers and leaves which are smaller and more delicate. However, for roots, bark and berries which tend to be tougher and larger we use herbs which are diced up into small pieces. This ensures that the maximum amount of plant material can be extracted into the liquid.</p><p>The manufacturing process takes 7 days to complete. Once the process is finished, the herb is pressed to extract every last drop of precious liquid. The liquid is filtered and then stored in bulk containers, before being bottled in smaller 250ml, 500ml and 1000ml quantities.</p><p><a href='/manufacturing/'>Click here if you'd like to know more about our herbal tincture manufacturing technology</a>. At Herbal Apothecary we are committed to research - we want to provide a robust evidence base for the products we produce. As a result we review our manufacturing systems and processes in order to ensure we're making best use of the raw ingredients.</p>";
 				}
 				if ($description == 'fluidextract') {
 					$content .= "<h2>What is a Fluid Extract?</h2><p>A herbal fluid extract is a concentrated extract of one or more herbs. The liquid in a fluid extract is a combination of alcohol and water. A fluid extract must contain at least 20% alcohol for preservation purposes. Alcohol concentrations tend to vary between 20% and 60%, but can be as high as 90% in some circumstances. At Herbal Apothecary we generally produce fluid extracts with alcohol concentrations of 25% - 45%. We use ethanol derived from sugar beat.</p><h2>How Are Fluid Extracts Made?</h2><p>To produce the fluid extract we combine a quantity of herb with an equal liquid. The herb, alcohol and water is placed in a production vessel suitable for the size of the batch.</p><p>Traditionally, fluid extracts have been made by a process of maceration. This is where the herb sits in the liquid and over a period of time the plant cells break down. This allows the plant matter to be released into the liquid. Occasionally the producer might agitate the mixture to help the process along.</p><p>At Herbal Apothecary we have spent decades improving our fluid extract production processes. We use a system called Hydro-Ethanolic Percolation. Percolation is where liquid slowly passes through the herb, from top to bottom. In our case, the liquid is not simply passed through the herb once and then collected. Instead, it is continually cycled through the herb. Hydro-Ethanolic Percolation is a combination of maceration and traditional percolation. The circulation of liquid through a spray head agitates the herb, helping the key chemical compounds to be released into the liquid.</p><p>Our production vessels are primarily stainless steel. We use low voltage (24v) pumps to circulate the liquid. We have also developed a system of float switches and relays. These ensure the pumps only activate when an adequate level of liquid is present in the sump at the bottom of the vessel. It can take some time for the liquid to filter through the herb.</p><p>We produce most of our fluid extracts using dried herbs, although we sometimes use fresh. It's important that the size of the pieces of herb in the production vessel are small enough for the alcohol to thoroughly penetrate. No prior processing is required for flowers and leaves which are smaller and more delicate. However, for roots, bark and berries which tend to be tougher and larger we use herbs which are diced up into small pieces. This ensures that the maximum amount of plant material can be extracted into the liquid.</p><p>The manufacturing process takes 7 days to complete. Once the process is finished, the herb is pressed to extract every last drop of precious liquid. The liquid is filtered and then stored in bulk containers, before being bottled in smaller 250ml, 500ml and 1000ml quantities.</p><p><a href='/manufacturing/'>Click here if you'd like to know more about our herbal tincture manufacturing technology</a>. At Herbal Apothecary we are committed to research - we want to provide a robust evidence base for the products we produce. As a result we review our manufacturing systems and processes in order to ensure we're making best use of the raw ingredients.</p>";
@@ -922,4 +937,52 @@ function ha_upload_handler() {
 			) );
 		}
 }
+
 add_action( 'admin_post_ha_upload_stock', 'ha_upload_handler');
+
+function ha_add_organic_flag() {
+	global $product;
+
+	$info = get_post_meta($product->get_id());
+	$data = null;
+	if (gettype($info) == "array" && array_key_exists("product_descriptions", $info)) {
+		$data = unserialize($info['product_descriptions'][0]);
+	}
+	// echo "<pre>" . print_r($data, true) . "</pre>";
+	if ($data && in_array("organic", $data)) {
+		echo "<img class='c-product__custom-details-flag' src='/wp-content/uploads/2021/09/euorg.png' alt='Organic Flag'>";
+	}
+}
+add_action("woocommerce_single_product_summary", "ha_add_organic_flag", 31);
+
+
+
+// function ha_pagination_args($args) {
+// 	array( // WPCS: XSS ok.
+// 		'base'      => $base,
+// 		'format'    => $format,
+// 		'add_args'  => false,
+// 		'current'   => max( 1, $current ),
+// 		'total'     => $total,
+// 		'prev_text' => is_rtl() ? '&rarr;' : '&larr;',
+// 		'next_text' => is_rtl() ? '&larr;' : '&rarr;',
+// 		'type'      => 'list',
+// 		'end_size'  => 3,
+// 		'mid_size'  => 3,
+// 	)
+// 	$args[""]
+// }
+
+// add_filter('woocommerce_pagination_args', "ha_pagination_args");
+
+function ha_redirect_page_one() {
+	if (strpos($_SERVER["REQUEST_URI"], "/page/1")) {
+		?>
+		<script>
+			window.location.href = window.location.href.split("/page/1")[0];
+		</script>
+		<?php
+	}
+}
+
+add_action("wp_loaded", "ha_redirect_page_one");

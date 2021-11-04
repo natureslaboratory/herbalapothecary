@@ -1698,7 +1698,11 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .woocommerce div.product form.cart {
-    border-bottom: 1px solid rgb(230, 230, 230);
+    /* border-bottom: 1px solid rgb(230, 230, 230); */
+}
+
+.product_meta {
+    border-top: 1px solid rgb(230, 230, 230);
 }
 
 .woocommerce div.product p.stock {
