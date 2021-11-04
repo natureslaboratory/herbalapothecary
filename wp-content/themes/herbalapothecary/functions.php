@@ -979,7 +979,7 @@ function ha_redirect_page_one() {
 	if (strpos($_SERVER["REQUEST_URI"], "/page/1")) {
 		?>
 		<script>
-			window.location.href = window.location.href.split("/page/1")[0];
+			window.location.href = window.location.href.split("/page/1")[0] + "/";
 		</script>
 		<?php
 	}
