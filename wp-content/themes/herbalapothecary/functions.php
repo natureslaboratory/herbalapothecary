@@ -605,7 +605,7 @@ function ha_cron_exec_new()
 	// $debug["check_num"] = 0;
 	// $debug["incorrect_type"] = 0;
 	// $debug["correct_type"] = 0;
-	
+
 	$count = 0;
 	foreach ($variableProducts as $variableProduct) {
 
@@ -695,7 +695,7 @@ function ha_cron_exec_new()
 		// 		wc_update_product_stock($variation["variation_id"], $stock);
 		// 		wc_delete_product_transients($variation["variation_id"]);
 		// 	}
-		// }
+		}
 		// wc_delete_product_transients($variableProduct->get_id());
 		$count++;
 	}
