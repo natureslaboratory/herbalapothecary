@@ -725,6 +725,10 @@ a.c-calculator-banner:hover {
     margin: 0;
 }
 
+.c-product__custom-details-flag {
+    max-width: 100px;
+}
+
 @media screen and (max-width: 1450px) {
     .c-products__grid, .woocommerce ul.products, .wc-block-grid__products {
         grid-template-columns: repeat(4, 1fr);
@@ -1678,7 +1682,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .woocommerce div.product form.cart {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     margin-bottom: 1em;
     margin-top: 1rem;
 }
@@ -1703,6 +1707,8 @@ article :is(h1, h2, h3, h4, h5, h6) {
 
 .product_meta {
     border-top: 1px solid rgb(230, 230, 230);
+    margin-top: 1rem;
+    padding-top: 1rem;
 }
 
 .woocommerce div.product p.stock {

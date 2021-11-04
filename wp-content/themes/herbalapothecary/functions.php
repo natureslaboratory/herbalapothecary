@@ -610,16 +610,8 @@ function ha_cron_exec_new()
 		foreach ($variableProducts as $variableProduct) {
 
 			// $variableProduct is type WC_Product_Variable, contains variations.
-
-
-
 			$variations = custom_get_variations($variableProduct);
 			$other_variations = $variableProduct->get_available_variations();
-
-			// echo "<div style='display: grid; grid-template-columns: 1fr 1fr;'>";
-			// print_readable($variations);
-			// print_readable($other_variations);
-			// echo "</div>";
 
 			$limit = 1000;
 
@@ -653,7 +645,7 @@ function ha_cron_exec_new()
 							];
 						}
 						if (gettype(strpos($value, "1000")) == "boolean") {
-							// Updates every variation which is dictated by it's 1000gm/ml variation  
+							// Updates every variation which is dictated by it's 1000gm variation  
 							$unit_stripped = strip_unit($value);
 							$amount = ($correct_type_stock * 1000) / $unit_stripped;
 							if ($count < 10) {
@@ -700,26 +692,10 @@ function ha_cron_exec_new()
 						];
 					}
 					update_post_meta($variation["variation_id"], "_manage_stock", "yes");
-
-					// $stockStatus = get_post_meta($variation_obj->get_id(), "_stock_status");
-					// $debug["backorders"][] = [
-					// 	"id" => $variation_obj->get_id(),
-					// 	"stockStatus" => $stockStatus
-					// ];
-					// if (!in_array("instock", $stockStatus)) {
-					// 	update_post_meta($variation_obj->get_id(), "_stock_status", "outofstock");
-					// }
-
 					wc_update_product_stock($variation["variation_id"], $stock);
 					wc_delete_product_transients($variation["variation_id"]);
 				}
 			}
-			// update_post_meta($variableProduct->get_id(), "_manage_stock", "yes");
-			// update_post_meta($variableProduct->get_id(), "_manage_stock", "no");
-
-			// if (!in_array("instock", get_post_meta($variableProduct->get_id(), "_stock_status"))) {
-			// 	update_post_meta($variableProduct->get_id(), "_stock_status", "outofstock");
-			// }
 			wc_delete_product_transients($variableProduct->get_id());
 			$count++;
 		}
