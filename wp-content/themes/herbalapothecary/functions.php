@@ -903,18 +903,29 @@ function ha_show_out_of_stock() {
 		return;
 	}
 
+	$debug = [];
+
 	$has_stock = false;
 	foreach ($child_products as $child_id) {
 		$child = wc_get_product($child_id);
+		$debug["children"][$child_id] = $child;
 		if ($child->get_stock_quantity() > 0) {
 			$has_stock = true;
 			break;
 		}
 	}
+	$debug["has_stock"] = $has_stock;
 
 	if (!$has_stock && false) { ?>
 		<p class="stock out-of-stock c-product__out-of-stock">Out of stock</p>
 	<?php }
+
+	?>
+	<script>
+		console.log(<?= json_encode($debug) ?>)
+	</script>
+	<?php
+
 }
 
 add_action('woocommerce_after_shop_loop_item_title', "ha_show_out_of_stock", 25);
