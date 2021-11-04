@@ -957,15 +957,9 @@ function ha_show_out_of_stock() {
 	}
 	$debug["has_stock"] = $has_stock;
 
-	if (!$has_stock && false) { ?>
+	if (!$has_stock) { ?>
 		<p class="stock out-of-stock c-product__out-of-stock">Out of stock</p>
 	<?php }
-
-	?>
-	<script>
-		console.log(<?= json_encode($debug) ?>)
-	</script>
-	<?php
 
 }
 
