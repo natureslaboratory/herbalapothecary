@@ -904,6 +904,7 @@ function ha_show_out_of_stock() {
 	}
 
 	$debug = [];
+	$debug["product"] = $product;
 
 	$has_stock = false;
 	foreach ($child_products as $child_id) {
