@@ -912,7 +912,7 @@ function ha_show_out_of_stock() {
 		}
 	}
 
-	if (!$has_stock) { ?>
+	if (!$has_stock && false) { ?>
 		<p class="stock out-of-stock c-product__out-of-stock">Out of stock</p>
 	<?php }
 }
