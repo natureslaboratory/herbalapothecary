@@ -67,16 +67,16 @@ quantities.forEach(q => {
             input.value = 1;
             currentValue = 1;
         } else {
+            // input.value = currentValue + 1;
+        }
+        console.log("Max: ", typeof parseInt(input.max));
+        if (typeof parseInt(input.max) == "number") {
+            if (currentValue < parseInt(input.max)) {
+                input.value = currentValue + 1;
+            }
+        } else {
             input.value = currentValue + 1;
         }
-        console.log("Max: ", gettype(parseInt(input.max)));
-        // if (gettype(parseInt(input.max)) == "number") {
-        //     if (currentValue < parseInt(input.max)) {
-        //         input.value = currentValue + 1;
-        //     }
-        // } else {
-        //     input.value = currentValue + 1;
-        // }
     }
 
     function decrement() {
