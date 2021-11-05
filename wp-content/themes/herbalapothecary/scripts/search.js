@@ -66,14 +66,17 @@ quantities.forEach(q => {
         if (!currentValue || currentValue == "NaN") {
             input.value = 1;
             currentValue = 1;
-        }
-        if (gettype(parseInt(input.max)) == "number") {
-            if (currentValue < parseInt(input.max)) {
-                input.value = currentValue + 1;
-            }
         } else {
             input.value = currentValue + 1;
         }
+        console.log("Max: ", gettype(parseInt(input.max)));
+        // if (gettype(parseInt(input.max)) == "number") {
+        //     if (currentValue < parseInt(input.max)) {
+        //         input.value = currentValue + 1;
+        //     }
+        // } else {
+        //     input.value = currentValue + 1;
+        // }
     }
 
     function decrement() {
