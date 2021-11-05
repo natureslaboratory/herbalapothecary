@@ -5,3 +5,5 @@ deployment:
     - /bin/cp -R * $DEPLOYPATH
     - export DEPLOYPATH=/home/herbal/public_html/
     - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/futurehealth/public_html/
+    - /bin/cp -R * $DEPLOYPATH
