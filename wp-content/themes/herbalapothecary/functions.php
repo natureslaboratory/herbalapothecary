@@ -245,7 +245,7 @@ add_filter('woocommerce_catalog_orderby', 'herbalapothecary_add_custom_sorting_o
  */
 function herbalapothecary_scripts()
 {
-	wp_enqueue_style('herbalapothecary-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_enqueue_style('herbalapothecary-style', get_template_directory_uri() . "/style.css", array(), _S_VERSION);
 	wp_enqueue_style('herbalapothecary-base', get_template_directory_uri() . "/css/base.css",  [], _S_VERSION);
 	wp_enqueue_style('herbalapothecary-layout', get_template_directory_uri() . "/css/layout.css",  [], _S_VERSION);
 	wp_enqueue_style('herbalapothecary-components', get_template_directory_uri() . "/css/components.css",  [], _S_VERSION);

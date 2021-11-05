@@ -67,7 +67,11 @@ quantities.forEach(q => {
             input.value = 0;
             currentValue = 0;
         }
-        if (currentValue < parseInt(input.max)) {
+        if (gettype(parseInt(input.max)) == "number") {
+            if (currentValue < parseInt(input.max)) {
+                input.value = currentValue + 1;
+            }
+        } else {
             input.value = currentValue + 1;
         }
     }
