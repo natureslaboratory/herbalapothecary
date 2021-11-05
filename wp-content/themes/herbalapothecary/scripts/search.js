@@ -70,8 +70,8 @@ quantities.forEach(q => {
             // input.value = currentValue + 1;
         }
         console.log("Max: ", typeof parseInt(input.max));
-        if (typeof parseInt(input.max) == "number") {
-            if (currentValue < parseInt(input.max)) {
+        if (typeof parseInt(input.max) == "number", parseInt(input.max)) {
+            if (currentValue < parseInt(input.max) && input.max > 0) {
                 input.value = currentValue + 1;
             }
         } else {
