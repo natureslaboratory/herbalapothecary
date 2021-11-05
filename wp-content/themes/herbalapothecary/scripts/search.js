@@ -66,11 +66,6 @@ quantities.forEach(q => {
         if (!currentValue || currentValue == "NaN") {
             input.value = 0;
             currentValue = 0;
-        }
-        if (gettype(parseInt(input.max)) == "number") {
-            if (currentValue < parseInt(input.max)) {
-                input.value = currentValue + 1;
-            }
         } else {
             input.value = currentValue + 1;
         }
