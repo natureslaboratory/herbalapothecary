@@ -63,6 +63,7 @@ quantities.forEach(q => {
 
     function increment() {
         let currentValue = parseInt(input.value);
+        console.log(currentValue);
         if (!currentValue || currentValue == "NaN") {
             input.value = 0;
             currentValue = 0;
