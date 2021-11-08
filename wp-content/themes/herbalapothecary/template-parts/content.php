@@ -28,8 +28,10 @@
 	} ?>
 	<header class="entry-header c-post__header">
 		<?php
+		$customClass = is_cart() ? "c-cart__title" : "";
+		$titleStart = "<h1 class='entry-title $customClass'>";
 		if (is_singular()) :
-			the_title('<h1 class="entry-title ' . is_cart() ? "c-cart__title" : "" . '">', '</h1>');
+			the_title($titleStart, '</h1>');
 		else :
 			the_title('<h1 class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark">', '</a></h1>');
 		endif;

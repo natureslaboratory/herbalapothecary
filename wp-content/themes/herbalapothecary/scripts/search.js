@@ -64,10 +64,17 @@ quantities.forEach(q => {
     function increment() {
         let currentValue = parseInt(input.value);
         if (!currentValue || currentValue == "NaN") {
-            input.value = 0;
-            currentValue = 0;
+            input.value = 1;
+            currentValue = 1;
+        } else {
+            // input.value = currentValue + 1;
         }
-        if (currentValue < parseInt(input.max)) {
+        console.log("Max:", typeof parseInt(input.max), parseInt(input.max));
+        if (typeof parseInt(input.max) == "number" && parseInt(input.max) > 0) {
+            if (currentValue < parseInt(input.max)) {
+                input.value = currentValue + 1;
+            }
+        } else {
             input.value = currentValue + 1;
         }
     }
