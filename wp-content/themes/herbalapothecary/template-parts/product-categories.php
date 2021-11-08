@@ -7,6 +7,7 @@ $cat_args = array(
     'orderby'    => $orderby,
     'order'      => $order,
     'hide_empty' => $hide_empty,
+    "parent" => 0
 );
 
 $product_categories = get_terms('product_cat', $cat_args);
