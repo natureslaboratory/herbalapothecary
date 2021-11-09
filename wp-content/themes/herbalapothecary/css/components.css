@@ -16,7 +16,7 @@ img.c-header__logo {
 }
 
 .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
-    background-color: var(--green);
+    background-color: var(--primary, var(--green));
     color: white;
     border: none;
     padding: 0.5rem 0.6rem;
@@ -61,7 +61,7 @@ input.c-search__box {
 
 .c-header__contact-details a {
     text-decoration: none;
-    color: var(--green);
+    color: var(--primary, var(--green));
     font-weight: 600;
 }
 
@@ -145,7 +145,7 @@ input.c-search__box {
 }
 
 .c-header__cart-list li a.c-header__cart-product-name {
-    color: var(--green)
+    color: var(--primary, var(--green))
 }
 
 .c-header__cart-list li {
@@ -329,7 +329,7 @@ ul.c-navigation__menu {
 }
 
 .c-banner {
-    background-color: var(--green);
+    background-color: var(--primary, var(--green));
     color: white;
     font-weight: 400;
     padding-top: 0.6rem;
@@ -417,7 +417,7 @@ i.menu-toggle {
     }
     ul.c-navigation__menu::before {
         content: "Main Menu";
-        background-color: var(--green);
+        background-color: var(--primary, var(--green));
         color: white;
         font-weight: 600;
         margin-bottom: 1rem;
@@ -553,7 +553,7 @@ i.menu-toggle {
 
 .c-promises__promise i {
     font-size: 2rem;
-    color:var(--green);
+    color: var(--primary, var(--green));
 }
 
 @media screen and (max-width: 870px) {
@@ -819,7 +819,7 @@ a.c-calculator-banner:hover {
     text-align: center;
     color: white;
     text-decoration: none;
-    background-color: var(--green);
+    background-color: var(--primary, var(--green));
     border-radius: 0;
     padding: 0.8rem;
     line-height: 1;
@@ -899,7 +899,7 @@ a.c-calculator-banner:hover {
     font-size: 0.9rem;
     font-weight: 400;
     margin: 0;
-    color: var(--green);
+    color: var(--primary, var(--green));
 }
 
 .c-product__price {
@@ -1037,7 +1037,7 @@ a.c-calculator-banner:hover {
 }
 
 .c-footer__bottom-column a:hover {
-    color: var(--green);
+    color: var(--primary, var(--green));
 }
 
 .c-footer__column .c-footer__social-link {
@@ -1549,7 +1549,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .c-pagination>*:not(a, .dots) {
-    background-color: var(--green);
+    background-color: var(--primary, var(--green));
     color: white;
 }
 
@@ -1914,9 +1914,9 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .c-account__navigation li.is-active a {
-    background-color: var(--green);
+    background-color: var(--primary, var(--green));
     color: white;
-    border: 1px solid var(--green);
+    border: 1px solid var(--primary, var(--green));
     z-index: 10;
 }
 
@@ -2091,7 +2091,7 @@ iframe {
 
 
 :is(.woocommerce button.button:disabled, .woocommerce button.button:disabled[disabled]):hover {
-    background-color: var(--green);
+    background-color: var(--primary, var(--green));
 }
 
 .c-cart, .c-cart *:not(span) {
@@ -2264,7 +2264,7 @@ iframe {
     grid-template-columns: 3fr 1fr;
     grid-template-areas: "name button" "price button";
     column-gap: 1rem;
-    /* border-left: 2px solid var(--green);
+    /* border-left: 2px solid color: var(--primary, var(--green));
     padding-left: 1rem; */
 }
 
@@ -2444,7 +2444,7 @@ span.price .c-price {
 }
 
 .c-card a.c-button:is(:hover, :focus) {
-    background: var(--green);
+    background: var(--primary, var(--green));
     color: white;
 }
 

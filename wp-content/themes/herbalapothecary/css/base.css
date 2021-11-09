@@ -6,11 +6,11 @@
 }
 
 a {
-    color: var(--green);
+    color: var(--primary, var(--green));
 }
 
 a:visited {
-    color: var(--green);
+    color: var(--primary, var(--green));
 }
 
 a:hover, a:visited:hover {
