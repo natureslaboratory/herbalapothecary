@@ -208,11 +208,4 @@ do_action('woocommerce_before_cart'); ?>
 	let newTitle = document.createElement("h2");
 	newTitle.innerHTML = "Shipping Calculator";
 	title.replaceWith(newTitle);
-
-
-	const cartForm = document.getElementsByClassName("c-cart")[0];
-	cartForm.addEventListener("submit", (e) => {
-		// e.preventDefault();
-		console.log("submit!");
-	})
 </script>
