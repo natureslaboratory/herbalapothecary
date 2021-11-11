@@ -18,6 +18,8 @@
 
 defined('ABSPATH') || exit;
 
+echo "<pre>" . print_r($_POST, true) . "</pre>";
+
 do_action('woocommerce_before_cart'); ?>
 
 <form class="woocommerce-cart-form c-cart" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
@@ -146,6 +148,7 @@ do_action('woocommerce_before_cart'); ?>
 	<div class="c-cart__buttons">
 		<a style="opacity: 1" class="button" href="<?= get_permalink(wc_get_page_id('shop')); ?>">Back To Shop</a>
 		<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
+		<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 	</div>
 </form>
 
@@ -205,4 +208,11 @@ do_action('woocommerce_before_cart'); ?>
 	let newTitle = document.createElement("h2");
 	newTitle.innerHTML = "Shipping Calculator";
 	title.replaceWith(newTitle);
+
+
+	const cartForm = document.getElementsByClassName("c-cart")[0];
+	cartForm.addEventListener("submit", (e) => {
+		// e.preventDefault();
+		console.log("submit!");
+	})
 </script>
