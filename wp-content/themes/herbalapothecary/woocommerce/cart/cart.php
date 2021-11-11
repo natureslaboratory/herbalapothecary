@@ -18,7 +18,7 @@
 
 defined('ABSPATH') || exit;
 
-echo "<pre>" . print_r($_POST, true) . "</pre>";
+// echo "<pre>" . print_r($_POST, true) . "</pre>";
 
 do_action('woocommerce_before_cart'); ?>
 
