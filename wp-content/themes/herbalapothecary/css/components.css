@@ -1063,6 +1063,14 @@ a.c-calculator-banner:hover {
     display: block;
 }
 
+.c-footer__herbal img {
+    aspect-ratio: 220 / 62
+}
+
+select {
+    background-color: white;
+}
+
 @media screen and (max-width: 974px) {
     .c-footer__top, .c-footer__bottom {
         grid-template-columns: 1fr 1fr;
