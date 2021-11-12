@@ -15,7 +15,7 @@ img.c-header__logo {
     width: 100%;
 }
 
-.c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+.c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .wp-block-button__link {
     background-color: var(--primary, var(--green));
     color: white;
     border: none;
@@ -293,7 +293,7 @@ option {
     gap: 1rem;
 }
 
-ul.c-navigation__menu {
+ul.c-navigation__menu, div.c-navigation__menu ul {
     gap: 1.2rem;
     overflow-y: auto;
 }
