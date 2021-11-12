@@ -127,6 +127,9 @@ input.c-search__box {
     right: 60px;
 }
 
+.c-header__cart-menu-wrapper--logged-out::before {
+    right: 141px;
+}
 /* .c-header__cart-menu-wrapper {
     opacity: 1;
     pointer-events: all;

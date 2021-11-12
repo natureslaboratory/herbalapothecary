@@ -29,7 +29,7 @@
 						<a aria-label="Shopping Cart" href="<?= wc_get_cart_url() ?>">
 							<i class="fas fa-shopping-bag"></i>
 						</a>
-						<div class="c-header__cart-menu-wrapper c-menu__wrapper">
+						<div class="c-header__cart-menu-wrapper <?= is_user_logged_in() ? "" : "c-header__cart-menu-wrapper--logged-out" ?> c-menu__wrapper">
 							<div class="c-header__cart-menu c-menu">
 								<ul class="c-header__cart-list">
 									<?php 
