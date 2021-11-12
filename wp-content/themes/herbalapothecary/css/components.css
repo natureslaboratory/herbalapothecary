@@ -1066,6 +1066,9 @@ a.c-calculator-banner:hover {
 .c-footer__herbal img {
     aspect-ratio: 220 / 62;
     height: 83px;
+    width: 100%;
+    align-self: start;
+    object-fit: contain;
 }
 
 select {
