@@ -643,7 +643,7 @@ a.c-calculator-banner:hover {
     margin: 0;
 }
 
-.c-calculator-banner.text-white :is(h2, p) {
+.c-calculator-banner.text-white h2,.c-calculator-banner.text-white p {
     color:#fff;
 }
 
