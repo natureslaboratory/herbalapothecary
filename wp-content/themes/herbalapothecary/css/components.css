@@ -2544,3 +2544,37 @@ span.price .c-price {
     width: 100%;
     max-width: unset;
 }
+
+.woocommerce ul.products li.product a img {
+    height: 180px;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 1450px) {
+    .woocommerce ul.products li.product a img {
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .woocommerce ul.products li.product a img {
+        height: 130px;
+    }
+}
+
+.woocommerce div.product div.images img {
+    object-fit: contain;
+}
+
+.c-category h2 {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.c-shop__main > .c-categories {
+    margin-top: 0;
+}
+
+.c-category mark {
+    background: unset;
+}

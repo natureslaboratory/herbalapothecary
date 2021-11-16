@@ -964,3 +964,5 @@ function ha_show_out_of_stock() {
 }
 
 add_action('woocommerce_after_shop_loop_item_title', "ha_show_out_of_stock", 25);
+
+remove_filter( 'woocommerce_product_loop_start', 'woocommerce_maybe_show_product_subcategories' );
