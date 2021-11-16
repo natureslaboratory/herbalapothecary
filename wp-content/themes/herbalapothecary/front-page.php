@@ -67,6 +67,14 @@ get_header();
                 <button class="c-button">Shop Now</button>
             </a>
         </div>
+        <a href="/herbal-access/" class="c-calculator-banner" style="background-image: url(/wp-content/uploads/2021/11/AdobeStock_246756561-2048x763.jpeg)">
+            <h2>Try our <br><strong>Herbal Access</strong></h2>
+            <div>
+                <p><strong>We're helping cover the cost of herbal prescriptions</strong></p>
+                <p>Herbalists can claim back &pound;8 per prescription</p>
+                <p>We're helping make herbal medicine accessible to all!</p>
+            </div>
+        </a>
         <a href="/calculator" class="c-calculator-banner" style="background-image: url(/wp-content/uploads/2021/10/AdobeStock_354372002-scaled.jpeg.webp)">
             <h2>Try our <br><strong>Herbal Product Calculator</strong></h2>
             <div>
