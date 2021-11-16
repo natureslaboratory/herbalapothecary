@@ -658,7 +658,7 @@ a.c-calculator-banner:hover {
 	text-align: right;
 }
 
-.c-calculator:hover{
+a.c-calculator-banner:hover{
 	opacity:0.8;
 }
 
