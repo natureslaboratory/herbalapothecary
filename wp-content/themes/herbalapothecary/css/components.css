@@ -2574,3 +2574,7 @@ span.price .c-price {
 .c-shop__main > .c-categories {
     margin-top: 0;
 }
+
+.c-category mark {
+    background: unset;
+}
