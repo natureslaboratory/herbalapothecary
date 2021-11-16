@@ -60,8 +60,18 @@ do_action('woocommerce_before_main_content');
 			?> <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1> <?php
 		};
 
+		
+		
 		if (woocommerce_product_loop()) {
 			do_action('woocommerce_archive_description');
+			$subcategories = woocommerce_maybe_show_product_subcategories();
+			if ($subcategories) {
+				?>
+				<div class="c-categories">
+					<?= $subcategories ?>
+				</div>
+				<?php
+			}
 			do_action('woocommerce_before_shop_loop');
 			woocommerce_product_loop_start();
 	
