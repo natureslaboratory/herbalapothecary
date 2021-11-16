@@ -633,6 +633,8 @@ a.c-calculator-banner {
     justify-content: space-between;
     text-decoration: none;
     color: black;
+    opacity:1;
+    transition: 0.3s;
 }
 
 a.c-calculator-banner:hover {
@@ -654,6 +656,10 @@ a.c-calculator-banner:hover {
 
 .c-calculator-banner.text-right{
 	text-align: right;
+}
+
+.c-calculator:hover{
+	opacity:0.8;
 }
 
 .c-socials {
