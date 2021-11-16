@@ -67,7 +67,7 @@ get_header();
                 <button class="c-button">Shop Now</button>
             </a>
         </div>
-        <a href="/herbal-access/" class="c-calculator-banner text-white" style="background-image: url(/wp-content/uploads/2021/11/AdobeStock_246756561-2048x763.jpeg)">
+        <a href="/herbal-access/" class="c-calculator-banner text-white text-right" style="background-image: url(/wp-content/uploads/2021/11/AdobeStock_246756561-2048x763.jpeg)">
             <h2>New! <br><strong>Herbal Access</strong></h2>
             <div>
                 <p><strong>We're helping cover the cost of herbal prescriptions</strong></p>

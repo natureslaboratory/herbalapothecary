@@ -652,6 +652,9 @@ a.c-calculator-banner:hover {
     line-height: 1.8rem;
 }
 
+.c-calculator-banner.text-right{
+	text-align: right;
+}
 
 .c-socials {
     display: flex;
