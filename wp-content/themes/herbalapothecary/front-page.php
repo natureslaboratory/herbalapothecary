@@ -75,7 +75,7 @@ get_header();
                 <p>We're helping make herbal medicine accessible to all!</p>
             </div>
         </a>
-        <a href="/calculator" class="c-calculator-banner" style="background-image: url(/wp-content/uploads/2021/10/AdobeStock_354372002-scaled.jpeg.webp)">
+        <a href="/calculator" class="c-calculator-banner text-white" style="background-image: url(/wp-content/uploads/2021/10/AdobeStock_354372002-scaled.jpeg.webp)">
             <h2>Try our <br><strong>Herbal Product Calculator</strong></h2>
             <div>
                 <p><strong>Get a price for your own formulation</strong></p>
