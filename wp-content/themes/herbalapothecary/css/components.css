@@ -647,6 +647,8 @@ a.c-calculator-banner {
     justify-content: space-between;
     text-decoration: none;
     color: black;
+    opacity:1;
+    transition: 0.3s;
 }
 
 a.c-calculator-banner:hover {
@@ -657,11 +659,22 @@ a.c-calculator-banner:hover {
     margin: 0;
 }
 
+.c-calculator-banner.text-white h2,.c-calculator-banner.text-white p {
+    color:#fff;
+}
+
 .c-calculator-banner h2 {
     font-weight: 400;
     line-height: 1.8rem;
 }
 
+.c-calculator-banner.text-right{
+	text-align: right;
+}
+
+a.c-calculator-banner:hover{
+	opacity:0.8;
+}
 
 .c-socials {
     display: flex;

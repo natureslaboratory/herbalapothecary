@@ -54,19 +54,27 @@ get_header();
             </div>
         </div>
         <div class="c-specials">
-            <a class="c-specials__option" href="/product-category/beevital-apiceuticals/" style="background-image: url(/wp-content/uploads/2021/09/Oral_Health_Range_2-scaled.jpg.webp)">
-                <h2>BeeVital Propolis</h2>
-                <h3>Discover our range of propolis products</h3>
-                <p>Including tinctures. liquids, tablets and oral health products</p>
-                <button class="c-button">Shop Now</button>
-            </a>
             <a class="c-specials__option" href="/shop/" style="background-image: url(/wp-content/uploads/2021/09/herb-2.jpg.webp)">
                 <h2>Explore Our Range of Herbs</h2>
                 <h3>Including Western, Chinese, and Ayurvedic</h3>
                 <p>Cut, whole, powdered, tinctures and fluid extracts</p>
                 <button class="c-button">Shop Now</button>
             </a>
+            <a class="c-specials__option" href="/product-category/beevital-apiceuticals/" style="background-image: url(/wp-content/uploads/2021/09/Oral_Health_Range_2-scaled.jpg.webp)">
+                <h2>BeeVital Propolis</h2>
+                <h3>Discover our range of propolis products</h3>
+                <p>Including tinctures. liquids, tablets and oral health products</p>
+                <button class="c-button">Shop Now</button>
+            </a>
         </div>
+        <a href="/herbal-access/" class="c-calculator-banner text-white text-right" style="background-image: url(/wp-content/uploads/2021/11/AdobeStock_246756561-2048x763.jpeg)">
+            <h2>New! <br><strong>Herbal Access</strong></h2>
+            <div>
+                <p><strong>We're helping cover the cost of herbal prescriptions</strong></p>
+                <p>Herbalists can claim back &pound;8 per prescription</p>
+                <p>We're helping make herbal medicine accessible to all!</p>
+            </div>
+        </a>
         <a href="/calculator" class="c-calculator-banner" style="background-image: url(/wp-content/uploads/2021/10/AdobeStock_354372002-scaled.jpeg.webp)">
             <h2>Try our <br><strong>Herbal Product Calculator</strong></h2>
             <div>
