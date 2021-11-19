@@ -15,7 +15,7 @@ img.c-header__logo {
     width: 100%;
 }
 
-.c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+.c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .submit-btn input[type="submit"] {
     background-color: var(--primary, var(--green));
     color: white;
     border: none;
