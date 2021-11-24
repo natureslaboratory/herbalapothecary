@@ -906,7 +906,7 @@ add_action("woocommerce_single_product_summary", "ha_add_organic_flag", 31);
 // add_filter('woocommerce_pagination_args', "ha_pagination_args");
 
 function ha_redirect_page_one() {
-	if (strpos($_SERVER["REQUEST_URI"], "/page/1")) {
+	if (preg_match("/page\/1\/{0,1}$/", $_SERVER["REQUEST_URI"])) {
 		?>
 		<script>
 			window.location.href = window.location.href.split("/page/1")[0] + "/";
