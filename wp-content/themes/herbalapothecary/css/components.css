@@ -2639,3 +2639,11 @@ span.price .c-price {
     color: white;
     text-decoration: none;
 }
+
+.wp-block-button__link {
+    margin-top: 0.5rem;
+}
+
+ul, ol {
+    margin: 0 0 0.5em 0.2em;
+}
