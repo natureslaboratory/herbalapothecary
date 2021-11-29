@@ -39,8 +39,8 @@
 			<a href="tel:+441947602346">
 				+44 (0)1947 602346
 			</a>
-			<a href="mailto:sales@herbalapothecary.com">
-				sales@herbalapothecary.com
+			<a href="mailto:sales@herbalapothecaryuk.com">
+				sales@herbalapothecaryuk.com
 			</a>
 			<p>
 				Unit 3b, Enterprise Way, North Yorkshire, YO22 4NH, United Kingdom
