@@ -39,8 +39,8 @@
 			<a href="tel:+441947602346">
 				+44 (0)1947 602346
 			</a>
-			<a href="mailto:sales@herbalapothecary.com">
-				sales@herbalapothecary.com
+			<a href="mailto:sales@herbalapothecaryuk.com">
+				sales@herbalapothecaryuk.com
 			</a>
 			<p>
 				Unit 3b, Enterprise Way, North Yorkshire, YO22 4NH, United Kingdom
@@ -64,10 +64,8 @@
 	</div> <!-- End .c-footer__top -->
 	<div class="c-footer__bottom l-restrict">
 		<div class="c-footer__bottom-column c-footer__questions">
-			<h2>Questions?</h2>
-			<div class="c-footer__link-list">
-				<a href="/customer-service">Customer Service</a>
-			</div>
+			<h2>Climate Positive Workforce</h2>
+			<a href="https://ecologi.com/natureslaboratory?r=61af6aa4f9550a84cf8be3d8" target="_blank" rel="noopener noreferrer" title="View our Ecologi profile" style="width:200px;display:inline-block;">  <img alt="We offset our carbon footprint via Ecologi" src="https://api.ecologi.com/badges/cpw/61af6aa4f9550a84cf8be3d8?black=true&landscape=true" style="width:200px;" /></a>
 		</div>
 		<div class="c-footer__bottom-column c-footer__shipping">
 			<h2>Shipping</h2>
@@ -90,10 +88,13 @@
 		</div>
 		<div class="c-footer__bottom-column c-footer__legal">
 			<h2>Legal</h2>
-
 			<div class="c-footer__link-list">
 				<a href="/terms-and-conditions">Terms & Conditions</a>
 				<a href="/privacy-policy">Privacy Policy</a>
+			</div>
+			<h2>Questions?</h2>
+			<div class="c-footer__link-list">
+				<a href="/customer-service">Customer Service</a>
 			</div>
 		</div>
 	</div> <!-- End .c-footer__bottom -->
