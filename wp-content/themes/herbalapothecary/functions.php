@@ -966,3 +966,22 @@ function ha_show_out_of_stock() {
 add_action('woocommerce_after_shop_loop_item_title', "ha_show_out_of_stock", 25);
 
 remove_filter( 'woocommerce_product_loop_start', 'woocommerce_maybe_show_product_subcategories' );
+
+add_action('woocommerce_review_order_before_submit', "order_disclaimer");
+function order_disclaimer() {
+	?>
+	<div class="c-cart__disclaimer">
+		<h3><?php echo __("Import taxes and Duties for International Orders") ?></h3>
+		<p>
+			<?php 
+				echo __("All customers are responsible for local import taxes and duties on their orders. 
+				The amount charged will differ depending on the content, size and weight of your order as 
+				well as the chosen delivery country, so we are unable to provide an estimated cost. You 
+				will be contacted by your delivery provider prior to delivery with the cost and how to pay. 
+				For more information, please check with your local customs department.") 
+			?>
+		</p>
+	</div>
+
+	<?php
+}
