@@ -929,6 +929,10 @@ function ha_show_out_of_stock() {
 	foreach ($child_products as $child_id) {
 		$child = wc_get_product($child_id);
 
+		if (!$child) {
+			break;
+		}
+
 		if ($child->get_type() == "variable") {
 			$variation_ids = $child->get_children();
 			if (!empty($variation_ids)) {
