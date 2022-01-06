@@ -925,13 +925,9 @@ function ha_show_out_of_stock() {
 		return;
 	}
 
-	$debug = [];
-	$debug["product"] = $product->get_data();
-
 	$has_stock = false;
 	foreach ($child_products as $child_id) {
 		$child = wc_get_product($child_id);
-		$debug["children"][$child_id] = $child->get_data();
 
 		if ($child->get_type() == "variable") {
 			$variation_ids = $child->get_children();
@@ -955,7 +951,6 @@ function ha_show_out_of_stock() {
 			break;
 		}
 	}
-	$debug["has_stock"] = $has_stock;
 
 	if (!$has_stock) { ?>
 		<p class="stock out-of-stock c-product__out-of-stock">Out of stock</p>
