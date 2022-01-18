@@ -967,3 +967,8 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
+
+.summary.entry-summary .tp-widget-wrapper{
+	text-align: left;
+	padding-top:1rem;
+}
