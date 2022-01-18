@@ -77,10 +77,12 @@ defined('ABSPATH') || exit;
 			if ('itemized' === get_option('woocommerce_tax_total_display')) {
 				foreach (WC()->cart->get_tax_totals() as $code => $tax) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		?>
+
 					<tr class="tax-rate tax-rate-<?php echo esc_attr(sanitize_title($code)); ?>">
-						<th><?php echo esc_html($tax->label) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-							?></th>
-						<td data-title="<?php echo esc_attr($tax->label); ?>"><?php echo wp_kses_post($tax->formatted_amount); ?></td>
+						<th><?php echo esc_html($tax->label) . $estimated_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></th>
+						<td data-title="<?php echo esc_attr($tax->label); ?>">
+							<?php echo wp_kses_post($tax->formatted_amount) . " <small>(incl. " . wc_price(WC()->cart->calculate_shipping()[0]->get_shipping_tax()) . " for shipping)</small>" ?>
+						</td>
 					</tr>
 				<?php
 				}
