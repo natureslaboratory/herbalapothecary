@@ -71,6 +71,11 @@ if (!$has_access) {
 	<input type="hidden" name="variation_id" class="variation_id" value="0" />
 
 </div>
+<!-- TrustBox widget - Micro Review Count -->
+<div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="616978080bd1fb001d4d29a5" data-style-height="24px" data-style-width="100%" data-theme="light">
+  <a href="https://uk.trustpilot.com/review/herbalapothecaryuk.com" target="_blank" rel="noopener">Trustpilot</a>
+</div>
+<!-- End TrustBox widget -->
 <h4 style="display:none;" class="no-stock">Sorry, Currently Out Of Stock</h4>
 <?php
 	
