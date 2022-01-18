@@ -1784,6 +1784,10 @@ article :is(h1, h2, h3, h4, h5, h6) {
     color: #005C7A;
 }
 
+th.label{
+	text-align: left;
+}
+
 .woocommerce div.product p.price, .woocommerce div.product span.price {
     color: black;
     font-weight: 600;
