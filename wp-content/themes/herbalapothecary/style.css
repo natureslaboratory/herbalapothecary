@@ -969,6 +969,6 @@ textarea {
 }
 
 .summary.entry-summary .tp-widget-wrapper{
-	text-align: left;
+	text-align: left !important;
 	padding-top:1rem;
 }
