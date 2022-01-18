@@ -968,7 +968,6 @@ textarea {
 	margin-bottom: 1.5em;
 }
 
-.summary.entry-summary .tp-widget-wrapper{
-	text-align: left !important;
-	padding-top:1rem;
+.trustpilot-widget{
+	grid-column: 1 / 3;
 }
