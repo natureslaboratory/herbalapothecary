@@ -1784,7 +1784,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
     color: #005C7A;
 }
 
-th.label{
+.woocommerce div.product form.cart .variations td, .woocommerce div.product form.cart .variations th.label{
 	text-align: left;
 }
 
