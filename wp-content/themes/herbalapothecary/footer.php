@@ -123,37 +123,7 @@
   })();
 </script>
 <!-- End Matomo Code -->
-<!-- Doofinder script starts here -->
-<script type="text/javascript">
-  var doofinder_script ='//cdn.doofinder.com/media/js/doofinder-classic.7.latest.min.js';
-  (function(d,t){var f=d.createElement(t),s=d.getElementsByTagName(t)[0];f.async=1;
-  f.src=('https:'==location.protocol?'https:':'http:')+doofinder_script;
-  f.setAttribute('charset','utf-8');
-  s.parentNode.insertBefore(f,s)}(document,'script'));
-  var dfClassicLayers = [{
-    "hashid": "201eabcb34a9521e3c8966307432920b",
-    "zone": "eu1",
-    "display": {
-      "lang": "en",
-      "width": "65%",
-      "align": "center",
-      "dtop": 1,
-      "dleft": 0,
-      "facets": {
-        "width": "250px",
-        "attached": "left"
-      }
-    },
-    "queryInput": ".c-search__box search-text",
-    "mobile": {
-        "toggleInput": ".c-search__box search-text",
-        "display": {
-           "initialSearch": true
-        }
-    }
-  }];
-</script>
-<!-- Doofinder script ends here -->
+
 
 </body>
 
