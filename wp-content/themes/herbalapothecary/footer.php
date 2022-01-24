@@ -144,9 +144,9 @@
         "attached": "left"
       }
     },
-    "queryInput": "input[name='s'], #woocommerce-product-search-field-0",
+    "queryInput": ".c-search__box search-text",
     "mobile": {
-        "toggleInput": "input[name='s'], #woocommerce-product-search-field-1",
+        "toggleInput": ".c-search__box search-text",
         "display": {
            "initialSearch": true
         }
