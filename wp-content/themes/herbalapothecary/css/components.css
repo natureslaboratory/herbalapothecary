@@ -2166,6 +2166,7 @@ iframe {
 .c-cart, .c-cart tbody {
     display: flex;
     flex-direction: column;
+    clear:both;
     /* gap: 1rem; */
 }
 
