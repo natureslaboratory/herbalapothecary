@@ -273,6 +273,10 @@ input.button#wlpr_point_apply_discount_button{
 	margin-top:1rem;
 	opacity:1;
 }
+input.button#wlpr_point_apply_discount_button:hover{
+	background:#3485b3;
+	color:#fff;
+}
 .wlpr-message-info{
 	float:left;
 	width:100%;
