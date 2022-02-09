@@ -262,6 +262,13 @@ button:-moz-focusring,
 	outline: 1px dotted ButtonText;
 }
 
+/** Loyalty Form **/
+.wlpr_point_apply_discount input[type=button]{
+	background:#475e45;
+	color:#fff;
+	margin-top:1rem;
+}
+
 /**
  * Correct the padding in Firefox.
  */
