@@ -124,6 +124,32 @@
 </script>
 <!-- End Matomo Code -->
 
+<!-- Doofinder script starts here -->
+<script type="text/javascript">
+var doofinder_script ='//cdn.doofinder.com/media/js/doofinder-fullscreen.7.latest.min.js';
+(function(d,t){var f=d.createElement(t),s=d.getElementsByTagName(t)[0];f.async=1;
+f.src=('https:'==location.protocol?'https:':'http:')+doofinder_script;
+f.setAttribute('charset','utf-8');
+s.parentNode.insertBefore(f,s)}(document,'script'));
+
+var dfFullscreenLayers = [{
+  "hashid": "201eabcb34a9521e3c8966307432920b",
+  "searchParams": {
+    "transformer": null
+    },   
+  "zone": "eu1",
+  "display": {
+    "lang": "en",
+    "initialSearch": true,     
+    "templateVars": {
+      "topbarLogo": "https://herbalapothecaryuk.com/wp-content/themes/herbalapothecary/images/logo.webp",
+      "topbarLogoLink": "/"
+    }
+  },
+  "toggleInput": ".c-search__box.search-text, #page > .c-header > .c-header__inner.l-restrict > .c-search > .c-search__box.search-text"
+}];
+</script>
+<!-- Doofinder script ends here -->
 
 </body>
 
