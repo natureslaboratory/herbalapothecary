@@ -263,7 +263,7 @@ button:-moz-focusring,
 }
 
 /** Loyalty Form **/
-.wlpr_point_apply_discount input[type=button]{
+input.button#wlpr_point_apply_discount_button{
 	background:#475e45;
 	color:#fff;
 	margin-top:1rem;
