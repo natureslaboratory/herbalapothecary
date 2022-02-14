@@ -129,7 +129,7 @@ $_pf = new WC_Product_Factory();
 		</div>
 
 
-		<div class="ingredients powder">
+		<div class="ingredients capsule">
 			<div class="i-row heading">
 				<div>Capsule</div>
 			</div>
