@@ -229,14 +229,6 @@ $_pf = new WC_Product_Factory();
 		display: block;
 	}
 
-	.proceed {
-		display: none;
-	}
-
-	.proceed.show {
-		display: block;
-	}
-
 	#total-liquid-td,
 	#total-powder-td,
 	#total-cut-td {
