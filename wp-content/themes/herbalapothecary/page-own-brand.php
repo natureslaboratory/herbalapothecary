@@ -510,7 +510,7 @@ $_pf = new WC_Product_Factory();
 		calcLiquid();
 	});
 
-	function calcPowder() {
+	function calcCapsule() {
 		calcPrice();
 	}
 	jQuery('body').on('change', '.ingredients.powder input[type=number]', function() {
