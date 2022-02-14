@@ -353,7 +353,7 @@ $_pf = new WC_Product_Factory();
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		grid-column-gap: 1rem;
-		max-width:768px;
+		max-width:1024px;
 		margin:0 auto;
 	}
 
