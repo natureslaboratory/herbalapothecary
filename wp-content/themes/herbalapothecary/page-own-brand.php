@@ -526,33 +526,26 @@ $_pf = new WC_Product_Factory();
 		
 		console.log(price);
 		
-		var labelFee = jQuery('input[type=radio][name=label]:checked').data('label-fee');
-		var units = jQuery('#units').val();
+		var dropper = 0.51;
+		var pipette = 0.6;
+		
+		var bottle = 0.27;
+		var lid = 0.1;
+		
+		var label = 0.08;
+		var labour = 25;
 
 		//CALC TOTAL MASTER UNITS
 		
-		var grandTotal = 0;
-		var unitCost = 0;
+		if(type == 'liquid'){
+			var grandTotal = parseInt(price)+((parseFloat(dropper)+parseInt(pipette)+parseFloat(label))*10)+parseInt(labour);
+		}else{
+			var grandTotal = ((parseInt(price)/1000)*600)+((parseFloat(bottle)+parseInt(lid)+parseFloat(label))*10)+parseInt(labour);
+		}
 		
-		jQuery('#price,#sticky-price').text(grandTotal.toFixed(2));
-		jQuery('#unitPrice,#sticky-unitPrice').text(unitCost.toFixed(2));
+		jQuery('#price').text(grandTotal.toFixed(2));
 
 		jQuery('#calculator select').select2();
-
-		var pType = jQuery('input[type=radio][name=type]:checked').val();
-		if (pType == 'liquid') {
-			var pPackaging = jQuery('input[type=radio][name=packaging-liquid]:checked').val();
-		}
-		if (pType == 'capsule') {
-			var pPackaging = jQuery('input[type=radio][name=packaging-capsule]:checked').val();
-		}
-		if (pType == 'powder') {
-			var pPackaging = jQuery('input[type=radio][name=packaging-powder]:checked').val();
-		}
-		if (pType == 'cut') {
-			var pPackaging = jQuery('input[type=radio][name=packaging-cut]:checked').val();
-		}
-		jQuery('#unitsText').text(pPackaging);
 	}
 
 	calcLiquid();
