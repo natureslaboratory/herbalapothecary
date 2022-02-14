@@ -331,8 +331,6 @@ $_pf = new WC_Product_Factory();
 	.ingredients .i-row {
 		width: 100%;
 		text-align: left;
-		display: grid;
-		grid-template-columns: 600px;
 	}
 
 	.ingredients .i-row div {
