@@ -342,7 +342,7 @@ $_pf = new WC_Product_Factory();
 	}
 
 	.ingredients select {
-		max-width: 400px;
+		max-width: 100%;
 	}
 
 	.ingredients input[type=number] {
