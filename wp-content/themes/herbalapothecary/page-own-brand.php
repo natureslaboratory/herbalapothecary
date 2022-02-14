@@ -545,8 +545,8 @@ $_pf = new WC_Product_Factory();
 				//CALC TOTAL MASTER UNITS
 				
 				console.log(price);
-				console.log(dropper);
-				console.log(pipette);
+				console.log(bottle);
+				console.log(lid);
 				console.log(label);
 				console.log(labour);
 				
