@@ -503,9 +503,6 @@ $_pf = new WC_Product_Factory();
 	function calcLiquid() {
 		calcPrice();
 	}
-	jQuery('body').on('change', '.ingredients.liquid input[type=number]', function() {
-		calcLiquid();
-	});
 	jQuery('body').on('change', '.ingredients.liquid select', function() {
 		calcLiquid();
 	});
@@ -513,11 +510,8 @@ $_pf = new WC_Product_Factory();
 	function calcCapsule() {
 		calcPrice();
 	}
-	jQuery('body').on('change', '.ingredients.powder input[type=number]', function() {
-		calcPowder();
-	});
-	jQuery('body').on('change', '.ingredients.powder select', function() {
-		calcPowder();
+	jQuery('body').on('change', '.ingredients.capsule select', function() {
+		calcCapsule();
 	});
 
 	jQuery('input[type=radio][name=packaging-liquid],input[type=radio][name=packaging-capsule]').change(function() {
