@@ -353,6 +353,8 @@ $_pf = new WC_Product_Factory();
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		grid-column-gap: 1rem;
+		max-width:768px;
+		margin:0 auto;
 	}
 
 	.callback label {
