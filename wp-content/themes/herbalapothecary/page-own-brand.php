@@ -166,6 +166,7 @@ $_pf = new WC_Product_Factory();
 			<h2>Here's Your Price</h2>
 			<p>The cost for 10 of your own-brand product would be:</p>
 			<h3>&pound;<span id="price">0.00</span></h3>
+			<p><small>Price excludes VAT and delivery</small></p>
 
 			<h2>Now Request a Call Back</h2>
 			<p>Let's talk! Enter your name, email address and phone number below and we'll give you a call back to discuss your quote in more detail.</p>
@@ -612,7 +613,7 @@ $_pf = new WC_Product_Factory();
 				formulation: pIngredients
 			})
 			.done(function(data) {
-				jQuery('#calculator').html('<h2>Thank You</h2><p>Thanks for submitting your request - we have received the information you entered into the calculator and will give you a call back soon to discuss your order. <a href="/calculator/">Click here</a> to get another price.</p>');
+				jQuery('#calculator').html('<h2>Thank You</h2><p>Thanks for submitting your request - we have received the information you entered into the calculator and will give you a call back soon to discuss your order. <a href="/own-brand-herbal-products/">Click here</a> to get another price.</p>');
 				jQuery("html, body").animate({
 					scrollTop: 0
 				}, "slow");
