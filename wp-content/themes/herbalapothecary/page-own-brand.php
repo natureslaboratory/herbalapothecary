@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Template Name: Calculator
+ * Template Name: Own Brand
  *
  * The template file for the contract manufacture calculator.
  *
