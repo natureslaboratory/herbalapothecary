@@ -75,8 +75,8 @@ $_pf = new WC_Product_Factory();
 	<form id="calculator" style="padding: 0;">
 		<h2>Select a Product Type</h2>
 		<ul class="grid type">
-			<li><label><img src="/assets/bottle.jpg" alt="Liquid" /><input type="radio" name="type" value="liquid" checked> Liquid <small>Min. Total Quantity 15L</small></label></li>
-			<li><label><img src="/assets/capsule.jpg" alt="Capsule" /><input type="radio" name="type" value="capsule"> Capsule <small>Min. Total Quantity 5,000 Capsules</small></label></li>
+			<li><label><img src="/assets/bottle.jpg" alt="Liquid" /><input type="radio" name="type" value="liquid" checked> Liquid <small>In 100ml Dropper Bottles with Pipette</small></label></li>
+			<li><label><img src="/assets/capsule.jpg" alt="Capsule" /><input type="radio" name="type" value="capsule"> Capsule <small>In 60 Capsule Pots with Tamper-Evident Lid</small></label></li>
 		</ul>
 
 		<h2>Choose Your Product</h2>
