@@ -546,20 +546,9 @@ $_pf = new WC_Product_Factory();
 		var units = jQuery('#units').val();
 
 		//CALC TOTAL MASTER UNITS
-		var totalQuantity = parseInt(units) * parseFloat(unitSize);
-		var productCost = parseFloat(totalQuantity) * parseFloat(total);
-		var packagingCost = (parseFloat(unitCost) + parseFloat(labelFee)) * parseInt(units);
-		var ingredients = quantity;
-		var pickingFee = (parseFloat(pickingCharge) * ingredients) * totalQuantity;
-		/*
-			console.log("Per KG/L Cost: " + total);
-			console.log("Total Product Cost: " + productCost);
-			console.log("Total Picking Cost: " + pickingFee);
-			console.log("Total Blending Cost: " + blendCharge);
-			console.log("Total Packaging Cost: " + packagingCost);
-		*/
-		var grandTotal = (parseFloat(productCost) + parseFloat(packagingCost) + parseFloat(blendCharge) + parseFloat(pickingFee)) * 2.5;
-		var unitCost = parseFloat(grandTotal / units);
+		
+		int total = 0;
+		
 		jQuery('#price,#sticky-price').text(grandTotal.toFixed(2));
 		jQuery('#unitPrice,#sticky-unitPrice').text(unitCost.toFixed(2));
 
