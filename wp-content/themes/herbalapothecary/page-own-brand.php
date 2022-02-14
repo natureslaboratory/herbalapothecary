@@ -262,11 +262,12 @@ $_pf = new WC_Product_Factory();
 		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 2rem;
 		text-align: center;
-		margin: 0;
 		list-style: none;
 		max-width: auto;
 		margin: 0 auto;
 		padding-left: 0px;
+		max-width:800px;
+		margin:0 auto;
 	}
 
 	ul.grid li {}
@@ -301,7 +302,7 @@ $_pf = new WC_Product_Factory();
 	}
 
 	#calculator select {
-		width: 400px;
+		width: 100%;
 	}
 
 	.select2 {
@@ -331,7 +332,7 @@ $_pf = new WC_Product_Factory();
 		width: 100%;
 		text-align: left;
 		display: grid;
-		grid-template-columns: 400px;
+		grid-template-columns: 600px;
 	}
 
 	.ingredients .i-row div {
