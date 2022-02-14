@@ -536,7 +536,7 @@ $_pf = new WC_Product_Factory();
 		} else if (type == 'capsule') {
 			jQuery(".ingredients.capsule select").each(function(index) {
 				var price = jQuery(this).find(':selected').data('price')/1000*600;
-				var bottle = 0.27;
+				var bottle = 0.28;
 				var lid = 0.1;
 				
 				var label = 0.08;
