@@ -41,7 +41,7 @@ $args = array(
 
 $capsules = new WP_Query($args);
 
-print_r($tinctures);
+print_r($capsules);
 
 // $newHerbs = wc_get_products([
 	
