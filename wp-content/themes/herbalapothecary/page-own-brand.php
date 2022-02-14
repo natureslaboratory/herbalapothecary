@@ -550,7 +550,7 @@ $_pf = new WC_Product_Factory();
 				console.log(label);
 				console.log(labour);
 				
-				var grandTotal = parseInt(price)+((parseFloat(bottle)+parseInt(lid)+parseFloat(label))*10)+parseInt(labour);
+				var grandTotal = ((parseFloat(bottle)+parseInt(lid)+parseFloat(label))*10)+parseInt(labour)+parseFloat(price);
 				console.log(grandTotal);
 				jQuery('#price').text(grandTotal.toFixed(2));
 			});
