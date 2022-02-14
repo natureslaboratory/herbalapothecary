@@ -529,7 +529,7 @@ $_pf = new WC_Product_Factory();
 				console.log(label);
 				console.log(labour);
 				
-				var grandTotal = ((parseFloat(dropper)+parseFloat(pipette)+parseFloat(label))*10)+parseInt(labour)+parseInt(price);
+				var grandTotal = ((parseFloat(dropper)+parseFloat(pipette)+parseFloat(label))*10)+parseInt(labour)+parseFloat(price);
 				
 				jQuery('#price').text(grandTotal.toFixed(2));
 			});
@@ -551,7 +551,7 @@ $_pf = new WC_Product_Factory();
 				console.log(labour);
 				
 				var grandTotal = ((parseFloat(bottle)+parseFloat(lid)+parseFloat(label))*10)+parseInt(labour)+parseFloat(price);
-				console.log(grandTotal);
+
 				jQuery('#price').text(grandTotal.toFixed(2));
 			});
 		}
