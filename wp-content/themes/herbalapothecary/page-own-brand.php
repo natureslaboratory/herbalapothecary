@@ -145,8 +145,7 @@ $_pf = new WC_Product_Factory();
 								$variations = $product->get_available_variations();
 								$v = false;
 								foreach ($variations as $variation) {
-									print_r($variation);
-									if ($variation['attributes']['attribute_pa_size'] == '1000 capsules' and $v == false) {
+									if ($variation['attributes']['attribute_pa_size'] == '1000-capsules' and $v == false) {
 										echo '<option data-price="' . $variation['display_price'] . '">' . get_the_title() . '</option>';
 										$v = true;
 									}
