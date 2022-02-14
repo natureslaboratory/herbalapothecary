@@ -581,69 +581,26 @@ $_pf = new WC_Product_Factory();
 			alert('Please enter your name, email and phone number');
 		} else {
 			var pType = jQuery('input[type=radio][name=type]:checked').val();
-			var pUnits = jQuery('#units').val();
-			var pLabel = jQuery('input[type=radio][name=label]:checked').val();
 			if (pType == 'liquid') {
 				var pPackaging = jQuery('input[type=radio][name=packaging-liquid]:checked').val();
 				jQuery(".ingredients.liquid select").each(function(index) {
 					var ingredient = jQuery(this).find(':selected').text();
-					ingredients.push(ingredient);
-				});
-				jQuery(".ingredients.liquid input[type=number]").each(function(index) {
-					var quantity = jQuery(this).val();
-					quantities.push(quantity);
 				});
 			}
 			if (pType == 'capsule') {
-				var pPackaging = jQuery('input[type=radio][name=packaging-capsule]:checked').val();
-				jQuery(".ingredients.powder select").each(function(index) {
+				jQuery(".ingredients.capsule select").each(function(index) {
 					var ingredient = jQuery(this).find(':selected').text();
-					ingredients.push(ingredient);
-				});
-				jQuery(".ingredients.powder input[type=number]").each(function(index) {
-					var quantity = jQuery(this).val();
-					quantities.push(quantity);
-				});
-			}
-			if (pType == 'powder') {
-				var pPackaging = jQuery('input[type=radio][name=packaging-powder]:checked').val();
-				jQuery(".ingredients.powder select").each(function(index) {
-					var ingredient = jQuery(this).find(':selected').text();
-					ingredients.push(ingredient);
-				});
-				jQuery(".ingredients.powder input[type=number]").each(function(index) {
-					var quantity = jQuery(this).val();
-					quantities.push(quantity);
-				});
-			}
-			if (pType == 'cut') {
-				var pPackaging = jQuery('input[type=radio][name=packaging-cut]:checked').val();
-				jQuery(".ingredients.cut select").each(function(index) {
-					var ingredient = jQuery(this).find(':selected').text();
-					ingredients.push(ingredient);
-				});
-				jQuery(".ingredients.cut input[type=number]").each(function(index) {
-					var quantity = jQuery(this).val();
-					quantities.push(quantity);
 				});
 			}
 		}
 
-		pIngredients = JSON.stringify(ingredients);
-		pQuantities = JSON.stringify(quantities);
-
-		jQuery.post("/submitCalculator.php", {
+		jQuery.post("/submitOwnBrandCalculator.php", {
 				name: pName,
 				email: pEmail,
 				phone: pPhone,
 				price: pCost,
-				unitPrice: pUnitCost,
 				type: pType,
-				units: pUnits,
-				label: pLabel,
-				packaging: pPackaging,
-				formulation: pIngredients,
-				values: pQuantities
+				ingredient: pIngredients
 			})
 			.done(function(data) {
 				jQuery('#calculator').html('<h2>Thank You</h2><p>Thanks for submitting your request - we have received the information you entered into the calculator and will give you a call back soon to discuss your order. <a href="/calculator/">Click here</a> to get another price.</p>');
