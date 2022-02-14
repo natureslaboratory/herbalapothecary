@@ -515,41 +515,46 @@ $_pf = new WC_Product_Factory();
 		if (type == 'liquid') {
 			jQuery(".ingredients.liquid select").each(function(index) {
 				var price = jQuery(this).find(':selected').data('price');
+				var dropper = 0.51;
+				var pipette = 0.6;
+				
+				var label = 0.08;
+				var labour = 25;
+		
+				//CALC TOTAL MASTER UNITS
+				
 				console.log(price);
+				console.log(dropper);
+				console.log(pipette);
+				console.log(label);
+				console.log(labour);
+				
+				var grandTotal = parseInt(price)+((parseFloat(dropper)+parseInt(pipette)+parseFloat(label))*10)+parseInt(labour);
+				
+				jQuery('#price').text(grandTotal.toFixed(2));
 			});
 		} else if (type == 'capsule') {
 			jQuery(".ingredients.capsule select").each(function(index) {
 				var price = jQuery(this).find(':selected').data('price');
+				var bottle = 0.27;
+				var lid = 0.1;
+				
+				var label = 0.08;
+				var labour = 25;
+		
+				//CALC TOTAL MASTER UNITS
+				
 				console.log(price);
+				console.log(dropper);
+				console.log(pipette);
+				console.log(label);
+				console.log(labour);
+				
+				var grandTotal = ((parseInt(price)/1000)*600)+((parseFloat(bottle)+parseInt(lid)+parseFloat(label))*10)+parseInt(labour);
+				
+				jQuery('#price').text(grandTotal.toFixed(2));
 			});
 		}
-		
-		console.log(price);
-		
-		var dropper = 0.51;
-		var pipette = 0.6;
-		
-		var bottle = 0.27;
-		var lid = 0.1;
-		
-		var label = 0.08;
-		var labour = 25;
-
-		//CALC TOTAL MASTER UNITS
-		
-		console.log(price);
-		console.log(dropper);
-		console.log(pipette);
-		console.log(label);
-		console.log(labour);
-		
-		if(type == 'liquid'){
-			var grandTotal = parseInt(price)+((parseFloat(dropper)+parseInt(pipette)+parseFloat(label))*10)+parseInt(labour);
-		}else{
-			var grandTotal = ((parseInt(price)/1000)*600)+((parseFloat(bottle)+parseInt(lid)+parseFloat(label))*10)+parseInt(labour);
-		}
-		
-		jQuery('#price').text(grandTotal.toFixed(2));
 
 		jQuery('#calculator select').select2();
 	}
