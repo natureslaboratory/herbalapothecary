@@ -547,7 +547,8 @@ $_pf = new WC_Product_Factory();
 
 		//CALC TOTAL MASTER UNITS
 		
-		int total = 0;
+		var grandTotal = 0;
+		var unitCost = 0;
 		
 		jQuery('#price,#sticky-price').text(grandTotal.toFixed(2));
 		jQuery('#unitPrice,#sticky-unitPrice').text(unitCost.toFixed(2));
