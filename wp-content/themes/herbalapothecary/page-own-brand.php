@@ -535,7 +535,7 @@ $_pf = new WC_Product_Factory();
 			});
 		} else if (type == 'capsule') {
 			jQuery(".ingredients.capsule select").each(function(index) {
-				var price = jQuery(this).find(':selected').data('price');
+				var price = jQuery(this).find(':selected').data('price')/1000*600;
 				var bottle = 0.27;
 				var lid = 0.1;
 				
@@ -550,7 +550,7 @@ $_pf = new WC_Product_Factory();
 				console.log(label);
 				console.log(labour);
 				
-				var grandTotal = ((parseInt(price)/1000)*600)+((parseFloat(bottle)+parseInt(lid)+parseFloat(label))*10)+parseInt(labour);
+				var grandTotal = parseInt(price)+((parseFloat(bottle)+parseInt(lid)+parseFloat(label))*10)+parseInt(labour);
 				
 				jQuery('#price').text(grandTotal.toFixed(2));
 			});
