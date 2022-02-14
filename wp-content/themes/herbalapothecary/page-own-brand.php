@@ -164,8 +164,8 @@ $_pf = new WC_Product_Factory();
 
 		<div class="proceed">
 			<h2>Here's Your Price</h2>
-			<p>Based on your formulation and the minimum order quantity the total cost for your order would be:</p>
-			<h3>&pound;<span id="price">0.00</span> <small>(&pound;<span id="unitPrice"></span>/unit)</small></h3>
+			<p>The cost for 10 of your own-brand product would be:</p>
+			<h3>&pound;<span id="price">0.00</span></h3>
 
 			<h2>Now Request a Call Back</h2>
 			<p>Let's talk! Enter your name, email address and phone number below and we'll give you a call back to discuss your quote in more detail.</p>
@@ -202,9 +202,6 @@ $_pf = new WC_Product_Factory();
 			<p><small>The products offered by the calculator are not exhaustive. If you can't find what you need, please give us a call. Although we have worked hard to provide accurate pricing based on the product and
 					packaging options available, the prices quotes are not binding and may be subject to change once you've submitted your details to us for confirmation. The prices shown are based on a single order - if you're
 					able to commit to larger quantities over time we may well be able to offer you a discount on the advertised rate - please call for details.</small></p>
-		</div>
-		<div class="sticky">
-			<h3>Total: &pound;<span id="sticky-price">0.00</span> <small>(&pound;<span id="sticky-unitPrice"></span>/unit)</small></h3>
 		</div>
 	</form>
 </main>
