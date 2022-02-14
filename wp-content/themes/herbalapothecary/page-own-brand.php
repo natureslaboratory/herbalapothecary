@@ -584,12 +584,12 @@ $_pf = new WC_Product_Factory();
 			if (pType == 'liquid') {
 				var pPackaging = jQuery('input[type=radio][name=packaging-liquid]:checked').val();
 				jQuery(".ingredients.liquid select").each(function(index) {
-					var ingredient = jQuery(this).find(':selected').text();
+					var pIngredient = jQuery(this).find(':selected').text();
 				});
 			}
 			if (pType == 'capsule') {
 				jQuery(".ingredients.capsule select").each(function(index) {
-					var ingredient = jQuery(this).find(':selected').text();
+					var pIngredient = jQuery(this).find(':selected').text();
 				});
 			}
 		}
@@ -600,7 +600,7 @@ $_pf = new WC_Product_Factory();
 				phone: pPhone,
 				price: pCost,
 				type: pType,
-				ingredient: pIngredients
+				ingredient: pIngredient
 			})
 			.done(function(data) {
 				jQuery('#calculator').html('<h2>Thank You</h2><p>Thanks for submitting your request - we have received the information you entered into the calculator and will give you a call back soon to discuss your order. <a href="/calculator/">Click here</a> to get another price.</p>');
