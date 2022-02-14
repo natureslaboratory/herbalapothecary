@@ -603,7 +603,7 @@ $_pf = new WC_Product_Factory();
 		pIngredients = JSON.stringify(ingredients);
 		pQuantities = JSON.stringify(quantities);
 
-		jQuery.post("/submitCalculator.php", {
+		jQuery.post("/submitOwnBrandCalculator.php", {
 				name: pName,
 				email: pEmail,
 				phone: pPhone,
