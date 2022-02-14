@@ -123,19 +123,11 @@ $_pf = new WC_Product_Factory();
 						?>
 					</select>
 				</div>
-				<div>
-					
-				</div>
-				<div>
-					
-				</div>
 			</div>
 			<div id="body-liquid">
 			</div>
 			<div class="i-row footer" id="footer-liquid">
 				<div></div>
-				<div id="total-liquid-td"></div>
-				<div class="i-add"></div>
 			</div>
 		</div>
 
@@ -143,12 +135,10 @@ $_pf = new WC_Product_Factory();
 		<div class="ingredients powder">
 			<div class="i-row heading">
 				<div>Capsule</div>
-				<div></div>
-				<div></div>
 			</div>
-			<div class="i-row" id="template-powder">
+			<div class="i-row" id="template-capsule">
 				<div>
-					<select name="powders">
+					<select name="capsule">
 						<?php
 						while ($capsules->have_posts()) : $capsules->the_post();
 							global $product;
@@ -157,7 +147,7 @@ $_pf = new WC_Product_Factory();
 								$variations = $product->get_available_variations();
 								$v = false;
 								foreach ($variations as $variation) {
-									if (($variation['attributes']['attribute_pa_size'] == '1000-gm' or $variation['attributes']['attribute_pa_size'] == '1000gm' or $variation['attributes']['attribute_pa_size'] == '1000-g') and $v == false) {
+									if ($variation['attributes']['attribute_pa_size'] == '1000 capsules' and $v == false) {
 										echo '<option data-price="' . $variation['display_price'] . '">' . get_the_title() . '</option>';
 										$v = true;
 									}
@@ -167,19 +157,11 @@ $_pf = new WC_Product_Factory();
 						?>
 					</select>
 				</div>
-				<div>
-					
-				</div>
-				<div>
-					
-				</div>
 			</div>
-			<div id="body-powder">
+			<div id="body-capsule">
 			</div>
-			<div class="i-row footer" id="footer-powder">
+			<div class="i-row footer" id="footer-capsule">
 				<div></div>
-				<div id="total-powder-td"></div>
-				<div class="i-add"></div>
 			</div>
 		</div>
 
