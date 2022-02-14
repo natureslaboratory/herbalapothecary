@@ -24,6 +24,16 @@ $tinctures = new WP_Query($args);
 $args = array(
 	'post_type'      => 'product',
 	'posts_per_page' => 2000,
+	'product_tag' => 'fluid extract',
+	'orderby' => 'title',
+	'order' => 'asc'
+);
+
+$extracts = new WP_Query($args);
+
+$args = array(
+	'post_type'      => 'product',
+	'posts_per_page' => 2000,
 	'product_tag' => 'capsule',
 	'orderby' => 'title',
 	'order' => 'asc'
