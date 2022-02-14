@@ -41,6 +41,8 @@ $args = array(
 
 $capsules = new WP_Query($args);
 
+print_r($capsules);
+
 // $newHerbs = wc_get_products([
 	
 // ]);
@@ -84,8 +86,6 @@ $_pf = new WC_Product_Factory();
 		<div class="ingredients liquid show">
 			<div class="i-row heading">
 				<div>Liquid</div>
-				<div>% of Formulation</div>
-				<div>Add/Remove</div>
 			</div>
 			<div class="i-row" id="template-liquid">
 				<div>
