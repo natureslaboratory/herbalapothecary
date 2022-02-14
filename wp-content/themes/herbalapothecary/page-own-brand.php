@@ -533,10 +533,12 @@ $_pf = new WC_Product_Factory();
 		if (type == 'liquid') {
 			jQuery(".ingredients.liquid select").each(function(index) {
 				var price = jQuery(this).find(':selected').data('price');
+				console.log(price);
 			});
 		} else if (type == 'capsule') {
 			jQuery(".ingredients.capsule select").each(function(index) {
 				var price = jQuery(this).find(':selected').data('price');
+				console.log(price);
 			});
 		}
 		
