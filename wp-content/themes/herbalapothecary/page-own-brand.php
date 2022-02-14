@@ -584,23 +584,32 @@ $_pf = new WC_Product_Factory();
 			if (pType == 'liquid') {
 				var pPackaging = jQuery('input[type=radio][name=packaging-liquid]:checked').val();
 				jQuery(".ingredients.liquid select").each(function(index) {
-					var pIngredient = jQuery(this).find(':selected').text();
+					var ingredient = jQuery(this).find(':selected').text();
+					ingredients.push(ingredient);
+				});
+				jQuery(".ingredients.liquid input[type=number]").each(function(index) {
+					var quantity = jQuery(this).val();
+					quantities.push(quantity);
 				});
 			}
 			if (pType == 'capsule') {
 				jQuery(".ingredients.capsule select").each(function(index) {
-					var pIngredient = jQuery(this).find(':selected').text();
+					var ingredient = jQuery(this).find(':selected').text();
+					ingredients.push(ingredient);
 				});
 			}
 		}
 
-		jQuery.post("/submitOwnBrandCalculator.php", {
+		pIngredients = JSON.stringify(ingredients);
+		pQuantities = JSON.stringify(quantities);
+
+		jQuery.post("/submitCalculator.php", {
 				name: pName,
 				email: pEmail,
 				phone: pPhone,
 				price: pCost,
 				type: pType,
-				ingredient: pIngredient
+				formulation: pIngredients
 			})
 			.done(function(data) {
 				jQuery('#calculator').html('<h2>Thank You</h2><p>Thanks for submitting your request - we have received the information you entered into the calculator and will give you a call back soon to discuss your order. <a href="/calculator/">Click here</a> to get another price.</p>');
