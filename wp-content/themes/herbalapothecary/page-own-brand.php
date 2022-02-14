@@ -537,6 +537,12 @@ $_pf = new WC_Product_Factory();
 
 		//CALC TOTAL MASTER UNITS
 		
+		console.log(price);
+		console.log(dropper);
+		console.log(pipette);
+		console.log(label);
+		console.log(labour);
+		
 		if(type == 'liquid'){
 			var grandTotal = parseInt(price)+((parseFloat(dropper)+parseInt(pipette)+parseFloat(label))*10)+parseInt(labour);
 		}else{
