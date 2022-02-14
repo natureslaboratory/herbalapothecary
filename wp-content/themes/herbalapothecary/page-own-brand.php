@@ -543,7 +543,7 @@ $_pf = new WC_Product_Factory();
 				var lid = 0.1;
 				
 				var label = 0.08;
-				var labour = 40;
+				var labour = 30;
 		
 				//CALC TOTAL MASTER UNITS
 				
