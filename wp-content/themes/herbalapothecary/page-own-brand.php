@@ -522,7 +522,7 @@ $_pf = new WC_Product_Factory();
 				var pipette = 0.6;
 				
 				var label = 0.08;
-				var labour = 25;
+				var labour = 40;
 		
 				//CALC TOTAL MASTER UNITS
 				
@@ -543,7 +543,7 @@ $_pf = new WC_Product_Factory();
 				var lid = 0.1;
 				
 				var label = 0.08;
-				var labour = 25;
+				var labour = 40;
 		
 				//CALC TOTAL MASTER UNITS
 				
