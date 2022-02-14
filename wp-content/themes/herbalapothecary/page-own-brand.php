@@ -80,7 +80,6 @@ $_pf = new WC_Product_Factory();
 		</ul>
 
 		<h2>Choose Your Product</h2>
-		<p>Use the table below to build your formulation. Add as many ingredients as you like. Use the % column to determine the proportion of each ingredient within the formulation. The <strong>Total</strong> must equal 100 in order to proceed with your quote.
 		<div class="ingredients liquid show">
 			<div class="i-row heading">
 				<div>Liquid</div>
@@ -286,7 +285,7 @@ $_pf = new WC_Product_Factory();
 
 	ul.grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-columns: 1fr 1fr;
 		grid-column-gap: 2rem;
 		text-align: center;
 		margin: 0;
@@ -358,7 +357,7 @@ $_pf = new WC_Product_Factory();
 		width: 100%;
 		text-align: left;
 		display: grid;
-		grid-template-columns: 400px 160px 160px;
+		grid-template-columns: 400px;
 	}
 
 	.ingredients .i-row div {
