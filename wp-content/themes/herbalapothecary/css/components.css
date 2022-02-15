@@ -2570,6 +2570,7 @@ span.price .c-price {
 
 .woocommerce ul.products li.product .price {
     color: rgb(39, 39, 39);
+    margin-top: auto;
 }
 
 .entry-content blockquote[class*=wp-block] {
