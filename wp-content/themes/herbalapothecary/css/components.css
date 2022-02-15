@@ -899,6 +899,12 @@ a.c-calculator-banner:hover{
 
 .woocommerce ul.products li.product a img {
     height: auto;
+    margin: 0 0 0.3rem;
+}
+
+.woocommerce ul.products li.product a {
+    display: flex;
+    flex-direction: column;
 }
 
 .c-product__image-wrapper {
@@ -2656,4 +2662,12 @@ ul, ol {
 }
 
 .c-cart__disclaimer p {
+}
+
+.c-shop__main .products .wc-points-rewards-product-message {
+    display: none;
+}
+
+a.woocommerce-LoopProduct-link.woocommerce-loop-product__link {
+    flex-grow: 2;
 }
