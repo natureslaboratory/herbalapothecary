@@ -1742,6 +1742,10 @@ article :is(h1, h2, h3, h4, h5, h6) {
     margin-right: 2rem;
 }
 
+.c-product-full__sidebar .trustpilot-widget{
+	grid-column: 1 / 3;
+}
+
 .woocommerce div.product form.cart {
     padding-bottom: 1rem;
     margin-bottom: 1em;
@@ -1784,6 +1788,10 @@ article :is(h1, h2, h3, h4, h5, h6) {
 .product_meta a {
     text-decoration: none;
     color: #005C7A;
+}
+
+.woocommerce div.product form.cart .variations td, .woocommerce div.product form.cart .variations th.label{
+	text-align: left;
 }
 
 .woocommerce div.product p.price, .woocommerce div.product span.price {
@@ -2164,6 +2172,7 @@ iframe {
 .c-cart, .c-cart tbody {
     display: flex;
     flex-direction: column;
+    clear:both;
     /* gap: 1rem; */
 }
 

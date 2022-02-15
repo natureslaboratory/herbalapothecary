@@ -7,6 +7,9 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	
 	<script src="https://kit.fontawesome.com/5bcd9efe81.js" crossorigin="anonymous" type="module"></script>
+	<!-- TrustBox script -->
+	<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+	<!-- End TrustBox script -->
 	<?php wp_head(); ?>
 </head>
 
