@@ -2697,5 +2697,5 @@ img.herbmark{
 }
 
 .woocommerce-page div.product .woocommerce-tabs{
-	grid-row:3;
+	grid-row:3 !important;
 }
