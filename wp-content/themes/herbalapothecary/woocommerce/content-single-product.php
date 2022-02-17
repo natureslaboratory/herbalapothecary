@@ -99,4 +99,36 @@ if (post_password_required()) {
 	?>
 </div>
 
+<div class="c-promises">
+    <div class="c-promises__promise">
+        <i class="fas fa-capsules"></i>
+        <div>
+            <h2>Reliable</h2>
+            <p>Products You Can Trust</p>
+        </div>
+    </div>
+    <div class="c-promises__promise">
+        <i class="fas fa-truck"></i>
+        <div>
+            <h2>Home Delivery</h2>
+            <p>Straight To Your Door</p>
+        </div>
+    </div>
+    <div class="c-promises__promise">
+        <i class="far fa-credit-card"></i>
+        <div>
+            <h2>Secure Payment</h2>
+            <p>100% Secure via Card or PayPal</p>
+        </div>
+    </div>
+    <div class="c-promises__promise">
+        <i class="far fa-comments"></i>
+        <div>
+            <h2>Support</h2>
+            <p>Get In Touch With Our Team</p>
+        </div>
+    </div>
+</div>
+
+
 <?php do_action('woocommerce_after_single_product'); ?>
