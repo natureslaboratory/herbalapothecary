@@ -534,6 +534,11 @@ i.menu-toggle {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.c-promises.product{
+	grid-row:2;
+	grid-column: 1 / 4;
+}
+
 .c-promises__promise {
     padding: 0 1rem;
     gap: 1rem;
@@ -2687,4 +2692,8 @@ img.herbmark{
 	height:auto;
 	float:right;
 	margin:0 0 1rem 1rem;
+}
+
+.wc-tabs-wrapper{
+	grid-row:3;
 }
