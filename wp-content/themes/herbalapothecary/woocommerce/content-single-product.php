@@ -89,7 +89,7 @@ if (post_password_required()) {
 	
 	<div class="c-promises product">
 	    <div class="c-promises__promise">
-	        <i class="fa-solid fa-user-doctor"></i>
+	        <i class="fas fa-briefcase-medical"></i>
 	        <div>
 	            <h2>Reliable</h2>
 	            <p>Products You Can Trust</p>
