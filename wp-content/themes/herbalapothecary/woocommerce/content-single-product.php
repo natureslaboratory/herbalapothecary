@@ -91,15 +91,22 @@ if (post_password_required()) {
 	    <div class="c-promises__promise">
 	        <i class="fas fa-briefcase-medical"></i>
 	        <div>
-	            <h2>Reliable</h2>
+	            <h2>Medical Herbalists</h2>
 	            <p>Products You Can Trust</p>
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
-	        <i class="fas fa-truck"></i>
+	        <i class="fas fa-industry"></i>
 	        <div>
-	            <h2>Home Delivery</h2>
-	            <p>Straight To Your Door</p>
+	            <h2>Bulk Quantities</h2>
+	            <p>Suppliers to Trade and Industry</p>
+	        </div>
+	    </div>
+	    <div class="c-promises__promise">
+	        <i class="far fa-magnifying-glass"></i>
+	        <div>
+	            <h2>Quality Products</h2>
+	            <p>Safe Products You Can Trust</p>
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
@@ -107,13 +114,6 @@ if (post_password_required()) {
 	        <div>
 	            <h2>Secure Payment</h2>
 	            <p>100% Secure via Card or PayPal</p>
-	        </div>
-	    </div>
-	    <div class="c-promises__promise">
-	        <i class="far fa-comments"></i>
-	        <div>
-	            <h2>Support</h2>
-	            <p>Get In Touch With Our Team</p>
 	        </div>
 	    </div>
 	</div>
