@@ -36,14 +36,8 @@ do_action('woocommerce_before_main_content');
 
 	<?php while (have_posts()) : ?>
 		<?php the_post(); ?>
-
-		<?php wc_get_template_part('content', 'single-product'); ?>
 		
-
-	<?php endwhile; // end of the loop. 
-	?>
-	
-	<div class="c-promises">
+		<div class="c-promises">
     <div class="c-promises__promise">
         <i class="fas fa-capsules"></i>
         <div>
@@ -74,6 +68,13 @@ do_action('woocommerce_before_main_content');
     </div>
 </div>
 
+
+		<?php wc_get_template_part('content', 'single-product'); ?>
+		
+
+	<?php endwhile; // end of the loop. 
+	?>
+	
 	<?php
 	/**
 	 * woocommerce_after_main_content hook.
