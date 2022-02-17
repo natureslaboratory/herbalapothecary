@@ -103,7 +103,7 @@ if (post_password_required()) {
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
-	        <i class="far fa-magnifying-glass"></i>
+	        <i class="fa fa-magnifying-glass"></i>
 	        <div>
 	            <h2>Quality Products</h2>
 	            <p>Safe Products You Can Trust</p>
