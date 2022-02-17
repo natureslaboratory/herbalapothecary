@@ -2681,3 +2681,10 @@ ul, ol {
 a.woocommerce-LoopProduct-link.woocommerce-loop-product__link {
     flex-grow: 2;
 }
+
+img.herbmark{
+	width:100px;
+	height:auto;
+	float:right;
+	margin:0 0 1rem 1rem;
+}
