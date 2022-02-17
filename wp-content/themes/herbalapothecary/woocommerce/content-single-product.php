@@ -62,32 +62,7 @@ if (post_password_required()) {
 
 		do_action('woocommerce_single_product_summary');
 		?>
-	</div>
-	<div class="c-product-full__sidebar">
-		<i class="fas fa-globe"></i>
-		<p>
-			We aim to dispatch products within 1 working day.
-		</p>
-		<i class="fas fa-mobile-alt"></i>
-		<p>
-			Call us now for more info about our products on +44 (0)1947 602346
-		</p>
-		<i class="fas fa-pallet"></i>
-		<p>
-			Return unopened items within 14 days for a refund.
-		</p>
-		<i class="far fa-star"></i>
-		<p>
-			Review this product and let others know what you think.
-		</p>
-		<!-- TrustBox widget - Micro Review Count -->
-		<div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="616978080bd1fb001d4d29a5" data-style-height="24px" data-style-width="100%" data-theme="light">
-		  <a href="https://uk.trustpilot.com/review/herbalapothecaryuk.com" target="_blank" rel="noopener">Trustpilot</a>
-		</div>
-		<!-- End TrustBox widget -->
-	</div>
-	
-	<div class="c-promises">
+		<div class="c-promises">
 	    <div class="c-promises__promise">
 	        <i class="fas fa-capsules"></i>
 	        <div>
@@ -116,6 +91,30 @@ if (post_password_required()) {
 	            <p>Get In Touch With Our Team</p>
 	        </div>
 	    </div>
+	</div>
+	</div>
+	<div class="c-product-full__sidebar">
+		<i class="fas fa-globe"></i>
+		<p>
+			We aim to dispatch products within 1 working day.
+		</p>
+		<i class="fas fa-mobile-alt"></i>
+		<p>
+			Call us now for more info about our products on +44 (0)1947 602346
+		</p>
+		<i class="fas fa-pallet"></i>
+		<p>
+			Return unopened items within 14 days for a refund.
+		</p>
+		<i class="far fa-star"></i>
+		<p>
+			Review this product and let others know what you think.
+		</p>
+		<!-- TrustBox widget - Micro Review Count -->
+		<div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="616978080bd1fb001d4d29a5" data-style-height="24px" data-style-width="100%" data-theme="light">
+		  <a href="https://uk.trustpilot.com/review/herbalapothecaryuk.com" target="_blank" rel="noopener">Trustpilot</a>
+		</div>
+		<!-- End TrustBox widget -->
 	</div>
 
 	<?php
