@@ -833,6 +833,7 @@ a.c-calculator-banner:hover{
 	border:2px solid #3a7498;
 	background:#edf5f9;
 	padding:0.5rem;
+	float:left;
 }
 
 .c-product-full__cta .bulk h2,.c-product-full__cta .bulk p{
@@ -843,6 +844,7 @@ a.c-calculator-banner:hover{
 	border:2px solid #70912f;
 	background:#eef7de;
 	padding:0.5rem;
+	float:left;
 }
 
 .c-product-full__cta .ownbrand h2,.c-product-full__cta .ownbrand a{
