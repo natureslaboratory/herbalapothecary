@@ -1411,6 +1411,13 @@ select {
     padding: 1rem;
 }
 
+.c-shop__sidebar .logos{
+	grid-column: 1 / 3;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 2rem;
+}
+
 .tagcloud {
     display: flex;
     flex-direction: column;
