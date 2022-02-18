@@ -94,6 +94,10 @@ if (post_password_required()) {
 		<div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="616978080bd1fb001d4d29a5" data-style-height="24px" data-style-width="100%" data-theme="light">
 		  <a href="https://uk.trustpilot.com/review/herbalapothecaryuk.com" target="_blank" rel="noopener">Trustpilot</a>
 		</div>
+		<div class="logos">
+			<img src="/wp-content/themes/herbalapothecary/images/livingwage.svg" alt="Living Wage" class="livingwage" />
+			<img src="/wp-content/themes/herbalapothecary/images/gbc.svg" alt="GBC" class="gbc" />
+		</div>
 		<!-- End TrustBox widget -->
 		<div class="product_meta">
 
