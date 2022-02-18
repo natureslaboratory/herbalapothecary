@@ -862,6 +862,11 @@ a.c-calculator-banner:hover{
 	margin-bottom:1rem;
 }
 
+.alert.warning p{
+	margin-bottom:0;
+	margin-top:0;
+}
+
 .alert.warning h2{
 	font-size:1.1rem;
 	margin-bottom:0;
