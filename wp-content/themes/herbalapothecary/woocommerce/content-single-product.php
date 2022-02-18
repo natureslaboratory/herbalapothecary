@@ -147,7 +147,7 @@ if (post_password_required()) {
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
-	        <i class="far fa-users"></i>
+	        <i class="fas fa-users"></i>
 	        <div>
 	            <h2>Friendly Support Team</h2>
 	            <p>Our Knowledgable Team Are Here to Help</p>
