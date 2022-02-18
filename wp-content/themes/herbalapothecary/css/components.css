@@ -882,6 +882,28 @@ a.c-calculator-banner:hover{
 	margin-bottom:0;
 	margin-top:0;
 	clear:none;
+	color:#977b0a;
+}
+
+.spec-download{
+	border:2px solid #770cb8;
+	background:#f3e8fa;
+	padding:0.5rem;
+	margin-bottom:0;
+	margin-top:1rem;
+}
+
+.spec-download p{
+	margin-bottom:0;
+	margin-top:0;
+}
+
+.spec-download h2{
+	font-size:1.1rem;
+	margin-bottom:0;
+	margin-top:0;
+	clear:none;
+	color:#770cb8;;
 }
 
 .c-product, .woocommerce ul.products li.product, .wc-block-grid .wc-block-grid__products .wc-block-grid__product {
