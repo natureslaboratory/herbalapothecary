@@ -87,7 +87,7 @@ if (!$has_access) {
 		jQuery.post("https://natureslaboratory.co.uk/herbal-apothecary/spec-exists/?productCode=<?php echo $productCode; ?>", function( data ) {
 			console.log(data);
 		  if(data==1){
-			  jQuery('#spec').html("<div class='spec-download'><h2>Download Product Specification</h2><p><a href='https://natureslaboratory.co.uk/herbal-apothecary/get-spec/?productCode=<?php echo $productCode; ?>'>Click Here to download the Nature's Laboratory Specification file (PDF)</a></p></div>");
+			  jQuery('#spec').html("<div class='spec-download'><h2>Download Product Specification</h2><p><a href='https://natureslaboratory.co.uk/herbal-apothecary/get-spec/?productCode=<?php echo $productCode; ?>'>Click Here</a> to download the Nature's Laboratory Specification file (PDF)</p></div>");
 		  }
 		});
 	});
