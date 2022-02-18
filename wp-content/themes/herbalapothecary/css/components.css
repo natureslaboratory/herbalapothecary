@@ -1806,8 +1806,8 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .c-product-full__sidebar {
-    background-color: var(--light-grey);
-    padding: 2rem;
+    padding: 4rem 2rem;
+    border-left:1px solid rgb(230, 230, 230);
     display: grid;
     grid-template-columns: auto auto;
     row-gap: 1rem;
