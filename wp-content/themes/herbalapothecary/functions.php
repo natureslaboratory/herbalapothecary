@@ -943,6 +943,7 @@ function ha_single_product_acf_details()
 	if (!empty($details_to_list)) { ?>
 		<div class="c-product__custom-details">
 			<?php foreach ($details_to_list as $key => $value) { ?>
+				<?php if($key == 'Ratio'){ $key = 'Herb to Solvent Ratio'; } ?>
 				<p><span><?= $key ?>:</span> <?= $value ?></p>
 			<?php } ?>
 		</div>

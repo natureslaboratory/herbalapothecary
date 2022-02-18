@@ -42,7 +42,7 @@ do_action('woocommerce_before_main_content');
 
 	<?php endwhile; // end of the loop. 
 	?>
-
+	
 	<?php
 	/**
 	 * woocommerce_after_main_content hook.

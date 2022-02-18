@@ -29,5 +29,7 @@ if ( ! $short_description ) {
 
 ?>
 <div class="woocommerce-product-details__short-description">
+	<img src="/wp-content/themes/herbalapothecary/images/herbmark.svg" alt="Herb Mark" class="herbmark" />
+	<img src="/wp-content/themes/herbalapothecary/images/iso.svg" alt="ISO" class="iso" />
 	<?php echo $short_description; // WPCS: XSS ok. ?>
 </div>

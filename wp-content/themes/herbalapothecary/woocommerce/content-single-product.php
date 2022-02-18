@@ -62,6 +62,22 @@ if (post_password_required()) {
 
 		do_action('woocommerce_single_product_summary');
 		?>
+		<div class="c-product-full__cta">
+			<a href="https://herbalapothecaryuk.com/bulk-herbal-products-for-industry/">
+				<div class="bulk">
+					<img src="/wp-content/themes/herbalapothecary/images/keg.png" alt="Keg" />
+					<h2>Bulk Quantities</h2>
+					<p>We can supply bulk quantities of cut, whole and powdered herbs as well as capsules and herbal tinctures.</p>
+				</div>
+			</a>
+			<a href="https://herbalapothecaryuk.com/own-brand-herbal-products/">
+				<div class="ownbrand">
+					<img src="/wp-content/themes/herbalapothecary/images/dropper.png" alt="Dropper" />
+					<h2>Own Brand Products</h2>
+					<p>Are you looking to create your own product range? Use our 'own-brand' service and put your name on our high quality products.</p>
+				</div>
+			</a>
+		</div>
 	</div>
 	<div class="c-product-full__sidebar">
 		<i class="fas fa-globe"></i>
@@ -84,7 +100,59 @@ if (post_password_required()) {
 		<div class="trustpilot-widget" data-locale="en-GB" data-template-id="5419b6a8b0d04a076446a9ad" data-businessunit-id="616978080bd1fb001d4d29a5" data-style-height="24px" data-style-width="100%" data-theme="light">
 		  <a href="https://uk.trustpilot.com/review/herbalapothecaryuk.com" target="_blank" rel="noopener">Trustpilot</a>
 		</div>
+		<div class="logos">
+			<img src="/wp-content/themes/herbalapothecary/images/livingwage.svg" alt="Living Wage" class="livingwage" />
+			<img src="/wp-content/themes/herbalapothecary/images/gbc.svg" alt="GBC" class="gbc" />
+		</div>
 		<!-- End TrustBox widget -->
+		<div class="product_meta">
+
+			<?php do_action( 'woocommerce_product_meta_start' ); ?>
+		
+			<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+		
+				<span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+		
+			<?php endif; ?>
+		
+			<?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Category:', 'Categories:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+		
+			<?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+		
+			<?php do_action( 'woocommerce_product_meta_end' ); ?>
+		
+		</div>
+	</div>
+	
+	<div class="c-promises product">
+	    <div class="c-promises__promise">
+	        <i class="fas fa-leaf"></i>
+	        <div>
+	            <h2>Quality Herbal Products</h2>
+	            <p>Products You & Your Patients Can Trust</p>
+	        </div>
+	    </div>
+	    <div class="c-promises__promise">
+	        <i class="fas fa-box"></i>
+	        <div>
+	            <h2>Bulk Quantities Available</h2>
+	            <p>We Supply Herbal Ingredients In Bulk</p>
+	        </div>
+	    </div>
+	    <div class="c-promises__promise">
+	        <i class="fas fa-credit-card"></i>
+	        <div>
+	            <h2>Flexible &amp; Secure Payment Options</h2>
+	            <p>Pay By Card Or PayPal, Online Or By Phone</p>
+	        </div>
+	    </div>
+	    <div class="c-promises__promise">
+	        <i class="fas fa-users"></i>
+	        <div>
+	            <h2>Friendly Support Team</h2>
+	            <p>Our Knowledgable Team Are Here to Help</p>
+	        </div>
+	    </div>
 	</div>
 
 	<?php
@@ -98,5 +166,6 @@ if (post_password_required()) {
 	do_action('woocommerce_after_single_product_summary');
 	?>
 </div>
+
 
 <?php do_action('woocommerce_after_single_product'); ?>
