@@ -67,7 +67,7 @@ if (post_password_required()) {
 				<div class="bulk">
 					<img src="/wp-content/themes/herbalapothecary/images/keg.png" alt="Keg" />
 					<h2>Bulk Quantities</h2>
-					<p>Herbal Apothecary can supply bulk quantities of cut, whole and powdered herbs as well as capsules and herbal tinctures.</p>
+					<p>We can supply bulk quantities of cut, whole and powdered herbs as well as capsules and herbal tinctures.</p>
 				</div>
 			</a>
 			<a href="https://herbalapothecaryuk.com/own-brand-herbal-products/">
