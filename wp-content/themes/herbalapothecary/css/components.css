@@ -835,7 +835,7 @@ a.c-calculator-banner:hover{
 	padding:0.5rem;
 }
 
-.c-product-full__cta .bulk h2{
+.c-product-full__cta .bulk h2,.c-product-full__cta .bulk p{
 	color:#3a7498;
 }
 
@@ -845,7 +845,7 @@ a.c-calculator-banner:hover{
 	padding:0.5rem;
 }
 
-.c-product-full__cta .ownbrand h2{
+.c-product-full__cta .ownbrand h2,.c-product-full__cta .ownbrand a{
 	color:#70912f;
 }
 
