@@ -871,6 +871,7 @@ a.c-calculator-banner:hover{
 	margin-bottom:0;
 	margin-top:1rem;
 	display:block;
+	text-decoration: none;
 }
 
 .alert.warning:hover{
