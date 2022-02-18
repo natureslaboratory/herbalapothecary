@@ -843,8 +843,8 @@ a.c-calculator-banner:hover{
 
 .c-product-full__cta img{
 	float:right;
-	width:70px;
-	height:auto;
+	height:100px;
+	width:auto;
 }
 
 .c-product, .woocommerce ul.products li.product, .wc-block-grid .wc-block-grid__products .wc-block-grid__product {
