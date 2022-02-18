@@ -812,6 +812,7 @@ a.c-calculator-banner:hover{
 	font-size:1.1rem;
 	margin-bottom:0;
 	margin-top:0;
+	clear:none;
 }
 
 .c-product-full__cta p{
@@ -838,6 +839,12 @@ a.c-calculator-banner:hover{
 
 .c-product-full__cta .ownbrand h2{
 	color:#70912f;
+}
+
+.c-product-full__cta img{
+	float:right;
+	width:70px;
+	height:auto;
 }
 
 .c-product, .woocommerce ul.products li.product, .wc-block-grid .wc-block-grid__products .wc-block-grid__product {
