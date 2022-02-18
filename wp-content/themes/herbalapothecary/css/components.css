@@ -1851,6 +1851,8 @@ article :is(h1, h2, h3, h4, h5, h6) {
 @media screen and (max-width: 825px) {
     .c-product-full__sidebar{
 	    grid-row:4;
+	    border-left:none;
+	    padding:2rem 0;
     }
 }
 
@@ -1862,7 +1864,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
 
 .woocommerce div.product form.cart {
     margin-top: 1rem;
-    margin-bottom:0;
+    margin-bottom:1rem;
 }
 
 .woocommerce div.product form.cart .button {
@@ -2712,7 +2714,10 @@ span.price .c-price {
 }
 
 .woocommerce div.product .out-of-stock, .out-of-stock {
-    color: #b80000;
+    color: #880000;
+    border:2px solid #880000;
+    background:#f9dede;
+    margin-bottom:1rem;
 }
 
 [class*="wp-block-contact-form"] :is(input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea) {
