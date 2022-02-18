@@ -876,7 +876,7 @@ a.c-calculator-banner:hover{
 	margin-bottom:0;
 	margin-top:0;
 	font-size:0.8rem;
-	color:#777;
+	color:#333;
 }
 
 .alert.warning h2{
@@ -884,7 +884,7 @@ a.c-calculator-banner:hover{
 	margin-bottom:0;
 	margin-top:0;
 	clear:none;
-	color:#777;
+	color:#333;
 }
 
 .spec-download{
