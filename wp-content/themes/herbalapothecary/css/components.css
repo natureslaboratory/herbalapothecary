@@ -873,6 +873,10 @@ a.c-calculator-banner:hover{
 	display:block;
 }
 
+.alert.warning:hover{
+	box-shadow: 0px 0px 10px #ccc;
+}
+
 .alert.warning p{
 	margin-bottom:0;
 	margin-top:0;
