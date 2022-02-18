@@ -893,6 +893,10 @@ a.c-calculator-banner:hover{
 	margin-top:1rem;
 }
 
+.spec-download:hover{
+	box-shadow: 0px 0px 10px #ccc;
+}
+
 .spec-download p{
 	margin-bottom:0;
 	margin-top:0;
