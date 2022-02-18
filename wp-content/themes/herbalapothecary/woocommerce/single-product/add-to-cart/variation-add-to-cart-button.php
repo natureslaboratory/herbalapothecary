@@ -72,11 +72,6 @@ if (!$has_access) {
 
 </div>
 <h4 style="display:none;" class="no-stock">Sorry, Currently Out Of Stock</h4>
-<?php
-	
-	if(is_user_logged_in()){
-
-?>
 <span id="spec"></span>
 <?php
 	$productCode = $product->get_sku();
@@ -92,6 +87,3 @@ if (!$has_access) {
 		});
 	});
 </script>
-<?php
-	}
-?>
