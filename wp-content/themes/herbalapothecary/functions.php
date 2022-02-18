@@ -985,11 +985,3 @@ function order_disclaimer() {
 
 	<?php
 }
-
-function change_backorder_message( $text, $product ){
-    if ( $product->managing_stock() && $product->is_on_backorder( 1 ) ) {
-        $text = __( 'Special Order Item - Please Call 01947 602346 For Details', 'your-textdomain' );
-    }
-    return $text;
-}
-add_filter( 'woocommerce_get_availability_text', 'change_backorder_message', 10, 2 );
