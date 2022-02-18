@@ -2752,6 +2752,14 @@ img.herbmark{
 	margin:0 0 1rem 1rem;
 }
 
+img.iso{
+	width:100px;
+	height:auto;
+	float:right;
+	clear:right;
+	margin:0 0 1rem 1rem;
+}
+
 .woocommerce-page div.product .woocommerce-tabs{
 	grid-row:3 !important;
 }
