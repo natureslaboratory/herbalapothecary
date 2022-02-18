@@ -886,8 +886,8 @@ a.c-calculator-banner:hover{
 }
 
 .spec-download{
-	border:2px solid #770cb8;
-	background:#f3e8fa;
+	border:2px solid #56376a;
+	background:#f3eff5;
 	padding:0.5rem;
 	margin-bottom:0;
 	margin-top:1rem;
@@ -896,6 +896,11 @@ a.c-calculator-banner:hover{
 .spec-download p{
 	margin-bottom:0;
 	margin-top:0;
+	color:#56376a;
+}
+
+.spec-download p a{
+	color:#56376a;
 }
 
 .spec-download h2{

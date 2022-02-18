@@ -77,7 +77,7 @@ if (!$has_access) {
 	if(is_user_logged_in()){
 
 ?>
-<span id="spec" style="width:100%;float:left;background:#f1f1f1;margin-top:30px;"></span>
+<span id="spec"></span>
 <?php
 	$productCode = $product->get_sku();
 	$productCode = substr($productCode,0,-1);	
