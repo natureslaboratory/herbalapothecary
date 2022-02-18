@@ -1810,8 +1810,6 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .woocommerce div.product form.cart {
-    padding-bottom: 1rem;
-    margin-bottom: 1em;
     margin-top: 1rem;
 }
 
