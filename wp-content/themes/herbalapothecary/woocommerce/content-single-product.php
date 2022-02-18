@@ -126,31 +126,31 @@ if (post_password_required()) {
 	
 	<div class="c-promises product">
 	    <div class="c-promises__promise">
-	        <i class="fas fa-briefcase-medical"></i>
+	        <i class="fas fa-leaf"></i>
 	        <div>
-	            <h2>Medical Herbalists</h2>
+	            <h2>Quality Herbal Products</h2>
 	            <p>Products You & Your Patients Can Trust</p>
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
-	        <i class="fas fa-industry"></i>
+	        <i class="fas fa-box"></i>
 	        <div>
-	            <h2>Trade &amp; Industry</h2>
-	            <p>Bulk Quantities, Quickly Delivered</p>
+	            <h2>Bulk Quantities Available</h2>
+	            <p>We Supply Herbal Ingredients In Bulk</p>
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
-	        <i class="fas fa-capsules"></i>
+	        <i class="fas fa-credit-card"></i>
 	        <div>
-	            <h2>High Quality Products</h2>
-	            <p>We're Herb Mark &amp; ISO Certified</p>
+	            <h2>Flexible Payment Options</h2>
+	            <p>Pay By Card, PayPal Or By Invoice</p>
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
-	        <i class="far fa-credit-card"></i>
+	        <i class="far fa-users"></i>
 	        <div>
-	            <h2>Friendly Support</h2>
-	            <p>Our Knowledgable Team are Here to Help</p>
+	            <h2>Friendly Support Team</h2>
+	            <p>Our Knowledgable Team Are Here to Help</p>
 	        </div>
 	    </div>
 	</div>
