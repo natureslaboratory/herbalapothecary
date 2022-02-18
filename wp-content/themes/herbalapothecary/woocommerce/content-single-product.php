@@ -142,8 +142,8 @@ if (post_password_required()) {
 	    <div class="c-promises__promise">
 	        <i class="fas fa-credit-card"></i>
 	        <div>
-	            <h2>Flexible Payment Options</h2>
-	            <p>Pay By Card, PayPal Or By Invoice</p>
+	            <h2>Flexible &amp; Secure Payment Options</h2>
+	            <p>Pay By Card Or PayPal, Online Or By Phone</p>
 	        </div>
 	    </div>
 	    <div class="c-promises__promise">
