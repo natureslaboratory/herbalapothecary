@@ -805,16 +805,18 @@ a.c-calculator-banner:hover{
 .c-product-full__cta{
 	display:grid;
 	grid-template-columns: 1fr 1fr;
-	grid-column-gap: 1fr;
+	grid-column-gap: 1rem;
 }
 
 .c-product-full__cta h2{
 	font-size:1.1rem;
 	margin-bottom:0;
+	margin-top:0;
 }
 
 .c-product-full__cta p{
 	margin-top:0;
+	margin-bottom:0;
 	font-size:0.8rem;
 }
 
@@ -824,10 +826,18 @@ a.c-calculator-banner:hover{
 	padding:0.5rem;
 }
 
+.c-product-full__cta .bulk h2{
+	color:#3a7498;
+}
+
 .c-product-full__cta .ownbrand{
 	border:2px solid #70912f;
 	background:#eef7de;
 	padding:0.5rem;
+}
+
+.c-product-full__cta .ownbrand h2{
+	color:#70912f;
 }
 
 .c-product, .woocommerce ul.products li.product, .wc-block-grid .wc-block-grid__products .wc-block-grid__product {
