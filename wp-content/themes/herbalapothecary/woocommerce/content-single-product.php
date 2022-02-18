@@ -64,11 +64,11 @@ if (post_password_required()) {
 		?>
 		<div class="c-product-full__cta">
 			<div class="bulk">
-				<h2>Bulk Quantities Available</h2>
+				<h2>Bulk Quantities</h2>
 				<p>Herbal Apothecary can supply bulk quantities of cut, whole and powdered herbs as well as capsules and herbal tinctures. <a href="https://herbalapothecaryuk.com/bulk-herbal-products-for-industry/">Find out More</a>.</p>
 			</div>
 			<div class="ownbrand">
-				<h2>Own Brand and White Label Products</h2>
+				<h2>Own Brand Products</h2>
 				<p>Are you looking to create your own product range? Use our 'own-brand' service and put your name on our high quality products. <a href="https://herbalapothecaryuk.com/own-brand-herbal-products/">Find out More</a>.</p>
 			</div>
 		</div>
