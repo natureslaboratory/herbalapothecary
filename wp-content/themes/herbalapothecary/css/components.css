@@ -802,6 +802,21 @@ a.c-calculator-banner:hover{
     }
 }
 
+.c-product-full__cta{
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 1fr;
+}
+
+.c-product-full__cta h2{
+	font-size:1.1rem;
+	margin-bottom:0;
+}
+
+.c-product-full__cta p{
+	margin-top:0;
+}
+
 .c-product, .woocommerce ul.products li.product, .wc-block-grid .wc-block-grid__products .wc-block-grid__product {
     width: auto;
     max-width: unset;
