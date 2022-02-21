@@ -648,6 +648,66 @@ function print_custom($data) {
 	echo "<pre>" . print_r($data, true) . "</pre>";
 }
 
+function get_grouped_product_children_for_capsules(array $productIDs) {
+	$products = [];
+	foreach ($productIDs as $productID) {
+		$product = wc_get_product($productID);
+		if (!$product) {
+			continue;
+		}
+
+		$valid_title_contents = ["capsule", "powder"];
+		$title = $product->get_title();
+		foreach ($valid_title_contents as $test) {
+			if ($products[$test]) {
+				continue;
+			}
+
+			$str_location = strpos(strtolower($title), $test);
+			if ($str_location) {
+				$products[$test] = $product;
+			}
+		}
+
+	}
+	return $products;
+}
+
+function get_variable_product_variation_total_stock_amount($variable_product) {
+	$variations = $variable_product->get_children();
+	$max_value = 0;
+	$stock = 0;
+	foreach ($variations as $v) {
+		$variation = wc_get_product($v);
+		$attribute = $variation->get_attributes()["pa_size"];
+
+		$matches = [];
+		preg_match('/[0-9]*/', $attribute, $matches);
+		foreach ($matches as $match) {
+			if ($match > $max_value) {
+				$max_value = $match;
+				$stock = get_stock_safe($variation);
+			}
+		}
+	}
+	return $max_value * $stock;
+}
+
+function get_capsule_thousand_stock_variation($capsule_product) {
+	$variations = $capsule_product->get_children();
+	foreach ($variations as $v) {
+		$variation = new WC_Product_Variation($v);
+		$attribute = $variation->get_attributes()["pa_size"];
+
+		$matches = [];
+		preg_match('/1000/', $attribute, $matches);
+		if (count($matches) > 0) {
+			return $v;
+		}
+	}
+	return null;
+}
+
 function set_capsule_stock() {
 
 	$groupedProducts = wc_get_products([
@@ -658,65 +718,6 @@ function set_capsule_stock() {
 	$debug = [];
 	$count = 0;
 
-	function get_grouped_product_children_for_capsules(array $productIDs) {
-		$products = [];
-		foreach ($productIDs as $productID) {
-			$product = wc_get_product($productID);
-			if (!$product) {
-				continue;
-			}
-
-			$valid_title_contents = ["capsule", "powder"];
-			$title = $product->get_title();
-			foreach ($valid_title_contents as $test) {
-				if ($products[$test]) {
-					continue;
-				}
-
-				$str_location = strpos(strtolower($title), $test);
-				if ($str_location) {
-					$products[$test] = $product;
-				}
-			}
-
-		}
-		return $products;
-	}
-
-	function get_variable_product_variation_total_stock_amount($variable_product) {
-		$variations = $variable_product->get_children();
-		$max_value = 0;
-		$stock = 0;
-		foreach ($variations as $v) {
-			$variation = wc_get_product($v);
-			$attribute = $variation->get_attributes()["pa_size"];
-
-			$matches = [];
-			preg_match('/[0-9]*/', $attribute, $matches);
-			foreach ($matches as $match) {
-				if ($match > $max_value) {
-					$max_value = $match;
-					$stock = get_stock_safe($variation);
-				}
-			}
-		}
-		return $max_value * $stock;
-	}
-
-	function get_capsule_thousand_stock_variation($capsule_product) {
-		$variations = $capsule_product->get_children();
-		foreach ($variations as $v) {
-			$variation = new WC_Product_Variation($v);
-			$attribute = $variation->get_attributes()["pa_size"];
-
-			$matches = [];
-			preg_match('/1000/', $attribute, $matches);
-			if (count($matches) > 0) {
-				return $v;
-			}
-		}
-		return null;
-	}
 
 	foreach ($groupedProducts as $groupedProduct) {
 		// echo $groupedProduct->get_title() . "<br>";
@@ -732,10 +733,13 @@ function set_capsule_stock() {
 		// check stock of powder
 		$powderProduct = $products["powder"];
 		$capsuleProduct = $products["capsule"];
-
+		$capsuleVariationID = get_capsule_thousand_stock_variation($capsuleProduct);
 		$capsuleProductStock = get_variable_product_variation_total_stock_amount($capsuleProduct);
 
-		if ($capsuleProductStock > 0) {
+		$isFromPowder = get_post_meta($capsuleVariationID, "_stock_from_powder", true) == "true";
+		echo "From powder: " . ($isFromPowder ? "true" : "false") . "<br>";
+
+		if ($capsuleProductStock > 0 && !$isFromPowder) {
 			echo "Powder In Stock <br><br>";
 			continue;
 		}
@@ -757,20 +761,18 @@ function set_capsule_stock() {
 		echo "Stock - $stock_in_grams" . "g<br>";
 
 		// set new capsule stock level based on powder stock
-		$capsuleVariationID = get_capsule_thousand_stock_variation($capsuleProduct);
 		$capsuleVariation = wc_get_product($capsuleVariationID);
 		if (!$capsuleVariation) {
 			echo "<br>";
 			continue;
 		}
 
-		
-
 		echo "Updating stock of " . $capsuleVariation->get_title() . " to " . $stock_in_grams / 500 . "<br>";
 		wc_update_product_stock($capsuleVariationID, $stock_in_grams / 500);
 		wc_delete_product_transients($capsuleVariationID);
-		update_field("shipping_note", "Please allow up to 7 days for delivery", $capsuleVariation->id);
+
 		update_post_meta($capsuleVariationID, "_shipping_status", "Please allow up to 7 days for delivery");
+		update_post_meta($capsuleVariationID, "_stock_from_powder", "true");
 
 		echo "<br>";
 		
@@ -1160,7 +1162,7 @@ function ha_update_stock() {
 
 	foreach ($csvdata as $key => $row) {
 		if ($key == 0) {
-			// continue; // We don't want the header
+			continue; // We don't want the header
 		}
 
 		// Skip anything with a 0 price
@@ -1181,12 +1183,17 @@ function ha_update_stock() {
 
 		$postId = wc_get_product_id_by_sku($sku);
 
-		echo "Post ID: " . $postId . "\n";
-		echo "Stock: " . $row[3] . "\n";
-		echo "Price: " . $row[4] . "\n\n";
+		echo "Post ID: " . $postId . "<br>";
+		echo "Stock: " . $row[3] . "<br>";
+		echo "Price: " . $row[4] . "<br><br>";
 
 		// See if the SKU exists
 		if($postId != 0) {
+			$isFromPowder = get_post_meta($postId, "_stock_from_powder", true) == "true";
+			if ($isFromPowder) {
+				update_post_meta($postId, "_shipping_status", "");
+				update_post_meta($postId, "_stock_from_powder", "false");
+			}
 			// Add stock
 			update_post_meta($postId, "_manage_stock", "yes");
 			echo $row[3] . "<br>";
