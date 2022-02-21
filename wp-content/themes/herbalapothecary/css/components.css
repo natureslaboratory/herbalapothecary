@@ -288,8 +288,8 @@ option {
 
 .c-navigation__inner {
     display: flex;
-    padding: 1rem 0;
-    gap: 2rem;
+    /* padding: 1rem 0; */
+    /* gap: 2rem; */
 }
 
 .nav-menu {
@@ -298,8 +298,8 @@ option {
 }
 
 ul.c-navigation__menu, div.c-navigation__menu ul {
-    gap: 1.2rem;
-    overflow-y: auto;
+    /* gap: 1.2rem; */
+    /* overflow-y: auto; */
 }
 
 .c-navigation__overlay {
@@ -325,6 +325,22 @@ ul.c-navigation__menu, div.c-navigation__menu ul {
 }
 
 .c-navigation__menu a {
+    color: black;
+    padding: 1rem 0.6rem;
+}
+
+.c-navigation__menu li {
+    /* border-left: 1px solid white;
+    border-right: 1px solid white; */
+}
+
+.c-navigation__menu li:hover {
+    background-color: #f1f7f1;
+    /* border-left: 1px solid #b0c7b0;
+    border-right: 1px solid #f1f7f1; */
+}
+
+.c-navigation__menu li:hover a {
     color: black;
 }
 
@@ -2868,3 +2884,65 @@ img.iso {
 .woocommerce-page div.product .woocommerce-tabs {
 	grid-row:3 !important;
 }
+
+.menu-item-has-children {
+    position: relative;
+}
+
+.menu-item-has-children a {
+    position: relative;
+}
+
+.menu-item-has-children > a:hover {
+    background-color: rgb(223, 236, 223);
+}
+
+
+.sub-menu-outer-wrapper {
+    position: relative;
+    /* background-color: red; */
+}
+
+.sub-menu-inner-wrapper {
+    position: absolute;
+    /* padding-top: 0.6rem; */
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    /* background-color: green; */
+}
+
+#primary-menu .sub-menu {
+    /* box-shadow: 0px 5px 5px #3f4b3f25; */
+}
+
+#primary-menu .sub-menu li {
+    padding: 0.4rem 0.6rem;
+    /* background-color: blue; */
+    background-color: #f1f7f1;
+}
+
+#primary-menu .sub-menu li:hover {
+    background-color: rgb(223, 236, 223);
+}
+
+#primary-menu .sub-menu a {
+    padding: 0;
+}
+
+#primary-menu .menu-item-has-children:hover .sub-menu-inner-wrapper {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.main-navigation ul ul {
+    /* box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.205); */
+    box-shadow: unset;
+    float: unset;
+    position: static;
+    top: unset;
+    left: unset;
+    z-index: unset;
+}
+
