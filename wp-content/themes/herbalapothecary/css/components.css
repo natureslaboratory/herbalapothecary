@@ -551,11 +551,11 @@ i.menu-toggle {
         background-color: var(--primary, var(--green));
         color: white;
         font-weight: 600;
-        margin-bottom: 1rem;
+        /* margin-bottom: 1rem; */
     }
 
-    ul.c-navigation__menu > *, ul.c-navigation__menu::before {
-        /* padding: 0.8rem 1.4rem; */
+    ul.c-navigation__menu::before {
+        padding: 0.8rem 1.4rem;
     }
 
     ul.c-navigation__menu>* {
