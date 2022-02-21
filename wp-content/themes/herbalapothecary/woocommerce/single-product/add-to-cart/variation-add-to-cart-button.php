@@ -40,7 +40,7 @@ foreach($account_level as $a) {
 }
 
 if (!$has_access) {
-	echo '<div class="alert warning"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please <a href="/my-account/">log in or register</a> to make a purchase.</p></div>';
+	echo '<a class="alert warning" href="/my-account/"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please log in or register to make a purchase.</p></a>';
 	return;
 }
 
@@ -72,12 +72,7 @@ if (!$has_access) {
 
 </div>
 <h4 style="display:none;" class="no-stock">Sorry, Currently Out Of Stock</h4>
-<?php
-	
-	if(is_user_logged_in()){
-
-?>
-<span id="spec" style="width:100%;float:left;background:#f1f1f1;margin-top:30px;"></span>
+<span id="spec"></span>
 <?php
 	$productCode = $product->get_sku();
 	$productCode = substr($productCode,0,-1);	
@@ -87,11 +82,8 @@ if (!$has_access) {
 		jQuery.post("https://natureslaboratory.co.uk/herbal-apothecary/spec-exists/?productCode=<?php echo $productCode; ?>", function( data ) {
 			console.log(data);
 		  if(data==1){
-			  jQuery('#spec').html("<p style='margin-bottom:0px;'><strong><a style='padding:10px;float:left;display:block;' href='https://natureslaboratory.co.uk/herbal-apothecary/get-spec/?productCode=<?php echo $productCode; ?>'>Click Here to download the Nature's Laboratory Specification file (PDF)</a></strong></p>");
+			  jQuery('#spec').html("<a class='spec-download' href='https://natureslaboratory.co.uk/herbal-apothecary/get-spec/?productCode=<?php echo $productCode; ?>'><h2>Download Product Specification</h2><p>Click Here to download the Nature's Laboratory Specification file (PDF)</p></a>");
 		  }
 		});
 	});
 </script>
-<?php
-	}
-?>

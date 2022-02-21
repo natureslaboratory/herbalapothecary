@@ -53,7 +53,7 @@ foreach ($account_level as $a) {
 }
 
 if (!$has_access) {
-	echo '<div class="alert warning"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please <a href="/my-account/">log in or register</a> to make a purchase.</p></div>';
+	echo '<a class="alert warning" href="/my-account/"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please log in or register to make a purchase.</p></a>';
 	return;
 }
 
