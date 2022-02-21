@@ -21,26 +21,6 @@ search.forEach(s => {
     })
 });
 
-
-const nav = document.getElementById("site-navigation");
-const button = nav.getElementsByClassName("menu-toggle")[0];
-const menu = nav.getElementsByClassName("c-navigation__menu")[0];
-const overlay = nav.getElementsByClassName("c-navigation__overlay")[0];
-
-button.addEventListener("click", () => {
-    if (menu.classList.contains("show")) {
-        nav.classList.remove("show");
-        nav.tabIndex = -1;
-    } else {
-        nav.classList.add("show");
-        nav.tabIndex = 1;
-    }
-})
-
-overlay.addEventListener("click", () => {
-    nav.classList.remove("show");
-})
-
 document.addEventListener("keydown", (e) => {
     if (e.key == "Enter") {
         e.target.click();
