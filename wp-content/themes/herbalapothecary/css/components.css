@@ -380,7 +380,7 @@ i.menu-toggle {
     position: relative;
 }
 
-.menu-item-has-children > a:hover {
+.menu-item-has-children > .link-wrapper:hover {
     background-color: rgb(223, 236, 223);
 }
 
