@@ -2113,7 +2113,7 @@ article :is(h1, h2, h3, h4, h5, h6) {
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li:first-child, .woocommerce div.product .woocommerce-tabs .panel {
-    margin-left: 1.5rem;
+ 
 }
 
 .woocommerce div.product .woocommerce-tabs ul.tabs li {
