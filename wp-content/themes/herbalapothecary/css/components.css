@@ -2990,7 +2990,7 @@ a.woocommerce-LoopProduct-link.woocommerce-loop-product__link {
     font-size: 0.9rem;
 }
 
-img.herbmark,img.isoimg.nimh {
+img.herbmark,img.iso,img.nimh {
 	width:77px;
 	height:auto;
 	float:right;
