@@ -101,8 +101,8 @@ if (post_password_required()) {
 		  <a href="https://uk.trustpilot.com/review/herbalapothecaryuk.com" target="_blank" rel="noopener">Trustpilot</a>
 		</div>
 		<div class="logos">
-			<img src="/wp-content/themes/herbalapothecary/images/livingwage.svg" alt="Living Wage" class="livingwage" />
-			<img src="/wp-content/themes/herbalapothecary/images/gbc.svg" alt="GBC" class="gbc" />
+			<a href="https://www.livingwage.org.uk/what-real-living-wage" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/livingwage.svg" alt="Living Wage" class="livingwage" /></a>
+			<a href="https://www.goodbusinesscharter.com/" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/gbc.svg" alt="GBC" class="gbc" /></a>
 		</div>
 		<!-- End TrustBox widget -->
 		<div class="product_meta">
