@@ -3019,3 +3019,7 @@ a.wp-block-button__link:hover{
 .wp-block-media-text{
 	background:#f1f2f2;
 }
+
+.wp-block-media-text .wp-block-media-text__content{
+	padding-bottom:1.4rem;
+}
