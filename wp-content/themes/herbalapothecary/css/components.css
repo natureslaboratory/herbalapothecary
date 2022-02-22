@@ -3001,3 +3001,16 @@ img.herbmark,img.iso,img.nimh {
 .woocommerce-page div.product .woocommerce-tabs {
 	grid-row:3 !important;
 }
+
+.wp-block-button__link{
+	padding:0.4rem 1rem;
+	font-size:1rem;
+	border-radius:3px;
+	background:#475e45;
+	box-shadow: 0px 0px 10px #ccc;
+}
+
+.wp-block-button__link:hover{
+	background:#72932e;
+	box-shadow:0px 0px 7px #777;
+}
