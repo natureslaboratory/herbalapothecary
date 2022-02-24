@@ -65,6 +65,8 @@ if (!$has_access) {
 	<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
 	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
+	
+	<p id="bulk-message">Interested in bulk quantities? Call our team on 01947 602346 for a quote.</p>
 
 	<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
 	<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
@@ -87,7 +89,11 @@ if (!$has_access) {
 		});
 		jQuery('#pa_size').change(function(){
 			var size = jQuery('#pa_size').val();
-			console.log(size);
+			if(size == '5-litre-keg' || size == '25-litre-keg'){
+				jQuery('#bulk-message').show();
+			}else{
+				jQuery('#bulk-message').hide();
+			}
 		})
 	});
 </script>

@@ -3027,3 +3027,7 @@ a.wp-block-button__link:hover{
 .wc-points-rewards-product-message{
 	font-size:12px;
 }
+
+#bulk-message{
+	display:none;
+}
