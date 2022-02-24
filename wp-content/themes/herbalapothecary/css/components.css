@@ -3036,3 +3036,7 @@ a.wp-block-button__link:hover{
 	padding: 0.5rem 0;
 	font-weight:700;
 }
+
+.cart.grouped-form{
+	width:calc(100% - 110px);
+}
