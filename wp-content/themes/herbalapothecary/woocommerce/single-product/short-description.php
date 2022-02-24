@@ -27,12 +27,7 @@ if ( ! $short_description ) {
 	return;
 }
 
-$current_products = $post->get_children();
-
 ?>
 <div class="woocommerce-product-details__short-description">
 	<?php echo $short_description; // WPCS: XSS ok. ?>
-	<?php
-		print_r($current_products);
-	?>
 </div>
