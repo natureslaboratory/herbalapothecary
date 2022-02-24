@@ -88,7 +88,7 @@ if (!$has_access) {
 		});
 		jQuery('#pa_size').change(function(){
 			var size = jQuery('#pa_size').val();
-			if(size == '5-litre-keg' || size == '25-litre-keg'){
+			if(size == '5-litre-keg' || size == '25-litre-keg' || size == '25-kg' || size == '5-kg'){
 				jQuery('#bulk-message').show();
 			}else{
 				jQuery('#bulk-message').hide();
