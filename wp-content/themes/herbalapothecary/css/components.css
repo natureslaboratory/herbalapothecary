@@ -1128,6 +1128,10 @@ a.c-calculator-banner:hover{
     line-height: 1;
 }
 
+.c-product .c-button:hover, .woocommerce .c-shop__main a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link:hover, .woocommerce div.product form.cart .button:hover{
+	background:#72932e;
+}
+
 .woocommerce button.button[type*="submit"], .woocommerce div.product form.cart .button {
     opacity: 1;
 }
