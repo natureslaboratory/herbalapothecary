@@ -45,7 +45,7 @@ if (!$has_access) {
 }
 
 ?>
-<p id="bulk-message">Interested in bulk quantities? Call our team on 01947 602346 for a quote.</p>
+<p id="bulk-message">Need larger quantities? Call our team on 01947 602346 for a quote.</p>
 <div class="woocommerce-variation-add-to-cart variations_button">
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
@@ -88,7 +88,7 @@ if (!$has_access) {
 		});
 		jQuery('#pa_size').change(function(){
 			var size = jQuery('#pa_size').val();
-			if(size == '5-litre-keg' || size == '25-litre-keg' || size == '25kg' || size == '5kg'){
+			if(size == '25-litre-keg' || size == '25kg'){
 				jQuery('#bulk-message').show();
 			}else{
 				jQuery('#bulk-message').hide();
