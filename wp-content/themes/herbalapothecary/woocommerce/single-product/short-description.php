@@ -28,9 +28,6 @@ if ( ! $short_description ) {
 }
 
 ?>
-
-	<a href="https://nimh.org.uk/meet-our-friends/" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/nimh.png" alt="NIMH" class="nimh" /></a>
-	<a href="https://bhma.info/hpss/" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/herbmark.svg" alt="Herb Mark" class="herbmark" /></a>
-	<a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/iso.svg" alt="ISO" class="iso" /></a>
+<div class="woocommerce-product-details__short-description">
 	<?php echo $short_description; // WPCS: XSS ok. ?>
-
+</div>
