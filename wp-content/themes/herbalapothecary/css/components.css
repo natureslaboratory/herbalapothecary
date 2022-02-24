@@ -3031,8 +3031,8 @@ a.wp-block-button__link:hover{
 
 #bulk-message{
 	display:none;
-	border: 2px solid #eed707;
-	background: #f9f7e7;
-	padding: 0.5rem;
+	border-top: 2px solid #eed707;
+	border-bottom: 2px solid #eed707;
+	padding: 0.5rem 0;
 	font-weight:700;
 }
