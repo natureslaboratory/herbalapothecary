@@ -2693,6 +2693,7 @@ iframe {
 
 .woocommerce div.product form.cart:is(.grouped_form) {
     display: block;
+    width:calc(100% - 110px);
 }
 
 .c-calculator__heading {
