@@ -3030,4 +3030,8 @@ a.wp-block-button__link:hover{
 
 #bulk-message{
 	display:none;
+	border: 2px solid #ee8a06;
+	background: #faf1e6;
+	padding: 0.5rem;
+	font-weight:700;
 }
