@@ -3045,7 +3045,8 @@ a.wp-block-button__link:hover{
 }
 
 .product-logos{
-	margin-top:60px;
+	margin-top:70px;
+	float:right;
 }
 
 .product-type-grouped .product-logos{
