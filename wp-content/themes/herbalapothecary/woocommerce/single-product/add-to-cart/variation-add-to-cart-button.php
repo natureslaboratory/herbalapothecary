@@ -46,6 +46,7 @@ if (!$has_access) {
 
 ?>
 <div class="woocommerce-variation-add-to-cart variations_button">
+	<p id="bulk-message">Interested in bulk quantities? Call our team on 01947 602346 for a quote.</p>
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	<?php
@@ -65,8 +66,6 @@ if (!$has_access) {
 	<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
 	<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
-	
-	<p id="bulk-message">Interested in bulk quantities? Call our team on 01947 602346 for a quote.</p>
 
 	<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
 	<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
