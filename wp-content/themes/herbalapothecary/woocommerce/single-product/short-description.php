@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post;
 
-$short_description = apply_filters( 'woocommerce_short_description', $post->post_excerpt );
+$short_description = strip_tags(apply_filters( 'woocommerce_short_description', $post->post_excerpt ), '<p><a>');
 
 if ( ! $short_description ) {
 	return;

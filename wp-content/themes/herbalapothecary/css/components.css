@@ -3023,3 +3023,7 @@ a.wp-block-button__link:hover{
 .wp-block-media-text .wp-block-media-text__content{
 	padding-bottom:1.4rem;
 }
+
+.wc-points-rewards-product-message{
+	font-size:12px;
+}

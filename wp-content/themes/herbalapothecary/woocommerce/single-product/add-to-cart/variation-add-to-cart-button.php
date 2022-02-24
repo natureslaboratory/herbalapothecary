@@ -85,5 +85,9 @@ if (!$has_access) {
 			  jQuery('#spec').html("<a class='spec-download' href='https://natureslaboratory.co.uk/herbal-apothecary/get-spec/?productCode=<?php echo $productCode; ?>'><h2>Download Product Specification</h2><p>Click Here to download the Nature's Laboratory Specification file (PDF)</p></a>");
 		  }
 		});
+		jQuery('#pa_size').change(function(){
+			var size = jQuery('#pa_size').val();
+			console.log(size);
+		})
 	});
 </script>
