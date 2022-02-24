@@ -45,8 +45,8 @@ if (!$has_access) {
 }
 
 ?>
+<p id="bulk-message">Interested in bulk quantities? Call our team on 01947 602346 for a quote.</p>
 <div class="woocommerce-variation-add-to-cart variations_button">
-	<p id="bulk-message">Interested in bulk quantities? Call our team on 01947 602346 for a quote.</p>
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	<?php
