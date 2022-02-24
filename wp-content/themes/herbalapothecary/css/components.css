@@ -3049,6 +3049,6 @@ a.wp-block-button__link:hover{
 	display:none;
 }
 
-.product-type-grouped .product_title{
+.product-type-grouped .woocommerce div.product .product_title{
 	margin-right:0px;
 }
