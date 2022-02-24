@@ -27,7 +27,7 @@ if ( ! $short_description ) {
 	return;
 }
 
-$current_products = $product->get_children();
+$current_products = $post->get_children();
 
 ?>
 <div class="woocommerce-product-details__short-description">
