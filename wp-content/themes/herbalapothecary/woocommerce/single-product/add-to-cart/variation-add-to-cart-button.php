@@ -39,13 +39,14 @@ foreach($account_level as $a) {
 		$has_access = true;
 }
 
+echo '<p id="bulk-message">For bulk quantities call our team on 01947 602346 for a quote.</p>';
+
 if (!$has_access) {
 	echo '<a class="alert warning" href="/my-account/"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please log in or register to make a purchase.</p></a>';
 	return;
 }
 
 ?>
-<p id="bulk-message">For bulk quantities call our team on 01947 602346 for a quote.</p>
 <div class="woocommerce-variation-add-to-cart variations_button">
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
