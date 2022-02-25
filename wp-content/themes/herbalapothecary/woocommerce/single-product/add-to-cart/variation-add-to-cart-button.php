@@ -39,7 +39,19 @@ foreach($account_level as $a) {
 		$has_access = true;
 }
 
-echo '<p id="bulk-message">For bulk quantities call our team on 01947 602346 for a quote.</p>';
+echo '<p id="bulk-message">For bulk quantities call our team on 01947 602346 for a quote.</p>
+<script>
+	jQuery(document).ready(function(){
+		jQuery("#pa_size").change(function(){
+			var size = jQuery("#pa_size").val();
+			if(size == "25-litre-keg" || size == "25kg"){
+				jQuery("#bulk-message").show();
+			}else{
+				jQuery("#bulk-message").hide();
+			}
+		})
+	});
+</script>';
 
 if (!$has_access) {
 	echo '<a class="alert warning" href="/my-account/"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please log in or register to make a purchase.</p></a>';
@@ -87,13 +99,5 @@ if (!$has_access) {
 			  jQuery('#spec').html("<a class='spec-download' href='https://natureslaboratory.co.uk/herbal-apothecary/get-spec/?productCode=<?php echo $productCode; ?>'><h2>Download Product Specification</h2><p>Click Here to download the Nature's Laboratory Specification file (PDF)</p></a>");
 		  }
 		});
-		jQuery('#pa_size').change(function(){
-			var size = jQuery('#pa_size').val();
-			if(size == '25-litre-keg' || size == '25kg'){
-				jQuery('#bulk-message').show();
-			}else{
-				jQuery('#bulk-message').hide();
-			}
-		})
 	});
 </script>
