@@ -140,16 +140,25 @@ do_action('woocommerce_before_cart'); ?>
 
 			<?php do_action('woocommerce_cart_contents'); ?>
 
+			
 			<?php do_action('woocommerce_after_cart_contents'); ?>
+			
+			<div class="coupon" style="display: none;" >
+				<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
+				<button id="coupon_submit" type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>">
+					<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>
+				</button>
+			</div>
+			
 		</tbody>
 	</table>
-
-	<?php do_action('woocommerce_after_cart_table'); ?>
+	
 	<div class="c-cart__buttons">
 		<a style="opacity: 1" class="button" href="<?= get_permalink(wc_get_page_id('shop')); ?>">Back To Shop</a>
 		<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
-		<?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 	</div>
+	<?php wp_nonce_field('woocommerce-cart', 'woocommerce-cart-nonce'); ?>
+	<?php do_action('woocommerce_after_cart_table'); ?>
 </form>
 
 <div class="c-cart-options">
@@ -157,15 +166,35 @@ do_action('woocommerce_before_cart'); ?>
 	<?php if (wc_coupons_enabled()) { ?>
 		<div class="coupon">
 			<h2>Coupon Discount</h2>
-			<label style="opacity: 0; position: absolute;" for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label> 
-			
-			<div class="coupon__wrapper">
-				<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>"><?php esc_attr_e('Apply coupon', 'woocommerce'); ?></button>
+			<label style="opacity: 0; position: absolute;" for="coupon_code"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
+
+			<div class="coupon coupon__wrapper">
+				<label for="coupon_code" style="opacity: 0; position: absolute;"><?php esc_html_e('Coupon:', 'woocommerce'); ?></label>
+				<input type="text" name="coupon_code" class="input-text" id="fake_input" value="" placeholder="<?php esc_attr_e('Coupon code', 'woocommerce'); ?>" />
+				<button id="coupon_trigger" type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>">
+					<?php esc_attr_e('Apply coupon', 'woocommerce'); ?>
+				</button>
+				<script>
+					const trigger = document.getElementById("coupon_trigger");
+					const submit = document.getElementById("coupon_submit");
+					const fakeInput = document.getElementById("fake_input");
+					const realInput = document.getElementById("coupon_code");
+
+					fakeInput.addEventListener("input", (e) => {
+						realInput.value = fakeInput.value;
+					})
+
+					trigger.addEventListener("click", () => {
+						submit.click();
+					})
+
+				</script>
 				<?php do_action('woocommerce_cart_coupon'); ?>
 			</div>
 		</div>
 	<?php } ?>
 
+	<?php do_action( 'woocommerce_cart_actions' ); ?>
 	<?php do_action('woocommerce_after_cart'); ?>
 
 	<div class="shipping-calculator" id="shipping-calculator">
