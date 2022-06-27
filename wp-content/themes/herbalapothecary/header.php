@@ -125,7 +125,7 @@
 			?>
 				<div class="c-banner l-block l-block--no-padding">
 					<div class="l-restrict">
-						<h3>We Ship Internationally from UK</h3>
+						<h3>We Ship Internationally from UK &bull; 4.8 Trustpilot Score</h3>
 					</div>
 				</div>
 			<?php
