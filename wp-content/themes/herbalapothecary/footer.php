@@ -15,7 +15,7 @@
 <footer class="c-footer">
 	<div class="c-footer__top l-restrict">
 		<div class="c-footer__herbal">
-			<img src="/wp-content/themes/herbalapothecary/images/logo.webp" alt="Herbal Apothecary" loading="lazy">
+			<img src="/wp-content/themes/herbalapothecary/images/logo-teal.svg" alt="Herbal Apothecary" loading="lazy">
 			<p>
 				We offer professionals all the usual practitioner products and services – but with
 				a difference. Herbal Apothecary has been in existence for over 30 years and we produce
@@ -59,6 +59,9 @@
 			</a>
 			<a href="https://www.youtube.com/channel/UCAm5dGGrJEPctkyFP7LclDA" class="c-footer__social-link">
 				<i class="fab fa-youtube"></i><span>Youtube</span>
+			</a>
+			<a href="https://instagram.com/herbalapothecaryuk" class="c-footer__social-link">
+				<i class="fab fa-instagram"></i><span>Instagram</span>
 			</a>
 		</div>
 	</div> <!-- End .c-footer__top -->
