@@ -653,7 +653,7 @@ i.menu-toggle {
 
 .c-carousel__content {
     max-width: 700px;
-    width: min(100%, 50%);
+    width: 50%;
     height:100%;
     padding:2rem;
     background:var(--teal);
