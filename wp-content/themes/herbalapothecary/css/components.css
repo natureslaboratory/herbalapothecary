@@ -459,7 +459,7 @@ i.menu-toggle {
 
 @media screen and (min-width: 993px) {
     #primary-menu .sub-menu li:hover {
-        background-color: var(--teal);
+        background-color: var(--green);
     }
 
     #primary-menu .menu-item-has-children:hover .sub-menu-inner-wrapper {
@@ -472,7 +472,7 @@ i.menu-toggle {
     }
 
     .c-navigation__menu li:hover {
-        background-color: var(--teal);
+        background-color: var(--green);
     }
 
     .menu-item-has-children:hover .link-wrapper i {
