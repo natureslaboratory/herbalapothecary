@@ -21,8 +21,8 @@ img.c-header__logo {
     display:block;
 }
 
-.c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .submit-btn input[type="submit"], button {
-    background-color: var(--green);
+.c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .submit-btn input[type="submit"] {
+    background-color: var(--primary, var(--green));
     color: white;
     border: none;
     padding: 0.5rem 0.6rem;
@@ -1128,20 +1128,18 @@ a.c-calculator-banner:hover{
 
 .c-product .c-button, .woocommerce .c-shop__main a.button, .woocommerce button.button, .woocommerce input.button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, .woocommerce div.product form.cart .button {
     opacity: 0;
-    font-size: 0.8rem;
     width: 100%;
     text-align: center;
     color: white;
     text-decoration: none;
-    background-color: var(--green);
-    border-radius: 0;
+    background-color: var(--primary, var(--green));
+    border-radius: 3px;
     padding: 0.5rem 0.6rem;
     line-height: 1;
 }
 
-.c-product .c-button:hover, .woocommerce .c-shop__main a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link:hover, .woocommerce div.product form.cart .button:hover, button:hover{
-	background:var(--teal);
-	cursor:pointer;
+.c-product .c-button:hover, .woocommerce .c-shop__main a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link:hover, .woocommerce div.product form.cart .button:hover{
+	background:#72932e;
 }
 
 .woocommerce button.button[type*="submit"], .woocommerce div.product form.cart .button {
@@ -2828,16 +2826,16 @@ span.price .c-price {
 }
 
 .c-card a.c-button {
-    color: white;
+    color: black;
     font-weight: 400;
+    padding: 0.8rem;
     align-self: flex-start;
     justify-self: end;
     margin-top: auto;
     text-decoration: none;
     background-color: var(--green);
     transition: 150ms;
-    padding: 0.5rem 0.6rem;
-    border-radius: 3px;
+    padding:padding: 0.5rem 0.6rem;;
 }
 
 .c-card a.c-button:is(:hover, :focus) {
