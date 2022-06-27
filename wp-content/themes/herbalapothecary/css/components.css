@@ -13,10 +13,11 @@
 }
 
 img.c-header__logo {
-    max-width: 220px;
+    max-width: 180px;
     grid-area: logo;
-    aspect-ratio: 220 / 62;
+    aspect-ratio: 180 / 62;
     width: 100%;
+    display:block;
 }
 
 .c-button, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .submit-btn input[type="submit"] {
