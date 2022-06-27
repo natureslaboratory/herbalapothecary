@@ -324,6 +324,7 @@ ul.c-navigation__menu, div.c-navigation__menu ul {
 
 .c-navigation.show .c-navigation__menu {
     transform: translateX(0%);
+    background:var(--navy);
 }
 
 .c-navigation.show .c-navigation__overlay {
@@ -331,7 +332,7 @@ ul.c-navigation__menu, div.c-navigation__menu ul {
     pointer-events: all;
 }
 
-.c-navigation__menu a {
+.c-navigation__menu a,.c-navigation__menu a:hover {
     color: white;
     padding: 1rem 0.6rem;
 }
