@@ -65,7 +65,7 @@ input.c-search__box {
 
 .c-header__contact-details a {
     text-decoration: none;
-    color: var(--primary, var(--green));
+    color: white;
     font-weight: 600;
 }
 
@@ -217,7 +217,7 @@ input.c-search__box {
 
 .c-header__cart a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .c-header__account .c-header__account-menu a {
@@ -259,7 +259,7 @@ input.c-search__box {
 
 .c-header__account :is(a, p) {
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
     line-height: 1.2rem;
     margin: 0;
@@ -338,7 +338,7 @@ ul.c-navigation__menu, div.c-navigation__menu ul {
 }
 
 .c-banner {
-    background-color: var(--primary, var(--green));
+    background-color: var(--teal);
     color: white;
     font-weight: 400;
     padding-top: 0.6rem;
