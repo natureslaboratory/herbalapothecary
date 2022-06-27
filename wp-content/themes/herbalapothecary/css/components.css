@@ -682,8 +682,9 @@ i.menu-toggle {
     padding: 0.8rem 1rem;
 }
 
-.c-carousel .c-button:hover{
+.c-button:hover{
 	background:var(--teal);
+	cursor:pointer;
 }
 
 .c-promises {
