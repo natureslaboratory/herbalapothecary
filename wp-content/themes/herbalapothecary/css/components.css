@@ -646,21 +646,22 @@ i.menu-toggle {
 .c-carousel__overlay {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.603);
-    padding: 1.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
 .c-carousel__content {
     max-width: 700px;
-    width: min(100%, 700px);
-    padding-bottom: 3rem;
+    width: min(100%, 50%);
+    height:100%;
+    padding:2rem;
 }
 
 .c-carousel__small-heading {
     margin: 0;
     font-size: 1rem;
+    color:white;
 }
 
 .c-carousel__heading {
@@ -668,14 +669,20 @@ i.menu-toggle {
     font-weight: 400;
     margin-top: 1rem;
     margin-bottom: 0.4rem;
+    color:white;
 }
 
 .c-carousel__description {
     font-size: 1.2rem;
+    color:white;
 }
 
 .c-carousel .c-button {
     padding: 0.8rem 1rem;
+}
+
+.c-carousel .c-button:hover{
+	background:var(--teal);
 }
 
 .c-promises {
