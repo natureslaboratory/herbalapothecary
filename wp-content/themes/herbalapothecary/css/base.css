@@ -7,11 +7,11 @@
     --lighter-grey: #F5F5F5;
 }
 
-a {
+a, main a {
     color: var(--primary, var(--teal));
 }
 
-a:visited {
+a:visited, main a:visited {
     color: var(--primary, var(--dark-green));
 }
 
