@@ -389,7 +389,7 @@ i.menu-toggle {
 }
 
 .menu-item-has-children > .link-wrapper:hover {
-    background-color: rgb(223, 236, 223);
+    background-color: var(--teal);
 }
 
 
@@ -418,7 +418,7 @@ i.menu-toggle {
 #primary-menu .sub-menu li {
     padding: 0.4rem 0.6rem;
     /* background-color: blue; */
-    background-color: #f1f7f1;
+    background-color: var(--teal);
 }
 
 #primary-menu .sub-menu a {
