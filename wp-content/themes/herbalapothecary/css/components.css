@@ -3028,6 +3028,7 @@ img.herbmark,img.iso,img.nimh {
 
 a.wp-block-button__link:hover{
 	background:var(--teal);
+	color:#fff;
 }
 
 .wp-block-media-text{
