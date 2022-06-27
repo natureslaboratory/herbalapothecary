@@ -456,7 +456,7 @@ i.menu-toggle {
     transition: 200ms;
 }
 
-.link-wrapper > a {
+.link-wrapper > a,.link-wrapper > a:hover {
     padding: 0;
 }
 
@@ -1128,14 +1128,13 @@ a.c-calculator-banner:hover{
 
 .c-product .c-button, .woocommerce .c-shop__main a.button, .woocommerce button.button, .woocommerce input.button, .wc-block-grid__product-add-to-cart.wp-block-button .wp-block-button__link, .woocommerce div.product form.cart .button {
     opacity: 0;
-    font-size: 0.8rem;
     width: 100%;
     text-align: center;
     color: white;
     text-decoration: none;
     background-color: var(--primary, var(--green));
-    border-radius: 0;
-    padding: 0.8rem;
+    border-radius: 3px;
+    padding: 0.5rem 0.6rem;
     line-height: 1;
 }
 
@@ -2834,12 +2833,13 @@ span.price .c-price {
     justify-self: end;
     margin-top: auto;
     text-decoration: none;
-    background-color: var(--light-grey);
+    background-color: var(--green);
     transition: 150ms;
+    padding:padding: 0.5rem 0.6rem;;
 }
 
 .c-card a.c-button:is(:hover, :focus) {
-    background: var(--primary, var(--green));
+    background: var(--teal);
     color: white;
 }
 
