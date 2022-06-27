@@ -239,7 +239,7 @@ get_header();
 
         $featureCards = [
             [
-                "title" => "Evidence",
+                "title" => "Research",
                 "description" => "
                 <p>
                 At Herbal Apothecary we seek to produce natural medicines of the highest quality. We
@@ -247,8 +247,8 @@ get_header();
                 and GMP principles. We are supported in our work by highly qualified scientific
                 personnel.
                 </p>",
-                "button_label" => "More about Evidence",
-                "button_link" => "/evidence",
+                "button_label" => "More about Research",
+                "button_link" => "/research",
                 "image" => "/assets/evidence.webp",
                 "image_alt" => "Scientific Equipment"
             ],
