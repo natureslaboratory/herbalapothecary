@@ -8,13 +8,13 @@
 }
 
 a {
-    color: var(--primary, var(--green));
+    color: var(--primary, var(--teal));
 }
 
 a:visited {
-    color: var(--primary, var(--green));
+    color: var(--primary, var(--dark-green));
 }
 
 a:hover, a:visited:hover {
-    color: var(--dark-green);
+    color: var(--green);
 }
