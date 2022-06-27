@@ -1356,11 +1356,11 @@ a.c-calculator-banner:hover{
 
 .c-footer__bottom-column a {
     text-decoration: none;
-    color: black;
+    color:var(--teal);
 }
 
 .c-footer__bottom-column a:hover {
-    color: var(--primary, var(--green));
+    color: var(--green);
 }
 
 .c-footer__column .c-footer__social-link {
@@ -1385,7 +1385,7 @@ a.c-calculator-banner:hover{
 
 .c-footer__herbal img {
     aspect-ratio: 180 / 62;
-    height: 60px;
+    height: 91px;
     align-self: start;
     object-fit: contain;
 }
