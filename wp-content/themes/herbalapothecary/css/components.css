@@ -656,6 +656,7 @@ i.menu-toggle {
     width: min(100%, 50%);
     height:100%;
     padding:2rem;
+    background:var(--teal);
 }
 
 .c-carousel__small-heading {
