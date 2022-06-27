@@ -61,6 +61,7 @@ input.c-search__box {
 
 .c-header__contact-details p {
     margin: 0;
+    color:white;
 }
 
 .c-header__contact-details a {
@@ -370,6 +371,7 @@ ul.c-navigation__menu, div.c-navigation__menu ul {
 
 .c-header i {
     font-size: 1.65rem;
+    color:white;
 }
 
 i.menu-toggle {
