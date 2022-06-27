@@ -2828,14 +2828,14 @@ span.price .c-price {
 .c-card a.c-button {
     color: black;
     font-weight: 400;
-    padding: 0.8rem;
     align-self: flex-start;
     justify-self: end;
     margin-top: auto;
     text-decoration: none;
     background-color: var(--green);
     transition: 150ms;
-    padding:padding: 0.5rem 0.6rem;;
+    padding: 0.5rem 0.6rem;
+    border-radius: 3px;
 }
 
 .c-card a.c-button:is(:hover, :focus) {
