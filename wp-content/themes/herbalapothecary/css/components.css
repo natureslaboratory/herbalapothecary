@@ -639,21 +639,21 @@ i.menu-toggle {
     background-color: rgb(184, 184, 184);
     background-image: url('/wp-content/uploads/2021/10/AdobeStock_279842474-scaled.jpeg.webp');
     background-size: cover;
+    background-position:bottom right;
     position: relative;
     display: flex;
 }
 
 .c-carousel__overlay {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.603);
+    /*background-color: rgba(255, 255, 255, 0.603);*/
     display: flex;
     justify-content: left;
     align-items: center;
 }
 
 .c-carousel__content {
-    max-width: 700px;
-    width: 50%;
+    max-width: 50%;
     height:100%;
     padding:2rem;
     background:var(--teal);
