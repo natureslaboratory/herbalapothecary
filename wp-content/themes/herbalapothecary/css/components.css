@@ -2826,8 +2826,8 @@ span.price .c-price {
 }
 
 .c-card a.c-button {
-    color: black;
-    font-weight: 400;
+    color: white;
+    font-weight: 700;
     align-self: flex-start;
     justify-self: end;
     margin-top: auto;
