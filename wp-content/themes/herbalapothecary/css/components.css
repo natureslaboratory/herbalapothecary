@@ -1,5 +1,9 @@
 /* Header */
 
+.c-header{
+	background:var(--navy);
+}
+
 .c-header__inner {
     padding: 1rem 1rem;
     display: grid;
@@ -325,7 +329,7 @@ ul.c-navigation__menu, div.c-navigation__menu ul {
 }
 
 .c-navigation__menu a {
-    color: black;
+    color: white;
     padding: 1rem 0.6rem;
 }
 
