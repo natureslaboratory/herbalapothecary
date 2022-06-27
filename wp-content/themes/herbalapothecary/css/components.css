@@ -492,7 +492,7 @@ i.menu-toggle {
 
     #primary-menu .sub-menu li {
         padding-left: 1.2rem;
-        background-color: #fbfbfb;
+        background-color: var(--teal);
         border-top: 1px solid rgb(224, 224, 224);
     }
     
