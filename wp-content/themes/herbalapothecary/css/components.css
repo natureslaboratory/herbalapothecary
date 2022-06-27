@@ -51,6 +51,8 @@ input.c-search__box {
 
 .c-search .c-button {
     border-radius: 0 3px 3px 0;
+    background:var(--teal);
+    color:white;
 }
 
 .c-header__contact {
@@ -339,7 +341,7 @@ ul.c-navigation__menu, div.c-navigation__menu ul {
 }
 
 .c-banner {
-    background-color: var(--teal);
+    background-color: var(--green);
     color: white;
     font-weight: 400;
     padding-top: 0.6rem;
