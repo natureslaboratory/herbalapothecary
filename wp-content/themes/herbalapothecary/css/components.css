@@ -788,10 +788,15 @@ i.menu-toggle {
     display: block;
     background-position: center;
     background-size: cover;
-    padding: 1.5rem;
     min-height: 280px;
     cursor: pointer;
     text-decoration: none;
+}
+
+.c-specials__container{
+	max-width:60%;
+	padding:1.5rem;
+	background:#fff;
 }
 
 .c-specials *:not(button) {
@@ -818,7 +823,6 @@ i.menu-toggle {
 
 .c-specials a h2, .c-specials a h3, .c-specials a p {
     text-decoration: none !important;
-    max-width:60%;
 }
 
 a.c-calculator-banner {
