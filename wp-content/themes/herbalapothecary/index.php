@@ -18,7 +18,7 @@ get_header();
 	<main id="primary" class="site-main site-main--shop">
 		<div class="l-restrict c-news">
 			<div class="c-news__title">
-				<h1>Our Press</h1>
+				<h1>Our News</h1>
 				<?php get_template_part('template-parts/news-categories', 'cats') ?>
 			</div>
 			<div class="c-posts">
