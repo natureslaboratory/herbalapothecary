@@ -13,7 +13,7 @@ require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.6');
+	define('_S_VERSION', '1.0.7');
 }
 
 if (!function_exists('herbalapothecary_setup')) :

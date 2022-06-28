@@ -794,9 +794,9 @@ i.menu-toggle {
 }
 
 .c-specials__container{
-	max-width:60%;
+	max-width:100%;
 	padding:1.5rem;
-	background:#fff;
+	background:rgba(255,255,255,0.8);
 	height:100%;
 }
 
@@ -824,11 +824,11 @@ i.menu-toggle {
 
 .c-specials a h2, .c-specials a h3, .c-specials a p {
     text-decoration: none !important;
+    max-width:60%;
 }
 
 @media screen and (max-width:680px){
-	.c-specials__container{
-		background:rgba(255,255,255,0.8);
+	.c-specials a h2, .c-specials a h3, .c-specials a p{
 		max-width: 100%;
 	}
 }
