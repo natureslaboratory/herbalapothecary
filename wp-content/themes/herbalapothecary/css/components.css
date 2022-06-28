@@ -644,7 +644,7 @@ i.menu-toggle {
     background-size:700px;
 }
 
-main .c-carousel__content a{
+main .c-carousel__content a, .c-carousel__content a:visited, main .c-carousel__content a:visited{
 	color:#fff;
 	border-bottom:1px solid #fff;
 }
