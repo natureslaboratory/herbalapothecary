@@ -645,8 +645,10 @@ i.menu-toggle {
 }
 
 @media screen and (max-width:768px){
-	background-size:800px;
-	background-position:-50% 0;
+	.c-carousel {
+		background-size:800px;
+		background-position:-50% 0;
+	}
 }
 
 .c-carousel__overlay {
