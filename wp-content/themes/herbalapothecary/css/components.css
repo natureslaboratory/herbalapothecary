@@ -654,6 +654,15 @@ main .c-carousel__content a:hover{
 	border-bottom:1px solid var(--navy);
 }
 
+.c-carousel__content a.c-button{
+	border-bottom:none;
+}
+
+.c-carousel__content a.c-button:hover{
+	color:#fff;
+	border-bottom:none;
+}
+
 @media screen and (max-width:768px){
 	.c-carousel {
 		background-size:cover;
