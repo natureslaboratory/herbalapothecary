@@ -162,6 +162,9 @@ var dfFullscreenLayers = [{
 		border-radius: 0px !important;
 		background:var(--teal) !important;
 	}
+	.df-term{
+		margin-left:8px !important;
+	}
 </style>
 
 </body>
