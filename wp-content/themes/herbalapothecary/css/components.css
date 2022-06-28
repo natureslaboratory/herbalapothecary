@@ -637,11 +637,16 @@ i.menu-toggle {
 .c-carousel {
     min-height: 400px;
     background-color: rgb(184, 184, 184);
-    background-image: url('/wp-content/uploads/2021/10/AdobeStock_279842474-scaled.jpeg.webp');
-    background-size: cover;
+    background-image: url('https://herbalapothecaryuk.com/wp-content/uploads/2022/06/AdobeStock_224060873.jpeg');
     background-position:bottom right;
     position: relative;
     display: flex;
+    background-size:700px;
+}
+
+@media screen and (max-width:768px){
+	background-size:800px;
+	background-position:-50% 0;
 }
 
 .c-carousel__overlay {
