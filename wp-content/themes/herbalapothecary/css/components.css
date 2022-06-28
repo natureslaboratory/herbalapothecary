@@ -826,6 +826,13 @@ i.menu-toggle {
     text-decoration: none !important;
 }
 
+@media screen and (max-width:680px){
+	.c-specials__container{
+		background:rgba(255,255,255,0.8);
+		max-width: 100%;
+	}
+}
+
 a.c-calculator-banner {
     padding: 1.5rem;
     min-height: 280px;
