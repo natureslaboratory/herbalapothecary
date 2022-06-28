@@ -60,10 +60,12 @@ get_header();
 		<!-- End TrustBox widget -->
         <div class="c-specials">
             <a class="c-specials__option" href="/product-category/western-herbs/" style="background-image: url(/wp-content/themes/herbalapothecary/images/western.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
-                <h2>Western Herbs</h2>
-                <h3>Explore our extensive range of Western Herbs</h3>
-                <p>Including cut, whole and powdered herbs, tinctures and fluid extracts for Medical Herbalists</p>
-                <button class="c-button">Shop Now</button>
+	            <div class="c-specials__container">
+	                <h2>Western Herbs</h2>
+	                <h3>Explore our extensive range of Western Herbs</h3>
+	                <p>Including cut, whole and powdered herbs, tinctures and fluid extracts for Medical Herbalists</p>
+	                <button class="c-button">Shop Now</button>
+	            </div>
             </a>
             <a class="c-specials__option" href="/product-category/ayurvedic-herbs/" style="background-image: url(/wp-content/themes/herbalapothecary/images/ayuvedic.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
                 <h2>Ayurvedic Herbs</h2>
