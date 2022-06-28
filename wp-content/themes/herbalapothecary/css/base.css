@@ -9,13 +9,11 @@
 
 a, main a {
     color: var(--primary, var(--teal));
-    border-bottom: 1px solid var(--teal);
     text-decoration: none;
 }
 
 a:visited, main a:visited {
     color: var(--primary, var(--dark-green));
-    border-bottom: 1px solid var(--green);
     text-decoration: none;
 }
 

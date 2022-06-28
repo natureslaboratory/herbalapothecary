@@ -1376,12 +1376,10 @@ a.c-calculator-banner:hover{
 .c-footer__bottom-column a, .c-footer__column a {
     text-decoration: none;
     color:var(--teal);
-    border-bottom:1px solid var(--teal);
 }
 
 .c-footer__bottom-column a:hover, .c-footer__column a:hover {
     color: var(--green);
-    border-bottom:1px solid var(--green);
 }
 
 .c-footer__column .c-footer__social-link {
