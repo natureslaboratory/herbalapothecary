@@ -154,6 +154,12 @@ var dfFullscreenLayers = [{
 </script>
 <!-- Doofinder script ends here -->
 
+<style>
+	.df-fullscreen{
+		margin-top:0px !important;
+	}
+</style>
+
 </body>
 
 </html>
