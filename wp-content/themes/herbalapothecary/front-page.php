@@ -65,7 +65,7 @@ get_header();
                 <p>Including cut, whole and powdered herbs, tinctures and fluid extracts for Medical Herbalists</p>
                 <button class="c-button">Shop Now</button>
             </a>
-            <a class="c-specials__option" href="/product-category/ayurvedic-herbs/" style="background-image: url(/wp-content/themes/herbalapothecary/images/ayurvedic.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
+            <a class="c-specials__option" href="/product-category/ayurvedic-herbs/" style="background-image: url(/wp-content/themes/herbalapothecary/images/ayuvedic.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
                 <h2>Ayurvedic Herbs</h2>
                 <h3>Discover our collection of Ayurvedic Herbs</h3>
                 <p>High quality dried herbs, capsules and liquids used in Ayurvedic Medicine</p>

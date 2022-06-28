@@ -818,6 +818,7 @@ i.menu-toggle {
 
 .c-specials a h2, .c-specials a h3, .c-specials a p {
     text-decoration: none !important;
+    max-width:60%;
 }
 
 a.c-calculator-banner {
