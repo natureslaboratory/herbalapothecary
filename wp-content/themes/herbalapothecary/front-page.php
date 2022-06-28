@@ -14,7 +14,7 @@ get_header();
         <div class="c-carousel">
             <div class="c-carousel__overlay">
                 <div class="c-carousel__content">
-                    <p class="c-carousel__small-heading">UK Supplier of Herbal Products</p>
+                    <p class="c-carousel__small-heading">UK Practitioner Supplier of Herbal Medicines</p>
                     <h2 class="c-carousel__heading">Herbal Apothecary</h2>
                     <p class="c-carousel__description">
                         We supply one of the largest ranges of herbal products in the UK including tinctures, fluid extracts, capsules &amp; creams as well as whole, cut and powdered herbs.<br /><br />
