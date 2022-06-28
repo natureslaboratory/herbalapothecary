@@ -68,38 +68,48 @@ get_header();
 	            </div>
             </a>
             <a class="c-specials__option" href="/product-category/ayurvedic-herbs/" style="background-image: url(/wp-content/themes/herbalapothecary/images/ayuvedic.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
-                <h2>Ayurvedic Herbs</h2>
-                <h3>Discover our collection of Ayurvedic Herbs</h3>
-                <p>High quality dried herbs, capsules and liquids used in Ayurvedic Medicine</p>
-                <button class="c-button">Shop Now</button>
+	            <div class="c-specials__container">
+	                <h2>Ayurvedic Herbs</h2>
+	                <h3>Discover our collection of Ayurvedic Herbs</h3>
+	                <p>High quality dried herbs, capsules and liquids used in Ayurvedic Medicine</p>
+	                <button class="c-button">Shop Now</button>
+	            </div>
             </a>
         </div>
         <div class="c-specials">
             <a class="c-specials__option" href="/product-category/chinese-herbs/" style="background-image: url(/wp-content/themes/herbalapothecary/images/chinese.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
-                <h2>Chinese Herbs</h2>
-                <h3>A wide range of herbs for Traditional Chinese Medicine</h3>
-                <p>Herbal tinctures and extracts as well as dried herbs and capsules</p>
-                <button class="c-button">Shop Now</button>
+	            <div class="c-specials__container">
+	                <h2>Chinese Herbs</h2>
+	                <h3>A wide range of herbs for Traditional Chinese Medicine</h3>
+	                <p>Herbal tinctures and extracts as well as dried herbs and capsules</p>
+	                <button class="c-button">Shop Now</button>
+	            </div>
             </a>
             <a class="c-specials__option" href="/product-category/herbal-capsules/" style="background-image: url(/wp-content/themes/herbalapothecary/images/capsules.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
-                <h2>Capsules</h2>
-                <h3>Practitioner quality herbal capsules</h3>
-                <p>Manufactured using high quality herbal powders here in the UK</p>
-                <button class="c-button">Shop Now</button>
+	            <div class="c-specials__container">
+	                <h2>Capsules</h2>
+	                <h3>Practitioner quality herbal capsules</h3>
+	                <p>Manufactured using high quality herbal powders here in the UK</p>
+	                <button class="c-button">Shop Now</button>
+	            </div>
             </a>
         </div>
         <div class="c-specials">
             <a class="c-specials__option" href="/product-category/beevital-apiceuticals/" style="background-image: url(/wp-content/themes/herbalapothecary/images/beevital.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
-                <h2>BeeVital Propolis</h2>
-                <h3>Medicines from the beehive</h3>
-                <p>Propolis liquids, capsules, tablets, oral health products &amp; more</p>
-                <button class="c-button">Shop Now</button>
+	            <div class="c-specials__container">
+	                <h2>BeeVital Propolis</h2>
+	                <h3>Medicines from the beehive</h3>
+	                <p>Propolis liquids, capsules, tablets, oral health products &amp; more</p>
+	                <button class="c-button">Shop Now</button>
+	            </div>
             </a>
             <a class="c-specials__option" href="/product-category/sweet-cecilys-skincare/" style="background-image: url(/wp-content/themes/herbalapothecary/images/skincare.jpg);background-position: bottom right;background-size:contain;background-repeat:no-repeat;">
-                <h2>Sweet Cecily's Skincare</h2>
-                <h3>High quality hand-made skincare products</h3>
-                <p>Moisturisers, toners, face masks, lip balms and base creams</p>
-                <button class="c-button">Shop Now</button>
+	            <div class="c-specials__container">
+	                <h2>Sweet Cecily's Skincare</h2>
+	                <h3>High quality hand-made skincare products</h3>
+	                <p>Moisturisers, toners, face masks, lip balms and base creams</p>
+	                <button class="c-button">Shop Now</button>
+	            </div>
             </a>
         </div>
         
