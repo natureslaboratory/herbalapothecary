@@ -17,7 +17,8 @@ get_header();
                     <p class="c-carousel__small-heading">UK Supplier of Herbal Products</p>
                     <h2 class="c-carousel__heading">Herbal Apothecary</h2>
                     <p class="c-carousel__description">
-                        We supply one of the largest ranges of herbal products in the UK including tinctures, fluid extracts, capsules &amp; creams as well as whole, cut and powdered herbs.
+                        We supply one of the largest ranges of herbal products in the UK including tinctures, fluid extracts, capsules &amp; creams as well as whole, cut and powdered herbs.<br /><br />
+                        <small>Part of Nature's Laboratory, along with <a href="https://beevitalpropolis.com">BeeVital</a> and <a href="https://sweetcecilys.com">Sweet Cecily's</a></small>
                     </p>
                     <a href="/about-us/" aria-label="About Us"><button class="c-button">Find Out More</button></a>
                 </div>
