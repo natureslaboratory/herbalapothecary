@@ -644,12 +644,12 @@ i.menu-toggle {
     background-size:700px;
 }
 
-.c-carousel__content a{
+main .c-carousel__content a{
 	color:#fff;
 	border-bottom:1px solid #fff;
 }
 
-.c-carousel__content a:hover{
+main .c-carousel__content a:hover{
 	color:var(--navy);
 	border-bottom:1px solid var(--navy);
 }
