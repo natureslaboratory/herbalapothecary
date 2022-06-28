@@ -158,6 +158,10 @@ var dfFullscreenLayers = [{
 	.df-fullscreen{
 		margin-top:0px !important;
 	}
+	.df-panel--collapse .df-panel__title{
+		border-radius: 0px !important;
+		background:var(--teal) !important;
+	}
 </style>
 
 </body>
