@@ -145,7 +145,7 @@ var dfFullscreenLayers = [{
     "lang": "en",
     "initialSearch": true,     
     "templateVars": {
-      "topbarLogo": "https://herbalapothecaryuk.com/wp-content/themes/herbalapothecary/images/logo.webp",
+      "topbarLogo": "https://herbalapothecaryuk.com/wp-content/themes/herbalapothecary/images/logo-teal.svg",
       "topbarLogoLink": "/"
     }
   },
