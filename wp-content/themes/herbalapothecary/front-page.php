@@ -59,35 +59,48 @@ get_header();
 		</div>
 		<!-- End TrustBox widget -->
         <div class="c-specials">
-            <a class="c-specials__option" href="/shop/" style="background-image: url(/wp-content/uploads/2021/09/herb-2.jpg.webp)">
-                <h2>Explore Our Range of Herbs</h2>
-                <h3>Including Western, Chinese, and Ayurvedic</h3>
-                <p>Cut, whole, powdered, tinctures and fluid extracts</p>
+            <a class="c-specials__option" href="/product-category/western-herbs/" style="">
+                <h2>Western Herbs</h2>
+                <h3>Explore our extensive range of Western Herbs</h3>
+                <p>Including cut, whole and powdered herbs, tinctures and fluid extracts for Medical Herbalists</p>
                 <button class="c-button">Shop Now</button>
             </a>
-            <a class="c-specials__option" href="/product-category/beevital-apiceuticals/" style="background-image: url(/wp-content/uploads/2021/09/Oral_Health_Range_2-scaled.jpg.webp)">
-                <h2>BeeVital Propolis</h2>
-                <h3>Discover our range of propolis products</h3>
-                <p>Including tinctures. liquids, tablets and oral health products</p>
+            <a class="c-specials__option" href="/product-category/ayurvedic-herbs/" style="">
+                <h2>Ayurvedic Herbs</h2>
+                <h3>Discover our collection of Ayurvedic Herbs</h3>
+                <p>High quality dried herbs, capsules and liquids used in Ayurvedic Medicine</p>
                 <button class="c-button">Shop Now</button>
             </a>
         </div>
-        <a href="/herbal-access/" class="c-calculator-banner text-white text-right" style="background-image: url(/wp-content/uploads/2021/11/AdobeStock_246756561-2048x763.jpeg)">
-            <h2>New! <br><strong>Herbal Access</strong></h2>
-            <div>
-                <p><strong>We're helping cover the cost of herbal prescriptions</strong></p>
-                <p>Herbalists can claim back &pound;8 per prescription</p>
-                <p>We're helping make herbal medicine accessible to all!</p>
-            </div>
-        </a>
-        <a href="/calculator" class="c-calculator-banner" style="background-image: url(/wp-content/uploads/2021/10/AdobeStock_354372002-scaled.jpeg.webp)">
-            <h2>Try our <br><strong>Herbal Product Calculator</strong></h2>
-            <div>
-                <p><strong>Get a price for your own formulation</strong></p>
-                <p>Choose from a liquid, capsule, powder, or cut herb blend</p>
-                <p>Submit your details and we'll call you back - simple!</p>
-            </div>
-        </a>
+        <div class="c-specials">
+            <a class="c-specials__option" href="/product-category/chinese-herbs/" style="">
+                <h2>Chinese Herbs</h2>
+                <h3>A wide range of herbs for Traditional Chinese Medicine</h3>
+                <p>Herbal tinctures and extracts as well as dried herbs and capsules</p>
+                <button class="c-button">Shop Now</button>
+            </a>
+            <a class="c-specials__option" href="/product-category/herbal-capsules/" style="">
+                <h2>Capsules</h2>
+                <h3>Practitioner quality herbal capsules</h3>
+                <p>Manufactured using high quality herbal powders here in the UK</p>
+                <button class="c-button">Shop Now</button>
+            </a>
+        </div>
+        <div class="c-specials">
+            <a class="c-specials__option" href="/product-category/beevital-apiceuticals/" style="">
+                <h2>BeeVital Propolis</h2>
+                <h3>Medicines from the beehive</h3>
+                <p>Propolis liquids, capsules, tablets, oral health products &amp; more</p>
+                <button class="c-button">Shop Now</button>
+            </a>
+            <a class="c-specials__option" href="/product-category/sweet-cecilys-skincare/" style="">
+                <h2>Sweet Cecily's Skincare</h2>
+                <h3>High quality hand-made skincare products</h3>
+                <p>Moisturisers, toners, face masks, lip balms and base creams</p>
+                <button class="c-button">Shop Now</button>
+            </a>
+        </div>
+        
         <?php
 
         function renderCards($cardList, $customClass = "")
@@ -210,6 +223,23 @@ get_header();
                 </div>
             </div>
         </div>
+        
+        <a href="/herbal-access/" class="c-calculator-banner text-white text-right" style="background-image: url(/wp-content/uploads/2021/11/AdobeStock_246756561-2048x763.jpeg)">
+            <h2>New! <br><strong>Herbal Access</strong></h2>
+            <div>
+                <p><strong>We're helping cover the cost of herbal prescriptions</strong></p>
+                <p>Herbalists can claim back &pound;8 per prescription</p>
+                <p>We're helping make herbal medicine accessible to all!</p>
+            </div>
+        </a>
+        <a href="/calculator" class="c-calculator-banner" style="background-image: url(/wp-content/uploads/2021/10/AdobeStock_354372002-scaled.jpeg.webp)">
+            <h2>Try our <br><strong>Herbal Product Calculator</strong></h2>
+            <div>
+                <p><strong>Get a price for your own formulation</strong></p>
+                <p>Choose from a liquid, capsule, powder, or cut herb blend</p>
+                <p>Submit your details and we'll call you back - simple!</p>
+            </div>
+        </a>
 
         <div class="c-home-categories">
             <h2>Product Categories</h2>
