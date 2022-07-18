@@ -70,12 +70,10 @@
 							<i class="far fa-user"></i>
 						</a>
 						<?php if (!is_user_logged_in()) { ?>
-							<a aria-label="Login Or Register" href="<?= get_permalink(get_option('woocommerce_myaccount_page_id')); ?>">
-								<div class="c-header__login">
-									<p>Log In</p>
-									<p>Register</p>
-								</div>
-							</a>
+							<div class="c-header__login">
+								<p><a href="/login/">Log In</a></p>
+								<p><a href="/register/">Register</a></p>
+							</div>
 						<?php } else { ?>
 							<div class="c-header__account-menu-wrapper c-menu__wrapper">
 								<div class="c-header__account-menu c-menu">
