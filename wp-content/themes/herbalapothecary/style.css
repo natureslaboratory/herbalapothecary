@@ -987,3 +987,7 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
+
+.woocommerce-account .entry-title{
+	text-align: left !important;
+}
