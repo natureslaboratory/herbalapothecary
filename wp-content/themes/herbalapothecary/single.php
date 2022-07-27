@@ -18,7 +18,7 @@ get_header();
 
 				get_template_part( 'template-parts/content', get_post_type() );
 
-				get_template_part('template-parts/author-feature', 'author');
+				//get_template_part('template-parts/author-feature', 'author');
 
 				the_post_navigation(
 					array(

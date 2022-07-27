@@ -3122,3 +3122,7 @@ a.wp-block-button__link:hover{
 .product-type-grouped .product-logos{
 	display:none;
 }
+
+img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image{
+	display:none;
+}
