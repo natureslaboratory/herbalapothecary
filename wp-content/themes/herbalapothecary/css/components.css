@@ -2707,7 +2707,6 @@ iframe {
 .wp-block-image img {
     max-width: 100%;
     width: auto;
-    max-height: 500px;
 }
 
 .woocommerce form .woocommerce-grouped-product-list-item {
