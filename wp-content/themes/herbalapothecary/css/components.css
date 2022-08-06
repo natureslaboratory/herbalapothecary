@@ -3125,3 +3125,7 @@ a.wp-block-button__link:hover{
 img.attachment-post-thumbnail.size-post-thumbnail.wp-post-image{
 	display:none;
 }
+
+.wc-block-product-categories-list-item-count{
+	display:none;
+}
