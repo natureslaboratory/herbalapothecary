@@ -50,5 +50,11 @@ defined( 'ABSPATH' ) || exit;
 		  <input type="email" name="email" id="bd-email" value="<?= $user->user_email ?>" />
 		  <input type="submit" value="Subscribe" />
 		</form>
+		<h2>Leave us a Review</h2>
+		<!-- TrustBox widget - Review Collector -->
+		<div class="trustpilot-widget" data-locale="en-GB" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="616978080bd1fb001d4d29a5" data-style-height="52px" data-style-width="100%">
+		  <a href="https://uk.trustpilot.com/review/herbalapothecaryuk.com" target="_blank" rel="noopener">Trustpilot</a>
+		</div>
+		<!-- End TrustBox widget -->
 	</div>
 </div>
