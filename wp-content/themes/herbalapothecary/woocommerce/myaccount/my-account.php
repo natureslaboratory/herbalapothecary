@@ -35,10 +35,20 @@ defined( 'ABSPATH' ) || exit;
 			 * @since 2.6.0
 			 */
 			do_action( 'woocommerce_account_content' );
+			$user = get_user_by('login', $user_login );
 		?>
-		<p>here.</p>
+		<h2>Get the Newsletter</h2>
+		<p>Sign up for our newsletter and get a brief regular update from Herbal Apothecary. You'll be the first to hear about new products and replenished stock, things we're working on behind the scenes and <strong>discount codes</strong>.</p>
+		<form
+		  action="https://buttondown.email/api/emails/embed-subscribe/herbalapothecary"
+		  method="post"
+		  target="popupwindow"
+		  onsubmit="window.open('https://buttondown.email/herbalapothecary', 'popupwindow')"
+		  class="embeddable-buttondown-form"
+		>
+		  <label for="bd-email">Enter your email</label>
+		  <input type="email" name="email" id="bd-email" value="<?= $user->email ?>" />
+		  <input type="submit" value="Subscribe" />
+		</form>
 	</div>
 </div>
-<?php
-	print_r($_GET);
-	?>
