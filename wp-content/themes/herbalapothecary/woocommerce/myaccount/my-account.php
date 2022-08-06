@@ -39,3 +39,6 @@ defined( 'ABSPATH' ) || exit;
 		<p>here.</p>
 	</div>
 </div>
+<?php
+	print_r($_GET);
+	?>
