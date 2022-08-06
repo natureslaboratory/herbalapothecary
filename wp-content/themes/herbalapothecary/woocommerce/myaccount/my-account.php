@@ -47,7 +47,7 @@ defined( 'ABSPATH' ) || exit;
 		  class="embeddable-buttondown-form"
 		>
 		  <label for="bd-email">Enter your email</label>
-		  <input type="email" name="email" id="bd-email" value="<?= $user->email ?>" />
+		  <input type="email" name="email" id="bd-email" value="<?= $user->user_email ?>" />
 		  <input type="submit" value="Subscribe" />
 		</form>
 	</div>
