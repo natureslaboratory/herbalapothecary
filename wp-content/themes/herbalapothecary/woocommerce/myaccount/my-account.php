@@ -35,7 +35,7 @@ defined( 'ABSPATH' ) || exit;
 			 * @since 2.6.0
 			 */
 			do_action( 'woocommerce_account_content' );
-			$user = get_user_by('login', $user_login );
+			$user = wp_get_current_user();
 		?>
 		<h2>Get the Newsletter</h2>
 		<p>Sign up for our newsletter and get a brief regular update from Herbal Apothecary. You'll be the first to hear about new products and replenished stock, things we're working on behind the scenes and <strong>discount codes</strong>.</p>
