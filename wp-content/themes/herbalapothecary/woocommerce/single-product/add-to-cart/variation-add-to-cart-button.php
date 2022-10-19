@@ -54,12 +54,15 @@ echo '<p id="bulk-message">For bulk quantities call our team on 01947 602346 for
 </script>';
 
 if (!$has_access) {
-	echo '<a class="alert warning" href="/my-account/"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please log in or register to make a purchase.</p></a>';
+	echo '<a class="alert warning" href="/register/"><h2>Please Register or Log In to Buy</h2><p>We\'re a wholesale supplier to practitioners and manufacturers. Some of our products are resitircted and so we ask all customers to register an account before purchasing from us. Click here to register.</p></a><br />';
 	return;
 }
 
 ?>
 <div class="woocommerce-variation-add-to-cart variations_button">
+
+	<?php if($has_access){ ?>
+	
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	<?php
@@ -74,6 +77,7 @@ if (!$has_access) {
 	);
 
 	do_action( 'woocommerce_after_add_to_cart_quantity' );
+	if(is_user_logged_in()){
 	?>
 
 	<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
@@ -83,6 +87,11 @@ if (!$has_access) {
 	<input type="hidden" name="add-to-cart" value="<?php echo absint( $product->get_id() ); ?>" />
 	<input type="hidden" name="product_id" value="<?php echo absint( $product->get_id() ); ?>" />
 	<input type="hidden" name="variation_id" class="variation_id" value="0" />
+	
+	<?php
+		}
+		}
+	?>
 
 </div>
 <h4 style="display:none;" class="no-stock">Sorry, Currently Out Of Stock</h4>

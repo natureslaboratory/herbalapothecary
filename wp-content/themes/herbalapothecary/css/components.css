@@ -2742,7 +2742,7 @@ iframe {
 }
 
 .woocommerce form .woocommerce-grouped-product-list-item>*:nth-child(3)>*:not(p) {
-    /* display: none; */
+    display: none;
     font-weight: 400;
     font-size: 1rem;
     margin: 0;

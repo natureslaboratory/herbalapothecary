@@ -66,6 +66,11 @@ if (post_password_required()) {
 		 
 
 		do_action('woocommerce_single_product_summary');
+		if(!is_user_logged_in()){
+		?>
+		<a class="alert warning" href="/register/"><h2>Please Register or Log In to Buy</h2><p>We're a wholesale supplier to practitioners and manufacturers. Some of our products are resitircted and so we ask all customers to register an account before purchasing from us. Click here to register.</p></a><br />
+		<?php
+		}
 		?>
 		<div class="c-product-full__cta">
 			<a href="https://herbalapothecaryuk.com/bulk-herbal-products-for-industry/">

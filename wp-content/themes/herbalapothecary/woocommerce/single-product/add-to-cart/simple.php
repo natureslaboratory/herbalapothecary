@@ -53,13 +53,13 @@ foreach ($account_level as $a) {
 }
 
 if (!$has_access) {
-	echo '<a class="alert warning" href="/my-account/"><h2>Please Log In to Buy</h2><p>This product can only be purchased by qualified/registered practitioners or manufacturers. Please log in or register to make a purchase.</p></a>';
-	return;
+	echo '<a class="alert warning" href="/register/"><h2>Please Register or Log In to Buy</h2><p>We\'re a wholesale supplier to practitioners and manufacturers. Some of our products are resitircted and so we ask all customers to register an account before purchasing from us. Click here to register.</p></a><br />';
 }
+
 
 echo wc_get_stock_html($product); // WPCS: XSS ok.
 
-if ($product->is_in_stock() && $has_access) : ?>
+if ($product->is_in_stock() && $has_access && is_user_logged_in()) : ?>
 
 	<?php do_action('woocommerce_before_add_to_cart_form'); ?>
 
