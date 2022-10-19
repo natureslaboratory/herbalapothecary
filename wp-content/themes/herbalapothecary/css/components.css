@@ -1026,6 +1026,8 @@ a.c-calculator-banner:hover{
 	display:grid;
 	grid-template-columns: 1fr 1fr;
 	grid-column-gap: 1rem;
+	float:left;
+	margin-top:1rem;
 }
 
 .c-product-full__cta a{
@@ -1092,6 +1094,8 @@ a.c-calculator-banner:hover{
 	margin-top:1rem;
 	display:block;
 	text-decoration: none;
+	clear:left;
+	float:left;
 }
 
 .alert.warning:hover{
