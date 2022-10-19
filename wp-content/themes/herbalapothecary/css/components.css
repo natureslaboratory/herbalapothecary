@@ -987,6 +987,11 @@ a.c-calculator-banner:hover{
     margin: 0;
 }
 
+.woocommerce-info{
+	display:inline-block;
+	width:100%;
+}
+
 @media screen and (max-width: 1450px) {
     .c-products__grid, .woocommerce ul.products, .wc-block-grid__products {
         grid-template-columns: repeat(4, 1fr);
