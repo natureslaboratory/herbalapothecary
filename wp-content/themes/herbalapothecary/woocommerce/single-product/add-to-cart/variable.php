@@ -99,7 +99,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 				if($has_access){
 					do_action( 'woocommerce_single_variation' );
 				}else{
-					echo '<a class="alert warning" href="/my-account/"><h2>Restriced Item</h2><p>This product can only be purchased by suitably qualified/registered practitioners or manufacturers. Please call us on 01947 602346 if you wish to purchase this item.</p></a><br />';
+					echo '<a class="alert warning" href="/my-account/"><h2>Restriced Item</h2><p>This product can only be purchased by suitably qualified/registered practitioners or manufacturers. Please call us on 01947 602346 if you wish to purchase this item.</p></a>';
 				}
 
 				/**
