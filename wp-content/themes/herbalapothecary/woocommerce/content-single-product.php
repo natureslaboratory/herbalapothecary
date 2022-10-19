@@ -44,11 +44,6 @@ if (post_password_required()) {
 	?>
 
 	<div class="summary entry-summary">
-		<div class="product-logos">
-			<a href="https://nimh.org.uk/meet-our-friends/" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/nimh.png" alt="NIMH" class="nimh" /></a>
-			<a href="https://bhma.info/hpss/" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/herbmark.svg" alt="Herb Mark" class="herbmark" /></a>
-			<a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank"><img src="/wp-content/themes/herbalapothecary/images/iso.svg" alt="ISO" class="iso" /></a>
-		</div>
 		<?php
 		/**
 		 * Hook: woocommerce_single_product_summary.
