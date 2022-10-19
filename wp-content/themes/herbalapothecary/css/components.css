@@ -951,12 +951,18 @@ a.c-calculator-banner:hover{
     row-gap: 2rem;
 }
 
+.woocommerce-product-details__short-description{
+	width:100%;
+	float:left;
+}
+
 .c-product__custom-details {
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
     padding-bottom: 1rem;
     font-size: 0.95rem;
+    clear:left;
 }
 
 .c-product__custom-details+.woocommerce div.product p.stock {
