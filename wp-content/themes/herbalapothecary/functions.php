@@ -1235,3 +1235,14 @@ function removing_variable_add_to_cart_template(){
         remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
     }
 }
+	
+/**
+* Change WooCommerce products per page
+*/
+ 
+add_filter( 'loop_shop_per_page', 'my_new_products_per_page', 9999 );
+ 
+function my_new_products_per_page( $pr_per_page ) {
+  $pr_per_page = 24;
+  return $pr_per_page;
+}
